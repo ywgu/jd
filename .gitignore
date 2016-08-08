@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+bin/
+node_modules/
+public/design/draggable.html
+public/design/svgeditor.html
+public/design/test-transparency.html
+public/design/test-transparent.html
+public/design/test.html
+public/designs/
+public/javascripts/
+public/stylesheets/
+public/uploads/
+public/vendor/
