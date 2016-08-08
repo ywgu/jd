@@ -5,43 +5,43 @@
 
   // creates handler, saves it
   function DragHandler(el){
-    el.remember('_draggable', this);;;;;
+    el.remember('_draggable', this)
     this.el = el
   }
 
 
   // Sets new parameter, starts dragging
   DragHandler.prototype.init = function(constraint, val){
-    var _this = this;;;;;
-    this.constraint = constraint;;;;;
-    this.value = val;;;;;
-    this.el.on('mousedown.drag', function(e){ _this.start(e) });;;;;
+    var _this = this
+    this.constraint = constraint
+    this.value = val
+    this.el.on('mousedown.drag', function(e){ _this.start(e) })
     this.el.on('touchstart.drag', function(e){ _this.start(e) })
-  };;;;;
+  }
 
   // transforms one point from screen to user coords
   DragHandler.prototype.transformPoint = function(event, offset){
-      event = event || window.event;;;;;
-      var touches = event.changedTouches && event.changedTouches[0] || event;;;;;
-      this.p.x = touches.pageX - (offset || 0);;;;;
-      this.p.y = touches.pageY;;;;;
+      event = event || window.event
+      var touches = event.changedTouches && event.changedTouches[0] || event
+      this.p.x = touches.pageX - (offset || 0)
+      this.p.y = touches.pageY
       return this.p.matrixTransform(this.m)
-  };;;;;
+  }
   
   // gets elements bounding box with special handling of groups, nested and use
   DragHandler.prototype.getBBox = function(){
 
-    var box = this.el.bbox();;;;;
+    var box = this.el.bbox()
 
-    if(this.el instanceof SVG.Nested) box = this.el.rbox();;;;;
+    if(this.el instanceof SVG.Nested) box = this.el.rbox()
     
     if (this.el instanceof SVG.G || this.el instanceof SVG.Use || this.el instanceof SVG.Nested) {
-      box.x = this.el.x();;;;;
+      box.x = this.el.x()
       box.y = this.el.y()
     }
 
     return box
-  };;;;;
+  }
 
   // start dragging
   DragHandler.prototype.start = function(e){
@@ -53,20 +53,20 @@
       }
     }
   
-    var _this = this;;;;;
+    var _this = this
 
     // fire beforedrag event
-    this.el.fire('beforedrag', { event: e, handler: this });;;;;
+    this.el.fire('beforedrag', { event: e, handler: this })
 
     // search for parent on the fly to make sure we can call
     // draggable() even when element is not in the dom currently
-    this.parent = this.parent || this.el.parent(SVG.Nested) || this.el.parent(SVG.Doc);;;;;
-    this.p = this.parent.node.createSVGPoint();;;;;
+    this.parent = this.parent || this.el.parent(SVG.Nested) || this.el.parent(SVG.Doc)
+    this.p = this.parent.node.createSVGPoint()
 
     // save current transformation matrix
-    this.m = this.el.node.getScreenCTM().inverse();;;;;
+    this.m = this.el.node.getScreenCTM().inverse()
 
-    var box = this.getBBox();;;;;
+    var box = this.getBBox()
     
     var anchorOffset;
     
@@ -77,7 +77,7 @@
       switch(this.el.attr('text-anchor')){
         case 'middle':
           anchorOffset /= 2;
-          break;;;;;
+          break
         case 'start':
           anchorOffset = 0;
           break;
@@ -88,23 +88,23 @@
       // We take absolute coordinates since we are just using a delta here
       point: this.transformPoint(e, anchorOffset),
       box:   box
-    };;;;;
+    }
     
     // add drag and end events to window
-    SVG.on(window, 'mousemove.drag', function(e){ _this.drag(e) });;;;;
-    SVG.on(window, 'touchmove.drag', function(e){ _this.drag(e) });;;;;
-    SVG.on(window, 'mouseup.drag', function(e){ _this.end(e) });;;;;
-    SVG.on(window, 'touchend.drag', function(e){ _this.end(e) });;;;;
+    SVG.on(window, 'mousemove.drag', function(e){ _this.drag(e) })
+    SVG.on(window, 'touchmove.drag', function(e){ _this.drag(e) })
+    SVG.on(window, 'mouseup.drag', function(e){ _this.end(e) })
+    SVG.on(window, 'touchend.drag', function(e){ _this.end(e) })
 
     // fire dragstart event
-    this.el.fire('dragstart', {event: e, p: this.startPoints.point, m: this.m, handler: this});;;;;
+    this.el.fire('dragstart', {event: e, p: this.startPoints.point, m: this.m, handler: this})
 
     // prevent browser drag behavior
-    e.preventDefault();;;;;
+    e.preventDefault()
 
     // prevent propagation to a parent that might also have dragging enabled
     e.stopPropagation();
-  };;;;;
+  }
 
   // while dragging
   DragHandler.prototype.drag = function(e){
@@ -113,7 +113,7 @@
       , p   = this.transformPoint(e)
       , x   = this.startPoints.box.x + p.x - this.startPoints.point.x
       , y   = this.startPoints.box.y + p.y - this.startPoints.point.y
-      , c   = this.constraint;;;;;
+      , c   = this.constraint
 
     var event = new CustomEvent('dragmove', {
         detail: {
@@ -123,16 +123,16 @@
           , handler: this
         }
       , cancelable: true
-    });;;;;
+    })
       
-    this.el.fire(event);;;;;
+    this.el.fire(event)
     
-    if(event.defaultPrevented) return p;;;;;
+    if(event.defaultPrevented) return p
 
     // move the element to its new position, if possible by constraint
     if (typeof c == 'function') {
 
-      var coord = c.call(this.el, x, y, this.m);;;;;
+      var coord = c.call(this.el, x, y, this.m)
 
       // bool, just show us if movement is allowed or not
       if (typeof coord == 'boolean') {
@@ -159,20 +159,20 @@
 
       // keep element within constrained box
       if (c.minX != null && x < c.minX)
-        x = c.minX;;;;;
+        x = c.minX
       else if (c.maxX != null && x > c.maxX - box.width){
         x = c.maxX - box.width
       }if (c.minY != null && y < c.minY)
-        y = c.minY;;;;;
+        y = c.minY
       else if (c.maxY != null && y > c.maxY - box.height)
-        y = c.maxY - box.height;;;;;
+        y = c.maxY - box.height
 
       this.el.move(x, y)
     }
     
     // so we can use it in the end-method, too
     return p
-  };;;;;
+  }
 
   DragHandler.prototype.end = function(e){
 
@@ -180,15 +180,15 @@
     var p = this.drag(e);
 
     // fire dragend event
-    this.el.fire('dragend', { event: e, p: p, m: this.m, handler: this });;;;;
+    this.el.fire('dragend', { event: e, p: p, m: this.m, handler: this })
 
     // unbind events
-    SVG.off(window, 'mousemove.drag');;;;;
-    SVG.off(window, 'touchmove.drag');;;;;
-    SVG.off(window, 'mouseup.drag');;;;;
+    SVG.off(window, 'mousemove.drag')
+    SVG.off(window, 'touchmove.drag')
+    SVG.off(window, 'mouseup.drag')
     SVG.off(window, 'touchend.drag')
 
-  };;;;;
+  }
 
   SVG.extend(SVG.Element, {
     // Make element draggable
@@ -198,18 +198,18 @@
 
       // Check the parameters and reassign if needed
       if (typeof value == 'function' || typeof value == 'object') {
-        constraint = value;;;;;
+        constraint = value
         value = true
       }
 
-      var dragHandler = this.remember('_draggable') || new DragHandler(this);;;;;
+      var dragHandler = this.remember('_draggable') || new DragHandler(this)
 
       // When no parameter is given, value is true
-      value = typeof value === 'undefined' ? true : value;;;;;
+      value = typeof value === 'undefined' ? true : value
 
-      if(value) dragHandler.init(constraint || {}, value);;;;;
+      if(value) dragHandler.init(constraint || {}, value)
       else {
-        this.off('mousedown.drag');;;;;
+        this.off('mousedown.drag')
         this.off('touchstart.drag')
       }
 
