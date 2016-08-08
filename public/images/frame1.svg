@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" height="426" width="608" y="12" x="15" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffaaaa"/>
+  <path opacity="0.25" id="svg_2" d="m81.723488,196c0,-41.036747 33.239765,-74.276512 74.276512,-74.276512c41.036747,0 74.276512,33.239765 74.276512,74.276512c0,41.036747 -33.239765,74.276512 -74.276512,74.276512c-41.036747,0 -74.276512,-33.239765 -74.276512,-74.276512z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffaaaa"/>
+  <path opacity="0.25" id="svg_3" d="m65,339c0,-22.099448 47.436464,-40 106,-40c58.563536,0 106,17.900552 106,40c0,22.099448 -47.436464,40 -106,40c-58.563536,0 -106,-17.900552 -106,-40z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffaaaa"/>
+  <path opacity="0.25" id="svg_4" d="m313,286c0,-24.861878 53.254144,-45 119,-45c65.745856,0 119,20.138122 119,45c0,24.861878 -53.254144,45 -119,45c-65.745856,0 -119,-20.138122 -119,-45z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffaaaa"/>
+  <path opacity="0.25" transform="rotate(1.4949513673782349 423.29357910156284,165.70347595214906) " id="svg_6" d="m344,112c106,-11 44,44 44,44c0,0 -23,51 -23,51c0,0 101,-39 101,-39c0,0 -11,-85 51,-10c62,75 -197,62 -197,62c0,0 24,-108 24,-108z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffaaaa"/>
+ </g>
+</svg>

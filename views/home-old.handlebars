@@ -1,0 +1,657 @@
+<style>
+    /*** The custom colour picker styles ***/
+    /* Created by Amelia Bellamy-Royds, March 2014
+       Released under an MIT licence, so you're free to use
+       and adapt the code so long as you maintain credit and
+       use a compatible licence.
+       See http://codepen.io/AmeliaBR/pen/tkJCm
+       for the original code and examples of use.
+    */
+    div.colour-picker {
+        position:relative;
+        margin:0.5em;
+        padding-bottom: calc(100% - 1em);
+        overflow:hidden;
+        background:white;
+    }
+    div.colour-picker::before,
+    div.colour-picker > *:last-child::before {
+        /* The two layers of the colour circle */
+        content:"";
+        display:block;
+        position:absolute;
+        width:calc(100% - 2px);bottom:1px;
+        height:1px;
+        margin:0;padding:0;
+        padding-bottom:calc(100% - 3px);
+        border-radius:50%;
+    }
+    div.colour-picker::before {
+        /* The main colour circle layer */
+        border:1px solid;
+        background-image:
+                linear-gradient(60deg, rgba(0,0,255,1), rgba(0,0,255,0) 86.4%),
+                linear-gradient(-240deg, rgba(0,0,255,1), rgba(0,0,255,0)86.4%),
+                linear-gradient(to bottom, rgba(255,0,0,1) 6.7%, rgba(255,255,0,1) 50%, rgba(0,255,0,1) 93.3%);
+        background-size: 100% 50%, 100% calc(50% + 0.5px), 100% 100%;
+        background-position:0 -0.5px,0 100%, 0% 0%;
+        background-repeat:no-repeat;
+
+        /* this will be set based on the data */
+        opacity:0.5;
+    }
+    div.colour-picker > *:last-child::before {
+        /* Shading on the colour circle */
+        border:1px solid;
+        pointer-events:none;
+
+        /* this will be set based on the data */
+        background:rgba(0,0,0,0);
+    }
+    div.colour-picker::after {
+        /* The brightness slider */
+        content:" | ";
+        text-align:center;
+        white-space: nowrap;
+        width:3em;
+        font:bold 150% monospace;
+        text-shadow:-1px -1px 0 white, +1px +1px 0 white,
+        -1px +1px 0 white, +1px -1px 0 white;
+
+        display:block;
+        box-sizing:content-box;
+        overflow:hidden;
+        margin:0.6em -1.5em 0.4em;
+        height:0.8em; line-height:0.7em;
+
+        border:1px solid;
+        border-style: solid none;
+        background:linear-gradient(to left, white, rgba(255,255,255,0) 50%, transparent 50%, black) center no-repeat;
+        background-size: calc(100% - 3em) 100%;
+        padding:0;
+
+        /* These will be set based on the data */
+        padding-right:25%;
+        background-color:yellow;
+    }
+    div.colour-picker:focus::after {
+        content:"-|+";
+    }
+    div.colour-picker > *:last-child::after {
+        /* The icon in the colour circle */
+        z-index:100;
+        content:"";
+        pointer-events:none;
+        position:absolute;
+        height:1em; width:1em;
+        left:calc(-0.5em + 1px);bottom:calc(-0.5em + 1px);
+        /* the center of the point relative to the circle will be
+        determined by the margins */
+        background-image:radial-gradient(circle closest-side, transparent 35%, black 40%, black 75%, white 80%, white 95%, transparent 100%);
+        display:block;
+        position:absolute;
+
+        /* These will be set based on the data */
+        margin-bottom:50%;
+        margin-left:100%;
+    }
+    div.colour-picker > *:last-child {
+        /* label and input field */
+        display:block;
+        width:100%;
+        overflow:visible;
+    }
+    div.colour-picker input {
+        border:3px gray solid;
+        box-shadow:0px 0px 1px 1px black;
+        margin:0.5em;
+        display:block;
+        width:95%;
+        width:calc(100% - 1em - 6px);
+    }
+    div.colour-picker.hideWhenBlurred {
+        transition:padding-bottom 0.5s;
+        padding-bottom: 0;
+    }
+    div.colour-picker.hideWhenBlurred:focus,
+    div.colour-picker.hideWhenBlurred:hover,
+    div.colour-picker.hideWhenBlurred[inputFocused] {
+        padding-bottom: calc(100% - 1em);
+    }
+    div.colour-picker.hideWhenBlurred::before,
+    div.colour-picker.hideWhenBlurred::after,
+    div.colour-picker.hideWhenBlurred > *:last-child::before,
+    div.colour-picker.hideWhenBlurred > *:last-child::after {
+        transition: height 0.5s, padding-bottom 0.5s;
+    }
+    div.colour-picker.hideWhenBlurred:not(:focus):not(:hover):not([inputFocused])::before,
+    div.colour-picker.hideWhenBlurred:not(:focus):not(:hover):not([inputFocused])::after,
+    div.colour-picker.hideWhenBlurred:not(:focus):not(:hover):not([inputFocused]) > *:last-child::before,
+    div.colour-picker.hideWhenBlurred:not(:focus):not(:hover):not([inputFocused]) > *:last-child::after {
+        height: 0;
+        padding-bottom:0;
+        border:none;
+    }
+    /*** End of the custom colour picker styles ***/
+</style>
+
+<style>
+    /*** The custom web font picker styles ***/
+    /* Created by Amelia Bellamy-Royds, March-April 2014
+       Released under an MIT licence, so you're free to use
+       and adapt the code so long as you maintain credit and
+       use a compatible licence.
+       See http://codepen.io/AmeliaBR/pen/BmlIx
+       for the original code and examples of use.
+    */
+    div.font-picker div.selection-list {
+        max-height:9em;
+        overflow-y:scroll;
+        box-sizing:border-box;
+        margin:0.5em;
+        position:relative;
+        /* so that child offsets are defined relative to the list container */
+    }
+    div.font-picker div.selection-list  label  {
+        display:block;
+        width:95%;
+        width:calc(100% - 6px - 1em);
+        padding:0.25em 0.5em;
+        margin:0 auto;
+        position:relative;
+    }
+    div.font-picker div.selection-list input {
+        display:block;
+        position:absolute;
+        height:1;width:1;overflow:hidden;
+        margin-left:-100%;
+        box-sizing:content-box;
+    }
+    div.font-picker div.selection-list input:checked + label {
+        border:solid 3px darkred;
+    }
+
+
+    /* Colour Picker Styles imported as an external resource */
+
+</style>
+
+<script>
+    window.console = window.console || function(t) {};
+</script>
+
+<div id="design" align="center"></div>
+
+<div id="nav" class="nav">
+<!-- defining top menu elements -->
+<ul class="navi">
+    <li id="n1"><a href="#" onclick="showForm('addimg')"><img src="images/btn3.png" alt="" /><span>Add Image</span></a>
+    </li>
+    <li id="n2"><a href="#" onclick="showForm('addtxt')"><img src="images/btn3.png" alt="" /><span>Add Text</span></a>
+    </li>
+    <li id="n3"><a href="#"><img src="images/btn3.png" alt="" /><span>Move Up</span></a>
+    </li>
+    <li id="n4"><a href="#"><img src="images/btn3.png" alt="" /><span>Move Down</span></a>
+        <!--<ul class="sub">-->
+            <!--<li class="l"><a href="#"><img src="images/btn.png" alt="" /><span>Menu41</span></a></li>-->
+            <!--<li class="c"><a href="#"><img src="images/btn.png" alt="" /><span>Menu41</span></a></li>-->
+            <!--<li class="r"><a href="#"><img src="images/btn.png" alt="" /><span>Menu41</span></a></li>-->
+        <!--</ul>-->
+    </li>
+    <li id="n5"><a href="#" onclick="showForm('help')"><img src="images/btn3.png" alt="" /><span>Help</span></a>
+    </li>
+</ul>
+<div style="clear:both"></div>
+</div>
+
+<div align="right" class="done"><button class="done" style="font-size: 16px;"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done</button></div>
+
+<!-- ops panel -->
+<div class="transbox" id="addimg">
+    <p>This is some image that is placed in the transparent box.This is some text that is placed
+        in the transparent box.This is some text that is placed in the transparent box.This is
+        some text that is placed in the transparent box.<br><br><br><button>test</button></p>
+    <button>teeeeeeeeeeeeeeeest</button>
+    testtestetstestestest
+</div>
+<div class="transbox" id="addtxt">
+        <p>Enter your text below:<br>
+        <input type="text" id="text"><br>
+        Font:<br>
+        <div class="font-picker controls" data-target-selector=".sample-text">
+            <label for="text-family-list">Main Text Font:</label>
+            <div id="text-family-list" class="selection-list font-family">
+            </div>
+            <div class="colour-picker hideWhenBlurred"  tabIndex="0"
+                 data-target-selector=".sample-text"
+                 data-target-style="color">
+                <label>Text Colour:
+                    <input value="#333"/></label>
+            </div>
+        </div>
+        <br><br>
+        <button style="width:100px" onclick="addText()">Submit</button></p>
+</div>
+<div class="transbox" id="help">
+    <p class="sample-text">This is some help <br><br><br><button>test</button></p>
+    <button>teeeeeeeeeeeeeeeest</button>
+    testtestetstestestest
+</div>
+
+<!--<footer>-->
+    <!--<span class="glyphicon glyphicon-remove" style="align:left" aria-hidden="true"></span>-->
+    <!--<span class="glyphicon glyphicon-ok" style="align:right" aria-hidden="true"></span>-->
+<!--</footer>-->
+
+<script src="javascripts/design.js"></script>
+
+<script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout-ddaa1eeb67d762ab8aad46508017908c.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.2/d3.min.js'></script>
+
+<script>
+    <!-- for font picker -->
+    var webFontsAPIKey = 'AIzaSyBb2tYhJu7VFKLXHyABwSfO-KghHaJXKG0', webFontsAPIURL = 'https://www.googleapis.com/webfonts/v1/webfonts?', webFontsURL = 'http://fonts.googleapis.com/css?';
+    var defaultFonts = [
+        {
+            label: 'Default sans-serif',
+            family: 'sans-serif',
+            kind: 'default'
+        },
+        {
+            label: 'Default serif',
+            family: 'serif',
+            kind: 'default'
+        },
+        {
+            label: 'Default monospaced',
+            family: 'monospace',
+            kind: 'default'
+        },
+        {
+            label: 'Default handwriting',
+            family: 'cursive',
+            kind: 'default'
+        }
+    ];
+    var sortOrderOptions = [
+        'popularity',
+        'trending',
+        'alpha'
+    ];
+    var webFonts = defaultFonts, sortOrder = sortOrderOptions[0], batchSize = 10;
+    var importStyleSheet = d3.select('head').append('style').attr('class', 'font-picker-fontImportRules').node().sheet;
+    var fontStyleSheet = d3.select('head').append('style').attr('class', 'font-picker-fontRules').node().sheet;
+    var lastFontID = 0;
+    var picker = d3.selectAll('div.font-picker').datum(function (d) {
+        d = d || {};
+        var thisPicker = d3.select(this);
+        d.id = this.id || 'font-picker-id-' + lastFontID++;
+        if (!this.id)
+            thisPicker.attr('id', d.id);
+        d.targetSelector = thisPicker.attr('data-target-selector');
+        return d;
+    }).call(updateFamilyList).call(loadWebFontList);
+    function updateFamilyList(fontPicker) {
+        fontPicker.each(function (parent) {
+            d3.select(this).selectAll('.font-family.selection-list').datum(function (d) {
+                if (d)
+                    return d;
+                var selector;
+                if (this.hasAttribute('data-target-selector')) {
+                    var parentSplit = parent.targetSelector.split(',');
+                    var thisSplit = this.getAttribute('data-target-selector').split(',');
+                    var selectorList = [];
+                    parentSplit.forEach(function (p) {
+                        thisSplit.forEach(function (t) {
+                            selectorList.push(p + ' ' + t);
+                        });
+                    });
+                    selector = selectorList.join(', ');
+                } else {
+                    selector = parent.targetSelector;
+                }
+                var id = this.id || parent.id + '-list';
+                return {
+                    targetSelector: selector,
+                    id: id
+                };
+            });
+        });
+        var familyPick = fontPicker.selectAll('.font-family.selection-list').on('scroll', function (d) {
+            if (d.trigger)
+                clearTimeout(d.trigger);
+            var that = this;
+            d.trigger = setTimeout(function () {
+                var children = that.querySelectorAll('div.option'), visible = that.scrollTop;
+                for (var i = 0, max = children.length; i < max; i++) {
+                    if (window.CP.shouldStopExecution(1)) {
+                        break;
+                    }
+                    if (children[i].offsetTop >= visible) {
+                        loadWebFontTitles(i - 1, batchSize);
+                        break;
+                    }
+                }
+                window.CP.exitedLoop(1);
+                d.trigger = null;
+            }, 300);
+        }).on('change', function (d) {
+            if (d.trigger2)
+                clearTimeout(d.trigger2);
+            var that = this, theEvent = d3.event;
+            d.trigger2 = setTimeout(function () {
+                loadNewFont.call(that, d, theEvent);
+                d.trigger2 = null;
+            }, 500);
+        });
+        var familyOptions = familyPick.selectAll('div.option').data(webFonts, function (d) {
+            return d.family;
+        });
+        var newOptions = familyOptions.enter().insert('div').attr('class', 'font-family option');
+        newOptions.append('input').attr('type', 'radio').attr('id', familyAsID).attr('name', listAsName).attr('value', function (d) {
+            return d.family;
+        }).on('focus', function (d, i) {
+            this.offsetParent.scrollTop = this.offsetTop - 5;
+        });
+        newOptions.append('label').attr('for', familyAsID).text(function (d) {
+            return d.label || d.family;
+        }).style('font-family', function (d) {
+            return d.family;
+        }, 'important');
+        function listAsName(d) {
+            return this.parentNode.parentNode.id + '-font-family';
+        }
+        function familyAsID(d) {
+            return listAsName.call(this, d) + d.family.replace(/\s/, '');
+        }
+    }
+    function loadWebFontList(fontPicker) {
+        var completeURL = webFontsAPIURL + 'key=' + webFontsAPIKey + '&sort=' + sortOrder;
+        d3.json(completeURL, processFontList);
+        function processFontList(error, fontList) {
+            if (error) {
+                console.log('Could not access ', webFontsAPIURL);
+                return;
+            }
+            webFonts = webFonts.concat(fontList.items);
+            webFonts.forEach(function (d) {
+                d.familyPlus = d.family.replace(/\s/g, '+');
+                d.url = encodeURIComponent(d.family);
+            });
+            loadWebFontTitles(0, batchSize);
+            updateFamilyList(fontPicker);
+        }
+    }
+    function loadWebFontTitles(startIndex, length) {
+        var slice = webFonts.slice(startIndex, startIndex + length).filter(function (d) {
+            return !d.importRule && d.kind == 'webfonts#webfont';
+        });
+        if (!slice.length)
+            return;
+        var ruleNum = importStyleSheet.cssRules.length;
+        var familyList = '', textList = '';
+        slice.forEach(function (d) {
+            familyList += '|' + d.familyPlus;
+            if (d.variants.indexOf('regular') < 0)
+                familyList += ':' + d.variants[0];
+            textList += d.url;
+        });
+        familyList = familyList.slice(1);
+        importStyleSheet.insertRule('@import url(' + webFontsURL + 'family=' + familyList + '&text=' + textList + ')', ruleNum);
+        var rule = importStyleSheet.cssRules[ruleNum++];
+        slice.forEach(function (d) {
+            d.importRule = rule;
+        });
+    }
+    function loadNewFont(familyPickerData, changeEvent) {
+        var fontData = d3.select(changeEvent.target).datum();
+        var ruleNum = fontStyleSheet.cssRules.length;
+        if (!fontData.fontFaceRule && fontData.kind == 'webfonts#webfont') {
+            var variant = {};
+            var file = fontData.files['regular'];
+            if (!file) {
+                variant.name = fontData.variants[0];
+                variant.weight = variant.name.replace(/\D*/, '');
+                variant.style = variant.name.replace(/\d*/, '');
+                file = fontData.files[variant.name];
+            }
+            fontStyleSheet.insertRule([
+                '@font-face {',
+                'font-family:',
+                fontData.family,
+                '; font-style:',
+                variant.style || 'normal',
+                '; font-weight:',
+                variant.weight || '400',
+                '; src:',
+                'local(' + fontData.family + '),',
+                'local(' + fontData.family.replace(/\s/g, '') + '),',
+                'url(' + file + ')',
+                '}'
+            ].join(' '), ruleNum);
+            fontData.fontFaceRule = fontStyleSheet.cssRules[ruleNum++];
+        }
+        if (!familyPickerData.targetRule) {
+            fontStyleSheet.insertRule(familyPickerData.targetSelector + '{}', ruleNum);
+            familyPickerData.targetRule = fontStyleSheet.cssRules[ruleNum++];
+        }
+        familyPickerData.targetRule.style['fontFamily'] = fontData.family;
+    }
+    var styleElement = d3.select('head').append('style').attr('class', 'colour-picker-styles');
+    var styleSheet = styleElement.node().sheet;
+    var lastID = 0;
+    var formatPercent = d3.format('0.5%');
+    var radiansPerDegree = Math.PI / 180;
+    function initializeColourPickers() {
+        var colourPick = d3.selectAll('div.colour-picker');
+        colourPick.datum(function (d, i) {
+            if (!d) {
+                d = d || {};
+                var thisPicker = d3.select(this);
+                d.id = this.id || 'colour-picker-id-' + lastID++;
+                if (!this.id)
+                    thisPicker.attr('id', d.id);
+                d.inputNode = thisPicker.select('input').node();
+                d.hslValue = d3.hsl(d.inputNode.value || '#888');
+                d.targetSelector = thisPicker.attr('data-target-selector');
+                d.targetStyle = thisPicker.attr('data-target-style');
+                var ruleNum = styleSheet.cssRules.length;
+                styleSheet.insertRule(d.targetSelector + '{}', ruleNum);
+                d.targetRule = styleSheet.cssRules[ruleNum++];
+                styleSheet.insertRule('#' + d.id + '::before {}', ruleNum);
+                d.circleLightnessRule = styleSheet.cssRules[ruleNum++];
+                styleSheet.insertRule('#' + d.id + ' > *:last-child::before {}', ruleNum);
+                d.circleDarknessRule = styleSheet.cssRules[ruleNum++];
+                styleSheet.insertRule('#' + d.id + ' > *:last-child::after {}', ruleNum);
+                d.colourPointRule = styleSheet.cssRules[ruleNum++];
+                styleSheet.insertRule('#' + d.id + '::after {}', ruleNum);
+                d.brightnessPointRule = styleSheet.cssRules[ruleNum++];
+            }
+            return d;
+        }).each(updateAria).each(updateStyles).on('mousedown', function (d) {
+            if (d3.event.target != this)
+                return;
+            var mouse = d3.mouse(this), styles = getComputedStyle(this);
+            d.width = parseFloat(styles['width']);
+            d.height = parseFloat(styles['height']) + parseFloat(styles['paddingBottom']);
+            d.fontSize = parseFloat(styles['fontSize']);
+            if (mouse[1] >= d.height - d.width - d.fontSize / 2) {
+                trackColourCircle.call(this, d);
+                d3.select(this).on('mousemove.colour', trackColourCircle);
+            } else {
+                trackBrightnessSlider.call(this, d);
+                d3.select(this).on('mousemove.colour', trackBrightnessSlider);
+            }
+        }).on('mouseup', function (d) {
+            d3.select(this).on('mousemove.colour', null);
+        }).on('keydown', trackArrows).on('keypress', trackPlusMinus).select('input').on('change', function (d) {
+            d.hslValue = d3.hsl(this.value);
+            updateStyles(d);
+        }).on('focus', function (d) {
+            d3.select('#' + d.id).attr('inputFocused', true);
+        }).on('blur', function (d) {
+            d3.select('#' + d.id).attr('inputFocused', null);
+        });
+    }
+    function hueSaturationAsLeftPercent(d) {
+        if (isNaN(d.hslValue['h']))
+            return '50%';
+        var x = d.hslValue['s'] * Math.sin((d.hslValue['h'] + 30) * radiansPerDegree);
+        return formatPercent(0.5 + x / 2);
+    }
+    function hueSaturationAsBottomPercent(d) {
+        if (isNaN(d.hslValue['h']))
+            return '50%';
+        var y = d.hslValue['s'] * Math.cos((d.hslValue['h'] + 30) * radiansPerDegree);
+        return formatPercent(0.5 + y / 2);
+    }
+    function hueSaturationAsPureColour(d) {
+        return d.hslValue['s'] ? d3.hsl(d.hslValue['h'], d.hslValue['s'], 0.5).toString() : '#888888';
+    }
+    function lightnessAsLeftPadding(d) {
+        return formatPercent(d.hslValue['l']);
+    }
+    function lightnessAsRightPadding(d) {
+        return formatPercent(1 - d.hslValue['l']);
+    }
+    function lightnessAsProportionIntensity(d) {
+        return Math.min(1, 2 * (1 - d.hslValue['l']));
+    }
+    function lightnessAsTranslucentBlack(d) {
+        return 'rgba(0,0,0,' + Math.max(0, 1 - 2 * d.hslValue['l']) + ')';
+    }
+    function updateAria(d, i) {
+        var selectThis = d3.select(this).attr('role', 'slider').attr('aria-controls', d3.selectAll(d.targetSelector)[0].map(function (element) {
+            return element.id;
+        }).join('; '));
+        var labelElement = selectThis.select('label'), labelString = 'Colour selector for ';
+        if (labelElement.empty())
+            labelString += d.targetStyle;
+        else {
+            labelString += labelElement.text();
+        }
+        selectThis.attr('aria-label', labelString);
+    }
+    function updateStyles(d, i) {
+        d.inputNode.value = d.hslValue.toString();
+        d3.select(d.inputNode).style('border-color', d.hslValue);
+        d3.select('#' + d.id).attr('aria-valuenow', 'hue:' + d.hslValue.h + ' degrees; Saturation:' + formatPercent(d.hslValue.h) + '; Lightness:' + formatPercent(d.hslValue.l));
+        d.targetStyle.split(',').forEach(function (style) {
+            d.targetRule.style[style.trim()] = d.hslValue.toString();
+        });
+        d.circleLightnessRule.style['opacity'] = lightnessAsProportionIntensity(d);
+        d.circleDarknessRule.style['backgroundColor'] = lightnessAsTranslucentBlack(d);
+        d.colourPointRule.style['marginBottom'] = hueSaturationAsBottomPercent(d);
+        d.colourPointRule.style['marginLeft'] = hueSaturationAsLeftPercent(d);
+        d.brightnessPointRule.style['backgroundColor'] = hueSaturationAsPureColour(d);
+        d.brightnessPointRule.style['paddingLeft'] = lightnessAsLeftPadding(d);
+        d.brightnessPointRule.style['paddingRight'] = lightnessAsRightPadding(d);
+    }
+    function trackColourCircle(d) {
+        var mouse = d3.mouse(this), radius = d.width / 2, relX = radius - mouse[0], relY = radius - (d.height - mouse[1]), r = Math.sqrt(relX * relX + relY * relY), a = Math.atan2(-relX, -relY);
+        d.hslValue = d3.hsl((360 + a / radiansPerDegree - 30) % 360, Math.min(1, r / radius), d.hslValue['l']);
+        updateStyles(d);
+    }
+    function trackBrightnessSlider(d) {
+        var mouse = d3.mouse(this);
+        d.hslValue['l'] = mouse[0] / d.width;
+        updateStyles(d);
+    }
+    function trackPlusMinus(d) {
+        if (d3.event.target != this)
+            return;
+        switch (d3.event.charCode) {
+            case 43:
+                d.hslValue['l'] = Math.min(1, d.hslValue['l'] + 0.01);
+                break;
+            case 45:
+                d.hslValue['l'] = Math.max(0, d.hslValue['l'] - 0.01);
+                break;
+            default:
+                return;
+        }
+        updateStyles(d);
+    }
+    function trackArrows(d) {
+        if (d3.event.target != this)
+            return;
+        var arrows = {
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40,
+            numLeft: 100,
+            numUp: 104,
+            numRight: 102,
+            numDown: 98,
+            leftUp: 36,
+            numLeftUp: 103,
+            rightUp: 33,
+            numRightUp: 105,
+            rightDown: 34,
+            numRightDown: 99,
+            leftDown: 35,
+            numLeftDown: 97,
+            center: 12,
+            numCenter: 101
+        };
+        if (isNaN(d.hslValue['h']))
+            d.hslValue['h'] = 0;
+        var x = d.hslValue['s'] * Math.sin((d.hslValue['h'] + 30) * radiansPerDegree), y = d.hslValue['s'] * Math.cos((d.hslValue['h'] + 30) * radiansPerDegree);
+        switch (d3.event.keyCode) {
+            case arrows.left:
+            case arrows.numLeft:
+            case arrows.leftUp:
+            case arrows.numLeftUp:
+            case arrows.leftDown:
+            case arrows.numLeftDown:
+                x = Math.max(-1, x - 0.05);
+                break;
+            case arrows.right:
+            case arrows.numRight:
+            case arrows.rightUp:
+            case arrows.numRightUp:
+            case arrows.rightDown:
+            case arrows.numRightDown:
+                x = Math.min(1, x + 0.05);
+                break;
+            case arrows.up:
+            case arrows.numUp:
+            case arrows.down:
+            case arrows.numDown:
+            case arrows.center:
+            case arrows.numCenter:
+                break;
+            default:
+                return;
+        }
+        switch (d3.event.keyCode) {
+            case arrows.up:
+            case arrows.numUp:
+            case arrows.leftUp:
+            case arrows.numLeftUp:
+            case arrows.rightUp:
+            case arrows.numRightUp:
+                y = Math.max(-1, y + 0.05);
+                break;
+            case arrows.down:
+            case arrows.numDown:
+            case arrows.leftDown:
+            case arrows.numLeftDown:
+            case arrows.rightDown:
+            case arrows.numRightDown:
+                y = Math.min(1, y - 0.05);
+                break;
+            case arrows.center:
+            case arrows.numCenter:
+                x = 0;
+                y = 0;
+        }
+        d3.event.preventDefault();
+        var r = Math.sqrt(x * x + y * y), a = Math.atan2(x, y);
+        d.hslValue = d3.hsl((360 + a / radiansPerDegree - 30) % 360, Math.min(1, r), d.hslValue['l']);
+        updateStyles(d);
+    }
+    initializeColourPickers();
+    //# sourceURL=pen.js
+</script>

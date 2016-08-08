@@ -1,0 +1,20 @@
+@font-face {
+    font-family: ChunkFive;
+    src: url('/fonts/ChunkFive.eot');
+    src: local('ChunkFive'),  url('/fonts/ChunkFive.otf') format('opentype'),  url('/fonts/ChunkFive.svg#ChunkFive') format('svg');
+}
+@font-face {
+    font-family: Allura;
+    src: url('/fonts/Allura-Regular.eot');
+    src: local('Allura-Regular'),  url('/fonts/Allura-Regular.otf') format('opentype'),  url('/fonts/Allura-Regular.svg#Allura-Regular') format('svg');
+}
+@font-face {
+    font-family: Tiza;
+    src: url('/fonts/Tiza.eot');
+    src: local('Tiza'),  url('/fonts/Tiza.ttf') format('ttf'), url('/fonts/Tiza.otf') format('opentype'),  url('/fonts/Tiza.svg#Tiza') format('svg');
+}
+@font-face {
+    font-family: Test;
+    src: url('/fonts/Test.eot');
+    src: local('Test'),  url('/fonts/Test.ttf') format('ttf'), url('/fonts/Test.otf') format('opentype'),  url('/fonts/Test.svg#Test') format('svg');
+}
