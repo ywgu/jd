@@ -2,7 +2,8 @@
  * Created by William Gu on 2016/8/4.
  */
 // The boundary of the browser area
-var w = 560, h = 700;
+var w = $(window).width(), h = $(window).height();
+console.log(w+","+h);
 // The size of the product design area
 var dw = 560, dh = 400;
 // URI for the user selected background image, empty if no background
