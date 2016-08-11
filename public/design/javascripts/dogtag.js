@@ -15,7 +15,7 @@ var draw = SVG('design').size(w,h); // whole svg for responsive design
 draw.viewbox(0, 0, dw, dh); // only design in the design area
 // background and boundary
 var background = draw.image(bgURI).loaded(function(loader) {
-    this.size(w);
+    // this.size(w);
     this.attr('id', 'jd_bg');
 });
 // var boundary = draw.rect(w - 9, h - 4).move(5, 2);
