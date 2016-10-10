@@ -232,6 +232,10 @@ div.done {
   filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
+div.title {
+  align: center;
+  z-index: 100;
+}
 div.close {
   margin: 2px;
   background-color: #ffffff;

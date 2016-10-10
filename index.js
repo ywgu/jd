@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var jsonfile = require('jsonfile');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -13,6 +15,16 @@ var mongoose = require('mongoose'),
     assert = require('assert');
 
 var Designs = require('./models/designs');
+
+// read the templates and designer
+var templateFile = './public/design/templates/templates.json';
+var templateJson = jsonfile.readFileSync(templateFile);
+console.log("json:"+templateJson.templates[0].name+","+templateJson.templates[0].gid+","+templateJson.templates[0].list);
+console.log("json:"+templateJson.templates[1].name+","+templateJson.templates[1].gid+","+templateJson.templates[1].list);
+console.log("json:"+templateJson.templates[2].name+","+templateJson.templates[2].gid+","+templateJson.templates[2].list);
+var designerFile = './public/design/designer.json';
+var designerJson = jsonfile.readFileSync(designerFile);
+console.log("designer json:"+designerJson.designs[0].name+","+designerJson.designs[0].did);
 
 var url = 'mongodb://dbuser:dbuser@ds019054.mlab.com:19054/jitdiy';
 mongoose.connect(url);
@@ -46,6 +58,8 @@ db.once('open', function () {
 });
 
 var app = express();
+app.set('templates',templateJson);
+app.set('designer', designerJson);
 
 // view engine setup
 var handlebars = require('express3-handlebars').create({

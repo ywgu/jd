@@ -16,7 +16,7 @@
 
 		<link rel="stylesheet" href="{{static '/vendor/bootstrap/css/bootstrap.min.css'}}">
 		<link rel="stylesheet" href="{{static '/vendor/bootstrap/css/bootstrap-theme.min.css'}}">
-        <link rel="stylesheet" href="{{static 'stylesheets/style.css'}}">
+        <link rel="stylesheet" href="{{static '/design/stylesheets/style.css'}}">
         <link rel="stylesheet" href="{{static '/fonts/fonts.css'}}">
 		{{#each _bundles.css}}
 			<link rel="stylesheet" href="{{static .}}">
@@ -24,16 +24,17 @@
 
 		<script src="{{static '/vendor/js/modernizr-2.6.2-respond-1.1.0.min.js'}}"></script>
 
-        <script src="javascripts/svg.js"></script>
-        <script src="javascripts/svg.draggable.js"></script>
-        <script src="javascripts/svg.select.js"></script>
-        <script src="javascripts/svg.resize.js"></script>
-        <script src="javascripts/svg.filter.js"></script>
+        <script src="/design/javascripts/svg.js"></script>
+        <script src="/design/javascripts/svg.draggable.js"></script>
+        <script src="/design/javascripts/svg.select.js"></script>
+        <script src="/design/javascripts/svg.resize.js"></script>
+        <script src="/design/javascripts/svg.filter.js"></script>
 
-        <link href="stylesheets/svg.select.css" rel="stylesheet" type="text/css" />
+        <link href="/design/stylesheets/svg.select.css" rel="stylesheet" type="text/css" />
         <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{static '/vendor/js/jquery-2.1.1.min.js'}}"><\/script>')</script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>-->
+        <script src="/vendor/jquery.form.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>

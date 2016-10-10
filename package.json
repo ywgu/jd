@@ -15,6 +15,8 @@
     "formidable": "^1.0.17",
     "fs": "0.0.2",
     "jade": "~1.11.0",
+    "jimp": "^0.2.27",
+    "jsonfile": "^2.3.1",
     "mongoose": "^4.5.0",
     "mongoose-currency": "^0.2.0",
     "morgan": "~1.6.1",

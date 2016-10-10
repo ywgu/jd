@@ -1,0 +1,37 @@
+{
+  "templates": [
+    {
+      "name": "dogtags",
+      "gid": "001",
+      "list": [
+        {"tid": "0010001", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}] ]},
+        {"tid": "0010002", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}],[{"image":true,"id":"image21","title":"WAL-MART"},{"image":false,"id":"text21","title":"Hello"}] ]},
+        {"tid": "0010003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0010004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0010005", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0010006", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      ]
+    },
+    {
+      "name": "wallets",
+      "gid": "002",
+      "list": [
+        {"tid": "0020001", "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Stephanie"}] ]},
+        {"tid": "0020002", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0020003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0020004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      ]
+    },
+    {
+      "name": "phone cases",
+      "gid": "003",
+      "list": [
+        {"tid": "0030001", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0030002", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0030003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0030004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0030005", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      ]
+    }
+  ]
+}

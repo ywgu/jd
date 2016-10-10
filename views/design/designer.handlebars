@@ -1,0 +1,177 @@
+<style>
+    /*** The custom web font picker styles ***/
+    /* Created by Amelia Bellamy-Royds, March-April 2014
+       Released under an MIT licence, so you're free to use
+       and adapt the code so long as you maintain credit and
+       use a compatible licence.
+       See http://codepen.io/AmeliaBR/pen/BmlIx
+       for the original code and examples of use.
+    */
+    div.font-picker {
+        margin:5%
+    }
+    div.font-picker div.selection-list {
+        max-height:22em;
+        overflow-y:scroll;
+        box-sizing:border-box;
+        /*margin:0.5em;*/
+        position:relative;
+        /* so that child offsets are defined relative to the list container */
+    }
+    div.font-picker div.selection-list  label  {
+        display:block;
+        width:95%;
+        width:calc(100% - 6px - 1em);
+        padding:0.25em 0.5em;
+        /*margin:0 auto;*/
+        position:relative;
+        font-size: 20px;
+    }
+    div.font-picker div.selection-list input {
+        display:block;
+        position:absolute;
+        height:1px;
+        width:1px;
+        overflow:hidden;
+        margin-left:-100%;
+        box-sizing:content-box;
+    }
+    div.font-picker div.selection-list input:checked + label {
+        border:solid 3px darkred;
+    }
+</style>
+
+<script>
+    window.console = window.console || function(t) {};
+</script>
+
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family="?>
+<div id="design" align="center"></div>
+
+<div id="nav" class="nav">
+<!-- defining top menu elements -->
+<ul class="navi">
+    <li id="n1"><a href="#" onclick="showForm('addimg')"><img src="/images/btn3.png" alt="" /><span>Add Image</span></a>
+    </li>
+    <li id="n2"><a href="#" onclick="showForm('addtxt')"><img src="/images/btn3.png" alt="" /><span>Add Text</span></a>
+    </li>
+    <li id="n3"><a href="#" onclick="moveUp()"><img src="/images/btn3.png" alt="" /><span>Forward</span></a>
+    </li>
+    <li id="n4"><a href="#" onclick="moveDown()"><img src="/images/btn3.png" alt="" /><span>Backward</span></a>
+        <ul class="sub">
+            <li class="l"><a href="#"><img src="/images/btn.png" alt="" /><span>Menu41</span></a></li>
+            <li class="c"><a href="#"><img src="/images/btn.png" alt="" /><span>Menu41</span></a></li>
+            <li class="r"><a href="#"><img src="/images/btn.png" alt="" /><span>Menu41</span></a></li>
+        </ul>
+    </li>
+    <li id="n5"><a href="#" onclick="showForm('help')"><img src="/images/btn3.png" alt="" /><span>Help</span></a>
+    </li>
+</ul>
+<div style="clear:both"></div>
+</div>
+
+<div align="right" class="done"><button style="font-size: 16px;" onclick="sendSVG()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done</button></div>
+
+<!-- ops panel -->
+<div class="transbox" id="addimg">
+    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('addimg')"></span></div>
+    <p><div align="left" class="info">
+        <h3>File Upload</h3><br>
+        <h4>We accept the following file types:</h4>
+        <small>JPG, GIF, PNG, BMP, TIF</small><br><br>
+        <h4>5.0 MB maximum file size</h4>
+        <small>Files may take anywhere from a few seconds to a few minutes to upload.</small><br><br>
+        <form id="uploadForm"
+              role="form"
+              enctype="multipart/form-data" method="POST"
+              action="/design/uploadimg/{{year}}/{{month}}">
+            <div class="form-group">
+                <p class="checkbox terms-of-use">
+                    <label for="termsOfUse" class="uber-input uber-checkbox"><span class="checkbox-img"></span>
+                        <input type="checkbox" id="termsOfUse" name="termsOfUse" value="true">
+                        I agree to the <a href="#" class="show-terms">terms and conditions</a> for uploaded material
+                    </label>
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="fieldImage" class="col-sm-2 control-label">Choose Your File</label>
+                <div class="col-sm-4">
+                    <input type="file" class="form-control" required accept="image/*"
+                           id="fieldImage" data-url="/upload" name="photo">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" class="btn btn-primary" name="submit">Add Image</button>
+                    <span id = "status"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    </p>
+</div>
+<div class="transbox" id="addtxt">
+    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('addtxt')"></span></div>
+    <p><label>Enter your text below:</label><br/>
+    <input type="text" id="text" class="form-control">
+    <div class="font-picker controls" data-target-selector=".sample-text" id="font-picker-id-0">
+        <label for="text-family-list">Font:</label>
+        <div id="text-family-list" class="selection-list font-family">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button class="btn btn-primary" onclick="addText()">Add Text</button>
+        </div>
+    </div></p>
+</div>
+<div class="transbox" id="help">
+    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('help')"></span></div>
+    <p class="sample-text" style="font-size: 30px">This is some help <br><br><br><button>test</button></p>
+    <button>Close</button>
+</div>
+
+<!--<footer>-->
+    <!--<span class="glyphicon glyphicon-remove" style="align:left" aria-hidden="true"></span>-->
+    <!--<span class="glyphicon glyphicon-ok" style="align:right" aria-hidden="true"></span>-->
+<!--</footer>-->
+<script>
+    var jsonstring = "{{theDesign}}";
+    jsonstring = jsonstring.replace(/&quot;/g, '"');
+    var theDesign = JSON.parse(jsonstring);
+    console.log("script/theDesign:"+theDesign);
+</script>
+
+<!--<script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout-ddaa1eeb67d762ab8aad46508017908c.js"></script>-->
+<script src="/vendor/stopExecutionOnTimeout-ddaa1eeb67d762ab8aad46508017908c.js"></script>
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.2/d3.min.js'></script>-->
+<script src='/vendor/d3.min.js'></script>
+
+<script src="/design/javascripts/design.js"></script>
+<script src="/design/javascripts/designer.js"></script>
+
+
+{{#section 'jquery'}}
+<script>
+    $(document).ready(function() {
+        $('#uploadForm').submit(function() {
+//            $("#status").empty().text("File is uploading...");
+
+            $(this).ajaxSubmit({
+
+                error: function(xhr) {
+                    status('Error: ' + xhr.status);
+                },
+
+                success: function(response) {
+//                    console.log(response)
+                    addImg("/uploads/"+response);
+                    $("#fieldImage").val("");
+                }
+            });
+
+            return false;
+        });
+    });
+</script>
+{{/section}}
