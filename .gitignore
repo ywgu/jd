@@ -8,7 +8,7 @@ public/design/svgeditor.html
 public/design/test-transparency.html
 public/design/test-transparent.html
 public/design/test.html
-public/designs/
+public/designs/*.svg
 public/js/
 public/stylesheets/
 public/uploads/
