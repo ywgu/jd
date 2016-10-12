@@ -239,7 +239,7 @@ designRouter.route('/uploadimg/:year/:month')
             }
             var photo = files.photo;
             // var dir = uploadDir + '/' + Date.now();
-            var newName = Date.now().toString().slice(5) + "_" + photo.name;
+            var newName = Date.now().toString().slice(5) + "_" + photo.name.toLowerCase();
             // var path = dir + '/' + photo.name;
             // fs.mkdirSync(dir);
             // fs.renameSync(photo.path, dir + '/' + photo.name);
@@ -287,7 +287,7 @@ designRouter.route('/uploaddata')
 
             for (var key in files) {
                 var image = files[key];
-                var newName = newPrefix + image.name;
+                var newName = newPrefix + image.name.toLowerCase();
                 fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
                 fs.renameSync(image.path, uploadTempDir + '/' + newName);
                 if (processing === "gpc") {
