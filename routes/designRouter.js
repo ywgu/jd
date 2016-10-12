@@ -294,6 +294,7 @@ designRouter.route('/uploaddata')
                     jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
                         if (err) throw err;
                         lenna
+                            .scale(0.5)
                             .greyscale()
                             .posterize(7.5)
                             .contrast(1.0)

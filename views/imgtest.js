@@ -7,7 +7,7 @@ var Jimp = require("jimp");
 Jimp.read("sample.jpg", function (err, lenna) {
     if (err) throw err;
     lenna
-        .resize(400,600)
+        .scale(0.5)
         // .brightness(0.2)
         // .dither565()
         // .contrast(0.6)
