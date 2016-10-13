@@ -20,6 +20,7 @@ var uploadTempDir = path.join(dataDir, "temp");
 var designDir = path.join(dataDir, "designs");
 fs.existsSync(dataDir) || fs.mkdirSync(dataDir);
 fs.existsSync(uploadDir) || fs.mkdirSync(uploadDir);
+fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 fs.existsSync(designDir) || fs.mkdirSync(designDir);
 
 designRouter.route('/')
@@ -82,9 +83,13 @@ designRouter.route('/designer/:did')
                 break;
             }
         }
-        console.log("theDesign.name:"+theDesign.name);
+        console.log("theDesign.name:" + theDesign.name);
         var now = new Date();
-        res.render('design/designer', { year: now.getFullYear(), month: now.getMonth(), theDesign: JSON.stringify(theDesign) });
+        res.render('design/designer', {
+            year: now.getFullYear(),
+            month: now.getMonth(),
+            theDesign: JSON.stringify(theDesign)
+        });
         // Designs.find({}, function (err, design) {
         //     if (err) throw err;
         //     res.json(design);
@@ -150,7 +155,7 @@ designRouter.route('/done')
         prefix = Date.now().toString().slice(5);
         result = "";
         do {
-            xmlName = "svg"+count;
+            xmlName = "svg" + count;
             var xml = req.body[xmlName];
             if (xml === null || xml === undefined)
                 break;
@@ -164,10 +169,10 @@ designRouter.route('/done')
                 // res.end("/designs/"+newName);
                 // res.redirect(303, '/design/done/' + newName);
             });
-            result += "i"+count+"="+newName+"&";
+            result += "i" + count + "=" + newName + "&";
             count++;
         } while (true);
-        result = result.length>0?result.slice(0,result.length-1):result;
+        result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(result);
     });
 designRouter.route('/showdesign')
@@ -177,21 +182,21 @@ designRouter.route('/showdesign')
         imgs = "{\"images\":[ ";
         tidx = "";
         do {
-            paramName = "i"+count;
+            paramName = "i" + count;
             aParam = req.query[paramName];
-            console.log("aParam:"+aParam);
+            console.log("aParam:" + aParam);
             if (aParam === null || aParam === undefined)
                 break;
             if (tidx === "") {
-                tidx = aParam.substring(aParam.indexOf('-')+1,aParam.lastIndexOf('-'));
-                console.log("tidx:"+tidx);
+                tidx = aParam.substring(aParam.indexOf('-') + 1, aParam.lastIndexOf('-'));
+                console.log("tidx:" + tidx);
             }
             imgs += "{\"image\":\"" + aParam + "\"},";
             count++;
         } while (true);
-        imgs = imgs.slice(0,imgs.length-1) + "] }";
-        console.log("imgs:"+imgs);
-        res.render('design/showdesign', { layout: 'design', imagelist:JSON.parse(imgs).images, tid: tidx});
+        imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        console.log("imgs:" + imgs);
+        res.render('design/showdesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx});
     });
 
 designRouter.route('/:designId')
@@ -256,6 +261,18 @@ designRouter.route('/uploadimg/:year/:month')
         });
     });
 
+// designRouter.route('/checkimg/:imgName')
+//     .get(function (req, res, next) {
+//         var imgPath = uploadTempDir + "/" + req.params.imgName;
+//         fs.access(imgPath, fs.constants.R_OK | fs.constants.W_OK, function (err) {
+//             console.log(err ? 'no access to '+imgPath : 'can read/write');
+//             if (err)
+//                 res.end("ERR")
+//             else
+//                 res.end("OK");
+//         });
+//     });
+
 designRouter.route('/uploaddata')
     .post(function (req, res, next) {
         console.log('upload data');
@@ -282,7 +299,7 @@ designRouter.route('/uploaddata')
             console.log("aValue:" + aValue);
             var fValue = "";
             var processing = fields["processing"];
-            console.log("processing:"+processing);
+            console.log("processing:" + processing);
             var newPrefix = Date.now().toString().slice(5) + "_";
 
             for (var key in files) {
@@ -294,7 +311,7 @@ designRouter.route('/uploaddata')
                     jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
                         if (err) throw err;
                         lenna
-                            .scale(0.5)
+                            .scale(0.3)
                             .greyscale()
                             .posterize(7.5)
                             .contrast(1.0)

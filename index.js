@@ -58,6 +58,9 @@ db.once('open', function () {
 });
 
 var app = express();
+// if use proxy, trust proxy for ip etc.
+app.enable('trust proxy');
+
 app.set('templates',templateJson);
 app.set('designer', designerJson);
 

@@ -227,12 +227,16 @@
                             console.log("response:" + response);
                             var resJson = JSON.parse(response);
                             if (resJson.processing === "gpc") {
-                                // sleep for 5 seconds
+                                // sleep for  seconds
                                 var date = new Date();
                                 var curDate = null;
+                                var count = 0;
                                 do {
-                                    curDate = new Date();
-                                } while (curDate - date < 15000);
+                                    console.log("count:"+count++);
+                                    do {
+                                        curDate = new Date();
+                                    } while (curDate - date < 500);
+                                } while (!imgExists("/temp/" + resJson["image11"]))
                             }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
@@ -264,6 +268,13 @@
             for (var i = 0; i < count; i++)
                 previews.push(0);
         });
+        function imgExists(imgPath) {
+            console.log("imgExists called");
+            var http = new XMLHttpRequest();
+            http.open('HEAD', imgPath, false);
+            http.send();
+            return http.status != 404;
+        }
         function updateSVG(resJson) {
             tidx = resJson["tidx"];
             var elms = document.querySelectorAll("#svgObj-" + tidx);
