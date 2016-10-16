@@ -1,9 +1,9 @@
 /**
  * Created by William Gu on 2016/10/16.
  */
-var gulp = require('gulp');
-var imagemin = require('gulp-imagemin');
-var imageResize = require('gulp-image-resize');
+// var gulp = require('gulp');
+// var imagemin = require('gulp-imagemin');
+// var imageResize = require('gulp-image-resize');
 var jimp = require("jimp");
 
 // function processImg(imgSrc,imgDest) {
