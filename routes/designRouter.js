@@ -261,18 +261,6 @@ designRouter.route('/uploadimg/:year/:month')
         });
     });
 
-// designRouter.route('/checkimg/:imgName')
-//     .get(function (req, res, next) {
-//         var imgPath = uploadTempDir + "/" + req.params.imgName;
-//         fs.access(imgPath, fs.constants.R_OK | fs.constants.W_OK, function (err) {
-//             console.log(err ? 'no access to '+imgPath : 'can read/write');
-//             if (err)
-//                 res.end("ERR")
-//             else
-//                 res.end("OK");
-//         });
-//     });
-
 designRouter.route('/uploaddata')
     .post(function (req, res, next) {
         console.log('upload data');
@@ -306,18 +294,22 @@ designRouter.route('/uploaddata')
                 var image = files[key];
                 var newName = newPrefix + image.name.toLowerCase();
                 fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
-                fs.renameSync(image.path, uploadTempDir + '/' + newName);
+                fs.renameSync(image.path, uploadTempDir + '/og-' + newName);
                 if (processing === "gpc") {
-                    jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
-                        if (err) throw err;
-                        lenna
-                            .scale(0.3)
-                            .greyscale()
-                            .posterize(7.5)
-                            .contrast(1.0)
-                            .write(uploadTempDir + '/' + newName); // save
-                        console.log("image processing done");
-                    });
+                    // NOTE: this can take lots of time and block the system??????
+                    // NOTE: Jimp should be run under the browser!!!!!! except RESIZING
+
+                    processImage(uploadTempDir + "/og-" + newName);
+                    // jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
+                    //     if (err) throw err;
+                    //     lenna
+                    //         .scale(0.3)
+                    //         .greyscale()
+                    //         .posterize(7.5)
+                    //         .contrast(1.0)
+                    //         .write(uploadTempDir + '/' + newName); // save
+                    //     console.log("image processing done");
+                    // });
                 }
             }
             if (fValue !== "") // remove extra ,
@@ -335,5 +327,24 @@ designRouter.route('/uploaddata')
             res.end(returnText);
         });
     });
+
+// require the image editing file
+var imgprocessor = path.resolve(__dirname, '../imgprocessor.js');
+function processImage(imgInfo) {
+    // We need to spawn a child process so that we do not block
+    // the EventLoop with cpu intensive image manipulation
+    var childProcess = require('child_process').fork(imgprocessor);
+    childProcess.on('message', function (message) {
+        console.log(message);
+    });
+    childProcess.on('error', function (error) {
+        console.error(error.stack)
+    });
+    childProcess.on('exit', function () {
+        console.log('process exited');
+    });
+    // send the work to child process
+    childProcess.send(imgInfo);
+}
 
 module.exports = designRouter;

@@ -228,15 +228,16 @@
                             var resJson = JSON.parse(response);
                             if (resJson.processing === "gpc") {
                                 // sleep for  seconds
-                                var date = new Date();
+                                var date = null;
                                 var curDate = null;
                                 var count = 0;
                                 do {
                                     console.log("count:"+count++);
+                                    date = new Date();
                                     do {
                                         curDate = new Date();
-                                    } while (curDate - date < 500);
-                                } while (!imgExists("/temp/" + resJson["image11"]))
+                                    } while (curDate - date < 2000);
+                                } while (!imgExists("/temp/" + resJson["image11"]) && count < 10)
                             }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
@@ -273,7 +274,8 @@
             var http = new XMLHttpRequest();
             http.open('HEAD', imgPath, false);
             http.send();
-            return http.status != 404;
+            console.log("imgExists return:"+http.status);
+            return http.status == 200;
         }
         function updateSVG(resJson) {
             tidx = resJson["tidx"];
