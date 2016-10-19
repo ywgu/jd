@@ -293,13 +293,11 @@ designRouter.route('/uploaddata')
             for (var key in files) {
                 var image = files[key];
                 var newName = newPrefix + image.name.toLowerCase();
-                fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
-                fs.renameSync(image.path, uploadTempDir + '/og-' + newName);
+                var convertedName = newName.substring(0,newName.lastIndexOf(".")) + ".bmp";   // convert to bmp format
+                fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(convertedName).concat("\",");
+                fs.renameSync(image.path, uploadTempDir + '/' + newName);
                 if (processing === "gpc") {
-                    // NOTE: this can take lots of time and block the system??????
-                    // NOTE: Jimp should be run under the browser!!!!!! except RESIZING
-
-                    processImage(uploadTempDir + "/og-" + newName);
+                    processImage(uploadTempDir + "/" + newName);
                     // jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
                     //     if (err) throw err;
                     //     lenna

@@ -4,7 +4,7 @@
 var Jimp = require("jimp");
 
 // open a file called "lenna.png"
-Jimp.read("sample5.jpg", function (err, lenna) {
+Jimp.read("sample10.jpg", function (err, lenna) {
     if (err) throw err;
     lenna
         .scale(0.5)
