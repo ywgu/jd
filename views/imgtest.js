@@ -4,16 +4,16 @@
 var Jimp = require("jimp");
 
 // open a file called "lenna.png"
-Jimp.read("sample10.jpg", function (err, lenna) {
+Jimp.read("sample5.jpg", function (err, lenna) {
     if (err) throw err;
     lenna
         .scale(0.5)
-        // .brightness(0.2)
+        .brightness(0.3)
         // .dither565()
-        // .contrast(0.6)
+        .contrast(0.4)
         .greyscale()
-        .posterize(7.5)
-        .contrast(1)
+        .posterize(6)   // 7.2 is the best
+        // .contrast()
         // .blur(1)
-        .write("test.jpg"); // save
+        .write("test.bmp"); // save
 });

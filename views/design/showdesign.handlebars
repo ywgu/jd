@@ -20,7 +20,7 @@
                 <div class="w3-center">
                     {{#each imagelist}}
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
-                              onclick="currentTemplate({{@index}})"><img
+                              onclick="showImage({{@index}})"><img
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                     {{/each}}
@@ -36,12 +36,9 @@
         var imageIndex = 0;
         showImage(imageIndex);
 
-        function currentTemplate(n) {
-            showImage(imageIndex = n);
-        }
-
         function showImage(n) {
             console.log("showImage:" + n);
+            imageIndex = n;
 
             count = 0;
             do {

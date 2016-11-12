@@ -5,22 +5,14 @@
     <image id="jd_bg" xlink:href="/design/templates/0020001-1.jpg" width="600" height="400"></image>
     <svg id="jd_nt" clip-path="url(&quot;#SvgjsClipPath1011&quot;)" style="overflow: visible;">
         <image
-                xlink:href="/design/templates/0020001-11.jpg"
+                xlink:href="/design/templates/0020001-11.png"
                 y="192"
                 x="176"
                 id="image11"
-                filter="url(#SvgjsFilter1104)"
                 height="150"
                 width="225" />
     </svg>
     <defs id="SvgjsDefs1002">
-        <filter id="SvgjsFilter1104">
-            <!--<feColorMatrix id="SvgjsFeColorMatrix1105" type="saturate" values="0" result="SvgjsFeColorMatrix1105Out"-->
-                           <!--in="SourceGraphic"></feColorMatrix>-->
-            <feColorMatrix id="SvgjsFeColorMatrix1106" type="matrix"
-                           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1 -1 -1 1 0"
-                           result="SvgjsFeColorMatrix1106Out" in="SvgjsFeColorMatrix1105Out"></feColorMatrix>
-        </filter>
         <clipPath id="SvgjsClipPath1011">
             <path
                     style="fill:none;stroke:none;stroke-opacity:1"

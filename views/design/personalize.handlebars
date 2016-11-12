@@ -29,6 +29,7 @@
         bottom: 20px;
         left: 30px;
     }
+
     #cover {
         position: absolute;
         top: 0;
@@ -39,6 +40,10 @@
         background: #aaa;
         z-index: 10;
         display: none;
+    }
+    #zoom {
+        width: 40px;
+        height: 40px;
     }
 </style>
 
@@ -66,10 +71,15 @@
                     {{#each inputs}}
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
                               title="page"
-                              onclick="currentTemplate({{@index}})"><img
+                              onclick="showTemplate({{@index}})"><img
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                     {{/each}}
+                    <button type="button" id="zoom"
+                            onclick="zoominSVG()"
+                            class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -215,7 +225,7 @@
 </div>
 
 <div id="cover">
-    <p style="position: absolute; color: White; top: 50%; left: 35%;" >
+    <p style="position: absolute; color: White; top: 50%; left: 35%;">
         Please wait while we upload and transform your image.
     </p>
 </div>
@@ -223,18 +233,38 @@
 {{#section 'jquery'}}
     <script>
         var previews = [];
+        // maximum template number = 8
+        var zoomStatus = [0,0,0,0,0,0,0,0];
+        var zooms = ["","","","","","","",""];
         $(document).ready(function () {
+            // populate the zoom data
+            var zoomStr = '{{zooms}}';
+//            console.log("zooms:"+zoomStr);
+            count = 0;
+            var tempStr = zoomStr;
+            do {
+                var sep = tempStr.indexOf(';');
+                var aZoomStr = tempStr.substring(0, sep);
+                tempStr = tempStr.substring(sep+1);
+//                console.log("aZoomStr:"+aZoomStr);
+                if (aZoomStr.length !== 0) {
+                    zooms[count++] = aZoomStr;
+                }
+                else
+                    break;
+            } while(true);
+//            console.log("lastzoom:"+zooms[count-1]);
             count = 0;
             do {
                 elmName = 'uploadForm-' + count;
                 var elm = document.getElementById(elmName);
-                console.log(elmName + ":" + elm);
+//                console.log(elmName + ":" + elm);
                 if (elm === null || elm === undefined)
                     break;
                 elmId = "#" + elmName;
                 $(elmId).submit(function (evt) {
-                    lockScreen();
                     console.log("File is uploading...");
+                    lockScreen();
                     evt.preventDefault();
                     $(this).ajaxSubmit({
                         error: function (xhr) {
@@ -251,7 +281,7 @@
                                 var curDate = null;
                                 var count = 0;
                                 do {
-                                    console.log("count:"+count++);
+//                                    console.log("count:" + count++);
                                     date = new Date();
                                     do {
                                         curDate = new Date();
@@ -264,7 +294,7 @@
                             for (var i = 0; i < previews.length; i++) {
                                 total += previews[i];
                             }
-                            console.log("total previews:" + total + "," + previews.length);
+//                            console.log("total previews:" + total + "," + previews.length);
                             if (total === previews.length) {
                                 // enable DONE buttons
                                 turnOnButton("donebutton");
@@ -289,39 +319,93 @@
             for (var i = 0; i < count; i++)
                 previews.push(0);
         });
+        // todo: finish this function
+        function switchZoomTo(to) {
+            var ele = document.getElementById("zoom");
+            if (to === "in") {
+                ele.onclick = zoominSVG;
+                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
+                zoomStatus[templateIndex] = 0;
+            }
+            else {
+                ele.onclick = zoomoutSVG;
+                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
+                zoomStatus[templateIndex] = 1;
+            }
+        }
+        function zoominSVG() {
+//            console.log("zoomin");
+            var elms = document.querySelectorAll("#svgObj-"+templateIndex);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                var subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("subdoc:"+subdoc+",svg:"+svg);
+            if (svg !== null && svg !== undefined) {
+                svg.setAttribute("viewBox",zooms[templateIndex]);
+                var rect = svg.getBoundingClientRect();
+//                console.log( rect.width );
+//                console.log( rect.height);
+                zoom[templateIndex] = 1;
+            }
+            switchZoomTo("out");
+        }
+        function zoomoutSVG() {
+//            console.log("zoomout");
+            var elms = document.querySelectorAll("#svgObj-"+templateIndex);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                var subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("subdoc:"+subdoc+",svg:"+svg);
+            if (svg !== null && svg !== undefined) {
+                svg.setAttribute("viewBox","0,0,600,400");
+                zoom[templateIndex] = 0;
+            }
+            switchZoomTo("in");
+        }
+
         function imgExists(imgPath) {
-            console.log("imgExists called");
+//            console.log("imgExists called");
             var http = new XMLHttpRequest();
             http.open('HEAD', imgPath, false);
             http.send();
-            console.log("imgExists return:"+http.status);
+//            console.log("imgExists return:" + http.status);
             return http.status == 200;
         }
         function updateSVG(resJson) {
             tidx = resJson["tidx"];
             var elms = document.querySelectorAll("#svgObj-" + tidx);
-            console.log("tidx:" + tidx);
+//            console.log("tidx:" + tidx);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
-                var subdoc = getSubDocument(elms[i])
+                var subdoc = getSubDocument(elms[i]);
                 if (subdoc !== null && subdoc !== undefined)
                     break;
             }
 //            var svgDoc = svg.contentDocument;
-            console.log("subdoc:" + subdoc);
+//            console.log("subdoc:" + subdoc);
+//            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("svg:"+svg);
             for (var key in resJson) {
                 var value = resJson[key];
-                console.log("key:" + key + ",value:" + value);
+//                console.log("key:" + key + ",value:" + value);
                 if (key.indexOf("image") === 0) {
                     var img = subdoc.getElementById(key);
-                    console.log("img:" + img + ",value:" + value);
+//                    console.log("img:" + img + ",value:" + value);
 //                    img.href = "/temp/" + value;
                     img.setAttribute("fill", "red");
                     img.setAttribute('xlink:href', "/temp/" + value);
                 }
                 else if (key.indexOf("text") === 0) {
                     var txt = subdoc.getElementById(key);
-                    console.log("txt:" + txt);
+//                    console.log("txt:" + txt);
                     txt.textContent = value;
                 }
                 // ignore other response keys
@@ -347,20 +431,16 @@
         var templateIndex = 0;
         showTemplate(templateIndex);
 
-        function currentTemplate(n) {
-            showTemplate(templateIndex = n);
-        }
-
         function showTemplate(n) {
-            console.log("showTemplate:" + n);
-
+//            console.log("showTemplate:" + n);
+            templateIndex = n;
             count = 0;
             do {
                 formId = "form-" + count;
-                console.log("formId:" + formId);
+//                console.log("formId:" + formId);
                 var f = document.getElementById(formId);
                 var i = document.getElementById("icon-" + count);
-                console.log("t:" + f);
+//                console.log("t:" + f);
                 if (f === null || f === undefined)
                     break;
                 if (count === n) {
@@ -376,6 +456,13 @@
                 }
                 count++;
             } while (true);
+            // switch zoom button
+            if (zoomStatus[templateIndex] === 0) {
+                switchZoomTo("in");
+            }
+            else {
+                switchZoomTo("out");
+            }
         }
         // send SVG doc to server
         function sendSVG(tid) {
@@ -446,10 +533,10 @@
             turnOnButton("preview");
         }
         function lockScreen() {
-            var width = $(document).width()+"px";
-            var height = $(document).height()+"px";
-            console.log("width:"+width);
-            console.log("height:"+height);
+            var width = $(document).width() + "px";
+            var height = $(document).height() + "px";
+            console.log("width:" + width);
+            console.log("height:" + height);
             document.getElementById('cover').style.width = width;
             document.getElementById('cover').style.height = height;
             document.getElementById('cover').style.display = "block";

@@ -9,7 +9,9 @@
             <tspan id="text11" dy="127.075" x="79.68814086914062">testtest</tspan>
         </text>
         <image id="SvgjsImage1066" xlink:href="/uploads/64909_shepherd.jpg" width="400" height="400"
-               filter="url(#SvgjsFilter1068)" x="188.0492706298828" y="48.53550720214844"></image>
+               x="188.0492706298828" y="48.53550720214844"></image>
+        <!--<image id="SvgjsImage1066" xlink:href="/uploads/64909_shepherd.jpg" width="400" height="400"-->
+               <!--filter="url(#SvgjsFilter1068)" x="188.0492706298828" y="48.53550720214844"></image>-->
     </svg>
     <defs id="SvgjsDefs1002">
         <clipPath id="SvgjsClipPath1011">
@@ -21,12 +23,12 @@
             <feColorMatrix id="SvgjsFeColorMatrix1014" type="luminanceToAlpha" result="SvgjsFeColorMatrix1014Out"
                            in="SourceGraphic"></feColorMatrix>
         </filter>
-        <filter id="SvgjsFilter1068">
-            <feColorMatrix id="SvgjsFeColorMatrix1069" type="saturate" values="0" result="SvgjsFeColorMatrix1069Out"
-                           in="SourceGraphic"></feColorMatrix>
-            <feColorMatrix id="SvgjsFeColorMatrix1070" type="matrix"
-                           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -0.5 -0.5 -0.5 1.5 0"
-                           result="SvgjsFeColorMatrix1070Out" in="SvgjsFeColorMatrix1069Out"></feColorMatrix>
-        </filter>
+        <!--<filter id="SvgjsFilter1068">-->
+            <!--<feColorMatrix id="SvgjsFeColorMatrix1069" type="saturate" values="0" result="SvgjsFeColorMatrix1069Out"-->
+                           <!--in="SourceGraphic"></feColorMatrix>-->
+            <!--<feColorMatrix id="SvgjsFeColorMatrix1070" type="matrix"-->
+                           <!--values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -0.5 -0.5 -0.5 1.5 0"-->
+                           <!--result="SvgjsFeColorMatrix1070Out" in="SvgjsFeColorMatrix1069Out"></feColorMatrix>-->
+        <!--</filter>-->
     </defs>
 </svg>

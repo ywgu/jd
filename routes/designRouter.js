@@ -115,6 +115,8 @@ designRouter.route('/personalize/:tid')
         var templates = req.app.get('templates');
         var gid = req.params.tid.substr(0, 3);   // the first 3 characters are group id
         var inputList = null;
+        var zoomList = null;
+        var zoomStr = "";
         for (var i = 0; i < templates.templates.length; i++) {
             if (templates.templates[i].gid === gid) {
                 templateList = templates.templates[i].list;
@@ -122,13 +124,17 @@ designRouter.route('/personalize/:tid')
                 for (var j = 0; j < templateList.length; j++) {
                     if (templateList[j].tid == req.params.tid) {
                         inputList = templateList[j].inputs;
-                        console.log("inputList:" + inputList);
+                        zoomList = templateList[j].zooms;
+                        for (var k=0; k<zoomList.length; k++) {
+                            zoomStr += zoomList[k]+";";
+                        }
+                        console.log("inputList:" + inputList+",zoomStr:"+zoomStr);
                         break;
                     }
                 }
             }
         }
-        res.render('design/personalize', {layout: 'design', tid: req.params.tid, inputs: inputList});
+        res.render('design/personalize', {layout: 'design', tid: req.params.tid, inputs: inputList, zooms: zoomStr});
     });
 designRouter.route('/design/:did')
     .get(function (req, res, next) {
@@ -293,7 +299,7 @@ designRouter.route('/uploaddata')
             for (var key in files) {
                 var image = files[key];
                 var newName = newPrefix + image.name.toLowerCase();
-                var convertedName = newName.substring(0,newName.lastIndexOf(".")) + ".bmp";   // convert to bmp format
+                var convertedName = newName.substring(0,newName.lastIndexOf(".")) + ".png";   // convert to png format
                 fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(convertedName).concat("\",");
                 fs.renameSync(image.path, uploadTempDir + '/' + newName);
                 if (processing === "gpc") {
