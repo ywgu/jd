@@ -274,18 +274,23 @@
                         success: function (response) {
                             console.log("response:" + response);
                             var resJson = JSON.parse(response);
+                            // wait for image to be loaded
                             if (resJson.processing === "gpc") {
-                                // sleep for  seconds
-                                var date = null;
-                                var curDate = null;
-                                var count = 0;
-                                do {
+                                for (var key in resJson) {
+                                    if (key.indexOf("image") === 0) {
+                                        // sleep for  seconds
+                                        var date = null;
+                                        var curDate = null;
+                                        var count = 0;
+                                        do {
 //                                    console.log("count:" + count++);
-                                    date = new Date();
-                                    do {
-                                        curDate = new Date();
-                                    } while (curDate - date < 2000);
-                                } while (!imgExists("/temp/" + resJson["image11"]) && count < 10)
+                                            date = new Date();
+                                            do {
+                                                curDate = new Date();
+                                            } while (curDate - date < 2000);
+                                        } while (!imgExists("/temp/" + resJson[key]) && count < 10);
+                                    }
+                                }
                             }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
