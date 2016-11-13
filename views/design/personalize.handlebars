@@ -268,7 +268,7 @@
                     $(this).ajaxSubmit({
                         error: function (xhr) {
                             console.log("error:" + xhr.status);
-                            status('Error: ' + xhr.status);
+//                            status('Error: ' + xhr.status);
                             unlockScreen();
                         },
                         success: function (response) {
@@ -283,7 +283,7 @@
                                         var curDate = null;
                                         var count = 0;
                                         do {
-//                                    console.log("count:" + count++);
+                                    console.log("count:" + count++);
                                             date = new Date();
                                             do {
                                                 curDate = new Date();
