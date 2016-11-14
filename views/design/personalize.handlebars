@@ -99,6 +99,28 @@
                             </label>
                         </p>
                     </div>
+                    <div class="w3-row">
+                        {{#each this}}
+                            {{#if image}}
+                                <!-- image input -->
+                                <div class="form-group">
+                                    <label for="fieldImage" class="control-label">Replace image file for "{{title}}"</label>
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <div class="form-control" data-trigger="fileinput"><i
+                                                class="glyphicon glyphicon-file fileinput-exists"></i>
+                                            <span class="fileinput-filename"></span></div>
+                                        <span class="input-group-addon btn btn-default btn-file"><span
+                                                class="fileinput-new">Select file</span><span
+                                                class="fileinput-exists">Change</span>
+                                                        <input type="file" name="{{id}}-org" onchange="loadAndResizeFile('{{id}}')">
+                                                </span>
+                                        <a href="#" class="input-group-addon btn btn-default fileinput-exists"
+                                           data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
                     <form id="uploadForm-{{@index}}"
                           role="form"
                           enctype="multipart/form-data" method="POST"
@@ -112,19 +134,8 @@
                                         <input type="hidden" name="processing" value="{{processing}}"/>
                                     {{/if}}
                                     <div class="form-group">
-                                        <label for="fieldImage" class="control-label">Replace image file for "{{title}}"</label>
-                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput"><i
-                                                    class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                <span class="fileinput-filename"></span></div>
-                                            <span class="input-group-addon btn btn-default btn-file"><span
-                                                    class="fileinput-new">Select file</span><span
-                                                    class="fileinput-exists">Change</span>
-                                                        <input type="file" name="{{id}}">
-                                                </span>
-                                            <a href="#" class="input-group-addon btn btn-default fileinput-exists"
-                                               data-dismiss="fileinput">Remove</a>
-                                        </div>
+                                        <input type="hidden" name="{{id}}" id="{{id}}" value="{{id}}"/>
+                                        <input type="hidden" name="data-{{id}}" id="data-{{id}}" value="nothing"/>
                                     </div>
                                 {{else}}
                                     <div class="form-group">
@@ -323,7 +334,86 @@
             for (var i = 0; i < count; i++)
                 previews.push(0);
         });
-        // todo: finish this function
+
+        window.loadAndResizeFile = function(id){
+            console.log("loadAndResizeFile:"+id);
+            // Read in file
+            var file = event.target.files[0];
+            if (file === null || file === undefined)
+                return;
+
+            // Ensure it's an image
+            if(file.type.match(/image.*/)) {
+                console.log('An image has been loaded');
+
+                // Load the image
+                var reader = new FileReader();
+                reader.onload = function (readerEvent) {
+                    var image = new Image();
+                    image.onload = function (imageEvent) {
+
+                        // Resize the image
+                        var canvas = document.createElement('canvas'),
+                                max_size = 1000,// TODO : pull max size from a site config
+                                width = image.width,
+                                height = image.height;
+                        if (width > height) {
+                            if (width > max_size) {
+                                height *= max_size / width;
+                                width = max_size;
+                            }
+                        } else {
+                            if (height > max_size) {
+                                width *= max_size / height;
+                                height = max_size;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                        var dataUrl = canvas.toDataURL('image/jpeg');
+//                        var resizedImage = dataURLToBlob(dataUrl);
+                        document.getElementById(id).value = file.name;
+                        document.getElementById("data-"+id).value = dataUrl;
+//                        $.event.trigger({
+//                            type: "imageResized",
+//                            blob: resizedImage,
+//                            url: dataUrl
+//                        });
+                    };
+                    image.src = readerEvent.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        /* Utility function to convert a canvas to a BLOB */
+        var dataURLToBlob = function(dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = parts[1];
+
+                return new Blob([raw], {type: contentType});
+            }
+
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], {type: contentType});
+        }
+
+
+
         function switchZoomTo(to) {
             var ele = document.getElementById("zoom");
             if (to === "in") {

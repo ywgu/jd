@@ -296,45 +296,54 @@ designRouter.route('/uploaddata')
             console.log("processing:" + processing);
             var newPrefix = Date.now().toString().slice(5) + "_";
 
-            for (var key in files) {
-                var image = files[key];
-                var newName = newPrefix + image.name.toLowerCase();
-                var convertedName = newName.substring(0,newName.lastIndexOf(".")) + ".png";   // convert to png format
-                fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(convertedName).concat("\",");
-                fs.renameSync(image.path, uploadTempDir + '/' + newName);
-                if (processing === "gpc") {
-                    processImage(uploadTempDir + "/" + newName);
-                    // jimp.read(uploadTempDir + '/' + newName, function (err, lenna) {
-                    //     if (err) throw err;
-                    //     lenna
-                    //         .scale(0.3)
-                    //         .greyscale()
-                    //         .posterize(7.5)
-                    //         .contrast(1.0)
-                    //         .write(uploadTempDir + '/' + newName); // save
-                    //     console.log("image processing done");
-                    // });
+            // for (var key in files) {
+            //     var image = files[key];
+            //     var newName = newPrefix + image.name.toLowerCase();
+            //     var convertedName = newName.substring(0,newName.lastIndexOf(".")) + ".png";   // convert to png format
+            //     fValue = fValue.concat("\"").concat(key).concat("\":\"").concat(convertedName).concat("\",");
+            //     fs.renameSync(image.path, uploadTempDir + '/' + newName);
+            //     if (processing === "gpc") {
+            //         processImage(uploadTempDir + "/" + newName);
+            //     }
+            // }
+            // if (fValue !== "") // remove extra ,
+            //     fValue = fValue.slice(0, fValue.length - 1);
+            // console.log("fValue:" + fValue);
+            // var returnText = aValue;
+
+            // if (fValue !== "") {
+            //     if (aValue.length > 2)
+            //         returnText = returnText.slice(0, returnText.length - 1) + "," + fValue + "}";
+            //     else
+            //         returnText = "{" + fValue + "}";
+            // }
+            var returnText = "";
+            for (var key in fields) {
+                if (key === "processing" || key === "tidx" || key.indexOf("text") === 0) {
+                    returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(fields[key]).concat("\",");
+                }
+                else if (key.indexOf("image") === 0) {
+                    var image = fields[key];
+                    var imageData = fields["data-"+key];
+                    var newName = newPrefix + image.toLowerCase(); // xxxx-image.png/jpg...
+                    var processing = fields["processing"];
+                    if (processing === "gpc") {
+                        // var convertedName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png";   // convert to png format
+                        processImage(uploadTempDir + "/" + newName+"|" + imageData);
+                        newName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png"; // change to .png
+                    }
+                    returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
                 }
             }
-            if (fValue !== "") // remove extra ,
-                fValue = fValue.slice(0, fValue.length - 1);
-            console.log("fValue:" + fValue);
-            var returnText = aValue;
-            if (fValue !== "") {
-                if (aValue.length > 2)
-                    returnText = returnText.slice(0, returnText.length - 1) + "," + fValue + "}";
-                else
-                    returnText = "{" + fValue + "}";
-            }
+            returnText = "{"+returnText.substring(0,returnText.length-1)+"}";
             console.log("return:" + returnText);
-
             res.end(returnText);
         });
     });
 
 // require the image editing file
 var imgprocessor = path.resolve(__dirname, '../imgprocessor.js');
-function processImage(imgInfo) {
+function processImage(imgInfo) {    // imgInfo : imgPath|imgData
     // We need to spawn a child process so that we do not block
     // the EventLoop with cpu intensive image manipulation
     var childProcess = require('child_process').fork(imgprocessor);
