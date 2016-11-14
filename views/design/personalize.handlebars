@@ -412,8 +412,6 @@
             return new Blob([uInt8Array], {type: contentType});
         }
 
-
-
         function switchZoomTo(to) {
             var ele = document.getElementById("zoom");
             if (to === "in") {
@@ -583,6 +581,9 @@
                 }
                 if (subdoc === null || subdoc === undefined)
                     break;
+                // switch to zoom out
+                templateIndex = count;
+                zoomoutSVG();
                 xml = (new XMLSerializer()).serializeToString(subdoc);
                 console.log("svg:" + xml);
                 hiddenSVGField = document.createElement("input");
