@@ -112,7 +112,7 @@
                                         <span class="input-group-addon btn btn-default btn-file"><span
                                                 class="fileinput-new">Select file</span><span
                                                 class="fileinput-exists">Change</span>
-                                                        <input type="file" name="{{id}}-org" onchange="loadAndResizeFile('{{id}}')">
+                                                        <input type="file" name="{{id}}-org" onchange="loadAndResizeFile(event,'{{id}}')">
                                                 </span>
                                         <a href="#" class="input-group-addon btn btn-default fileinput-exists"
                                            data-dismiss="fileinput">Remove</a>
@@ -335,10 +335,10 @@
                 previews.push(0);
         });
 
-        window.loadAndResizeFile = function(id){
+        window.loadAndResizeFile = function(e,id){
             console.log("loadAndResizeFile:"+id);
             // Read in file
-            var file = event.target.files[0];
+            var file = e.target.files[0];
             if (file === null || file === undefined)
                 return;
 
