@@ -21,7 +21,7 @@ var gm = require('gm');
 //         .pipe(gulp.dest(imgDest+"-zip"));
 // }
 process.on('message', function (imgInfo) {
-    console.log('Image processing started...'+imgInfo);
+    console.log('Image processing started...');
     // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf('/')+1)+imgInfo.substring(imgInfo.lastIndexOf('/')+4);
     var imgPath = imgInfo.substring(0,imgInfo.indexOf('|'));
     // var imgName = imgPath.substring(0,imgPath.lastIndexOf('/')+1);

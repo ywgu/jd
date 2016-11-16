@@ -290,7 +290,7 @@ designRouter.route('/uploaddata')
             console.log("fields keyList:" + Object.keys(fields));
             // var keyList = Object.keys(fields);
             var aValue = JSON.stringify(fields);
-            console.log("aValue:" + aValue);
+            // console.log("aValue:" + aValue);
             var fValue = "";
             var processing = fields["processing"];
             console.log("processing:" + processing);
