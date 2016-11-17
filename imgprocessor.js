@@ -39,20 +39,13 @@ process.on('message', function (imgInfo) {
                 .resize(1050,788)   // 7 inch x 5.25 inch with 150 dpi
                 .colorspace("GRAY")
                 .operator('gray','negate','100%')
-                .edge(1.5)
+                .modulate(100,0,100)  // brightness +30%
+                .edge(2.5)
                 .operator('gray','negate','100%')
-                .threshold('50%')
-                .normalize()
-                // .blur(0.5)
-                // .contrast(2)
-                // .modulate(110)  // brightness +30%
-                // .contrast(2)
-                // .solarize(0.8)
-                // .sharpen(6)
+                .threshold('20%')
+                // .normalize()
                 .dither(true)
                 .monochrome()
-                // .inverse()
-                // .density(150,150)
                 .transparent("white")
                 .write(imgDest, function(err){
                         if (err) return console.dir(arguments);
