@@ -56,9 +56,9 @@
 <!-- Grid -->
 <div class="w3-row">
     <div class="w3-col l6 s12">
-        <div class="w3-card-2 w3-margin w3-margin-top" style="background-color: white">
+        <div class="w3-card-2" style="background-color: white">
             {{#each inputs}}
-                <div>
+                <div id="svgc-{{@index}}">
                     <object id="svgObj-{{@index}}" type="image/svg+xml"
                             data="/design/templates/{{../tid}}-{{@index}}.svg"
                             style="width:100%">
@@ -83,7 +83,6 @@
                 </div>
             </div>
         </div>
-        <hr>
     </div>
     {{#each inputs}}
         <div class="w3-col l6 s12" id="form-{{@index}}">
@@ -547,6 +546,7 @@
                     f.style.display = "none";
                     i.style.borderWidth = "0px";
                     document.getElementById("svgObj-" + count).style.width = "0%";
+                    document.getElementById("svgc-" + count).style.height = "0px";
                 }
                 count++;
             } while (true);
