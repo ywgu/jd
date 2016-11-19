@@ -70,16 +70,16 @@
                 <div class="w3-center">
                     {{#each inputs}}
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
-                              title="page"
+                              title="page" style="padding:6px;"
                               onclick="showTemplate({{@index}})"><img
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                     {{/each}}
-                    <!--<button type="button" id="zoom"-->
-                            <!--onclick="zoominSVG()"-->
-                            <!--class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">-->
-                        <!--<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>-->
-                    <!--</button>-->
+                    <button type="button" id="zoom"
+                            onclick="zoominSVG()"
+                            class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </div>
