@@ -47,6 +47,7 @@
         position: relative;
     }
 </style>
+<script type="text/javascript" src="/design/javascripts/exif.js"></script>
 
 <!-- Header -->
 <header class="w3-container">
@@ -340,7 +341,11 @@
             for (var i = 0; i < count; i++)
                 previews.push(0);
         });
-
+        document.getElementById("image11-org").onchange = function(e) {
+            EXIF.getData(e.target.files[0], function() {
+                alert(EXIF.pretty(this));
+            });
+        };
         window.loadAndResizeFile = function(e,id){
             console.log("loadAndResizeFile:"+id);
             // Read in file
@@ -354,6 +359,52 @@
 
                 // Load the image
                 var reader = new FileReader();
+//                reader.onloadend = function() {
+//
+//                    var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
+//
+//                    switch(exif.Orientation){
+//
+//                        case 2:
+//                            // horizontal flip
+//                            ctx.translate(canvas.width, 0);
+//                            ctx.scale(-1, 1);
+//                            break;
+//                        case 3:
+//                            // 180° rotate left
+//                            ctx.translate(canvas.width, canvas.height);
+//                            ctx.rotate(Math.PI);
+//                            break;
+//                        case 4:
+//                            // vertical flip
+//                            ctx.translate(0, canvas.height);
+//                            ctx.scale(1, -1);
+//                            break;
+//                        case 5:
+//                            // vertical flip + 90 rotate right
+//                            ctx.rotate(0.5 * Math.PI);
+//                            ctx.scale(1, -1);
+//                            break;
+//                        case 6:
+//                            // 90° rotate right
+//                            ctx.rotate(0.5 * Math.PI);
+//                            ctx.translate(0, -canvas.height);
+//                            break;
+//                        case 7:
+//                            // horizontal flip + 90 rotate right
+//                            ctx.rotate(0.5 * Math.PI);
+//                            ctx.translate(canvas.width, -canvas.height);
+//                            ctx.scale(-1, 1);
+//                            break;
+//                        case 8:
+//                            // 90° rotate left
+//                            ctx.rotate(-0.5 * Math.PI);
+//                            ctx.translate(-canvas.width, 0);
+//                            break;
+//
+//
+//                    }
+//                };
                 reader.onload = function (readerEvent) {
                     var image = new Image();
                     image.onload = function (imageEvent) {
