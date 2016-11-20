@@ -353,10 +353,7 @@
         window.loadAndResizeFile = function(e,id){
             console.log("loadAndResizeFile:"+id);
             EXIF.getData(e.target.files[0], function() {
-//                alert(EXIF.pretty(this));
-                alert(EXIF.getTag(this, "Orientation"));
                 var orientation = EXIF.getTag(this, "Orientation");
-//            });
                 // Read in file
                 var file = e.target.files[0];
                 if (file === null || file === undefined)
