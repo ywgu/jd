@@ -48,7 +48,6 @@
     }
 </style>
 <script type="text/javascript" src="/design/javascripts/exif.js"></script>
-
 <!-- Header -->
 <header class="w3-container">
     <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
@@ -250,6 +249,7 @@
         // maximum template number = 8
         var zoomStatus = [0,0,0,0,0,0,0,0];
         var zooms = ["","","","","","","",""];
+//        var imgOrientation = [];
         $(document).ready(function () {
             $(document).on('click', 'svgObj-0', function(event) {
                 console.log("clicked");
@@ -296,6 +296,14 @@
                             if (resJson.processing === "gpc") {
                                 for (var key in resJson) {
                                     if (key.indexOf("image") === 0) {
+//                                        console.log("key:"+key);
+//                                        document.getElementById(key+"-org").onchange = function(e) {
+//                                            EXIF.getData(e.target.files[0], function() {
+//                                                alert(EXIF.pretty(this));
+//                                                imgOrientation.key = this.orientation;
+//                                                alert(this.orientation);
+//                                            });
+//                                        };
                                         // sleep for  seconds
                                         var date = null;
                                         var curDate = null;
@@ -341,107 +349,104 @@
             for (var i = 0; i < count; i++)
                 previews.push(0);
         });
-        document.getElementById("image11-org").onchange = function(e) {
-            EXIF.getData(e.target.files[0], function() {
-                alert(EXIF.pretty(this));
-            });
-        };
+
         window.loadAndResizeFile = function(e,id){
             console.log("loadAndResizeFile:"+id);
-            // Read in file
-            var file = e.target.files[0];
-            if (file === null || file === undefined)
-                return;
+            EXIF.getData(e.target.files[0], function() {
+//                alert(EXIF.pretty(this));
+                alert(EXIF.getTag(this, "Orientation"));
+                var orientation = EXIF.getTag(this, "Orientation");
+//            });
+                // Read in file
+                var file = e.target.files[0];
+                if (file === null || file === undefined)
+                    return;
 
-            // Ensure it's an image
-            if(file.type.match(/image.*/)) {
-                console.log('An image has been loaded');
+                // Ensure it's an image
+                if (file.type.match(/image.*/)) {
+                    console.log('An image has been loaded');
 
-                // Load the image
-                var reader = new FileReader();
-//                reader.onloadend = function() {
-//
-//                    var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
-//
-//                    switch(exif.Orientation){
-//
-//                        case 2:
-//                            // horizontal flip
-//                            ctx.translate(canvas.width, 0);
-//                            ctx.scale(-1, 1);
-//                            break;
-//                        case 3:
-//                            // 180° rotate left
-//                            ctx.translate(canvas.width, canvas.height);
-//                            ctx.rotate(Math.PI);
-//                            break;
-//                        case 4:
-//                            // vertical flip
-//                            ctx.translate(0, canvas.height);
-//                            ctx.scale(1, -1);
-//                            break;
-//                        case 5:
-//                            // vertical flip + 90 rotate right
-//                            ctx.rotate(0.5 * Math.PI);
-//                            ctx.scale(1, -1);
-//                            break;
-//                        case 6:
-//                            // 90° rotate right
-//                            ctx.rotate(0.5 * Math.PI);
-//                            ctx.translate(0, -canvas.height);
-//                            break;
-//                        case 7:
-//                            // horizontal flip + 90 rotate right
-//                            ctx.rotate(0.5 * Math.PI);
-//                            ctx.translate(canvas.width, -canvas.height);
-//                            ctx.scale(-1, 1);
-//                            break;
-//                        case 8:
-//                            // 90° rotate left
-//                            ctx.rotate(-0.5 * Math.PI);
-//                            ctx.translate(-canvas.width, 0);
-//                            break;
-//
-//
-//                    }
-//                };
-                reader.onload = function (readerEvent) {
-                    var image = new Image();
-                    image.onload = function (imageEvent) {
+                    // Load the image
+                    var reader = new FileReader();
+                    reader.onload = function (readerEvent) {
+                        var image = new Image();
+                        image.onload = function (imageEvent) {
 
-                        // Resize the image
-                        var canvas = document.createElement('canvas'),
-                                max_size = 1000,// TODO : pull max size from a site config
-                                width = image.width,
-                                height = image.height;
-                        if (width > height) {
-                            if (width > max_size) {
-                                height *= max_size / width;
-                                width = max_size;
+                            // Resize the image
+                            var canvas = document.createElement('canvas'),
+                                    max_size = 1000,// TODO : pull max size from a site config
+                                    width = image.width,
+                                    height = image.height;
+                            if (width > height) {
+                                if (width > max_size) {
+                                    height *= max_size / width;
+                                    width = max_size;
+                                }
+                            } else {
+                                if (height > max_size) {
+                                    width *= max_size / height;
+                                    height = max_size;
+                                }
                             }
-                        } else {
-                            if (height > max_size) {
-                                width *= max_size / height;
-                                height = max_size;
-                            }
-                        }
-                        canvas.width = width;
-                        canvas.height = height;
-                        canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-                        var dataUrl = canvas.toDataURL('image/jpeg');
+                            canvas.width = width;
+                            canvas.height = height;
+                            var ctx = canvas.getContext('2d');
+
+                            switch(orientation){
+                                case 2:
+                                    // horizontal flip
+                                    ctx.translate(canvas.width, 0);
+                                    ctx.scale(-1, 1);
+                                    break;
+                                case 3:
+                                    // 180° rotate left
+                                    ctx.translate(canvas.width, canvas.height);
+                                    ctx.rotate(Math.PI);
+                                    break;
+                                case 4:
+                                    // vertical flip
+                                    ctx.translate(0, canvas.height);
+                                    ctx.scale(1, -1);
+                                    break;
+                                case 5:
+                                    // vertical flip + 90 rotate right
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.scale(1, -1);
+                                    break;
+                                case 6:
+                                    // 90° rotate right
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.translate(0, -canvas.height);
+                                    break;
+                                case 7:
+                                    // horizontal flip + 90 rotate right
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.translate(canvas.width, -canvas.height);
+                                    ctx.scale(-1, 1);
+                                    break;
+                                case 8:
+                                    // 90° rotate left
+                                    ctx.rotate(-0.5 * Math.PI);
+                                    ctx.translate(-canvas.width, 0);
+                                    break;
+                            };
+
+                            ctx.drawImage(image, 0, 0, width, height);
+                            var dataUrl = canvas.toDataURL('image/jpeg');
 //                        var resizedImage = dataURLToBlob(dataUrl);
-                        document.getElementById(id).value = file.name;
-                        document.getElementById("data-"+id).value = dataUrl;
+                            document.getElementById(id).value = file.name;
+                            document.getElementById("data-" + id).value = dataUrl;
 //                        $.event.trigger({
 //                            type: "imageResized",
 //                            blob: resizedImage,
 //                            url: dataUrl
 //                        });
+                        };
+                        image.src = readerEvent.target.result;
                     };
-                    image.src = readerEvent.target.result;
+                    reader.readAsDataURL(file);
                 };
-                reader.readAsDataURL(file);
-            }
+            });
         };
 
         /* Utility function to convert a canvas to a BLOB */
