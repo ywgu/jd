@@ -42,8 +42,9 @@
         display: none;
     }
     #zoom {
-        width: 40px;
-        height: 40px;
+        /*width: 40px;*/
+        /*height: 40px;*/
+        position: relative;
     }
 </style>
 
@@ -66,6 +67,7 @@
                     </object>
                 </div>
             {{/each}}
+            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-small glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
             <div class="w3-container w3-dark-grey w3-padding-8 w3-xlarge">
                 <div class="w3-center">
                     {{#each inputs}}
@@ -75,11 +77,11 @@
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                     {{/each}}
-                    <button type="button" id="zoom"
-                            onclick="zoominSVG()"
-                            class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">
-                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
-                    </button>
+                    <!--<button type="button" id="zoom"-->
+                            <!--onclick="zoominSVG()"-->
+                            <!--class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">-->
+                        <!--<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>-->
+                    <!--</button>-->
                 </div>
             </div>
         </div>
@@ -114,8 +116,8 @@
                                                         <input type="file" name="{{id}}-org" id="{{id}}-org" onchange="loadAndResizeFile(event,'{{id}}')">
                                                         <!--</div>-->
                                                 </span>
-                                        <a href="#" class="input-group-addon btn btn-default fileinput-exists"
-                                           data-dismiss="fileinput">Remove</a>
+                                        <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
+                                           <!--data-dismiss="fileinput">Remove</a>-->
                                     </div>
                                 </div>
                             {{/if}}
@@ -248,6 +250,9 @@
         var zoomStatus = [0,0,0,0,0,0,0,0];
         var zooms = ["","","","","","","",""];
         $(document).ready(function () {
+            $(document).on('click', 'svgObj-0', function(event) {
+                console.log("clicked");
+            });
             // populate the zoom data
             var zoomStr = '{{zooms}}';
 //            console.log("zooms:"+zoomStr);
@@ -417,17 +422,19 @@
             var ele = document.getElementById("zoom");
             if (to === "in") {
                 ele.onclick = zoominSVG;
-                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
+                //ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
+                ele.setAttribute("class","w3-right w3-padding-small glyphicon glyphicon-zoom-in");
                 zoomStatus[templateIndex] = 0;
             }
             else {
                 ele.onclick = zoomoutSVG;
-                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
+//                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
+                ele.setAttribute("class","w3-right w3-padding-small glyphicon glyphicon-zoom-out");
                 zoomStatus[templateIndex] = 1;
             }
         }
         function zoominSVG() {
-//            console.log("zoomin");
+            console.log("zoomin");
             var elms = document.querySelectorAll("#svgObj-"+templateIndex);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
