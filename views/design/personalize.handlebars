@@ -344,6 +344,7 @@
             console.log("loadAndResizeFile:"+id);
             EXIF.getData(e.target.files[0], function() {
                 var orientation = EXIF.getTag(this, "Orientation");
+                alert("orientation:"+orientation);
                 // Read in file
                 var file = e.target.files[0];
                 if (file === null || file === undefined)
@@ -364,17 +365,17 @@
                                     max_size = 1000,// TODO : pull max size from a site config
                                     width = image.width,
                                     height = image.height;
-                            if (width > height) {
-                                if (width > max_size) {
-                                    height *= max_size / width;
-                                    width = max_size;
-                                }
-                            } else {
-                                if (height > max_size) {
-                                    width *= max_size / height;
-                                    height = max_size;
-                                }
-                            }
+//                            if (width > height) {
+//                                if (width > max_size) {
+//                                    height *= max_size / width;
+//                                    width = max_size;
+//                                }
+//                            } else {
+//                                if (height > max_size) {
+//                                    width *= max_size / height;
+//                                    height = max_size;
+//                                }
+//                            }
                             canvas.width = width;
                             canvas.height = height;
                             var ctx = canvas.getContext('2d');
@@ -402,8 +403,9 @@
                                     break;
                                 case 6: // TODO: rotate causes image not at the center!!!
                                     // 90° rotate right
-                                    ctx.rotate(0.5 * Math.PI);
-                                    ctx.translate(0, -canvas.height);
+//                                    ctx.rotate(0.5 * Math.PI);
+//                                    ctx.translate(0, -canvas.height);
+                                    ctx.transform(0, 1, -1, 0, height , 0);
                                     break;
                                 case 7:
                                     // horizontal flip + 90 rotate right
