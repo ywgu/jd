@@ -238,9 +238,6 @@
 </div>
 
 <div id="cover">
-    <p style="position: absolute; color: White; top: 50%; left: 15%; right: 15%;">
-        Please wait while we upload and transform your image.
-    </p>
 </div>
 
 {{#section 'jquery'}}
@@ -286,6 +283,7 @@
                     $(this).ajaxSubmit({
                         error: function (xhr) {
                             console.log("error:" + xhr.status);
+                            showWarning("Connection error. Please try again later.");
 //                            status('Error: ' + xhr.status);
                             unlockScreen();
                         },
@@ -402,7 +400,7 @@
                                     ctx.rotate(0.5 * Math.PI);
                                     ctx.scale(1, -1);
                                     break;
-                                case 6:
+                                case 6: // TODO: rotate causes image not at the center!!!
                                     // 90° rotate right
                                     ctx.rotate(0.5 * Math.PI);
                                     ctx.translate(0, -canvas.height);
@@ -656,6 +654,7 @@
                 data: $("#doneform").serialize(),
                 error: function (xhr) {
                     console.log('Error: ' + xhr.status);
+                    showWarning("Connection error. Please try again later.");
                 },
                 success: function (data) {
                     console.log(data);
@@ -685,15 +684,24 @@
         function lockScreen() {
             var width = $(document).width() + "px";
             var height = $(document).height() + "px";
-            console.log("width:" + width);
-            console.log("height:" + height);
-            document.getElementById('cover').style.width = width;
-            document.getElementById('cover').style.height = height;
-            document.getElementById('cover').style.display = "block";
-//            $("#cover").fadeIn(100);
+            var cover = document.getElementById("cover");
+            cover.style.width = width;
+            cover.style.height = height;
+            cover.style.display = "block";
+            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;">Please wait while we upload and transform your image.</p>';
         }
         function unlockScreen() {
             $("#cover").fadeOut(100);
+        }
+        function showWarning(msg) {
+            var width = $(document).width() + "px";
+            var height = $(document).height() + "px";
+            var cover = document.getElementById("cover");
+            cover.style.width = width;
+            cover.style.height = height;
+            cover.style.display = "block";
+            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;"><span class="label label-warning">'+msg+'</span></p>';
+            $("#cover").fadeOut(5000);
         }
         function turnOnCheckbox(id) {
             for (var i = 0; i < previews.length; i++) {
