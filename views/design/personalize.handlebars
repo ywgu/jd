@@ -376,6 +376,7 @@
                                     height = max_size;
                                 }
                             }
+                            // default: canvas width and height do not change
                             canvas.width = width;
                             canvas.height = height;
                             var ctx = canvas.getContext('2d');
@@ -398,23 +399,31 @@
                                     break;
                                 case 5:
                                     // vertical flip + 90 rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
                                     ctx.rotate(0.5 * Math.PI);
                                     ctx.scale(1, -1);
                                     break;
                                 case 6: // TODO: rotate causes image not at the center!!!
                                     // 90° rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
                                     ctx.rotate(0.5 * Math.PI);
                                     ctx.translate(0, -canvas.height);
 //                                    ctx.transform(0, 1, -1, 0, height , 0);
                                     break;
                                 case 7:
                                     // horizontal flip + 90 rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
                                     ctx.rotate(0.5 * Math.PI);
                                     ctx.translate(canvas.width, -canvas.height);
                                     ctx.scale(-1, 1);
                                     break;
                                 case 8:
                                     // 90° rotate left
+                                    canvas.width = height;
+                                    canvas.height = width;
                                     ctx.rotate(-0.5 * Math.PI);
                                     ctx.translate(-canvas.width, 0);
                                     break;
