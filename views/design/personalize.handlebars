@@ -409,7 +409,7 @@
                                     canvas.width = height;
                                     canvas.height = width;
                                     ctx.rotate(0.5 * Math.PI);
-                                    ctx.translate(0, -canvas.height);
+                                    ctx.translate(0, -height);
 //                                    ctx.transform(0, 1, -1, 0, height , 0);
                                     break;
                                 case 7:
@@ -417,7 +417,7 @@
                                     canvas.width = height;
                                     canvas.height = width;
                                     ctx.rotate(0.5 * Math.PI);
-                                    ctx.translate(canvas.width, -canvas.height);
+                                    ctx.translate(width, -height);
                                     ctx.scale(-1, 1);
                                     break;
                                 case 8:
@@ -425,7 +425,7 @@
                                     canvas.width = height;
                                     canvas.height = width;
                                     ctx.rotate(-0.5 * Math.PI);
-                                    ctx.translate(-canvas.width, 0);
+                                    ctx.translate(-width, 0);
                                     break;
                             };
 
