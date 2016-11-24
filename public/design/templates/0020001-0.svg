@@ -4,7 +4,7 @@
 <svg id="SvgjsSvg1001" width="1131" height="831" xmlns="http://www.w3.org/2000/svg" version="1.1"
      xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 600 400">
     <image id="jd_bg" xlink:href="/design/templates/0020001-0.jpg" width="600" height="400"></image>
-    <svg id="jd_nt" clip-path="url(&quot;#SvgjsClipPath1011&quot;)" style="overflow: visible;">
+    <svg id="jd_nt" clip-path="url(&quot;#SvgjsClipPath1011&quot;)" style="overflow: visible; display:inline;">
         <text
                clip-path="url(#clipPath12645)"
                id="text12557"

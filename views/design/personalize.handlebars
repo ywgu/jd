@@ -266,6 +266,7 @@
         // maximum template number = 8
         var zoomStatus = [0,0,0,0,0,0,0,0];
         var zooms = ["","","","","","","",""];
+        var ignoreStatus = [0,0,0,0,0,0,0,0];
 //        var imgOrientation = [];
         $(document).ready(function () {
             $(document).on('click', 'svgObj-0', function(event) {
@@ -364,7 +365,7 @@
             console.log("loadAndResizeFile:"+id);
             EXIF.getData(e.target.files[0], function() {
                 var orientation = EXIF.getTag(this, "Orientation");
-                alert("orientation:"+orientation);
+//                alert("orientation:"+orientation);
                 // Read in file
                 var file = e.target.files[0];
                 if (file === null || file === undefined)
@@ -508,7 +509,6 @@
             }
         }
         function zoominSVG() {
-            console.log("zoomin");
             var elms = document.querySelectorAll("#svgObj-"+templateIndex);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
@@ -528,7 +528,6 @@
             switchZoomTo("out");
         }
         function zoomoutSVG() {
-//            console.log("zoomout");
             var elms = document.querySelectorAll("#svgObj-"+templateIndex);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
@@ -618,7 +617,10 @@
                 if (f === null || f === undefined)
                     break;
                 if (count === n) {
-                    f.style.display = "inline";
+                    if (ignoreStatus[count] === 0) {
+                        f.style.display = "inline";
+                        setSVGEleDisplay(count,"jd_nt","overflow: visible; display:inline");
+                    }
                     i.style.borderColor = "darkgrey";
                     i.style.borderWidth = "4px";
                     document.getElementById("svgObj-" + count).style.width = "100%";
@@ -752,6 +754,37 @@
         function turnOffButton(id) {
             for (var i = 0; i < previews.length; i++) {
                 document.getElementById(id + "-" + i).disabled = true;
+            }
+        }
+        function ignore(idx) {
+            var ignoreBtn = document.getElementById("ignore-"+idx);
+            var paramPanel = document.getElementById("form-"+idx);
+            ignoreStatus[idx] = 1 - ignoreStatus[idx];
+            if (ignoreStatus[idx] === 1) { // hide
+                ignoreBtn.setAttribute("class","w3-center w3-large glyphicon glyphicon-remove-circle");
+                paramPanel.style.display = "none";
+                setSVGEleDisplay(idx,"jd_nt","overflow: visible; display:none");
+            }
+            else {
+                ignoreBtn.setAttribute("class","w3-center w3-large glyphicon glyphicon-ok-circle");
+                if (templateIndex == idx) {
+                    paramPanel.style.display = "inline";
+                    setSVGEleDisplay(idx,"jd_nt", "overflow: visible; display:inline");
+                }
+            }
+        }
+        function setSVGEleDisplay(idx,eleName,displayVal) {
+            var elms = document.querySelectorAll("#svgObj-"+idx);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                var subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var ele = subdoc.getElementById("jd_nt");
+//            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
+            if (ele !== null && ele !== undefined) {
+                ele.setAttribute("style",displayVal);
             }
         }
     </script>
