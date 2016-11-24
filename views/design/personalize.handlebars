@@ -46,6 +46,13 @@
         /*height: 40px;*/
         position: relative;
     }
+    table {
+        width: 100%;
+    }
+    th, td {
+        padding: 0px;
+        text-align: center;
+    }
 </style>
 <script type="text/javascript" src="/design/javascripts/exif.js"></script>
 <!-- Header -->
@@ -69,14 +76,27 @@
             {{/each}}
             <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-small glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
             <div class="w3-container w3-dark-grey w3-padding-8 w3-xlarge">
-                <div class="w3-center">
-                    {{#each inputs}}
+                <div class="w3-center" align="center">
+                <table>
+                    <tr>
+                        {{#each inputs}}
+                            <td>
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
                               title="page" style="padding:6px;"
                               onclick="showTemplate({{@index}})"><img
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
-                    {{/each}}
+                            </td>
+                        {{/each}}
+                        </tr>
+                    <tr>
+                        {{#each inputs}}
+                            <td align="center">
+                            <span id="ignore-{{@index}}" onclick="ignore('{{@index}}')" class="w3-center w3-large glyphicon glyphicon-ok-circle" style="color:white" aria-hidden="true"></span>
+                            </td>
+                        {{/each}}
+                    </tr>
+                </table>
                     <!--<button type="button" id="zoom"-->
                             <!--onclick="zoominSVG()"-->
                             <!--class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">-->
