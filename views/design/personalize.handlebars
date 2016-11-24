@@ -74,15 +74,15 @@
                     </object>
                 </div>
             {{/each}}
-            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-small glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
-            <div class="w3-container w3-dark-grey w3-padding-8 w3-xlarge">
-                <div class="w3-center" align="center">
+            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-tiny glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+            <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
+                <!--<div class="w3-center" align="center">-->
                 <table>
                     <tr>
                         {{#each inputs}}
                             <td>
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
-                              title="page" style="padding:6px;"
+                              title="page" style="padding:6px;margin:2px;"
                               onclick="showTemplate({{@index}})"><img
                                 src="/design/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
@@ -102,7 +102,7 @@
                             <!--class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">-->
                         <!--<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>-->
                     <!--</button>-->
-                </div>
+                <!--</div>-->
             </div>
         </div>
     </div>
