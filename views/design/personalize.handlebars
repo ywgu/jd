@@ -41,14 +41,17 @@
         z-index: 10;
         display: none;
     }
+
     #zoom {
         /*width: 40px;*/
         /*height: 40px;*/
         position: relative;
     }
+
     table {
         width: 100%;
     }
+
     th, td {
         padding: 0px;
         text-align: center;
@@ -72,9 +75,11 @@
                             style="width:100%">
                         Your browser does not support SVG
                     </object>
+
                 </div>
             {{/each}}
-            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-tiny glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-tiny glyphicon glyphicon-zoom-in"
+                  aria-hidden="true"></span>
             <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
                 <!--<div class="w3-center" align="center">-->
                 <table>
@@ -88,27 +93,24 @@
                                 alt="front"></span>
                             </td>
                         {{/each}}
-                        </tr>
+                    </tr>
                     <tr>
                         {{#each inputs}}
                             <td align="center">
-                            <span id="ignore-{{@index}}" onclick="ignore('{{@index}}')" class="w3-center w3-large glyphicon glyphicon-ok-circle" style="color:white" aria-hidden="true"></span>
+                                <span id="ignore-{{@index}}" onclick="ignore('{{@index}}')"
+                                      class="w3-center w3-large glyphicon glyphicon-ok-circle" style="color:white"
+                                      aria-hidden="true"></span>
                             </td>
                         {{/each}}
                     </tr>
                 </table>
-                    <!--<button type="button" id="zoom"-->
-                            <!--onclick="zoominSVG()"-->
-                            <!--class="w3-right w3-btn w3-padding-small w3-white w3-border w3-hover-border-black">-->
-                        <!--<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>-->
-                    <!--</button>-->
-                <!--</div>-->
             </div>
         </div>
     </div>
-    {{#each inputs}}
-        <div class="w3-col l6 s12" id="form-{{@index}}">
-            <div class="w3-card-4 w3-margin w3-white">
+
+    <div class="w3-col l6 s12">
+        {{#each inputs}}
+            <div class="w3-card-4 w3-margin w3-white" id="form-{{@index}}">
                 <div class="w3-container">
                     <div class="form-group">
                         <p class="checkbox terms-of-use">
@@ -125,19 +127,23 @@
                             {{#if image}}
                                 <!-- image input -->
                                 <div class="form-group">
-                                    <label for="fieldImage" class="control-label">Replace image file for "{{title}}"</label>
+                                    <label for="fieldImage" class="control-label">Replace image file for "{{title}}
+                                        "</label>
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                         <div class="form-control" data-trigger="fileinput">
-                                            <span class="fileinput-filename" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 130px;"></span></div>
+                                            <span class="fileinput-filename"
+                                                  style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 130px;"></span>
+                                        </div>
                                         <span class="input-group-addon btn btn-default btn-file"><span
                                                 class="fileinput-new">Select file</span><span
                                                 class="fileinput-exists">Change</span>
-                                                        <!--<div style=''>-->
-                                                        <input type="file" name="{{id}}-org" id="{{id}}-org" onchange="loadAndResizeFile(event,'{{id}}')">
-                                                        <!--</div>-->
+                                            <!--<div style=''>-->
+                                                        <input type="file" name="{{id}}-org" id="{{id}}-org"
+                                                               onchange="loadAndResizeFile(event,'{{id}}')">
+                                            <!--</div>-->
                                                 </span>
                                         <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
-                                           <!--data-dismiss="fileinput">Remove</a>-->
+                                        <!--data-dismiss="fileinput">Remove</a>-->
                                     </div>
                                 </div>
                             {{/if}}
@@ -172,7 +178,7 @@
 
                         <div class="w3-row">
                             <div class="form-group">
-                                <div class="w3-col m6 s6">
+                                <div class="w3-col m12 s12">
                                     <p align="center">
                                         <button type="submit" id="preview-{{@index}}"
                                                 title='Enable this button after "terms" are accepted and checked'
@@ -181,30 +187,37 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="w3-col m6 s6">
-                                <p align="center">
-                                    <button type="button" id="donebutton-{{@index}}"
-                                            title="Enable this button after all pages are designed and previewed"
-                                            class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
-                                            onclick="sendSVG('{{../tid}}')" disabled><b>DONE »</b></button>
-                                </p>
-                            </div>
-                            <!--<div class="w3-col m4 s12">-->
-                            <!--<p align="center">-->
-                            <!--<button type="button"-->
-                            <!--class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"-->
-                            <!--onclick="location.href='/design/design/123';"><b>USE TOOL »</b>-->
-                            <!--</button>-->
-                            <!--</p>-->
-                            <!--</div>-->
                         </div>
                     </form>
                 </div>
             </div>
-            <hr>
+        {{/each}}
+        <!--<hr>-->
+        <div class="w3-card-4 w3-margin w3-white">
+            <div class="w3-container">
+                <div class="w3-row">
+                    <div class="form-group">
+                        <p>
+                            <label class="uber-input">
+                                <br/>
+                                This button will be enabled after you fill out the forms and preview on all
+                                pages excluding <span class="glyphicon glyphicon-remove-circle"></span>. Please make
+                                sure you are satisfied with your updates before clicking this button.
+                            </label>
+                        </p>
+                    </div>
+                    <div class="w3-col m12 s12">
+                        <p align="center">
+                            <button type="button" id="donebutton"
+                                    title="Enable this button after all pages are designed and previewed"
+                                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                                    onclick="sendSVG('{{../tid}}')" disabled><b>DONE »</b></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    {{/each}}
-
+    </div>
 </div>
 
 <div class="transbox" id="terms">
@@ -264,14 +277,11 @@
     <script>
         var previews = [];
         // maximum template number = 8
-        var zoomStatus = [0,0,0,0,0,0,0,0];
-        var zooms = ["","","","","","","",""];
-        var ignoreStatus = [0,0,0,0,0,0,0,0];
-//        var imgOrientation = [];
+        var zoomStatus = [0, 0, 0, 0, 0, 0, 0, 0];
+        var zooms = ["", "", "", "", "", "", "", ""];
+        var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
+        //        var imgOrientation = [];
         $(document).ready(function () {
-            $(document).on('click', 'svgObj-0', function(event) {
-                console.log("clicked");
-            });
             // populate the zoom data
             var zoomStr = '{{zooms}}';
 //            console.log("zooms:"+zoomStr);
@@ -280,14 +290,14 @@
             do {
                 var sep = tempStr.indexOf(';');
                 var aZoomStr = tempStr.substring(0, sep);
-                tempStr = tempStr.substring(sep+1);
+                tempStr = tempStr.substring(sep + 1);
 //                console.log("aZoomStr:"+aZoomStr);
                 if (aZoomStr.length !== 0) {
                     zooms[count++] = aZoomStr;
                 }
                 else
                     break;
-            } while(true);
+            } while (true);
 //            console.log("lastzoom:"+zooms[count-1]);
             count = 0;
             do {
@@ -320,7 +330,7 @@
                                         var curDate = null;
                                         var count = 0;
                                         do {
-                                    console.log("count:" + count++);
+                                            console.log("count:" + count++);
                                             date = new Date();
                                             do {
                                                 curDate = new Date();
@@ -331,15 +341,7 @@
                             }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
-                            var total = 0;
-                            for (var i = 0; i < previews.length; i++) {
-                                total += previews[i];
-                            }
-//                            console.log("total previews:" + total + "," + previews.length);
-                            if (total === previews.length) {
-                                // enable DONE buttons
-                                turnOnButton("donebutton");
-                            }
+                            checkDone();
                             unlockScreen();
                         }
                     });
@@ -361,9 +363,25 @@
                 previews.push(0);
         });
 
-        window.loadAndResizeFile = function(e,id){
-            console.log("loadAndResizeFile:"+id);
-            EXIF.getData(e.target.files[0], function() {
+        function checkDone() {
+            var total = 0;
+            for (var i = 0; i < previews.length; i++) {
+                if (ignoreStatus[i] === 1)
+                    total++;
+                else
+                    total += previews[i];
+            }
+//                            console.log("total previews:" + total + "," + previews.length);
+            if (total === previews.length) {
+                // enable DONE buttons
+                document.getElementById("donebutton").disabled = false;
+            }
+            else
+                document.getElementById("donebutton").disabled = true;
+        }
+        window.loadAndResizeFile = function (e, id) {
+            console.log("loadAndResizeFile:" + id);
+            EXIF.getData(e.target.files[0], function () {
                 var orientation = EXIF.getTag(this, "Orientation");
 //                alert("orientation:"+orientation);
                 // Read in file
@@ -402,7 +420,7 @@
                             canvas.height = height;
                             var ctx = canvas.getContext('2d');
 
-                            switch(orientation){
+                            switch (orientation) {
                                 case 2:
                                     // horizontal flip
                                     ctx.translate(canvas.width, 0);
@@ -448,7 +466,8 @@
                                     ctx.rotate(-0.5 * Math.PI);
                                     ctx.translate(-width, 0);
                                     break;
-                            };
+                            }
+                            ;
 
                             ctx.drawImage(image, 0, 0, width, height);
                             var dataUrl = canvas.toDataURL('image/jpeg');
@@ -464,12 +483,13 @@
                         image.src = readerEvent.target.result;
                     };
                     reader.readAsDataURL(file);
-                };
+                }
+                ;
             });
         };
 
         /* Utility function to convert a canvas to a BLOB */
-        var dataURLToBlob = function(dataURL) {
+        var dataURLToBlob = function (dataURL) {
             var BASE64_MARKER = ';base64,';
             if (dataURL.indexOf(BASE64_MARKER) == -1) {
                 var parts = dataURL.split(',');
@@ -498,18 +518,18 @@
             if (to === "in") {
                 ele.onclick = zoominSVG;
                 //ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
-                ele.setAttribute("class","w3-right w3-padding-small glyphicon glyphicon-zoom-in");
+                ele.setAttribute("class", "w3-right w3-padding-small glyphicon glyphicon-zoom-in");
                 zoomStatus[templateIndex] = 0;
             }
             else {
                 ele.onclick = zoomoutSVG;
 //                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
-                ele.setAttribute("class","w3-right w3-padding-small glyphicon glyphicon-zoom-out");
+                ele.setAttribute("class", "w3-right w3-padding-small glyphicon glyphicon-zoom-out");
                 zoomStatus[templateIndex] = 1;
             }
         }
         function zoominSVG() {
-            var elms = document.querySelectorAll("#svgObj-"+templateIndex);
+            var elms = document.querySelectorAll("#svgObj-" + templateIndex);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
                 var subdoc = getSubDocument(elms[i]);
@@ -519,7 +539,7 @@
             var svg = subdoc.getElementsByTagName("svg")[0];
 //            console.log("subdoc:"+subdoc+",svg:"+svg);
             if (svg !== null && svg !== undefined) {
-                svg.setAttribute("viewBox",zooms[templateIndex]);
+                svg.setAttribute("viewBox", zooms[templateIndex]);
                 var rect = svg.getBoundingClientRect();
 //                console.log( rect.width );
 //                console.log( rect.height);
@@ -528,7 +548,7 @@
             switchZoomTo("out");
         }
         function zoomoutSVG() {
-            var elms = document.querySelectorAll("#svgObj-"+templateIndex);
+            var elms = document.querySelectorAll("#svgObj-" + templateIndex);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
                 var subdoc = getSubDocument(elms[i]);
@@ -538,7 +558,7 @@
             var svg = subdoc.getElementsByTagName("svg")[0];
 //            console.log("subdoc:"+subdoc+",svg:"+svg);
             if (svg !== null && svg !== undefined) {
-                svg.setAttribute("viewBox","0,0,600,400");
+                svg.setAttribute("viewBox", "0,0,600,400");
                 zoom[templateIndex] = 0;
             }
             switchZoomTo("in");
@@ -618,8 +638,8 @@
                     break;
                 if (count === n) {
                     if (ignoreStatus[count] === 0) {
-                        f.style.display = "inline";
-                        setSVGEleDisplay(count,"jd_nt","overflow: visible; display:inline");
+                        f.style.display = "";
+                        setSVGEleDisplay(count, "jd_nt", "overflow: visible; display:inline");
                     }
                     i.style.borderColor = "darkgrey";
                     i.style.borderWidth = "4px";
@@ -703,7 +723,7 @@
             if (formShown !== 'none') {
                 document.getElementById(formShown).style.display = "none";
             }
-            document.getElementById(id).style.display = "inline";
+            document.getElementById(id).style.display = "";
             formShown = id;
         }
         function hideForm(id) {
@@ -733,7 +753,7 @@
             cover.style.width = width;
             cover.style.height = height;
             cover.style.display = "block";
-            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;"><span class="label label-warning">'+msg+'</span></p>';
+            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;"><span class="label label-warning">' + msg + '</span></p>';
             $("#cover").fadeOut(5000);
         }
         function turnOnCheckbox(id) {
@@ -757,24 +777,25 @@
             }
         }
         function ignore(idx) {
-            var ignoreBtn = document.getElementById("ignore-"+idx);
-            var paramPanel = document.getElementById("form-"+idx);
+            var ignoreBtn = document.getElementById("ignore-" + idx);
+            var paramPanel = document.getElementById("form-" + idx);
             ignoreStatus[idx] = 1 - ignoreStatus[idx];
             if (ignoreStatus[idx] === 1) { // hide
-                ignoreBtn.setAttribute("class","w3-center w3-large glyphicon glyphicon-remove-circle");
+                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-remove-circle");
                 paramPanel.style.display = "none";
-                setSVGEleDisplay(idx,"jd_nt","overflow: visible; display:none");
+                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:none");
             }
             else {
-                ignoreBtn.setAttribute("class","w3-center w3-large glyphicon glyphicon-ok-circle");
+                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-ok-circle");
                 if (templateIndex == idx) {
-                    paramPanel.style.display = "inline";
-                    setSVGEleDisplay(idx,"jd_nt", "overflow: visible; display:inline");
+                    paramPanel.style.display = "";
+                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
                 }
             }
+            checkDone();
         }
-        function setSVGEleDisplay(idx,eleName,displayVal) {
-            var elms = document.querySelectorAll("#svgObj-"+idx);
+        function setSVGEleDisplay(idx, eleName, displayVal) {
+            var elms = document.querySelectorAll("#svgObj-" + idx);
             var subdoc = null;
             for (var i = 0; i < elms.length; i++) {
                 var subdoc = getSubDocument(elms[i]);
@@ -784,7 +805,7 @@
             var ele = subdoc.getElementById("jd_nt");
 //            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
             if (ele !== null && ele !== undefined) {
-                ele.setAttribute("style",displayVal);
+                ele.setAttribute("style", displayVal);
             }
         }
     </script>
