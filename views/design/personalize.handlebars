@@ -211,7 +211,7 @@
                             <button type="button" id="donebutton"
                                     title="Enable this button after all pages are designed and previewed"
                                     class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
-                                    onclick="sendSVG('{{../tid}}')" disabled><b>DONE »</b></button>
+                                    onclick="sendSVG('{{tid}}')" disabled><b>DONE »</b></button>
                         </p>
                     </div>
                 </div>
@@ -664,6 +664,7 @@
         }
         // send SVG doc to server
         function sendSVG(tid) {
+            console.log("tid:"+tid);
             count = 0;
             var form = document.createElement("form");
             form.setAttribute("method", "post");
@@ -723,7 +724,7 @@
             if (formShown !== 'none') {
                 document.getElementById(formShown).style.display = "none";
             }
-            document.getElementById(id).style.display = "";
+            document.getElementById(id).style.display = "inline";
             formShown = id;
         }
         function hideForm(id) {
