@@ -78,8 +78,8 @@
 
                 </div>
             {{/each}}
-            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-tiny glyphicon glyphicon-zoom-in"
-                  aria-hidden="true"></span>
+            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-medium glyphicon glyphicon-zoom-in"
+                  style="font-size:16px;" aria-hidden="true"></span>
             <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
                 <!--<div class="w3-center" align="center">-->
                 <table>
@@ -518,13 +518,13 @@
             if (to === "in") {
                 ele.onclick = zoominSVG;
                 //ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
-                ele.setAttribute("class", "w3-right w3-padding-small glyphicon glyphicon-zoom-in");
+                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-in");
                 zoomStatus[templateIndex] = 0;
             }
             else {
                 ele.onclick = zoomoutSVG;
 //                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
-                ele.setAttribute("class", "w3-right w3-padding-small glyphicon glyphicon-zoom-out");
+                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-out");
                 zoomStatus[templateIndex] = 1;
             }
         }
