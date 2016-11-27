@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="svg4693"
+   viewBox="0 0 600 400"
+   height="400"
+   width="600">
+  <defs
+     id="defs4142">
+    <clipPath
+       id="clipPath4746"
+       clipPathUnits="userSpaceOnUse">
+      <rect
+         y="46.25"
+         x="175.70312"
+         height="319.75"
+         width="230.29688"
+         id="rect4748"
+         style="fill:none;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata4698">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <image
+     xlink:href="0020002-3.jpg"
+     y="0"
+     x="0"
+     id="image5249"
+     preserveAspectRatio="none"
+     height="400"
+     width="600" />
+  <g
+     id="layer1">
+    <image
+       xlink:href="drawing.png"
+       clip-path="url(#clipPath4746)"
+       y="46.25"
+       x="175.70312"
+       id="image4185"
+       preserveAspectRatio="none"
+       height="303.5"
+       width="212.59375"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-opacity:1" />
+  </g>
+</svg>
