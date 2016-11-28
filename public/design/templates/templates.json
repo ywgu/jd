@@ -17,7 +17,7 @@
       "gid": "002",
       "list": [
         {"tid": "0020001", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Stephanie"}] ]},
-        {"tid": "0020002", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "0020002", "zooms":["317,239,179,130","177,67,181,277","178,173,256,195","167,36,229,326"], "inputs":[ [{"image":false,"id":"text01","title":"GW"}], [{"image":true,"id":"image11","title":"Clinton","processing":"gpc"}],[{"image":false,"id":"text21","title":"I Love You"},{"image":false,"id":"text22","title":"I am who..."},{"image":false,"id":"text23","title":"of you. You..."},{"image":false,"id":"text24","title":"hope and..."},{"image":false,"id":"text25","title":"I've ever..."},{"image":false,"id":"text26","title":"Stephanie"}], [{"image":true,"id":"image31","title":"Girl","processing":"gpc"}] ]},
         {"tid": "0020003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
         {"tid": "0020004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
       ]

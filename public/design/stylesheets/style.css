@@ -209,16 +209,16 @@ ul.navi li:hover ul li.r {
   transform: translatex(80px) translatey(40px);
 }
 
-#SvgjsSvg1001 {
-  margin: 2px;
-  position: absolute;
-  top: 49%;
-  left: 49%;
-  width: auto;
-  height: 98%;
-  -ms-transform: translate(-49%, -49%);
-  transform: translate(-49%, -49%);
-}
+/*#SvgjsSvg1001 {*/
+  /*margin: 2px;*/
+  /*position: absolute;*/
+  /*top: 49%;*/
+  /*left: 49%;*/
+  /*width: auto;*/
+  /*height: 98%;*/
+  /*-ms-transform: translate(-49%, -49%);*/
+  /*transform: translate(-49%, -49%);*/
+/*}*/
 
 div.done {
   margin: 2px;
