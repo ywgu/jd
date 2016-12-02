@@ -6,23 +6,24 @@
 </header>
 
 <!-- Grid -->
-        <div class="w3-content w3-display-container">
-            <img src="" style="width:0%">
-            {{#each imagelist}}
-                    <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
-                            style="width:100%">
-                    </object>
-            {{/each}}
-            <img src="" style="width:0%">
-            <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
-            <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
-        </div>
+<div class="w3-content w3-display-container">
+    <img src="" style="width:0%">
+    {{#each imagelist}}
+        <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
+                style="width:100%">
+        </object>
+    {{/each}}
+    <a id="play" class="w3-display-topright" style="margin-top:20px" onclick="pause()">
+        <span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span></a>
+    <img src="" style="width:0%">
+</div>
 
 
 {{#section 'jquery'}}
     <script>
         var imageIndex = 0;
-//        showImage(imageIndex);
+        var isPause = 0;
+        //        showImage(imageIndex);
 
         function showImage(n) {
             console.log("showImage:" + n);
@@ -46,48 +47,66 @@
             } while (true);
         }
 
+        function pause() {
+            var ele = document.getElementById("play");
+            ele.onclick = play;
+            ele.innerHTML = '<span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-play" aria-hidden="false"></span>';
+            isPause = 1;
+        }
+        function play() {
+            var ele = document.getElementById("play");
+            ele.onclick = pause;
+            ele.innerHTML = '<span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
+            isPause = 0;
+            carousel();
+        }
         var slideIndex = 0;
-        showDivs(slideIndex);
+        //        showDivs(slideIndex);
         carousel();
 
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                if (i === slideIndex-1) {
-                    console.log("show "+i);
-                    x[slideIndex-1].style.width = "100%";
-                    x[slideIndex-1].style.height = "100%";
-                }
-                else {
-                    x[i].style.width = "0%";
-                    x[i].style.height = "0%";
-                }
-            }
-        }
+        //        function plusDivs(n) {
+        //            showDivs(slideIndex += n);
+        //        }
+        //
+        //        function showDivs(n) {
+        //            var i;
+        //            var x = document.getElementsByClassName("mySlides");
+        //            if (n > x.length) {slideIndex = 1}
+        //            if (n < 1) {slideIndex = x.length}
+        //            for (i = 0; i < x.length; i++) {
+        //                if (i === slideIndex-1) {
+        //                    console.log("show "+i);
+        //                    x[slideIndex-1].style.width = "100%";
+        //                    x[slideIndex-1].style.height = "100%";
+        //                }
+        //                else {
+        //                    x[i].style.width = "0%";
+        //                    x[i].style.height = "0%";
+        //                }
+        //            }
+        //        }
         function carousel() {
+            if (isPause === 1)
+                return;
             var x = document.getElementsByClassName("mySlides");
             slideIndex++;
-            if (slideIndex > x.length) {slideIndex = 1}
+            if (slideIndex > x.length) {
+                slideIndex = 1
+            }
             var i;
             for (i = 0; i < x.length; i++) {
-                if (i === slideIndex-1) {
+                if (i === slideIndex - 1) {
 //                    console.log("show "+i);
-                    x[slideIndex-1].style.width = "100%";
-                    x[slideIndex-1].style.height = "100%";
+                    x[slideIndex - 1].style.width = "100%";
+                    x[slideIndex - 1].style.height = "100%";
                 }
                 else {
                     x[i].style.width = "0%";
                     x[i].style.height = "0%";
                 }
             }
-            setTimeout(carousel,2000); // Change image every 2 seconds
+            if (isPause === 0)
+                setTimeout(carousel, 1000); // Change image every 2 seconds
         }
     </script>
 {{/section}}

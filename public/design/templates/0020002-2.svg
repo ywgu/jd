@@ -54,16 +54,6 @@
          x="301.13867"
          id="text22">I am who I am because </tspan></text>
     <text
-       id="text5327-7-6"
-       y="281.0946"
-       x="302.21896"
-       style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-size:20px;text-align:center;text-anchor:middle"
-         y="281.0946"
-         x="302.21896"
-         id="text23">hope and every dream</tspan></text>
-    <text
        id="text5327-7-68"
        y="253.90485"
        x="301.13867"
@@ -72,7 +62,17 @@
          style="font-size:20px;text-align:center;text-anchor:middle"
          y="253.90485"
          x="301.13867"
-         id="text24">of you. You are every</tspan></text>
+         id="text23">of you. You are every</tspan></text>
+    <text
+       id="text5327-7-6"
+       y="281.0946"
+       x="302.21896"
+       style="font-style:normal;font-weight:normal;font-size:27.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-size:20px;text-align:center;text-anchor:middle"
+         y="281.0946"
+         x="302.21896"
+         id="text24">hope and every dream</tspan></text>
     <text
        id="text5327-7-3"
        y="308.36469"
