@@ -1,0 +1,93 @@
+<!-- Header -->
+<header class="w3-container">
+    <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+    <h3 style="margin:10px;"><b>Your finished design</b></h3>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</header>
+
+<!-- Grid -->
+        <div class="w3-content w3-display-container">
+            <img src="" style="width:0%">
+            {{#each imagelist}}
+                    <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
+                            style="width:100%">
+                    </object>
+            {{/each}}
+            <img src="" style="width:0%">
+            <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
+            <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
+        </div>
+
+
+{{#section 'jquery'}}
+    <script>
+        var imageIndex = 0;
+//        showImage(imageIndex);
+
+        function showImage(n) {
+            console.log("showImage:" + n);
+            imageIndex = n;
+
+            count = 0;
+            do {
+                var i = document.getElementById("icon-" + count);
+                if (i === null || i === undefined)
+                    break;
+                if (count === n) {
+                    i.style.borderColor = "darkgrey";
+                    i.style.borderWidth = "4px";
+                    document.getElementById("svgObj-" + count).style.width = "100%";
+                }
+                else {
+                    i.style.borderWidth = "0px";
+                    document.getElementById("svgObj-" + count).style.width = "0%";
+                }
+                count++;
+            } while (true);
+        }
+
+        var slideIndex = 0;
+        showDivs(slideIndex);
+        carousel();
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+                if (i === slideIndex-1) {
+                    console.log("show "+i);
+                    x[slideIndex-1].style.width = "100%";
+                    x[slideIndex-1].style.height = "100%";
+                }
+                else {
+                    x[i].style.width = "0%";
+                    x[i].style.height = "0%";
+                }
+            }
+        }
+        function carousel() {
+            var x = document.getElementsByClassName("mySlides");
+            slideIndex++;
+            if (slideIndex > x.length) {slideIndex = 1}
+            var i;
+            for (i = 0; i < x.length; i++) {
+                if (i === slideIndex-1) {
+//                    console.log("show "+i);
+                    x[slideIndex-1].style.width = "100%";
+                    x[slideIndex-1].style.height = "100%";
+                }
+                else {
+                    x[i].style.width = "0%";
+                    x[i].style.height = "0%";
+                }
+            }
+            setTimeout(carousel,2000); // Change image every 2 seconds
+        }
+    </script>
+{{/section}}

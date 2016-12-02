@@ -23,7 +23,7 @@
     </clipPath>
   </defs>
   <image
-     xlink:href="0020002-3.jpg"
+     xlink:href="/design/templates/0020002-3.jpg"
      y="0"
      x="0"
      id="jd_bg"
@@ -33,7 +33,7 @@
   <g
      id="jd_nt">
     <image
-       xlink:href="drawing.png"
+       xlink:href="/design/templates/drawing.png"
        y="46.25"
        x="175.70312"
        id="image31"

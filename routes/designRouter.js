@@ -181,9 +181,9 @@ designRouter.route('/done')
         result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(result);
     });
-designRouter.route('/showdesign')
+designRouter.route('/donedesign')
     .get(function (req, res, next) {
-        console.log('showdesign!');
+        console.log('donedesign!');
         count = 0;
         imgs = "{\"images\":[ ";
         tidx = "";
@@ -202,7 +202,7 @@ designRouter.route('/showdesign')
         } while (true);
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         console.log("imgs:" + imgs);
-        res.render('design/showdesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx});
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx});
     });
 
 designRouter.route('/:designId')

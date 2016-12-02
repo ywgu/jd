@@ -29,9 +29,11 @@
         bottom: 20px;
         left: 30px;
     }
+
     div.form-group {
         margin-bottom: 8px;
     }
+
     #cover {
         position: absolute;
         top: 0;
@@ -42,12 +44,6 @@
         background: #aaa;
         z-index: 10;
         display: none;
-    }
-
-    #zoom {
-        /*width: 40px;*/
-        /*height: 40px;*/
-        position: relative;
     }
 
     table {
@@ -70,20 +66,21 @@
 <div class="w3-row">
     <div class="w3-col l6 s12">
         <div class="w3-card-2" style="background-color: white">
-            {{#each inputs}}
-                <div id="svgc-{{@index}}">
-                    <object id="svgObj-{{@index}}" type="image/svg+xml"
-                            data="/design/templates/{{../tid}}-{{@index}}.svg"
-                            style="width:100%;">
-                        Your browser does not support SVG
-                    </object>
-
-                </div>
-            {{/each}}
-            <span id="zoom" onclick="zoominSVG()" class="w3-right w3-padding-medium glyphicon glyphicon-zoom-in"
-                  style="font-size:16px;" aria-hidden="true"></span>
+            <div class="w3-content w3-display-container">
+                {{#each inputs}}
+                    <div id="svgc-{{@index}}">
+                        <object id="svgObj-{{@index}}" type="image/svg+xml"
+                                data="/design/templates/{{../tid}}-{{@index}}.svg"
+                                style="width:100%;">
+                            Your browser does not support SVG
+                        </object>
+                    </div>
+                {{/each}}
+                <a id="zoom" class="w3-display-topright"
+                   onclick="zoominSVG()">
+                    <span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span></a>
+            </div>
             <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
-                <!--<div class="w3-center" align="center">-->
                 <table>
                     <tr>
                         {{#each inputs}}
@@ -203,7 +200,8 @@
                             <label class="uber-input">
                                 <br/>
                                 This button will be enabled after you fill out the forms and preview on all
-                                pages excluding <span class="glyphicon glyphicon-remove-circle w3-text-red"></span>. Please make
+                                pages excluding <span class="glyphicon glyphicon-remove-circle w3-text-red"></span>.
+                                Please make
                                 sure you are satisfied with your updates before clicking this button.
                             </label>
                         </p>
@@ -519,14 +517,14 @@
             var ele = document.getElementById("zoom");
             if (to === "in") {
                 ele.onclick = zoominSVG;
-                //ele.innerHTML = '<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>';
-                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-in");
+                ele.innerHTML = '<span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span>';
+//                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-in");
                 zoomStatus[templateIndex] = 0;
             }
             else {
                 ele.onclick = zoomoutSVG;
-//                ele.innerHTML = '<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>';
-                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-out");
+                ele.innerHTML = '<span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-out" aria-hidden="false"></span>';
+//                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-out");
                 zoomStatus[templateIndex] = 1;
             }
         }
@@ -666,7 +664,7 @@
         }
         // send SVG doc to server
         function sendSVG(tid) {
-            console.log("tid:"+tid);
+            console.log("tid:" + tid);
             count = 0;
             var form = document.createElement("form");
             form.setAttribute("method", "post");
@@ -714,7 +712,7 @@
                 },
                 success: function (data) {
                     console.log(data);
-                    window.location = "/design/showdesign?" + data;
+                    window.location = "/design/donedesign?" + data;
                 }
             });
         }
