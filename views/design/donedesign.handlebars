@@ -13,12 +13,14 @@
                 style="width:100%">
         </object>
     {{/each}}
-    <a id="play" class="w3-display-topright" style="margin-top:20px" onclick="pause()">
-        <span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span></a>
+
     <img src="" style="width:0%">
 </div>
-
-
+<hr/>
+<div class="w3-content w3-display-container">
+<a id="play" class="w3-display-bottommiddle" onclick="pause()">
+    <span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span></a>
+</div>
 {{#section 'jquery'}}
     <script>
         var imageIndex = 0;
@@ -50,13 +52,13 @@
         function pause() {
             var ele = document.getElementById("play");
             ele.onclick = play;
-            ele.innerHTML = '<span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-play" aria-hidden="false"></span>';
+            ele.innerHTML = '<span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-play" aria-hidden="false"></span>';
             isPause = 1;
         }
         function play() {
             var ele = document.getElementById("play");
             ele.onclick = pause;
-            ele.innerHTML = '<span style="font-size:16px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
+            ele.innerHTML = '<span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
             isPause = 0;
             carousel();
         }

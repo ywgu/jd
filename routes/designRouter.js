@@ -183,7 +183,7 @@ designRouter.route('/done')
     });
 designRouter.route('/donedesign')
     .get(function (req, res, next) {
-        console.log('donedesign!');
+        // console.log('donedesign!');
         count = 0;
         imgs = "{\"images\":[ ";
         tidx = "";
@@ -203,6 +203,46 @@ designRouter.route('/donedesign')
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         console.log("imgs:" + imgs);
         res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx});
+    });
+
+designRouter.route('/showdesign/:did')
+    .get(function (req, res, next) {
+        var templates = req.app.get('templates');
+        var did = req.params.did;
+        var tid = did.substring(did.indexOf('-')+1);
+        // console.log("tid:"+tid);
+        var gid = tid.substr(0, 3);   // the first 3 characters are group id
+        // console.log("gid:"+gid);
+        var totalPage;
+        var zoomList = null;
+        var done = false;
+        for (var i = 0; i < templates.templates.length; i++) {
+            // console.log("templates.templates[i].gid:"+templates.templates[i].gid);
+            if (templates.templates[i].gid === gid) {
+                templateList = templates.templates[i].list;
+                // found the category
+                for (var j = 0; j < templateList.length; j++) {
+                    // console.log("templateList[j].tid:"+templateList[j].tid);
+                    if (templateList[j].tid == tid) {
+                        zoomList = templateList[j].zooms;
+                        totalPage = zoomList.length;
+                        console.log("totalPage:"+totalPage);
+                        done = true;
+                        break;
+                    }
+                }
+            }
+            if (done === true)
+                break;
+        }
+        var count = 0;
+        var imgs = "{\"images\":[ ";
+        for (var i = 0; i<totalPage; i++) {
+            imgs += "{\"image\":\"" + did + "-"+i+".svg\"},";
+        }
+        imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        console.log("imgs:" + imgs);
+        res.render('design/showdesign', {did: req.params.did, imagelist: JSON.parse(imgs).images, pages: totalPage, layout: 'design'});
     });
 
 designRouter.route('/:designId')
@@ -359,5 +399,26 @@ function processImage(imgInfo) {    // imgInfo : imgPath|imgData
     // send the work to child process
     childProcess.send(imgInfo);
 }
+
+// converting svg to png
+// require the image editing file
+var svgtopng = path.resolve(__dirname, '../svgtopng.js');
+function svgtopng(imgInfo) {    // imgInfo : imgPath|imgRect(area of the image to extract)
+    // We need to spawn a child process so that we do not block
+    // the EventLoop with cpu intensive image manipulation
+    var childProcess = require('child_process').fork(imgprocessor);
+    childProcess.on('message', function (message) {
+        console.log(message);
+    });
+    childProcess.on('error', function (error) {
+        console.error(error.stack)
+    });
+    childProcess.on('exit', function () {
+        console.log('process exited');
+    });
+    // send the work to child process
+    childProcess.send(imgInfo);
+}
+
 
 module.exports = designRouter;

@@ -1,61 +1,22 @@
 <!-- Header -->
 <header class="w3-container">
     <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
-    <h3 style="margin:10px;"><b>Your finished design</b></h3>
+    <h3 style="margin:10px;"><b>Design for {{did}}</b></h3>
 </header>
 
 <!-- Grid -->
 <div class="w3-row">
-    <div class="w3-col l12 s12">
-        <div class="w3-card-2 w3-margin w3-margin-top" style="background-color: white">
-            {{#each imagelist}}
+
+    {{#each imagelist}}
+        <div class="w3-topbar w3-bottombar w3-border-blue">
+                <a href="/designs/{{image}}"><b>--></b> 点击链接下载图片打印</a>
                 <div>
-                    <object id="svgObj-{{@index}}" type="image/svg+xml" data="/designs/{{image}}"
+                    <object id="svgO-{{@index}}" type="image/svg+xml" data="/designs/{{image}}"
                             style="width:100%">
                         Your browser does not support SVG
                     </object>
                 </div>
-            {{/each}}
-            <div class="w3-container w3-dark-grey w3-padding-8 w3-xlarge">
-                <div class="w3-center">
-                    {{#each imagelist}}
-                        <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
-                              onclick="showImage({{@index}})"><img
-                                src="/design/templates/{{../tid}}-{{@index}}.png"
-                                alt="front"></span>
-                    {{/each}}
-                </div>
-            </div>
+                <!--<img src="" style="width:100%;height:0px;"/>-->
         </div>
-        <hr>
-    </div>
+    {{/each}}
 </div>
-
-{{#section 'jquery'}}
-    <script>
-        var imageIndex = 0;
-        showImage(imageIndex);
-
-        function showImage(n) {
-            console.log("showImage:" + n);
-            imageIndex = n;
-
-            count = 0;
-            do {
-                var i = document.getElementById("icon-" + count);
-                if (i === null || i === undefined)
-                    break;
-                if (count === n) {
-                    i.style.borderColor = "darkgrey";
-                    i.style.borderWidth = "4px";
-                    document.getElementById("svgObj-" + count).style.width = "100%";
-                }
-                else {
-                    i.style.borderWidth = "0px";
-                    document.getElementById("svgObj-" + count).style.width = "0%";
-                }
-                count++;
-            } while (true);
-        }
-    </script>
-{{/section}}
