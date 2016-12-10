@@ -236,12 +236,30 @@ designRouter.route('/showdesign/:did')
                 break;
         }
         var count = 0;
+        var lastImage;
         var imgs = "{\"images\":[ ";
         for (var i = 0; i<totalPage; i++) {
-            imgs += "{\"image\":\"" + did + "-"+i+".svg\"},";
+            lastImage = did + "-"+i;
+            imgs += "{\"image\":\"" + lastImage+".svg\"},";
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
-        console.log("imgs:" + imgs);
+        lastImage += ".png";
+        console.log("imgs:" + imgs+",lastImage:"+lastImage);
+
+        // processing image if it is not ready
+        console.log("zoomList:"+zoomList);
+        // check if the last image exists
+        fs.stat(designDir+'/'+lastImage, function(err, stat) {
+            if(err == null) {
+                console.log('File exists'); // do nothing
+            } else if(err.code == 'ENOENT') {
+                // file does not exist
+                // start a process to generate images
+                svgtopng(imgs +"|"+zoomList);
+            } else {
+                console.log('File stats error: ', err.code);
+            }
+        });
         res.render('design/showdesign', {did: req.params.did, imagelist: JSON.parse(imgs).images, pages: totalPage, layout: 'design'});
     });
 
@@ -402,11 +420,11 @@ function processImage(imgInfo) {    // imgInfo : imgPath|imgData
 
 // converting svg to png
 // require the image editing file
-var svgtopng = path.resolve(__dirname, '../svgtopng.js');
+var svgtopngProcessor = path.resolve(__dirname, '../svgtopng.js');
 function svgtopng(imgInfo) {    // imgInfo : imgPath|imgRect(area of the image to extract)
     // We need to spawn a child process so that we do not block
     // the EventLoop with cpu intensive image manipulation
-    var childProcess = require('child_process').fork(imgprocessor);
+    var childProcess = require('child_process').fork(svgtopngProcessor);
     childProcess.on('message', function (message) {
         console.log(message);
     });

@@ -36,7 +36,7 @@ process.on('message', function (imgInfo) {
             console.log(err);
         else {
             gm(imgPath)
-                .resize(1050,788)   // 7 inch x 5.25 inch with 150 dpi
+                .resize(1600,1600)   // 4 inch x 4 inch with 400 dpi
                 .colorspace("GRAY")
                 .operator('gray','negate','100%')
                 .modulate(100,0,100)  // brightness +30%

@@ -401,7 +401,7 @@
 
                             // Resize the image
                             var canvas = document.createElement('canvas'),
-                                    max_size = 1000,// TODO : pull max size from a site config
+                                    max_size = 1600,// NOTE: 400 dpi * 4 inch = 1600 pixel
                                     width = image.width,
                                     height = image.height;
                             if (width > height) {
@@ -558,7 +558,7 @@
             var svg = subdoc.getElementsByTagName("svg")[0];
 //            console.log("subdoc:"+subdoc+",svg:"+svg);
             if (svg !== null && svg !== undefined) {
-                svg.setAttribute("viewBox", "0,0,600,400");
+                svg.setAttribute("viewBox", "0,0,1600,1000");
                 zoom[templateIndex] = 0;
             }
             switchZoomTo("in");
