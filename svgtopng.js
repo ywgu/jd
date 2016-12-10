@@ -2,6 +2,7 @@
  * Created by William Gu on 2016/12/3.
  */
 var gmm = require('gm');
+var fs  = require("fs");
 var path = require('path');
 var dataDir = path.normalize(path.join(__dirname, '.', 'public'));
 var designDir = path.join(dataDir, "designs");
@@ -13,7 +14,8 @@ process.on('message', function (imgInfo) {
     var zoomStr = imgInfo.substring(imgInfo.lastIndexOf('|')+1)+",";
     var count = 0;
     for (var i=0; i<imgList.length; i++) {
-        var imgPath = designDir+"/"+imgList[i].image;
+        var imgPath = designDir+"/"+imgList[i].image+".svg";
+        var tempImgPath = designDir+"/temp-"+imgList[i].image+".svg";
         var imgDest = imgPath.substring(0,imgPath.lastIndexOf('.'))+".png";
         console.log("svgtopng for "+imgPath+" to："+imgDest);
         var x = zoomStr.substring(0,zoomStr.indexOf(','));
@@ -25,8 +27,10 @@ process.on('message', function (imgInfo) {
         var h = zoomStr.substring(0,zoomStr.indexOf(','));
         zoomStr = zoomStr.substring(zoomStr.indexOf(',')+1);
         console.log("x,y,w,h="+x+","+y+","+w+","+h);
-        gmm(designDir+"/"+"88615815-0020002-3.svg")
+        preprocess(imgPath,tempImgPath);
+        gmm(tempImgPath)
             // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
+            .crop(w,h,x,y)
             .write(imgDest, function (err) {
                     if (err) {
                         console.log(err);
@@ -41,6 +45,29 @@ process.on('message', function (imgInfo) {
             );
     }
 
+    function preprocess(src, dest) {
+        // delete dest if exists
+        if (fs.existsSync(dest))
+            fs.unlinkSync(dest);
+        fs.readFileSync(src).toString().split('\n').forEach(function (line) {
+            if (line.indexOf("jd_bg") > 0) {
+                // remove this line
+                line = "";
+            }
+            else if (line.indexOf("jd_nt") > 0) {
+                // remove the clip-path attribute
+                line = line.replace("clip-path", "cp");
+            }
+            else if (line.indexOf("\"/temp/") > 0) {
+                line = line.replace("\"/temp/","\""+dataDir+"/temp/");
+            }
+            else if (line.indexOf("\"/design/") > 0) {
+                line = line.replace("\"/design/","\""+dataDir+"/design/");
+            }
+            // console.log(line);
+            fs.appendFileSync(dest, line.toString() + "\n");
+        });
+    }
 
     // // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf('/')+1)+imgInfo.substring(imgInfo.lastIndexOf('/')+4);
     // var imgPath = imgInfo.substring(0,imgInfo.indexOf('|'));

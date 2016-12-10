@@ -240,7 +240,7 @@ designRouter.route('/showdesign/:did')
         var imgs = "{\"images\":[ ";
         for (var i = 0; i<totalPage; i++) {
             lastImage = did + "-"+i;
-            imgs += "{\"image\":\"" + lastImage+".svg\"},";
+            imgs += "{\"image\":\"" + lastImage+"\"},";
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         lastImage += ".png";
@@ -251,7 +251,7 @@ designRouter.route('/showdesign/:did')
         // check if the last image exists
         fs.stat(designDir+'/'+lastImage, function(err, stat) {
             if(err == null) {
-                console.log('File exists'); // do nothing
+                console.log('Images were processed. File exists'); // do nothing
             } else if(err.code == 'ENOENT') {
                 // file does not exist
                 // start a process to generate images
