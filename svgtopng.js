@@ -6,6 +6,7 @@ var fs  = require("fs");
 var path = require('path');
 var dataDir = path.normalize(path.join(__dirname, '.', 'public'));
 var designDir = path.join(dataDir, "designs");
+var imageMagick = gmm.subClass({ imageMagick: true });
 
 process.on('message', function (imgInfo) {
     console.log('svgtopng started...'+imgInfo);
@@ -28,7 +29,7 @@ process.on('message', function (imgInfo) {
         zoomStr = zoomStr.substring(zoomStr.indexOf(',')+1);
         console.log("x,y,w,h="+x+","+y+","+w+","+h);
         preprocess(imgPath,tempImgPath);
-        gmm(tempImgPath)
+        imageMagick(tempImgPath)
             // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
             .crop(w,h,x,y)
             .write(imgDest, function (err) {

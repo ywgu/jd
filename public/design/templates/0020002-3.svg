@@ -48,6 +48,7 @@
        xlink:href="/design/templates/drawing.png"
        y="102.21774"
        x="461.34824"
+       preserveAspectRatio = "xMidYMid meet"
        id="image31"
        height="805.24194"
        width="593.43243" />
