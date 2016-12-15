@@ -16,12 +16,13 @@ designRouter.use(bodyParser.json());
 // make sure data directory exists
 var dataDir = path.normalize(path.join(__dirname, '..', 'public'));
 var uploadDir = path.join(dataDir, "uploads");
-var uploadTempDir = path.join(dataDir, "temp");
 var designDir = path.join(dataDir, "designs");
+var uploadTempDir = path.join(dataDir, "designs/temp");
+
 fs.existsSync(dataDir) || fs.mkdirSync(dataDir);
 fs.existsSync(uploadDir) || fs.mkdirSync(uploadDir);
-fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 fs.existsSync(designDir) || fs.mkdirSync(designDir);
+fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 
 designRouter.route('/')
     .get(function (req, res, next) {

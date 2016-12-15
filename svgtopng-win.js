@@ -59,8 +59,8 @@ process.on('message', function (imgInfo) {
                 // remove the clip-path attribute
                 line = line.replace("clip-path", "cp");
             }
-            else if (line.indexOf("\"/temp/") > 0) {
-                line = line.replace("\"/temp/","\""+dataDir+"/temp/");
+            else if (line.indexOf("\"/designs/temp/") > 0) {
+                line = line.replace("\"/designs/temp/","\""+dataDir+"/designs/temp/");
             }
             else if (line.indexOf("\"/design/") > 0) {
                 line = line.replace("\"/design/","\""+dataDir+"/design/");

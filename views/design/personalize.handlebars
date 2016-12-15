@@ -335,7 +335,7 @@
                                             do {
                                                 curDate = new Date();
                                             } while (curDate - date < 2000);
-                                        } while (!imgExists("/temp/" + resJson[key]) && count < 10);
+                                        } while (!imgExists("/designs/temp/" + resJson[key]) && count < 10);
                                     }
                                 }
                             }
@@ -592,9 +592,9 @@
                 if (key.indexOf("image") === 0) {
                     var img = subdoc.getElementById(key);
 //                    console.log("img:" + img + ",value:" + value);
-//                    img.href = "/temp/" + value;
+//                    img.href = "/designs/temp/" + value;
                     img.setAttribute("fill", "red");
-                    img.setAttribute('xlink:href', "/temp/" + value);
+                    img.setAttribute('xlink:href', "/designs/temp/" + value);
                 }
                 else if (key.indexOf("text") === 0) {
                     var txt = subdoc.getElementById(key);

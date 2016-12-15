@@ -35,11 +35,11 @@ process.on('message', function (imgInfo) {
         if (!isWin) {
             var cmd = require('node-cmd');
             var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
-            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath;
+            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho done";
             cmd.get(
                 cmdline,
                 function(data) {
-                    console.log('the result is :',data);
+                    console.log('the result is :',data+'\n\n');
                     imageMagick(tempPngPath)
                     // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
                         .crop(w, h, x, y)
@@ -78,7 +78,7 @@ process.on('message', function (imgInfo) {
         }
     }
 
-    function preprocess(src, dest) {
+    function preprocess(isWin,src, dest) {
         // delete dest if exists
         if (fs.existsSync(dest))
             fs.unlinkSync(dest);
@@ -91,11 +91,21 @@ process.on('message', function (imgInfo) {
                 // remove the clip-path attribute
                 line = line.replace("clip-path", "cp");
             }
-            else if (line.indexOf("\"/temp/") > 0) {
-                line = line.replace("\"/temp/","\""+dataDir+"/temp/");
+            else if (line.indexOf("\"/designs/temp/") > 0) {
+                if (isWin) {
+                    line = line.replace("\"/designs/temp/", "\"" + dataDir + "/designs/temp/");
+                }
+                else {
+                    line = line.replace("\"/designs/temp/", "\"./temp/");
+                }
             }
-            else if (line.indexOf("\"/design/") > 0) {
-                line = line.replace("\"/design/","\""+dataDir+"/design/");
+            else if (line.indexOf("\"/design/templates/") > 0) {
+                if (isWin) {
+                    line = line.replace("\"/design/", "\"" + dataDir + "/design/");
+                }
+                else { // for rsvg to embedded images can only be in subdirectories
+                    line = line.replace("\"/design/templates/", "\"./templateimgs/");
+                }
             }
             // console.log(line);
             fs.appendFileSync(dest, line.toString() + "\n");
