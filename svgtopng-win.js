@@ -29,53 +29,21 @@ process.on('message', function (imgInfo) {
         zoomStr = zoomStr.substring(zoomStr.indexOf(',')+1);
         console.log("x,y,w,h="+x+","+y+","+w+","+h);
         preprocess(imgPath,tempImgPath);
-        // for linux only
-        var isWin = /^win/.test(process.platform);
-        console.log("isWin:"+isWin);
-        if (!isWin) {
-            var cmd = require('node-cmd');
-            var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
-            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath;
-            cmd.get(
-                cmdline,
-                function(data) {
-                    console.log('the result is :',data);
-                    imageMagick(tempPngPath)
-                    // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                        .crop(w, h, x, y)
-                        .write(imgDest, function (err) {
-                                if (err) {
-                                    console.log(err);
-                                    process.exit("something wrong crop png");
-                                    return console.dir(arguments);
-                                }
-                                console.log(this.outname + ' created :: ' + arguments[3]);
-                                count++;
-                                if (count === imgList.length)
-                                    process.exit("DONE");
-                            }
-                        );
-                }
-            )
-        }
-        // end for linux only
-        else {
-            imageMagick(tempImgPath)
+        imageMagick(tempImgPath)
             // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                .crop(w, h, x, y)
-                .write(imgDest, function (err) {
-                        if (err) {
-                            console.log(err);
-                            process.exit("something wrong svg to png");
-                            return console.dir(arguments);
-                        }
-                        console.log(this.outname + ' created :: ' + arguments[3]);
-                        count++;
-                        if (count === imgList.length)
-                            process.exit("DONE");
+            .crop(w,h,x,y)
+            .write(imgDest, function (err) {
+                    if (err) {
+                        console.log(err);
+                        process.exit("something wrong svg to png");
+                        return console.dir(arguments);
                     }
-                );
-        }
+                    console.log(this.outname + ' created :: ' + arguments[3]);
+                    count++;
+                    if (count === imgList.length)
+                        process.exit("DONE");
+                }
+            );
     }
 
     function preprocess(src, dest) {
