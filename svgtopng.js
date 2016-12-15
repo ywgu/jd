@@ -28,9 +28,9 @@ process.on('message', function (imgInfo) {
         var h = zoomStr.substring(0,zoomStr.indexOf(','));
         zoomStr = zoomStr.substring(zoomStr.indexOf(',')+1);
         console.log("x,y,w,h="+x+","+y+","+w+","+h);
-        preprocess(imgPath,tempImgPath);
         // for linux only
         var isWin = /^win/.test(process.platform);
+        preprocess(isWin,imgPath,tempImgPath);
         console.log("isWin:"+isWin);
         if (!isWin) {
             var cmd = require('node-cmd');
