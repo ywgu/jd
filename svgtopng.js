@@ -53,8 +53,8 @@ process.on('message', function (imgInfo) {
                         var y1 = zooms.substring(0, zooms.indexOf(','));
                         zooms = zooms.substring(zooms.indexOf(',') + 1);
                         var w1 = zooms.substring(0, zooms.indexOf(','));
-                        zooms = zooms.substring(zooms.indexOf(',') + 1);
-                        var h1 = zooms.substring(0, zooms.indexOf(','));
+                        var h1 = zooms.substring(zooms.indexOf(',') + 1);
+                        // var h1 = zooms.substring(0, zooms.indexOf(','));
                         console.log("src:" + srcPath + ",dest:" + destPath + ",x:" + x1 + ",y:" + y1 + ",w:" + w1 + ",h:" + h1);
                         imageMagick(srcPath)
                         // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
