@@ -35,7 +35,8 @@ process.on('message', function (imgInfo) {
         console.log("isWin:"+isWin);
         if (!isWin) {
             var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
-            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho |"+imgDest+"|"+tempPngPath+"|"+zoomStr;
+            var thisZoom = x+","+y+","+w+","+h;
+            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho \'|"+imgDest+"|"+tempPngPath+"|"+thisZoom+"\'";
             cmd.get(
                 cmdline,
                 function(data) {
