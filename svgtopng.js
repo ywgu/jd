@@ -40,34 +40,37 @@ process.on('message', function (imgInfo) {
                 cmdline,
                 function(data) {
                     console.log('the result is :'+data+'\n\n');
-                    data = data.substring(data.indexOf('|')+1);
-                    var destPath = data.substring(0,data.indexOf('|'));
-                    data = data.substring(data.indexOf('|')+1);
-                    var srcPath = data.substring(0,data.indexOf('|'));
-                    var zooms = data.substring(data.indexOf('|')+1);
-                    var x1 = zooms.substring(0,zooms.indexOf(','));
-                    zooms = zooms.substring(zooms.indexOf(',')+1);
-                    var y1 = zooms.substring(0,zooms.indexOf(','));
-                    zooms = zooms.substring(zooms.indexOf(',')+1);
-                    var w1 = zooms.substring(0,zooms.indexOf(','));
-                    zooms = zooms.substring(zooms.indexOf(',')+1);
-                    var h1 = zooms.substring(0,zooms.indexOf(','));
-                    console.log("src:"+srcPath+",dest:"+destPath+",x:"+x1+",y:"+y1+",w:"+w1+",h:"+h1);
-                    imageMagick(srcPath)
-                    // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                        .crop(w1, h1, x1, y1)
-                        .write(destPath, function (err) {
-                                if (err) {
-                                    console.log(err);
-                                    process.exit("something wrong crop png");
-                                    return console.dir(arguments);
+                    if (data.indexOf('|') >= 0) {
+                        data = data.substring(data.indexOf('|') + 1);
+
+                        var destPath = data.substring(0, data.indexOf('|'));
+                        data = data.substring(data.indexOf('|') + 1);
+                        var srcPath = data.substring(0, data.indexOf('|'));
+                        var zooms = data.substring(data.indexOf('|') + 1);
+                        var x1 = zooms.substring(0, zooms.indexOf(','));
+                        zooms = zooms.substring(zooms.indexOf(',') + 1);
+                        var y1 = zooms.substring(0, zooms.indexOf(','));
+                        zooms = zooms.substring(zooms.indexOf(',') + 1);
+                        var w1 = zooms.substring(0, zooms.indexOf(','));
+                        zooms = zooms.substring(zooms.indexOf(',') + 1);
+                        var h1 = zooms.substring(0, zooms.indexOf(','));
+                        console.log("src:" + srcPath + ",dest:" + destPath + ",x:" + x1 + ",y:" + y1 + ",w:" + w1 + ",h:" + h1);
+                        imageMagick(srcPath)
+                        // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
+                            .crop(w1, h1, x1, y1)
+                            .write(destPath, function (err) {
+                                    if (err) {
+                                        console.log(err);
+                                        process.exit("something wrong crop png");
+                                        return console.dir(arguments);
+                                    }
+                                    console.log(this.outname + ' created :: ' + arguments[3]);
+                                    count++;
+                                    if (count === imgList.length)
+                                        process.exit("DONE");
                                 }
-                                console.log(this.outname + ' created :: ' + arguments[3]);
-                                count++;
-                                if (count === imgList.length)
-                                    process.exit("DONE");
-                            }
-                        );
+                            )
+                    }
                 }
             )
         }
