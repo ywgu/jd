@@ -4,6 +4,7 @@
 var gmm = require('gm');
 var fs  = require("fs");
 var path = require('path');
+var cmd = require('node-cmd');
 var dataDir = path.normalize(path.join(__dirname, '.', 'public'));
 var designDir = path.join(dataDir, "designs");
 var imageMagick = gmm.subClass({ imageMagick: true });
@@ -33,17 +34,29 @@ process.on('message', function (imgInfo) {
         preprocess(isWin,imgPath,tempImgPath);
         console.log("isWin:"+isWin);
         if (!isWin) {
-            var cmd = require('node-cmd');
             var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
-            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho done";
+            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho |"+imgDest+"|"+tempPngPath+"|"+zoomStr;
             cmd.get(
                 cmdline,
                 function(data) {
-                    console.log('the result is :',data+'\n\n');
-                    imageMagick(tempPngPath)
+                    console.log('the result is :'+data+'\n\n');
+                    data = data.substring(data.indexOf('|')+1);
+                    var destPath = data.substring(0,data.indexOf('|'));
+                    data = data.substring(data.indexOf('|')+1);
+                    var srcPath = data.substring(0,data.indexOf('|'));
+                    var zooms = data.substring(data.indexOf('|')+1);
+                    var x1 = zooms.substring(0,zooms.indexOf(','));
+                    zooms = zooms.substring(zooms.indexOf(',')+1);
+                    var y1 = zooms.substring(0,zooms.indexOf(','));
+                    zooms = zooms.substring(zooms.indexOf(',')+1);
+                    var w1 = zooms.substring(0,zooms.indexOf(','));
+                    zooms = zooms.substring(zooms.indexOf(',')+1);
+                    var h1 = zooms.substring(0,zooms.indexOf(','));
+                    console.log("src:"+srcPath+",dest:"+destPath+",x:"+x1+",y:"+y1+",w:"+w1+",h:"+h1);
+                    imageMagick(srcPath)
                     // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                        .crop(w, h, x, y)
-                        .write(imgDest, function (err) {
+                        .crop(w1, h1, x1, y1)
+                        .write(destPath, function (err) {
                                 if (err) {
                                     console.log(err);
                                     process.exit("something wrong crop png");
@@ -111,40 +124,6 @@ process.on('message', function (imgInfo) {
             fs.appendFileSync(dest, line.toString() + "\n");
         });
     }
-
-    // // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf('/')+1)+imgInfo.substring(imgInfo.lastIndexOf('/')+4);
-    // var imgPath = imgInfo.substring(0,imgInfo.indexOf('|'));
-    // // var imgName = imgPath.substring(0,imgPath.lastIndexOf('/')+1);
-    // var imgDest = imgPath.substring(0, imgPath.lastIndexOf('/')+1) +"gpc/"+imgPath.substring(imgPath.lastIndexOf('/')+1, imgPath.lastIndexOf('.'))+".png";
-    // console.log("imgPath:"+imgPath+",imgDest:"+imgDest);
-    // var imgData = imgInfo.substring(imgInfo.indexOf('|')+1);
-    // // convert from base64 to jpg
-    // var base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
-    //
-    // require("fs").writeFile(imgPath, base64Data, 'base64', function(err) {
-    //     if (err)
-    //         console.log(err);
-    //     else {
-    //         gm(imgPath)
-    //             .resize(1050,788)   // 7 inch x 5.25 inch with 150 dpi
-    //             .colorspace("GRAY")
-    //             .operator('gray','negate','100%')
-    //             .modulate(100,0,100)  // brightness +30%
-    //             .edge(2.5)
-    //             .operator('gray','negate','100%')
-    //             .threshold('20%')
-    //             // .normalize()
-    //             .dither(true)
-    //             .monochrome()
-    //             .transparent("white")
-    //             .write(imgDest, function(err){
-    //                     if (err) return console.dir(arguments);
-    //                     console.log(this.outname + ' created :: ' + arguments[3]);
-    //                     process.exit("DONE");
-    //                 }
-    //             );
-    //     }
-    // });
 
 });
 module.exports = {};

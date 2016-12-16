@@ -156,7 +156,7 @@ designRouter.route('/done/:did')
     });
 designRouter.route('/done')
     .post(function (req, res, next) {
-        console.log('done posted!' + req.body.svg0);
+        // console.log('done posted!' + req.body.svg0);
         tid = req.body.tid;
         count = 0;
         prefix = Date.now().toString().slice(5);
