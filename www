@@ -8,6 +8,8 @@
 var app = require('./index');
 var debug = require('debug')('rest-server:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -92,14 +94,35 @@ function onListening() {
 
 var server;
 
+var isWin = /^win/.test(process.platform);
+
 function startServer() {
-    server = http.createServer(app).listen(app.get('port'), function(){
-        console.log( 'Express started in ' + app.get('env') +
-            ' mode on http://localhost:' + app.get('port') +
-            '; press Ctrl-C to terminate.' );
-    });
-    server.on('error', onError);
-    server.on('listening', onListening);
+    if (isWin) {
+        console.log("start http server on windows");
+        server = http.createServer(app).listen(app.get('port'), function () {
+            console.log('Express started in ' + app.get('env') +
+                ' mode on http://localhost:' + app.get('port') +
+                '; press Ctrl-C to terminate.');
+        });
+        server.on('error', onError);
+        server.on('listening', onListening);
+    }
+    else {
+        console.log("start https server on linux");
+        var options = {
+            key: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/privkey.pem'),
+            cert: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/fullchain.pem'),
+            ca: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/chain.pem')
+        };
+        server = https.createServer(options, app);
+        server.listen(app.get('port'), function () {
+            console.log('Express started in ' + app.get('env') +
+                ' mode on http://localhost:' + app.get('port') +
+                '; press Ctrl-C to terminate.');
+        });
+        server.on('error', onError);
+        server.on('listening', onListening);
+    }
 }
 
 if(require.main === module){
