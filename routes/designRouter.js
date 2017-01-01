@@ -97,14 +97,18 @@ designRouter.route('/designer/:did')
         // });
     });
 
-designRouter.route('/templatelist/:cid')
+designRouter.route('/templatelist/:pid')
     .get(function (req, res, next) {
         console.log("templates=" + req.app.get('templates'));
         var templates = req.app.get('templates');
         var templateList = null;
+        var pid = req.params.pid;
+        var gid = pid.substr(0,3);
         for (var i = 0; i < templates.templates.length; i++) {
-            if (req.params.cid === templates.templates[i].gid) {
-                templateList = templates.templates[i].list;
+            console.log("gid:"+gid+",template.gid:"+templates.templates[i].gid);
+            if (gid === templates.templates[i].gid) {
+                templateList = templates.templates[i][pid];
+                console.log("found group gid:"+gid+",templateList:"+templateList);
                 break;
             }
         }
@@ -115,23 +119,30 @@ designRouter.route('/personalize/:tid')
         // console.log("tid:"+req.params.tid);
         var templates = req.app.get('templates');
         var gid = req.params.tid.substr(0, 3);   // the first 3 characters are group id
+        var pid = req.params.tid.substr(0,7);    // the first 7 characters are product id
         var inputList = null;
         var zoomList = null;
         var zoomStr = "";
         for (var i = 0; i < templates.templates.length; i++) {
-            if (templates.templates[i].gid === gid) {
-                templateList = templates.templates[i].list;
-                // found the category
-                for (var j = 0; j < templateList.length; j++) {
-                    if (templateList[j].tid == req.params.tid) {
-                        inputList = templateList[j].inputs;
-                        zoomList = templateList[j].zooms;
-                        for (var k=0; k<zoomList.length; k++) {
-                            zoomStr += zoomList[k]+";";
+            if (templates.templates[i].gid === gid) { // found the group
+                templateList = templates.templates[i][pid];
+                if (templateList !== null && templateList !== undefined) { // found the product
+                    console.log("templateList:" + templateList);
+                    // found the category
+                    for (var j = 0; j < templateList.length; j++) {
+                        if (templateList[j].tid == req.params.tid) {
+                            inputList = templateList[j].inputs;
+                            zoomList = templateList[j].zooms;
+                            for (var k = 0; k < zoomList.length; k++) {
+                                zoomStr += zoomList[k] + ";";
+                            }
+                            console.log("inputList:" + inputList + ",zoomStr:" + zoomStr);
+                            break;
                         }
-                        console.log("inputList:" + inputList+",zoomStr:"+zoomStr);
-                        break;
                     }
+                }
+                else {
+                    console.log("ERROR: template id can't be found");
                 }
             }
         }
@@ -212,7 +223,8 @@ designRouter.route('/showdesign/:did')
         var did = req.params.did;
         var tid = did.substring(did.indexOf('-')+1);
         // console.log("tid:"+tid);
-        var gid = tid.substr(0, 3);   // the first 3 characters are group id
+        var gid = tid.substr(0,3);   // the first 3 characters are group id
+        var pid = tid.substr(0,7);   // the first 7 characters are product id
         // console.log("gid:"+gid);
         var totalPage;
         var zoomList = null;
@@ -220,7 +232,7 @@ designRouter.route('/showdesign/:did')
         for (var i = 0; i < templates.templates.length; i++) {
             // console.log("templates.templates[i].gid:"+templates.templates[i].gid);
             if (templates.templates[i].gid === gid) {
-                templateList = templates.templates[i].list;
+                templateList = templates.templates[i][pid];
                 // found the category
                 for (var j = 0; j < templateList.length; j++) {
                     // console.log("templateList[j].tid:"+templateList[j].tid);

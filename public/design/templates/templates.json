@@ -3,34 +3,38 @@
     {
       "name": "dogtags",
       "gid": "001",
-      "list": [
-        {"tid": "0010001", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}] ]},
-        {"tid": "0010002", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}],[{"image":true,"id":"image21","title":"WAL-MART"},{"image":false,"id":"text21","title":"Hello"}] ]},
-        {"tid": "0010003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0010004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0010005", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0010006", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      "0010001": [
+        {"tid": "001000101", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}] ]},
+        {"tid": "001000102", "inputs":[ [{"image":true,"id":"image01","title":"dog"},{"image":false,"id":"text01","title":"LAYLA"},{"image":false,"id":"text02","title":"469-255-8888"}], [{"image":false,"id":"text11","title":"testtes"}],[{"image":true,"id":"image21","title":"WAL-MART"},{"image":false,"id":"text21","title":"Hello"}] ]},
+        {"tid": "001000103", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "001000104", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "001000105", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "001000106", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
       ]
     },
     {
       "name": "wallets",
       "gid": "002",
-      "list": [
-        {"tid": "0020001", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Stephanie"}] ]},
-        {"tid": "0020002", "zooms":["965,755,188,197","464,173,503,696","532,437,575,471","461,102,594,805"], "inputs":[ [{"image":false,"id":"text01","title":"GW","max":"2"}], [{"image":true,"id":"image11","title":"Girl","processing":"gpc"}],[{"image":false,"id":"text21","title":"I Love You","max":"21"},{"image":false,"id":"text22","title":"I am who...","max":"21"},{"image":false,"id":"text23","title":"of you. You...","max":"21"},{"image":false,"id":"text24","title":"hope and...","max":"21"},{"image":false,"id":"text25","title":"I've ever...","max":"21"},{"image":false,"id":"text26","title":"Stephanie","max":"16"}], [{"image":true,"id":"image31","title":"Girl","processing":"gpc"}] ]},
-        {"tid": "0020003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0020004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      "0020001": [
+        {"tid": "002000101", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Stephanie"}] ]},
+        {"tid": "002000102", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "002000103", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      ],
+      "0020002": [
+        {"tid": "002000201", "zooms":["965,755,188,197","464,173,503,696","532,437,575,471","461,102,594,805"], "inputs":[ [{"image":false,"id":"text01","title":"GW","max":"2"}], [{"image":true,"id":"image11","title":"Girl","processing":"gpc"}],[{"image":false,"id":"text21","title":"I Love You","max":"21"},{"image":false,"id":"text22","title":"I am who...","max":"21"},{"image":false,"id":"text23","title":"of you. You...","max":"21"},{"image":false,"id":"text24","title":"hope and...","max":"21"},{"image":false,"id":"text25","title":"I've ever...","max":"21"},{"image":false,"id":"text26","title":"Stephanie","max":"16"}], [{"image":true,"id":"image31","title":"Girl","processing":"gpc"}] ]},
+        {"tid": "002000202", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "002000203", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
       ]
     },
     {
       "name": "phone cases",
       "gid": "003",
-      "list": [
-        {"tid": "0030001", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0030002", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0030003", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0030004", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
-        {"tid": "0030005", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
+      "0030001": [
+        {"tid": "003000101", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "003000102", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "003000103", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "003000104", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]},
+        {"tid": "003000105", "inputs":[ [{"image":true,"id":"image01"},{"image":false,"id":"text01"},{"image":false,"id":"text02"}], [{"image":false,"id":"text11"}] ]}
       ]
     }
   ]

@@ -19,9 +19,9 @@ var Designs = require('./models/designs');
 // read the templates and designer
 var templateFile = './public/design/templates/templates.json';
 var templateJson = jsonfile.readFileSync(templateFile);
-console.log("json:"+templateJson.templates[0].name+","+templateJson.templates[0].gid+","+templateJson.templates[0].list);
-console.log("json:"+templateJson.templates[1].name+","+templateJson.templates[1].gid+","+templateJson.templates[1].list);
-console.log("json:"+templateJson.templates[2].name+","+templateJson.templates[2].gid+","+templateJson.templates[2].list);
+console.log("json:"+templateJson.templates[0].name+","+templateJson.templates[0].gid+","+templateJson.templates[0]["0010001"]);
+console.log("json:"+templateJson.templates[1].name+","+templateJson.templates[1].gid+","+templateJson.templates[1]["0020001"]);
+console.log("json:"+templateJson.templates[2].name+","+templateJson.templates[2].gid+","+templateJson.templates[2]["0030001"]);
 var designerFile = './public/design/designer.json';
 var designerJson = jsonfile.readFileSync(designerFile);
 console.log("designer json:"+designerJson.designs[0].name+","+designerJson.designs[0].did);
