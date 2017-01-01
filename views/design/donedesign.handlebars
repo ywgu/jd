@@ -6,27 +6,29 @@
 </header>
 
 <!-- Grid -->
-<div class="w3-content w3-display-container" style="width: 60%;">
-    <img style="width:0px;height:0px;">
-    {{#each imagelist}}
-        <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
-                style="width:100%; background-color: white;">
-        </object>
-    {{/each}}
+<div class="w3-row">
+    <div class="w3-col 16 s12" align="middle">
+        <div class="w3-card-2" style="background-color: white">
+            <div class="w3-content w3-display-container">
+                <div class="w3-content w3-display-container" style="width: 75%;">
+                    <img style="width:0px;height:0px;">
+                    {{#each imagelist}}
+                        <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
+                                style="width:100%; background-color: white;">
+                        </object>
+                    {{/each}}
 
-    <img style="width:0px;height:0px;">
-</div>
-<hr/>
-<div class="w3-content w3-display-container">
-    <a id="play" class="w3-display-bottommiddle" onclick="pause()">
-        <span style="font-size:24px;padding:10px;margin:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span></a>
-</div>
-<div class="w3-content w3-display-container">
-    <p style="margin:10px 10px 10px 10px;">Understandably, due to the personalized nature of our products, we are unable to offer refunds/exchanges. We
-        will, however, gladly replace any product that arrives damaged or defective (not including personalization).
-        Claims for damaged merchandise must be made via email or telephone within seven days of receipt of item.
-        Customer, at our discretion, may be required to send photos of product, or, return product so we may verify
-        damage. Return shipping cost is at the expense of the buyer and may not be reimbursed by JITDIY.</p>
+                    <img style="width:0px;height:0px;">
+                </div>
+
+                <div class="w3-content w3-display-container">
+                    <a id="play" class="w3-display-bottommiddle" onclick="pause()">
+                        <span style="font-size:24px;padding:10px;margin:10px;" class="glyphicon glyphicon-pause"
+                              aria-hidden="false"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {{#section 'jquery'}}
     <script>
