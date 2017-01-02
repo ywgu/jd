@@ -32,9 +32,8 @@
 </div>
 {{#section 'jquery'}}
     <script>
-//        var imageIndex = 0;
+
         var isPause = 0;
-        //        showImage(imageIndex);
         function getWidth() {
             var w = $(window).width();
             var h = $(window).height() - 45;
@@ -60,50 +59,6 @@
                 return h+"px";
             }
         }
-//        function getMargin() {
-//            var w = $(window).width();
-//            var h = $(window).height() - 45;
-//            console.log(w+","+h+"w/h:"+w/h);
-//            if (w/h > 1.6) {
-//                return "0px";
-//            }
-//            else {
-//                return "20%";
-//            }
-//        }
-//        function getTopMargin() {
-//            var h = $(window).height() - 45;
-//            console.log("slideIndex:"+slideIndex);
-//            var tempIndex = slideIndex - 1;
-//            var ch = $("#svgObj-"+tempIndex).height();
-//            var marginNum = (h - ch)/2;
-//            if (marginNum < 0)
-//                marginNum = 0;
-//            console.log(h+","+ch+"marginNum"+marginNum);
-//            return marginNum +"px";
-//        }
-//        function showImage(n) {
-//            console.log("showImage:" + n);
-//            imageIndex = n;
-//
-//            count = 0;
-//            do {
-//                var i = document.getElementById("icon-" + count);
-//                if (i === null || i === undefined)
-//                    break;
-//                if (count === n) {
-//                    i.style.borderColor = "darkgrey";
-//                    i.style.borderWidth = "4px";
-//                    document.getElementById("svgObj-" + count).style.width = "100%";
-//                }
-//                else {
-//                    i.style.borderWidth = "0px";
-//                    document.getElementById("svgObj-" + count).style.width = "0%";
-//                }
-//                count++;
-//            } while (true);
-//        }
-//        var topMargin = getTopMargin();
         function pause() {
             var ele = document.getElementById("play");
             ele.onclick = play;
@@ -115,34 +70,14 @@
             ele.onclick = pause;
             ele.innerHTML = '<span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
             isPause = 0;
-//            topMargin = getTopMargin();
+
             carousel();
         }
         var slideIndex = 0;
-        //        showDivs(slideIndex);
+
         carousel();
 
-        //        function plusDivs(n) {
-        //            showDivs(slideIndex += n);
-        //        }
-        //
-        //        function showDivs(n) {
-        //            var i;
-        //            var x = document.getElementsByClassName("mySlides");
-        //            if (n > x.length) {slideIndex = 1}
-        //            if (n < 1) {slideIndex = x.length}
-        //            for (i = 0; i < x.length; i++) {
-        //                if (i === slideIndex-1) {
-        //                    console.log("show "+i);
-        //                    x[slideIndex-1].style.width = "100%";
-        //                    x[slideIndex-1].style.height = "100%";
-        //                }
-        //                else {
-        //                    x[i].style.width = "0%";
-        //                    x[i].style.height = "0%";
-        //                }
-        //            }
-        //        }
+
         function carousel() {
             if (isPause === 1)
                 return;
@@ -169,12 +104,6 @@
             if (isPause === 0)
                 setTimeout(carousel, 2000); // Change image every 2 seconds
         }
-//        function resize() {
-//            var w = getWidth();
-//            var h = getHeight();
-////            topMargin = getTopMargin();
-//            console.log(w+","+h);
-//        }
-//        window.onresize = resize;
+
     </script>
 {{/section}}
