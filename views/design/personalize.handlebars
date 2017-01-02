@@ -199,10 +199,9 @@
                         <p>
                             <label class="uber-input">
                                 <br/>
-                                This button will be enabled after you fill out the forms and preview on all
-                                pages excluding <span class="glyphicon glyphicon-remove-circle w3-text-red"></span>.
-                                Please make
-                                sure you are satisfied with your updates before clicking this button.
+                                This button will be enabled after you fill out all forms and click preview on all
+                                replaceable components excluding <span class="glyphicon glyphicon-remove-circle w3-text-red"></span>.
+                                Click this button after you are done.
                             </label>
                         </p>
                     </div>
@@ -319,7 +318,7 @@
                             unlockScreen();
                         },
                         success: function (response) {
-                            console.log("response:" + response);
+//                            console.log("response:" + response);
                             var resJson = JSON.parse(response);
                             // wait for image to be loaded
                             if (resJson.processing === "gpc") {
@@ -330,7 +329,7 @@
                                         var curDate = null;
                                         var count = 0;
                                         do {
-                                            console.log("count:" + count++);
+//                                            console.log("count:" + count++);
                                             date = new Date();
                                             do {
                                                 curDate = new Date();
@@ -343,6 +342,8 @@
                             previews[resJson.tidx] = 1;
                             checkDone();
                             unlockScreen();
+                            $('html, body').animate({ scrollTop: 0 }, 'fast');
+                            window.parent.fromDesign("test");
                         }
                     });
                 });
