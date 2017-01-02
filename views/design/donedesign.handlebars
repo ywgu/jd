@@ -99,6 +99,7 @@
             if (isPause === 0)
                 setTimeout(carousel, 1000); // Change image every 2 seconds
         }
-
+        var did = document.getElementById("saved_id").value;
+        parent.postMessage(did,"https://www.jitdiy.com");
     </script>
 {{/section}}
