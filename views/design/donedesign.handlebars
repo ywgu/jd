@@ -76,8 +76,6 @@
         var slideIndex = 0;
 
         carousel();
-
-
         function carousel() {
             if (isPause === 1)
                 return;
@@ -89,12 +87,8 @@
             var i;
             for (i = 0; i < x.length; i++) {
                 if (i === slideIndex - 1) {
-//                    console.log("show "+i);
                     x[slideIndex - 1].style.width = getWidth();
                     x[slideIndex - 1].style.height = getHeight();
-//                    getTopMargin();
-//                    x[slideIndex - 1].style.marginTop = getMargin();
-//                    x[slideIndex - 1].style.marginBottom = getMargin();
                 }
                 else {
                     x[i].style.width = "0%";
@@ -102,7 +96,7 @@
                 }
             }
             if (isPause === 0)
-                setTimeout(carousel, 2000); // Change image every 2 seconds
+                setTimeout(carousel, 1000); // Change image every 2 seconds
         }
 
     </script>
