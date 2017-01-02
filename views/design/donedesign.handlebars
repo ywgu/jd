@@ -10,7 +10,7 @@
     <div class="w3-col 16 s12" align="middle">
         <div style="background-color: white">
             <div class="w3-content w3-display-container">
-                <div class="w3-content w3-display-container" id="showpanel" style="height: 80%;">
+                <div class="w3-content w3-display-container" id="showpanel" style="height: 80%; vertical-align: middle;">
                     <img style="width:0px;height:0px;">
                     {{#each imagelist}}
                         <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
@@ -60,17 +60,17 @@
                 return h+"px";
             }
         }
-        function getMargin() {
-            var w = $(window).width();
-            var h = $(window).height() - 45;
-            console.log(w+","+h+"w/h:"+w/h);
-            if (w/h > 1.6) {
-                return "0px";
-            }
-            else {
-                return "20%";
-            }
-        }
+//        function getMargin() {
+//            var w = $(window).width();
+//            var h = $(window).height() - 45;
+//            console.log(w+","+h+"w/h:"+w/h);
+//            if (w/h > 1.6) {
+//                return "0px";
+//            }
+//            else {
+//                return "20%";
+//            }
+//        }
 //        function getTopMargin() {
 //            var h = $(window).height() - 45;
 //            console.log("slideIndex:"+slideIndex);
@@ -167,7 +167,7 @@
                 }
             }
             if (isPause === 0)
-                setTimeout(carousel, 3000); // Change image every 2 seconds
+                setTimeout(carousel, 2000); // Change image every 2 seconds
         }
 //        function resize() {
 //            var w = getWidth();
