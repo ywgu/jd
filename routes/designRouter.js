@@ -199,6 +199,7 @@ designRouter.route('/donedesign')
         count = 0;
         imgs = "{\"images\":[ ";
         tidx = "";
+        did = "";
         do {
             paramName = "i" + count;
             aParam = req.query[paramName];
@@ -209,12 +210,16 @@ designRouter.route('/donedesign')
                 tidx = aParam.substring(aParam.indexOf('-') + 1, aParam.lastIndexOf('-'));
                 console.log("tidx:" + tidx);
             }
+            if (did === "") {
+                did = aParam.substring(0, aParam.lastIndexOf('-'));
+                console.log("did:" + did);
+            }
             imgs += "{\"image\":\"" + aParam + "\"},";
             count++;
         } while (true);
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         console.log("imgs:" + imgs);
-        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx});
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx, did: did});
     });
 
 designRouter.route('/showdesign/:did')

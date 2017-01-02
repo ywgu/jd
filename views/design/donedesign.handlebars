@@ -22,7 +22,8 @@
                 </div>
 
                 <div class="w3-content w3-display-container">
-                    <a id="play" class="w3-display-bottommiddle" onclick="pause()">
+                    <input type="hidden" id="saved_id" value="{{did}}"></input>
+                    <a id="play" class="w3-display-middle" onclick="pause()">
                         <span style="font-size:24px;padding:10px;margin:10px;" class="glyphicon glyphicon-pause"
                               aria-hidden="false"></span></a>
                 </div>
@@ -32,7 +33,7 @@
 </div>
 {{#section 'jquery'}}
     <script>
-
+        console.log("label saved_id:"+document.getElementById("saved_id").value);
         var isPause = 0;
         function getWidth() {
             var w = $(window).width();
