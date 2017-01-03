@@ -100,6 +100,13 @@
                 setTimeout(carousel, 1000); // Change image every 2 seconds
         }
         var did = document.getElementById("saved_id").value;
-        parent.postMessage(did,"https://www.jitdiy.com");
+        var dwww = sessionStorage.dwww;
+        console.log("donedesign: dwww"+dwww);
+        if (dwww !== "") {
+            parent.postMessage(did, "https://www.jitdiy.com");
+        }
+        else {
+            parent.postMessage(did,"https://jitdiy.com");
+        }
     </script>
 {{/section}}
