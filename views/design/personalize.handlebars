@@ -281,7 +281,15 @@
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         //        var imgOrientation = [];
         $(document).ready(function () {
-            parent.postMessage("godesignframe","https://www.jitdiy.com");
+            //parent.postMessage("godesignframe","https://www.jitdiy.com");
+            var dwww = sessionStorage.dwww;
+            console.log("donedesign: dwww"+dwww);
+            if (dwww === "www") {
+                parent.postMessage("godesignframe", "https://www.jitdiy.com");
+            }
+            else {
+                parent.postMessage("godesignframe","https://jitdiy.com");
+            }
             // populate the zoom data
             var zoomStr = '{{zooms}}';
 //            console.log("zooms:"+zoomStr);
