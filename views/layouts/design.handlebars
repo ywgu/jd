@@ -26,7 +26,7 @@
     // Listen to message from other window
     eventer(messageEvent, function (e) {
         console.log('msg from page:', e.data);
-        if (msg !== null && msg.startsWith("sku:")) {
+        if (e.data !== null && e.data !== undefined && e.data.startsWith("sku:")) {
             sessionStorage.sku = e.data;
             if (typeof setSKU === "funciton") {
                 setSKU(e.data);
