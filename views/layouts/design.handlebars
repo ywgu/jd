@@ -18,6 +18,12 @@
 <link href="{{static '/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css'}}" rel="stylesheet" media="screen">
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:0">
+    {{{body}}}
+    <!-- End page content -->
+</div>
 <script>
     document.domain = "design.jitdiy.com";
     // reciving messages from other windows
@@ -35,12 +41,6 @@
         }
     }, false);
 </script>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:0">
-    {{{body}}}
-    <!-- End page content -->
-</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/vendor/jquery-2.1.1.min.js"></script>
 <script src="/vendor/jquery.form.min.js"></script>
