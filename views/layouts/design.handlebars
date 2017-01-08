@@ -19,6 +19,7 @@
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 <script>
+    document.domain = "design.jitdiy.com";
     // reciving messages from other windows
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
     var eventer = window[eventMethod];
@@ -28,6 +29,8 @@
         console.log('msg from page:', e.data);
         if (e.data !== null && e.data !== undefined && e.data.startsWith("sku:")) {
             sessionStorage.sku = e.data;
+            var typeofsku = typeof setSKU;
+            console.log("typeof setSKU:"+typeofsku);
             if (typeof setSKU === "funciton") {
                 setSKU(e.data);
             }
