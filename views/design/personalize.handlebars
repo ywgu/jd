@@ -816,10 +816,32 @@
                 ele.setAttribute("style", displayVal);
             }
         }
+        function setElementAttribute(idx,eleId,attrName,attrValue) {
+            var elms = document.querySelectorAll("#svgObj-" + idx);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                var subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var ele = subdoc.getElementById(eleId);
+//            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
+            if (ele !== null && ele !== undefined) {
+                ele.setAttribute(attrName,attrValue);
+                return true;
+            }
+            return false;
+        }
         function setSKU(sku) {
             console.log("setSKU is called with parameter sku:"+sku);
             // change background to sku.jpg
-            console.log("changing the background to "+sku+".jpg");
+            //console.log("changing the background to "+sku+".jpg");
+            var count = 0;
+            do {
+                var bgName = "/design/templates/" + sku + "-" + count +".jpg";
+                var success = setElementAttribute(count,"jd_bg","xlink:href",bgName);
+                count++;
+            } while(success);
         }
     </script>
 {{/section}}
