@@ -816,14 +816,18 @@
                 ele.setAttribute("style", displayVal);
             }
         }
-        function setElementAttribute(idx,eleId,attrName,attrValue) {
+        function setElementAttrValue(idx, eleId, attrName, attrValue) {
             var elms = document.querySelectorAll("#svgObj-" + idx);
             var subdoc = null;
+            if (elms.length <= 0)
+                return false;
             for (var i = 0; i < elms.length; i++) {
                 var subdoc = getSubDocument(elms[i]);
                 if (subdoc !== null && subdoc !== undefined)
                     break;
             }
+            if (subdoc === null || subdoc === undefined)
+                return false;
             var ele = subdoc.getElementById(eleId);
 //            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
             if (ele !== null && ele !== undefined) {
@@ -838,8 +842,8 @@
             //console.log("changing the background to "+sku+".jpg");
             var count = 0;
             do {
-                var bgName = "/design/templates/" + sku + "-" + count +".jpg";
-                var success = setElementAttribute(count,"jd_bg","xlink:href",bgName);
+                var bgName = "/design/templates/" + sku.substring(4) + "-" + count +".jpg";
+                var success = setElementAttrValue(count,"jd_bg","xlink:href",bgName);
                 count++;
             } while(success);
         }
