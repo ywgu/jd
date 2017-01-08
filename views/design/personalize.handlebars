@@ -803,18 +803,7 @@
             checkDone();
         }
         function setSVGEleDisplay(idx, eleName, displayVal) {
-            var elms = document.querySelectorAll("#svgObj-" + idx);
-            var subdoc = null;
-            for (var i = 0; i < elms.length; i++) {
-                var subdoc = getSubDocument(elms[i]);
-                if (subdoc !== null && subdoc !== undefined)
-                    break;
-            }
-            var ele = subdoc.getElementById("jd_nt");
-//            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
-            if (ele !== null && ele !== undefined) {
-                ele.setAttribute("style", displayVal);
-            }
+            setElementAttrValue(idx,eleName,"style",displayVal);
         }
         function setElementAttrValue(idx, eleId, attrName, attrValue) {
             var elms = document.querySelectorAll("#svgObj-" + idx);
