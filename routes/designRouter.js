@@ -24,6 +24,28 @@ fs.existsSync(uploadDir) || fs.mkdirSync(uploadDir);
 fs.existsSync(designDir) || fs.mkdirSync(designDir);
 fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 
+// TODO: build a hashtable to improve perforance
+function findTemplate(req,tid) {
+    var templates = req.app.get('templates');
+    var gid = tid.substr(0,3);   // the first 3 characters are group id
+    var pid = tid.substr(0,7);   // the first 7 characters are product id
+
+    for (var i = 0; i < templates.templates.length; i++) {
+        // console.log("templates.templates[i].gid:"+templates.templates[i].gid);
+        if (templates.templates[i].gid === gid) {
+            templateList = templates.templates[i][pid];
+            // found the category
+            for (var j = 0; j < templateList.length; j++) {
+                // console.log("templateList[j].tid:"+templateList[j].tid);
+                if (templateList[j].tid == tid) {
+                    return templateList[j];
+                }
+            }
+        }
+    }
+    return null;    // failed to find template
+}
+
 designRouter.route('/')
     .get(function (req, res, next) {
         var now = new Date();
@@ -169,27 +191,30 @@ designRouter.route('/done')
     .post(function (req, res, next) {
         // console.log('done posted!' + req.body.svg0);
         tid = req.body.tid;
-        count = 0;
+        template = findTemplate(req,tid);
+        totalPages = template.zooms.length;
         prefix = Date.now().toString().slice(5);
         result = "";
-        do {
-            xmlName = "svg" + count;
+        finishedProcessing = 0;
+        var did = prefix + "-" + tid;
+        for (var i=0; i<totalPages; i++) {
+            xmlName = "svg" + i;
             var xml = req.body[xmlName];
             if (xml === null || xml === undefined)
                 break;
-            var newName = prefix + "-" + tid + "-" + count + ".svg";
+            var newName = prefix + "-" + tid + "-" + i + ".svg";
             fs.writeFile(designDir + "/" + newName, xml, function (err) {
                 if (err) {
                     return console.log(err);
                 }
-
-                console.log("The svg file was saved!");
-                // res.end("/designs/"+newName);
-                // res.redirect(303, '/design/done/' + newName);
+                finishedProcessing++;
+                if (finishedProcessing >= totalPages) {
+                    // generate the animated gif for the design
+                    genanimated(did+"|"+totalPages);
+                }
             });
-            result += "i" + count + "=" + newName + "&";
-            count++;
-        } while (true);
+            result += "i" + i + "=" + newName + "&";
+        }
         result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(result);
     });
@@ -456,5 +481,22 @@ function svgtopng(imgInfo) {    // imgInfo : imgPath|imgRect(area of the image t
     childProcess.send(imgInfo);
 }
 
+var genanimatedProcessor = path.resolve(__dirname, '../genanimated.js');
+function genanimated(imgInfo) {    // did : designid|totalPages
+    // We need to spawn a child process so that we do not block
+    // the EventLoop with cpu intensive image manipulation
+    var childProcess = require('child_process').fork(genanimatedProcessor);
+    childProcess.on('message', function (message) {
+        console.log(message);
+    });
+    childProcess.on('error', function (error) {
+        console.error(error.stack)
+    });
+    childProcess.on('exit', function () {
+        console.log('process exited');
+    });
+    // send the work to child process
+    childProcess.send(imgInfo);
+}
 
 module.exports = designRouter;
