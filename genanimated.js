@@ -23,7 +23,7 @@ process.on('message', function (imgInfo) {
         preprocess(svgFile,tempFile);
     }
     // generate the animated image
-    im.convert(['-delay', '100', '-resize', '150x100', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
+    im.convert(['-delay', '100', '-resize', '300x200', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
         function (err, stdout) {
             if (err) throw err;
             console.log('stdout:', stdout);
@@ -35,11 +35,11 @@ process.on('message', function (imgInfo) {
         if (fs.existsSync(dest))
             fs.unlinkSync(dest);
         fs.readFileSync(src).toString().split('\n').forEach(function (line) {
-            // if (line.indexOf("jd_nt") > 0) {
-            //     // remove the clip-path attribute
-            //     line = line.replace("clip-path", "cp");
-            // }
-            // else
+            if (line.indexOf("jd_nt") > 0) {
+                // remove the clip-path attribute
+                line = line.replace("clip-path", "cp");
+            }
+            else
             if (line.indexOf("\"/designs/temp/") > 0) {
                     line = line.replace("\"/designs/temp/", "\"" + dataDir + "/designs/temp/");
 
