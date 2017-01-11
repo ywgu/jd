@@ -23,7 +23,7 @@ process.on('message', function (imgInfo) {
         preprocess(isWin,svgFile,tempFile);
     }
     // generate the animated image
-    im.convert(['-delay', '100', '-resize', '300x200', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
+    im.convert(['-delay', '100', '-resize', '600x400', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
         function (err, stdout) {
             if (err) throw err;
             console.log('stdout:', stdout);
