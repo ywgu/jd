@@ -25,7 +25,10 @@ fs.existsSync(designDir) || fs.mkdirSync(designDir);
 fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 
 // TODO: build a hashtable to improve perforance
+var templateMap = {};
 function findTemplate(req,tid) {
+    if (tid in templateMap)
+        return templateMap[tid];
     var templates = req.app.get('templates');
     var gid = tid.substr(0,3);   // the first 3 characters are group id
     var pid = tid.substr(0,7);   // the first 7 characters are product id
@@ -38,12 +41,21 @@ function findTemplate(req,tid) {
             for (var j = 0; j < templateList.length; j++) {
                 // console.log("templateList[j].tid:"+templateList[j].tid);
                 if (templateList[j].tid == tid) {
+                    templateMap[tid] = templateList[j];
                     return templateList[j];
                 }
             }
         }
     }
     return null;    // failed to find template
+}
+
+function getPartNum(req,tid) {
+    var template = findTemplate(req,tid);
+    if (template == null || template == undefined)
+        return 0;
+    else
+        return template.zooms.length;
 }
 
 designRouter.route('/')
@@ -191,10 +203,10 @@ designRouter.route('/done')
     .post(function (req, res, next) {
         // console.log('done posted!' + req.body.svg0);
         tid = req.body.tid;
-        template = findTemplate(req,tid);
-        totalPages = template.zooms.length;
+        // template = findTemplate(req,tid);
+        totalPages = getPartNum(req,tid);
         prefix = Date.now().toString().slice(5);
-        result = "";
+        // result = "";
         finishedProcessing = 0;
         var did = prefix + "-" + tid;
         for (var i=0; i<totalPages; i++) {
@@ -213,39 +225,55 @@ designRouter.route('/done')
                     genanimated(did+"|"+totalPages);
                 }
             });
-            result += "i" + i + "=" + newName + "&";
+            // result += "i" + i + "=" + newName + "&";
         }
-        result = result.length > 0 ? result.slice(0, result.length - 1) : result;
-        res.end(result);
+        // result = result.length > 0 ? result.slice(0, result.length - 1) : result;
+        res.end(did);
     });
-designRouter.route('/donedesign')
+designRouter.route('/donedesign/:did')
     .get(function (req, res, next) {
-        // console.log('donedesign!');
-        count = 0;
-        imgs = "{\"images\":[ ";
-        tidx = "";
-        did = "";
-        do {
-            paramName = "i" + count;
-            aParam = req.query[paramName];
-            console.log("aParam:" + aParam);
-            if (aParam === null || aParam === undefined)
-                break;
-            if (tidx === "") {
-                tidx = aParam.substring(aParam.indexOf('-') + 1, aParam.lastIndexOf('-'));
-                console.log("tidx:" + tidx);
-            }
-            if (did === "") {
-                did = aParam.substring(0, aParam.lastIndexOf('-'));
-                console.log("did:" + did);
-            }
-            imgs += "{\"image\":\"" + aParam + "\"},";
-            count++;
-        } while (true);
+        var did = req.params.did;
+        var tid = did.substring(did.indexOf('-')+1);
+        var partNum = getPartNum(req,tid);
+        // console.log("did:"+did+",tid:"+tid);
+        var imgs = "{\"images\":[ ";
+        for (var i=0; i<partNum; i++) {
+            paramValue = did + "-" + i + ".svg";
+            imgs += "{\"image\":\"" + paramValue + "\"},";
+        }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
-        console.log("imgs:" + imgs);
-        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx, did: did});
+        // console.log("imgs:" + imgs);
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
     });
+// same function but use differnt parameters
+// designRouter.route('/donedesign')
+//     .get(function (req, res, next) {
+//         // console.log('donedesign!');
+//         count = 0;
+//         imgs = "{\"images\":[ ";
+//         tidx = "";
+//         did = "";
+//         do {
+//             paramName = "i" + count;
+//             aParam = req.query[paramName];
+//             // console.log("aParam:" + aParam);
+//             if (aParam === null || aParam === undefined)
+//                 break;
+//             if (tidx === "") {
+//                 tidx = aParam.substring(aParam.indexOf('-') + 1, aParam.lastIndexOf('-'));
+//                 // console.log("tidx:" + tidx);
+//             }
+//             if (did === "") {
+//                 did = aParam.substring(0, aParam.lastIndexOf('-'));
+//                 console.log("did:" + did);
+//             }
+//             imgs += "{\"image\":\"" + aParam + "\"},";
+//             count++;
+//         } while (true);
+//         imgs = imgs.slice(0, imgs.length - 1) + "] }";
+//         // console.log("imgs:" + imgs);
+//         res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tidx, did: did});
+//     });
 
 designRouter.route('/showdesign/:did')
     .get(function (req, res, next) {
