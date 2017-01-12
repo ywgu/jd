@@ -116,10 +116,6 @@ div.transbox .giveup div.button-opts {
             if (w / h > 1.6) {
                 return "";
             }
-//            else if (w < 600) {
-//                w = w-200;
-//                return w + "px";
-//            }
             else {
                 w = w-50;
                 return w + "px";
@@ -132,12 +128,8 @@ div.transbox .giveup div.button-opts {
             if (w / h < 1.6) {
                 return "100%";
             }
-//            else if (h > 475) {
-//                h = h-200;
-//                return h+"px";
-//            }
             else {
-                h=h-200; // excluding two buttons
+                h=h-150; // excluding two buttons
                 return h + "px";
             }
         }
