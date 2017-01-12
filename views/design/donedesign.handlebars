@@ -110,31 +110,31 @@ div.transbox .giveup div.button-opts {
             dwww = "";
         var isPause = 0;
         function getWidth() {
-            return "100%";
-//            var w = $(window).width();
-//            var h = $(window).height() - 45;
-//            if (w / h > 1.6) {
-//                return "80%";
-//            }
-//            else if (w < 600) {
-//                return w + "px";
-//            } else {
-//                return "100%";
-//            }
+//            return "100%";
+            var w = $(window).width();
+            var h = $(window).height() - 45;
+            if (w / h > 1.6) {
+                return "80%";
+            }
+            else if (w < 600) {
+                return w + "px";
+            } else {
+                return "100%";
+            }
         }
         function getHeight() {
-            return "80%";
-//            var w = $(window).width();
-//            var h = $(window).height() - 45;
-//            if (w / h < 1.6) {
-//                return "";
-//            }
-//            else if (h > 475) {
-//                return "";
-//            }
-//            else {
-//                return h + "px";
-//            }
+//            return "80%";
+            var w = $(window).width();
+            var h = $(window).height() - 45;
+            if (w / h < 1.6) {
+                return "100%";
+            }
+            else if (h > 475) {
+                return "80%";
+            }
+            else {
+                return h + "px";
+            }
         }
         function pause() {
             var ele = document.getElementById("play");
