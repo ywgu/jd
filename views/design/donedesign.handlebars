@@ -1,3 +1,42 @@
+<style>
+/* panel for add text, image, etc. */
+div.transbox {
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.9;
+    position: fixed;
+    /*margin: 30px 30px;*/
+    width: 80%;
+    heigh: 60px;
+    top: 40%;
+    /*bottom: 40%;*/
+    left: 30px;
+    /*right: 15px;*/
+    z-index: 100;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+    display: none;
+}
+
+div.transbox .giveup .copy-wrapper {
+    position: absolute;
+    /*margin: 30% 30%;*/
+    width: 80%;
+    heigh: 60px;
+    top: 40%;
+    /*bottom: 30%;*/
+    left: 30px;
+    /*right: 20px;*/
+    overflow: auto;
+    padding: 15px;
+}
+
+div.transbox .giveup div.button-opts {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+}
+</style>
+
 <!-- Header -->
 <header class="w3-container">
     <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
@@ -6,8 +45,8 @@
 </header>
 
 <!-- Grid -->
-<div class="w3-row-padding" style="background: white;">
-    <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;">
+<div class="w3-row-padding" style="background: white;padding-top:30px;">
+    <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
         <img style="width:0px;height:0px;">
         {{#each imagelist}}
             <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
@@ -37,9 +76,26 @@
             <button type="button" id="gohomebutton" style="height:10%;"
                     title=""
                     class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
-                    onclick="gotoList();"><b>START OVER</b></button>
+                    onclick="showForm();"><b>START OVER</b></button>
         </p>
     </div>
+</div>
+
+<div class="w3-row-padding" style="background: white;">
+<div class="w3-col m12 s12">
+<div class="transbox" id="giveup">
+    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('giveup')"></span></div>
+    <div style="display: block; margin: 20px;">
+        <div class="copy-wrapper">
+            <p>Are you sure you want to give up this design and start a new one? The design can NOT be recovered if you click YES button.</p>
+        </div>
+        <div class="button-opts">
+            <a id="btnYES" href="#" onclick="giveupDesign();" class="btn btn-primary">YES</a>
+            <a id="btnNO" href="#" onclick="hideForm()" class="btn btn-default">NO</a>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 {{#section 'jquery'}}
     <script>
@@ -58,7 +114,7 @@
 //            var w = $(window).width();
 //            var h = $(window).height() - 45;
 //            if (w / h > 1.6) {
-//                return "";
+//                return "80%";
 //            }
 //            else if (w < 600) {
 //                return w + "px";
@@ -67,7 +123,7 @@
 //            }
         }
         function getHeight() {
-            return "";
+            return "80%";
 //            var w = $(window).width();
 //            var h = $(window).height() - 45;
 //            if (w / h < 1.6) {
@@ -129,10 +185,29 @@
         }
 
         function gotoList() {
+            var r = confirm("Are you sure you want to give up this design and start a new one? It can NOT be recovered!");
+            if (r == true) {
+                tid = did.substring(did.indexOf('-') + 1);
+                pid = tid.substring(0, 7);
+                var listUrl = "//localhost:3000/design/templatelist/" + pid + "?dwww=" + dwww;
+                window.location.href = listUrl;
+            } else {
+                return;
+            }
+
+        }
+        function giveupDesign() {
+            hideForm();
             tid = did.substring(did.indexOf('-') + 1);
             pid = tid.substring(0, 7);
             var listUrl = "//localhost:3000/design/templatelist/" + pid + "?dwww=" + dwww;
             window.location.href = listUrl;
+        }
+        function showForm() {
+            document.getElementById('giveup').style.display = "inline";
+        }
+        function hideForm() {
+            document.getElementById('giveup').style.display = "none";
         }
     </script>
 {{/section}}
