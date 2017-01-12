@@ -181,23 +181,11 @@ div.transbox .giveup div.button-opts {
             parent.postMessage(did, "https://jitdiy.com");
         }
 
-        function gotoList() {
-            var r = confirm("Are you sure you want to give up this design and start a new one? It can NOT be recovered!");
-            if (r == true) {
-                tid = did.substring(did.indexOf('-') + 1);
-                pid = tid.substring(0, 7);
-                var listUrl = "//design.jitdiy.com/design/templatelist/" + pid + "?dwww=" + dwww;
-                window.location.href = listUrl;
-            } else {
-                return;
-            }
-
-        }
         function giveupDesign() {
             hideForm();
             tid = did.substring(did.indexOf('-') + 1);
             pid = tid.substring(0, 7);
-            var listUrl = "//localhost:3000/design/templatelist/" + pid + "?dwww=" + dwww;
+            var listUrl = "//design.jitdiy.com/design/templatelist/" + pid + "?dwww=" + dwww;
             window.location.href = listUrl;
         }
         function showForm() {
