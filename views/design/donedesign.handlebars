@@ -6,70 +6,90 @@
 </header>
 
 <!-- Grid -->
-<div class="w3-row">
-    <div class="w3-col 16 s12" align="middle">
-        <div style="background-color: white">
-            <div class="w3-content w3-display-container">
-                <div class="w3-content w3-display-container" id="showpanel" style="height: 80%; vertical-align: middle;">
-                    <img style="width:0px;height:0px;">
-                    {{#each imagelist}}
-                        <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
-                                style="width:100%; background-color: white;">
-                        </object>
-                    {{/each}}
+<div class="w3-row-padding" style="background: white;">
+    <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;">
+        <img style="width:0px;height:0px;">
+        {{#each imagelist}}
+            <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
+                    style="width:100%; background-color: white;">
+            </object>
+        {{/each}}
 
-                    <img style="width:0px;height:0px;">
-                </div>
-
-                <div class="w3-content w3-display-container">
-                    <input type="hidden" id="saved_id" value="{{did}}"></input>
-                    <a id="play" class="w3-display-middle" onclick="pause()">
-                        <span style="font-size:24px;padding:10px;margin:10px;" class="glyphicon glyphicon-pause"
-                              aria-hidden="false"></span></a>
-                </div>
-            </div>
-        </div>
+        <img style="width:0px;height:0px;">
+    </div>
+</div>
+<div class="w3-row-padding" style="background: white;">
+    <div class="w3-col m12 s12">
+        <p align="center">
+            <input type="hidden" id="saved_id" value="{{did}}"></input>
+            <button type="button" id="play" style="height:10%;"
+                    title=""
+                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                    onclick="pause();">
+                <span style="font-size:24px;" class="glyphicon glyphicon-pause" aria-hidden="false"/>
+            </button>
+        </p>
+    </div>
+</div>
+<div class="w3-row-padding" style="background: white;">
+    <div class="w3-col m12 s12">
+        <p align="center">
+            <button type="button" id="gohomebutton" style="height:10%;"
+                    title=""
+                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                    onclick="gotoList();"><b>START OVER</b></button>
+        </p>
     </div>
 </div>
 {{#section 'jquery'}}
     <script>
-        console.log("label saved_id:"+document.getElementById("saved_id").value);
+        console.log("label saved_id:" + document.getElementById("saved_id").value);
+        // get dwww from query parameter or session
+        var dwww = getParameterByName("dwww");
+        if (dwww !== null && dwww !== undefined)
+            sessionStorage.dwww = dwww;
+        else
+            dwww = sessionStorage.dwww;
+        if (dwww === null)
+            dwww = "";
         var isPause = 0;
         function getWidth() {
-            var w = $(window).width();
-            var h = $(window).height() - 45;
-            if (w/h > 1.6) {
-                return "";
-            }
-            else if (w < 600) {
-                return w+"px";
-            } else {
-                return "600px";
-            }
+            return "100%";
+//            var w = $(window).width();
+//            var h = $(window).height() - 45;
+//            if (w / h > 1.6) {
+//                return "";
+//            }
+//            else if (w < 600) {
+//                return w + "px";
+//            } else {
+//                return "100%";
+//            }
         }
         function getHeight() {
-            var w = $(window).width();
-            var h = $(window).height() - 45;
-            if (w/h < 1.6) {
-                return "";
-            }
-            else if (h > 475) {
-                return "475px";
-            }
-            else {
-                return h+"px";
-            }
+            return "";
+//            var w = $(window).width();
+//            var h = $(window).height() - 45;
+//            if (w / h < 1.6) {
+//                return "";
+//            }
+//            else if (h > 475) {
+//                return "";
+//            }
+//            else {
+//                return h + "px";
+//            }
         }
         function pause() {
             var ele = document.getElementById("play");
             ele.onclick = play;
-            ele.innerHTML = '<span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-play" aria-hidden="false"></span>';
+            ele.innerHTML = '<span style="font-size:24px;" class="glyphicon glyphicon-play" aria-hidden="false"></span>';
             isPause = 1;
         }
         function play() {
             var ele = document.getElementById("play");
             ele.onclick = pause;
-            ele.innerHTML = '<span style="font-size:24px;padding:10px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
+            ele.innerHTML = '<span style="font-size:24px;" class="glyphicon glyphicon-pause" aria-hidden="false"></span>';
             isPause = 0;
 
             carousel();
@@ -99,13 +119,20 @@
             if (isPause === 0)
                 setTimeout(carousel, 1000); // Change image every 2 seconds
         }
+
         var did = document.getElementById("saved_id").value;
-        var dwww = sessionStorage.dwww;
         if (dwww === "www") {
             parent.postMessage(did, "https://www.jitdiy.com");
         }
         else {
-            parent.postMessage(did,"https://jitdiy.com");
+            parent.postMessage(did, "https://jitdiy.com");
+        }
+
+        function gotoList() {
+            tid = did.substring(did.indexOf('-') + 1);
+            pid = tid.substring(0, 7);
+            var listUrl = "//localhost:3000/design/templatelist/" + pid + "?dwww=" + dwww;
+            window.location.href = listUrl;
         }
     </script>
 {{/section}}
