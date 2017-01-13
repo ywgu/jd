@@ -19,11 +19,6 @@
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:0">
-    {{{body}}}
-    <!-- End page content -->
-</div>
 <script>
     // reciving messages from other windows
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -51,6 +46,13 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 </script>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:0">
+    {{{body}}}
+    <!-- End page content -->
+</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/vendor/jquery-2.1.1.min.js"></script>
 <script src="/vendor/jquery.form.min.js"></script>
