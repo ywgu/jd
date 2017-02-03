@@ -280,14 +280,19 @@
         var zooms = ["", "", "", "", "", "", "", ""];
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         //        var imgOrientation = [];
-        $(document).ready(function () {
+        var svgimg = document.getElementById("svgObj-0");
+        svgimg.addEventListener('load', function(){
             var dwww = sessionStorage.dwww;
+            var winheight = document.body.scrollHeight;
+            console.log("winheight:"+winheight);
             if (dwww === "www") {
-                parent.postMessage("godesignframe", "https://www.jitdiy.com");
+                parent.postMessage("godesignframe:"+winheight, "https://www.jitdiy.com");
             }
             else {
-                parent.postMessage("godesignframe","https://jitdiy.com");
+                parent.postMessage("godesignframe:"+winheight,"https://jitdiy.com");
             }
+        });
+        $(document).ready(function () {
             // populate the zoom data
             var zoomStr = '{{zooms}}';
 //            console.log("zooms:"+zoomStr);
