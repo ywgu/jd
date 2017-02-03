@@ -108,7 +108,7 @@ div.transbox .giveup div.button-opts {
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
         $(document).ready(function () {
-            changeIframeHeight();
+            changeIframeHeight(document.body.scrollHeight);
         });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
