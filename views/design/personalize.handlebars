@@ -281,7 +281,7 @@
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
-        svgimg.addEventListener('load', function(){
+        function changeIframeHeight() {
             var dwww = sessionStorage.dwww;
             var winheight = document.body.scrollHeight;
             console.log("winheight:"+winheight);
@@ -291,6 +291,9 @@
             else {
                 parent.postMessage("godesignframe:"+winheight,"https://jitdiy.com");
             }
+        }
+        svgimg.addEventListener('load', function(){
+            changeIframeHeight();
         });
         $(document).ready(function () {
             // populate the zoom data
@@ -673,6 +676,7 @@
             else {
                 switchZoomTo("out");
             }
+            changeIframeHeight();
         }
         // send SVG doc to server
         function sendSVG(tid) {
