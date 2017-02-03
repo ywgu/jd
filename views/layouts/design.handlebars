@@ -45,9 +45,11 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-    function changeIframeHeight() {
+    function changeIframeHeight(height) {
         var dwww = sessionStorage.dwww;
         var winheight = document.body.clientHeight;
+        if (height !== null && height !== undefined)
+            winheight = height;
         console.log("winheight:"+winheight);
         if (dwww === "www") {
             parent.postMessage("changeIframeHeight:"+winheight, "https://www.jitdiy.com");
