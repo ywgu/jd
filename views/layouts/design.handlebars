@@ -45,6 +45,17 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
+    function changeIframeHeight() {
+        var dwww = sessionStorage.dwww;
+        var winheight = document.body.clientHeight;
+        console.log("winheight:"+winheight);
+        if (dwww === "www") {
+            parent.postMessage("changeIframeHeight:"+winheight, "https://www.jitdiy.com");
+        }
+        else {
+            parent.postMessage("changeIframeHeight:"+winheight,"https://jitdiy.com");
+        }
+    }
 </script>
 
 <!-- !PAGE CONTENT! -->

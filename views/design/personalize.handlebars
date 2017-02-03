@@ -281,17 +281,6 @@
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
-        function changeIframeHeight() {
-            var dwww = sessionStorage.dwww;
-            var winheight = document.body.clientHeight;
-            console.log("winheight:"+winheight);
-            if (dwww === "www") {
-                parent.postMessage("godesignframe:"+winheight, "https://www.jitdiy.com");
-            }
-            else {
-                parent.postMessage("godesignframe:"+winheight,"https://jitdiy.com");
-            }
-        }
         svgimg.addEventListener('load', function(){
             changeIframeHeight();
         });
