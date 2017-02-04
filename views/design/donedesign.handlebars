@@ -98,7 +98,8 @@ div.transbox .giveup div.button-opts {
 {{#section 'jquery'}}
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
-        $(document).ready(function () {
+        var svgimg = document.getElementById("svgObj-0");
+        svgimg.addEventListener('load', function(){
             changeIframeHeight();
         });
         // get dwww from query parameter or session
