@@ -47,14 +47,11 @@ div.transbox .giveup div.button-opts {
 <!-- Grid -->
 <div class="w3-row-padding" style="background: white;padding-top:30px;">
     <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
-        <img style="width:0px;height:0px;">
         {{#each imagelist}}
             <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
                     style="width:100%; background-color: white;">
             </object>
         {{/each}}
-
-        <img style="width:0px;height:0px;">
     </div>
 </div>
 <div class="w3-row-padding" style="background: white;">
@@ -97,18 +94,12 @@ div.transbox .giveup div.button-opts {
 </div>
 </div>
 </div>
-<!--<div class="w3-row-padding" style="background: white;">-->
-    <!--<div class="w3-col m12 s12">-->
-        <!--<p align="center">-->
-        <!--<br/><br/><br/>-->
-        <!--</p>-->
-    <!--</div>-->
-<!--</div>-->
+
 {{#section 'jquery'}}
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
         $(document).ready(function () {
-            changeIframeHeight(document.body.scrollHeight);
+            changeIframeHeight();
         });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
@@ -171,8 +162,9 @@ div.transbox .giveup div.button-opts {
             var i;
             for (i = 0; i < x.length; i++) {
                 if (i === slideIndex - 1) {
-                    x[slideIndex - 1].style.width = getWidth();
-                    x[slideIndex - 1].style.height = getHeight();
+//                    console.log("width:"+getWidth());
+                    x[slideIndex - 1].style.width = "100%";//getWidth();
+                    x[slideIndex - 1].style.height = ""; //getHeight();
                 }
                 else {
                     x[i].style.width = "0%";
