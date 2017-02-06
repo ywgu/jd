@@ -16,7 +16,7 @@
       "name": "wallets",
       "gid": "002",
       "0020001": [
-        {"tid": "002000101", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Stephanie"}] ]},
+        {"tid": "002000101", "zooms":["935,698,243,145","200,460,650,500","450,492,762,381","410,698,788,102"], "inputs":[ [{"image":false,"id":"text01","title":"GW","max":"2"}], [{"image":true,"id":"image11","title":"Girl","processing":"gpc"}], [{"image":true,"id":"image21","title":"Girl","processing":"gpc"}], [{"image":false,"id":"text31","title":"John Bryan"}] ]},
         {"tid": "002000102", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"William"}] ]},
         {"tid": "002000103", "zooms":["317,239,179,130","164,189,244,156","152,181,305,157"], "inputs":[ [{"image":false,"id":"text01","title":"M"},{"image":false,"id":"text02","title":"Garrett"}], [{"image":true,"id":"image11","title":"twin","processing":"gpc"}],[{"image":false,"id":"text21","title":"Daddy my first love"},{"image":false,"id":"text22","title":"My forever hero"},{"image":false,"id":"text23","title":"Garrett"}] ]}
       ],
