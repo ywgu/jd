@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="1600"
+   height="1000"
+   viewBox="0 0 1600 1000"
+   id="svg4197"
+   version="1.1">
+  <metadata
+     id="metadata4145">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4145">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4149">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 409.80392,698.03925 788.23528,0 0,101.96077 -788.23528,0 z"
+         id="jd_bd" />
+    </clipPath>
+  </defs>
+  <image
+     xlink:href="002000101-3.jpg"
+     y="0"
+     x="0"
+     id="jd_bg"
+     height="1000"
+     width="1600" />
+  <g
+     id="jd_nt"
+     clip-path="url(#clipPath4149)">
+    <text
+       id="text4138"
+       y="771.88239"
+       x="582.03918"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Old English Text MT';-inkscape-font-specification:'Old English Text MT, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Old English Text MT';-inkscape-font-specification:'Old English Text MT, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         y="771.88239"
+         x="822.03918"
+         id="text31">John Bryan</tspan></text>
+  </g>
+</svg>
