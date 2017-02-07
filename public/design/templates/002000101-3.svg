@@ -7,11 +7,11 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   width="1600"
-   height="1000"
-   viewBox="0 0 1600 1000"
+   version="1.1"
    id="svg4197"
-   version="1.1">
+   viewBox="0 0 1600 1000"
+   height="1000"
+   width="1600">
   <metadata
      id="metadata4145">
     <rdf:RDF>
@@ -27,12 +27,12 @@
   <defs
      id="defs4145">
     <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath4149">
+       id="clipPath4142"
+       clipPathUnits="userSpaceOnUse">
       <path
-         style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 409.80392,698.03925 788.23528,0 0,101.96077 -788.23528,0 z"
-         id="jd_bd" />
+         id="path4144"
+         d="m 411.63217,659.71735 768.38023,0 0,179.28862 -768.38023,0 z"
+         style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </clipPath>
   </defs>
   <image
@@ -43,17 +43,17 @@
      height="1000"
      width="1600" />
   <g
-     id="jd_nt"
-     clip-path="url(#clipPath4149)">
+     clip-path="url(#clipPath4142)"
+     id="jd_nt">
     <text
-       id="text4138"
-       y="771.88239"
-       x="582.03918"
+       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;line-height:125%;font-family:'meddon';-inkscape-font-specification:'Old English Text MT, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;line-height:125%;font-family:'meddon';-inkscape-font-specification:'Old English Text MT, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-         y="771.88239"
+       x="582.03918"
+       y="771.88239"
+       id="text4138"><tspan
+         id="text31"
          x="822.03918"
-         id="text31">John Bryan</tspan></text>
+         y="771.88239"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;line-height:125%;font-family:'meddon';-inkscape-font-specification:'Old English Text MT, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">John Bryan</tspan></text>
   </g>
 </svg>
