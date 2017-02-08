@@ -48,9 +48,11 @@ div.transbox .giveup div.button-opts {
 <div class="w3-row-padding" style="background: white;padding-top:30px;">
     <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
         {{#each imagelist}}
+        <div id="svgc-{{@index}}">
             <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
                     style="width:100%; background-color: white;">
             </object>
+        </div>
         {{/each}}
     </div>
 </div>
@@ -161,19 +163,19 @@ div.transbox .giveup div.button-opts {
                 slideIndex = 1
             }
             var i;
-            var showIdx;
             for (i = 0; i < x.length; i++) {
-//                if (i === slideIndex - 1) {
-////                    console.log("width:"+getWidth());
-//
-//                }
-//                else {
+                if (i === slideIndex - 1) {
+//                    console.log("width:"+getWidth());
+                    x[slideIndex - 1].style.width = "100%";//getWidth();
+//                    x[slideIndex - 1].style.height = ""; //getHeight();
+                    document.getElementById("svgc-" + i).style.height = "100%";
+                }
+                else {
                     x[i].style.width = "0%";
-                    x[i].style.height = "0%";
-//                }
+//                    x[i].style.height = "";
+                    document.getElementById("svgc-" + i).style.height = "0px";
+                }
             }
-            x[slideIndex - 1].style.width = "100%";//getWidth();
-            x[slideIndex - 1].style.height = ""; //getHeight();
             if (isPause === 0)
                 setTimeout(carousel, 1000); // Change image every 2 seconds
         }

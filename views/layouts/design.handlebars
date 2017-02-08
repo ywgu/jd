@@ -50,7 +50,6 @@
         var winheight = document.body.clientHeight;
         if (height !== null && height !== undefined)
             winheight = height;
-        console.log("winheight:"+winheight);
         if (dwww === "www") {
             parent.postMessage("changeIframeHeight:"+winheight, "https://www.jitdiy.com");
         }
