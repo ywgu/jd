@@ -35,7 +35,7 @@
     </clipPath>
   </defs>
   <image
-     xlink:href="002000101-1.jpg"
+     xlink:href="/design/templates/002000101-1.jpg"
      y="0"
      x="100"
      id="jd_bg"
@@ -45,7 +45,7 @@
      id="jd_nt"
      clip-path="url(#clipPath4141)">
     <image
-       xlink:href="girl1.png"
+       xlink:href="/design/templates/girl1.png"
        width="500"
        height="650"
        preserveAspectRatio="none"

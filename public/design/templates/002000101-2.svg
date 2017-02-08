@@ -35,7 +35,7 @@
     </rdf:RDF>
   </metadata>
   <image
-     xlink:href="002000101-2.jpg"
+     xlink:href="/design/templates/002000101-2.jpg"
      y="0"
      x="0"
      id="jd_bg"
@@ -45,7 +45,7 @@
      clip-path="url(#clipPath4807)"
      id="jd_nt">
     <image
-       xlink:href="0020001-11.png"
+       xlink:href="/design/templates/0020001-11.png"
        width="600"
        height="380"
        preserveAspectRatio="none"
