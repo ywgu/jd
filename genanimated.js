@@ -32,9 +32,9 @@ process.on('message', function (imgInfo) {
     function preprocess(isWin,src, dest) {
         console.log("preprocess: src:"+src+",dest:"+dest);
         // delete dest if exists
-        if (fs.exists(dest))
-            fs.unlink(dest);
-        fs.readFile(src).toString().split('\n').forEach(function (line) {
+        if (fs.existsSync(dest))
+            fs.unlinkSync(dest);
+        fs.readFileSync(src).toString().split('\n').forEach(function (line) {
             // if (line.indexOf("jd_nt") > 0) {
             //     // remove the clip-path attribute
             //     line = line.replace("clip-path", "cp");
@@ -57,7 +57,7 @@ process.on('message', function (imgInfo) {
                 }
             }
             // console.log(line);
-            fs.appendFile(dest, line.toString() + "\n");
+            fs.appendFileSync(dest, line.toString() + "\n");
         });
     }
 });
