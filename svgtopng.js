@@ -97,9 +97,9 @@ process.on('message', function (imgInfo) {
 
     function preprocess(isWin,src, dest) {
         // delete dest if exists
-        if (fs.existsSync(dest))
-            fs.unlinkSync(dest);
-        fs.readFileSync(src).toString().split('\n').forEach(function (line) {
+        if (fs.exists(dest))
+            fs.unlink(dest);
+        fs.readFile(src).toString().split('\n').forEach(function (line) {
             if (line.indexOf("jd_bg") > 0) {
                 // remove this line
                 line = "";
@@ -125,7 +125,7 @@ process.on('message', function (imgInfo) {
                 }
             }
             // console.log(line);
-            fs.appendFileSync(dest, line.toString() + "\n");
+            fs.appendFile(dest, line.toString() + "\n");
         });
     }
 

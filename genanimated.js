@@ -12,8 +12,8 @@ process.on('message', function (imgInfo) {
     var did = imgInfo.substring(0, imgInfo.indexOf('|'));
     var totalPages = parseInt(imgInfo.substring(imgInfo.indexOf('|')+1));
     var isWin = /^win/.test(process.platform);
-    var totalProcessed = 0;
-    var exiting = false;
+    // var totalProcessed = 0;
+    // var exiting = false;
 
     // find the count first DONOT use do while for the loop
     for (var i=0; i<totalPages; i++) {
@@ -32,9 +32,9 @@ process.on('message', function (imgInfo) {
     function preprocess(isWin,src, dest) {
         console.log("preprocess: src:"+src+",dest:"+dest);
         // delete dest if exists
-        if (fs.existsSync(dest))
-            fs.unlinkSync(dest);
-        fs.readFileSync(src).toString().split('\n').forEach(function (line) {
+        if (fs.exists(dest))
+            fs.unlink(dest);
+        fs.readFile(src).toString().split('\n').forEach(function (line) {
             // if (line.indexOf("jd_nt") > 0) {
             //     // remove the clip-path attribute
             //     line = line.replace("clip-path", "cp");
@@ -57,7 +57,7 @@ process.on('message', function (imgInfo) {
                 }
             }
             // console.log(line);
-            fs.appendFileSync(dest, line.toString() + "\n");
+            fs.appendFile(dest, line.toString() + "\n");
         });
     }
 });
