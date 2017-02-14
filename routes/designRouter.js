@@ -180,7 +180,7 @@ designRouter.route('/personalize/:tid')
                 }
             }
         }
-        res.render('design/personalize', {layout: 'design', tid: req.params.tid, inputs: inputList, zooms: zoomStr});
+        res.render('design/personalize2', {layout: 'design', tid: req.params.tid, inputs: inputList, zooms: zoomStr});
     });
 designRouter.route('/design/:did')
     .get(function (req, res, next) {

@@ -1,0 +1,854 @@
+<style>
+    /* panel for add text, image, etc. */
+    div.transbox {
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.9;
+        position: fixed;
+        top: 80px;
+        bottom: 20px;
+        left: 15px;
+        right: 15px;
+        z-index: 100;
+        filter: alpha(opacity=90); /* For IE8 and earlier */
+        display: none;
+    }
+
+    div.transbox .terms .copy-wrapper {
+        position: absolute;
+        top: 45px;
+        bottom: 85px;
+        left: 20px;
+        right: 20px;
+        overflow: auto;
+        padding: 15px;
+    }
+
+    div.transbox .terms div.button-opts {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+    }
+
+    div.form-group {
+        margin-bottom: 8px;
+    }
+
+    #cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*right: 0;*/
+        /*bottom: 0;*/
+        opacity: 0.80;
+        background: #aaa;
+        z-index: 10;
+        display: none;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 0px;
+        text-align: center;
+    }
+</style>
+<script type="text/javascript" src="/design/javascripts/exif.js"></script>
+<!-- Header -->
+<header class="w3-container">
+    <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+    <h4 style="margin:10px;font-family:Tahoma, Geneva, sans-serif;">2/3: Personalization Attributes</h4>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+    <div class="w3-col l6 s12">
+        <div class="w3-card-2" style="background-color: white">
+            <div class="w3-content w3-display-container">
+                {{#each inputs}}
+                    <div id="svgc-{{@index}}">
+                        <object id="svgObj-{{@index}}" type="image/svg+xml"
+                                data="/design/templates/{{../tid}}-{{@index}}.svg"
+                                style="width:100%;">
+                            Your browser does not support SVG
+                        </object>
+                    </div>
+                {{/each}}
+                <a id="zoom" class="w3-display-topright"
+                   onclick="zoominSVG()">
+                    <span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span></a>
+            </div>
+            <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
+                <table>
+                    <tr>
+                        {{#each inputs}}
+                            <td>
+                        <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
+                              title="page" style="padding:6px;margin:2px;"
+                              onclick="showTemplate({{@index}})"><img
+                                src="/design/templates/{{../tid}}-{{@index}}.png"
+                                alt="front"></span>
+                            </td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        {{#each inputs}}
+                            <td align="center">
+                                <span id="ignore-{{@index}}"
+                                      class="w3-center w3-large glyphicon glyphicon-check w3-text-grey"
+                                      aria-hidden="true"></span>
+                            </td>
+                        {{/each}}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-col l6 s12">
+        {{#each inputs}}
+            <div class="w3-card-4 w3-margin w3-white" id="form-{{@index}}">
+                <div class="w3-container">
+                    <div class="form-group">
+                        <p class="checkbox terms-of-use">
+                            <label for="skipPart" class="uber-input uber-checkbox"><span class="checkbox-img"></span>
+                                <input type="checkbox" id="skippart-{{@index}}" name="skipPart" onchange="toggleskip({{@index}},this);" value="true">
+                                I would like to skip this part of the design
+                            </label>
+                        </p>
+                    </div>
+                    <div class="w3-row">
+                        {{#each this}}
+                            {{#if image}}
+                                <!-- image input -->
+                                <div class="form-group">
+                                    <label for="fieldImage" class="control-label">Replace image file for "{{title}}
+                                        "</label>
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <div class="form-control" data-trigger="fileinput">
+                                            <span class="fileinput-filename"
+                                                  style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 130px;"></span>
+                                        </div>
+                                        <span class="input-group-addon btn btn-default btn-file"><span
+                                                class="fileinput-new">Select file</span><span
+                                                class="fileinput-exists">Change</span>
+                                            <!--<div style=''>-->
+                                                        <input type="file" name="{{id}}-org" id="{{id}}-org"
+                                                               onchange="loadAndResizeFile(event,'{{id}}')">
+                                            <!--</div>-->
+                                                </span>
+                                        <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
+                                        <!--data-dismiss="fileinput">Remove</a>-->
+                                    </div>
+                                </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                    <form id="uploadForm-{{@index}}"
+                          role="form"
+                          enctype="multipart/form-data" method="POST"
+                          action="/design/uploaddata">
+                        <input type="hidden" name="tidx" value="{{@index}}"/>
+                        <div class="w3-row">
+                            {{#each this}}
+                                {{#if image}}
+                                    <!-- image input -->
+                                    {{#if processing}}
+                                        <input type="hidden" name="processing" value="{{processing}}"/>
+                                    {{/if}}
+                                    <div class="form-group">
+                                        <input type="hidden" name="{{id}}" id="{{id}}" value="{{id}}"/>
+                                        <input type="hidden" name="data-{{id}}" id="data-{{id}}" value="nothing"/>
+                                    </div>
+                                {{else}}
+                                    <div class="form-group">
+                                        <label for="fieldText" class="control-label">Replace text for "{{title}}
+                                            "</label>
+                                        <input type="text" class="form-control" placeholder="Type your text here..."
+                                               name="{{id}}" {{#if max}}maxlength="{{max}}"{{/if}}>
+                                    </div>
+                                {{/if}}
+                            {{/each}}
+                        </div>
+
+                        <div class="w3-row">
+                            <div class="form-group">
+                                <p class="checkbox terms-of-use">
+                                    <label for="termsOfUse" class="uber-input uber-checkbox"><span
+                                            class="checkbox-img"></span>
+                                        <input type="checkbox" id="terms-{{@index}}" name="termsOfUse" value="true">
+                                        I agree to the <a href="#" onclick="showForm('terms')" class="show-terms">terms
+                                            and conditions</a> for uploaded material
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <div class="w3-col m12 s12">
+                                    <p align="center">
+                                        <button type="submit" id="preview-{{@index}}"
+                                                title='Enable this button after "terms" are accepted and checked'
+                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                                                name="submit" disabled><b>PREVIEW »</b></button>
+                                        <button type="button" id="donebutton"
+                                                title="Enable this button after all pages are designed and previewed"
+                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black donebutton"
+                                                onclick="sendSVG('{{tid}}')" disabled><b>DONE »</b></button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<div class="transbox" id="terms">
+    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('terms')"></span></div>
+    <div class="terms" style="display: block;">
+        <div class="copy-wrapper">
+            <h2>Uploaded Materials</h2>
+            <p>When using any Services provided via the JITDIY website, You may elect to upload or otherwise submit
+                materials to the site (collectively, "Materials"). JITDIY reserves the right to supervise or review
+                User-provided Materials that are uploaded to this site and You agree, represent and warrant that in
+                using the Services, You will not upload, submit or otherwise transmit to JITDIY:</p>
+            <ul class="bullet">
+                <li>Materials that are unlawful, threatening, abusive, defamatory, libelous, slanderous, obscene or
+                    which invade another person's privacy or further the commission or concealment of a crime;
+                </li>
+                <li>Materials that promote hate toward any person, group, affiliation, organization, gender or race;
+                </li>
+                <li>Materials that are not lawfully Yours to transmit;</li>
+                <li>Materials that are the subject of, or which infringe upon, any patent, trademark, trade name, trade
+                    secret, copyright, right of publicity, moral right or other intellectual property right of another
+                    person or entity;
+                </li>
+                <li>Materials containing software viruses or other harmful computer code; or Materials that in any way
+                    interfere with or disrupt the Services or any servers or networks connected to or used with the
+                    Services (any of the foregoing, "Unauthorized Materials").
+                </li>
+            </ul>
+            <p>JITDIY takes no ownership in any Materials uploaded to the JITDIY website, except JITDIY retains its
+                rights in, and to, the Content that is present on the site or that may be created and/or supplied by or
+                for JITDIY. Further, it is the policy of JITDIY to delete any Material recognized by JITDIY to fall
+                within one or more of the above classes of content, decline any order of goods in association with said
+                recognized content and prevent further uploads of duplicate or similar content by the User.</p>
+            <p>You represent and warrant to JITDIY that you have the right to use copy and distribute each copyright,
+                trademark, service mark, trade name, logo, statement, graphic, artwork, name photograph, portrait,
+                picture or illusion of any person or any other intellectual property in the way it is to be printed on
+                or otherwise applied to the products ordered by your from JITDIY. </p>
+            <p>Moreover, You warrant and confirm that any documents or Materials You submit online for printing or
+                processing by JITDIY is either in the public domain, subject to fair use by You, or that You own the
+                copyright or otherwise have obtained permission to copy and you have not violated the property rights of
+                any third party. Further, You agree to defend, indemnify and hold JITDIY and its officers, directors,
+                agents, employees and affiliates, harmless from any suit, demand, or claim arising out of any breach of
+                this warranty and agree to pay any judgment or reasonable settlement offer resulting from any such suit,
+                demand or claim, and to pay any attorney’s fees incurred by JITDIY in defending against such suit,
+                demand or claim.</p>
+        </div>
+        <div class="button-opts">
+            <a id="btnAgree" href="#" onclick="agree();hideForm('terms')" class="btn btn-primary">Agree and Continue</a>
+            <a id="btnCancel" href="#" onclick="hideForm('terms')" class="btn btn-default">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<div id="cover">
+</div>
+
+{{#section 'jquery'}}
+    <script>
+        var previews = [];
+        // maximum template number = 8
+        var zoomStatus = [0, 0, 0, 0, 0, 0, 0, 0];
+        var zooms = ["", "", "", "", "", "", "", ""];
+        var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
+        //        var imgOrientation = [];
+        var svgimg = document.getElementById("svgObj-0");
+        svgimg.addEventListener('load', function(){
+            changeIframeHeight();
+        });
+        $(document).ready(function () {
+            // populate the zoom data
+            var zoomStr = '{{zooms}}';
+//            console.log("zooms:"+zoomStr);
+            count = 0;
+            var tempStr = zoomStr;
+            do {
+                var sep = tempStr.indexOf(';');
+                var aZoomStr = tempStr.substring(0, sep);
+                tempStr = tempStr.substring(sep + 1);
+//                console.log("aZoomStr:"+aZoomStr);
+                if (aZoomStr.length !== 0) {
+                    zooms[count++] = aZoomStr;
+                }
+                else
+                    break;
+            } while (true);
+//            console.log("lastzoom:"+zooms[count-1]);
+            count = 0;
+            do {
+                elmName = 'uploadForm-' + count;
+                var elm = document.getElementById(elmName);
+//                console.log(elmName + ":" + elm);
+                if (elm === null || elm === undefined)
+                    break;
+                elmId = "#" + elmName;
+                $(elmId).submit(function (evt) {
+                    console.log("File is uploading...");
+                    lockScreen();
+                    evt.preventDefault();
+                    $(this).ajaxSubmit({
+                        error: function (xhr) {
+                            console.log("error:" + xhr.status);
+                            showWarning("Connection error. Please try again later.");
+//                            status('Error: ' + xhr.status);
+                            unlockScreen();
+                        },
+                        success: function (response) {
+//                            console.log("response:" + response);
+                            var resJson = JSON.parse(response);
+                            // wait for image to be loaded
+                            if (resJson.processing === "gpc") {
+                                for (var key in resJson) {
+                                    if (key.indexOf("image") === 0) {
+                                        // sleep for  seconds
+                                        var date = null;
+                                        var curDate = null;
+                                        var count = 0;
+                                        do {
+//                                            console.log("count:" + count++);
+                                            date = new Date();
+                                            do {
+                                                curDate = new Date();
+                                            } while (curDate - date < 2000);
+                                        } while (!imgExists("/designs/temp/" + resJson[key]) && count < 10);
+                                    }
+                                }
+                            }
+                            updateSVG(resJson);
+                            previews[resJson.tidx] = 1;
+                            var ignoreBtn = document.getElementById("ignore-" + resJson.tidx);
+                            ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+                            checkDone();
+                            unlockScreen();
+                            $('html, body').animate({ scrollTop: 0 }, 'fast');
+                        }
+                    });
+                });
+                // check terms
+                elmId = "#terms-" + count;
+                $(elmId).click(function (event) {
+                    if (this.checked) {
+                        turnOnButton("preview");
+                        turnOnCheckbox("terms");
+                    } else {
+                        turnOffButton("preview");
+                        turnOffCheckbox("terms");
+                    }
+                });
+                count++;
+            } while (true);
+            for (var i = 0; i < count; i++)
+                previews.push(0);
+        });
+
+        function checkDone() {
+            var total = 0;
+            for (var i = 0; i < previews.length; i++) {
+                if (ignoreStatus[i] === 1)
+                    total++;
+                else
+                    total += previews[i];
+            }
+//                            console.log("total previews:" + total + "," + previews.length);
+            if (total === previews.length) {
+                // enable DONE buttons
+                $(".donebutton").attr("disabled",false);
+            }
+            else
+                $(".donebutton").attr("disabled",true);
+        }
+        window.loadAndResizeFile = function (e, id) {
+            console.log("loadAndResizeFile:" + id);
+            EXIF.getData(e.target.files[0], function () {
+                var orientation = EXIF.getTag(this, "Orientation");
+//                alert("orientation:"+orientation);
+                // Read in file
+                var file = e.target.files[0];
+                if (file === null || file === undefined)
+                    return;
+
+                // Ensure it's an image
+                if (file.type.match(/image.*/)) {
+                    console.log('An image has been loaded');
+
+                    // Load the image
+                    var reader = new FileReader();
+                    reader.onload = function (readerEvent) {
+                        var image = new Image();
+                        image.onload = function (imageEvent) {
+
+                            // Resize the image
+                            var canvas = document.createElement('canvas'),
+                                    max_size = 1600,// NOTE: 400 dpi * 4 inch = 1600 pixel
+                                    width = image.width,
+                                    height = image.height;
+                            if (width > height) {
+                                if (width > max_size) {
+                                    height *= max_size / width;
+                                    width = max_size;
+                                }
+                            } else {
+                                if (height > max_size) {
+                                    width *= max_size / height;
+                                    height = max_size;
+                                }
+                            }
+                            // default: canvas width and height do not change
+                            canvas.width = width;
+                            canvas.height = height;
+                            var ctx = canvas.getContext('2d');
+
+                            switch (orientation) {
+                                case 2:
+                                    // horizontal flip
+                                    ctx.translate(canvas.width, 0);
+                                    ctx.scale(-1, 1);
+                                    break;
+                                case 3:
+                                    // 180° rotate left
+                                    ctx.translate(canvas.width, canvas.height);
+                                    ctx.rotate(Math.PI);
+                                    break;
+                                case 4:
+                                    // vertical flip
+                                    ctx.translate(0, canvas.height);
+                                    ctx.scale(1, -1);
+                                    break;
+                                case 5:
+                                    // vertical flip + 90 rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.scale(1, -1);
+                                    break;
+                                case 6: // TODO: rotate causes image not at the center!!!
+                                    // 90° rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.translate(0, -height);
+//                                    ctx.transform(0, 1, -1, 0, height , 0);
+                                    break;
+                                case 7:
+                                    // horizontal flip + 90 rotate right
+                                    canvas.width = height;
+                                    canvas.height = width;
+                                    ctx.rotate(0.5 * Math.PI);
+                                    ctx.translate(width, -height);
+                                    ctx.scale(-1, 1);
+                                    break;
+                                case 8:
+                                    // 90° rotate left
+                                    canvas.width = height;
+                                    canvas.height = width;
+                                    ctx.rotate(-0.5 * Math.PI);
+                                    ctx.translate(-width, 0);
+                                    break;
+                            }
+
+                            ctx.drawImage(image, 0, 0, width, height);
+                            var dataUrl = canvas.toDataURL('image/jpeg');
+//                        var resizedImage = dataURLToBlob(dataUrl);
+                            document.getElementById(id).value = file.name;
+                            document.getElementById("data-" + id).value = dataUrl;
+//                        $.event.trigger({
+//                            type: "imageResized",
+//                            blob: resizedImage,
+//                            url: dataUrl
+//                        });
+                        };
+                        image.src = readerEvent.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        };
+
+        /* Utility function to convert a canvas to a BLOB */
+        var dataURLToBlob = function (dataURL) {
+            var BASE64_MARKER = ';base64,';
+            var parts;
+            var contentType;
+            var raw;
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                parts = dataURL.split(',');
+                contentType = parts[0].split(':')[1];
+                raw = parts[1];
+
+                return new Blob([raw], {type: contentType});
+            }
+
+            parts = dataURL.split(BASE64_MARKER);
+            contentType = parts[0].split(':')[1];
+            raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], {type: contentType});
+        };
+
+        function switchZoomTo(to) {
+            var ele = document.getElementById("zoom");
+            if (to === "in") {
+                ele.onclick = zoominSVG;
+                ele.innerHTML = '<span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span>';
+//                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-in");
+                zoomStatus[templateIndex] = 0;
+            }
+            else {
+                ele.onclick = zoomoutSVG;
+                ele.innerHTML = '<span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-out" aria-hidden="false"></span>';
+//                ele.setAttribute("class", "w3-right w3-padding-medium glyphicon glyphicon-zoom-out");
+                zoomStatus[templateIndex] = 1;
+            }
+        }
+        function zoominSVG() {
+            var elms = document.querySelectorAll("#svgObj-" + templateIndex);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("subdoc:"+subdoc+",svg:"+svg);
+            if (svg !== null && svg !== undefined) {
+                svg.setAttribute("viewBox", zooms[templateIndex]);
+//                var rect = svg.getBoundingClientRect();
+//                console.log( rect.width );
+//                console.log( rect.height);
+                zoom[templateIndex] = 1;
+            }
+            switchZoomTo("out");
+        }
+        function zoomoutSVG() {
+            var elms = document.querySelectorAll("#svgObj-" + templateIndex);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("subdoc:"+subdoc+",svg:"+svg);
+            if (svg !== null && svg !== undefined) {
+                svg.setAttribute("viewBox", "0,0,1600,1000");
+                zoom[templateIndex] = 0;
+            }
+            switchZoomTo("in");
+        }
+
+        function imgExists(imgPath) {
+//            console.log("imgExists called");
+            var http = new XMLHttpRequest();
+            http.open('HEAD', imgPath, false);
+            http.send();
+//            console.log("imgExists return:" + http.status);
+            return http.status == 200;
+        }
+        function updateSVG(resJson) {
+            tidx = resJson["tidx"];
+            var elms = document.querySelectorAll("#svgObj-" + tidx);
+//            console.log("tidx:" + tidx);
+            var subdoc = null;
+            for (var i = 0; i < elms.length; i++) {
+                subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+//            var svgDoc = svg.contentDocument;
+//            console.log("subdoc:" + subdoc);
+//            var svg = subdoc.getElementsByTagName("svg")[0];
+//            console.log("svg:"+svg);
+            for (var key in resJson) {
+                var value = resJson[key];
+//                console.log("key:" + key + ",value:" + value);
+                if (key.indexOf("image") === 0) {
+                    var img = subdoc.getElementById(key);
+//                    console.log("img:" + img + ",value:" + value);
+//                    img.href = "/designs/temp/" + value;
+                    img.setAttribute("fill", "red");
+                    img.setAttribute('xlink:href', "/designs/temp/" + value);
+                }
+                else if (key.indexOf("text") === 0) {
+                    var txt = subdoc.getElementById(key);
+//                    console.log("txt:" + txt);
+                    txt.textContent = value;
+                }
+                // ignore other response keys
+            }
+        }
+        // fetches the document for the given embedding_element
+        function getSubDocument(embedding_element) {
+            if (embedding_element.contentDocument) {
+                return embedding_element.contentDocument;
+            }
+            else {
+                var subdoc = null;
+                try {
+                    subdoc = embedding_element.getSVGDocument();
+                } catch (e) {
+                }
+                return subdoc;
+            }
+        }
+        // frozen the screen to avoid double click
+
+        // part selecting script
+        var templateIndex = 0;
+        showTemplate(templateIndex);
+
+        function showTemplate(n) {
+//            console.log("showTemplate:" + n);
+            templateIndex = n;
+            count = 0;
+            do {
+                formId = "form-" + count;
+//                console.log("formId:" + formId);
+                var f = document.getElementById(formId);
+                var i = document.getElementById("icon-" + count);
+//                console.log("t:" + f);
+                if (f === null || f === undefined)
+                    break;
+                if (count === n) {
+                    if (ignoreStatus[count] === 0) {
+                        setSVGEleDisplay(count, "jd_nt", "overflow: visible; display:inline");
+                    }
+                    f.style.display = "";
+                    i.style.borderColor = "darkgrey";
+                    i.style.borderWidth = "4px";
+                    document.getElementById("svgObj-" + count).style.width = "100%";
+                    document.getElementById("svgc-" + count).style.height = "100%";
+                }
+                else {
+                    f.style.display = "none";
+                    i.style.borderWidth = "0px";
+                    document.getElementById("svgObj-" + count).style.width = "0%";
+                    document.getElementById("svgc-" + count).style.height = "0px";
+                }
+                count++;
+            } while (true);
+            // switch zoom button
+            if (zoomStatus[templateIndex] === 0) {
+                switchZoomTo("in");
+            }
+            else {
+                switchZoomTo("out");
+            }
+            changeIframeHeight();
+        }
+        // send SVG doc to server
+        function sendSVG(tid) {
+            console.log("tid:" + tid);
+            count = 0;
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "/design/done");
+            form.setAttribute("id", "doneform");
+            form.setAttribute("accept-charset", "UTF-8");
+            var hiddenSVGField = document.createElement("input");
+            hiddenSVGField.setAttribute("type", "hidden");
+            hiddenSVGField.setAttribute("name", "tid");
+            hiddenSVGField.setAttribute("value", tid);
+            form.appendChild(hiddenSVGField);
+            do {
+                var elms = document.querySelectorAll("#svgObj-" + count);
+                if (elms === null || elms === undefined)
+                    break;
+                var subdoc = null;
+                for (var i = 0; i < elms.length; i++) {
+                    subdoc = getSubDocument(elms[i]);
+                    if (subdoc !== null && subdoc !== undefined)
+                        break;
+                }
+                if (subdoc === null || subdoc === undefined)
+                    break;
+                // switch to zoom out
+                templateIndex = count;
+                zoomoutSVG();
+                xml = (new XMLSerializer()).serializeToString(subdoc);
+//                console.log("svg:" + xml);
+                hiddenSVGField = document.createElement("input");
+                hiddenSVGField.setAttribute("type", "hidden");
+                hiddenSVGField.setAttribute("name", "svg" + count);
+                hiddenSVGField.setAttribute("value", xml);
+                form.appendChild(hiddenSVGField);
+                count++;
+            } while (true);
+
+            document.body.appendChild(form);
+            $.ajax({
+                type: "POST",
+                url: "/design/done",
+                data: $("#doneform").serialize(),
+                error: function (xhr) {
+                    console.log('Error: ' + xhr.status);
+                    showWarning("Connection error. Please try again later.");
+                },
+                success: function (data) {
+                    console.log(data);
+                    window.location = "/design/donedesign/" + data;
+                }
+            });
+        }
+        // hide and display the specific form
+        var formShown = 'none';
+        hideForm("terms");
+        function showForm(id) {
+            // hide current displayed form
+            if (formShown !== 'none') {
+                document.getElementById(formShown).style.display = "none";
+            }
+            document.getElementById(id).style.display = "inline";
+            formShown = id;
+        }
+        function hideForm(id) {
+            document.getElementById(id).style.display = "none";
+            formShown = 'none';
+        }
+        function agree() {
+            turnOnCheckbox("terms");
+            turnOnButton("preview");
+        }
+        function lockScreen() {
+            var width = $(document).width() + "px";
+            var height = $(document).height() + "px";
+            var cover = document.getElementById("cover");
+            cover.style.width = width;
+            cover.style.height = height;
+            cover.style.display = "block";
+            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;">Please wait while we upload and transform your image.</p>';
+        }
+        function unlockScreen() {
+            $("#cover").fadeOut(100);
+        }
+        function showWarning(msg) {
+            var width = $(document).width() + "px";
+            var height = $(document).height() + "px";
+            var cover = document.getElementById("cover");
+            cover.style.width = width;
+            cover.style.height = height;
+            cover.style.display = "block";
+            cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;"><span class="label label-warning">' + msg + '</span></p>';
+            $("#cover").fadeOut(5000);
+        }
+        function turnOnCheckbox(id) {
+            for (var i = 0; i < previews.length; i++) {
+                document.getElementById(id + "-" + i).checked = true;
+            }
+        }
+        function turnOffCheckbox(id) {
+            for (var i = 0; i < previews.length; i++) {
+                document.getElementById(id + "-" + i).checked = false;
+            }
+        }
+        function turnOnButton(id) {
+            for (var i = 0; i < previews.length; i++) {
+                document.getElementById(id + "-" + i).disabled = false;
+            }
+        }
+        function turnOffButton(id) {
+            for (var i = 0; i < previews.length; i++) {
+                document.getElementById(id + "-" + i).disabled = true;
+            }
+        }
+        function toggleskip(idx,element) {
+//            console.log("check :"+element.checked);
+            var ignoreBtn = document.getElementById("ignore-" + idx);
+            var paramPanel = document.getElementById("form-" + idx);
+            ignoreStatus[idx] = 1 - ignoreStatus[idx];
+            if (element.checked) {
+                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+                //paramPanel.style.display = "none";
+                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
+                $("#form-"+idx).find("input[type='text']").attr("disabled", true);
+                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
+            }
+            else {
+                if (previews[idx] === 0) {
+                    ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+                }
+                if (templateIndex == idx) {
+                    //paramPanel.style.display = "";
+                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
+                    $("#form-"+idx).find("input[type='text']").attr("disabled", false);
+                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
+                }
+            }
+            checkDone();
+        }
+//        function setStatus(idx,done) {
+//            var ignoreBtn = document.getElementById("ignore-" + idx);
+//            var paramPanel = document.getElementById("form-" + idx);
+//            ignoreStatus[idx] = 1 - ignoreStatus[idx];
+//            if (ignoreStatus[idx] === 1) { // hide
+//                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+//                paramPanel.style.display = "none";
+//                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
+//            }
+//            else {
+//                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+//                if (templateIndex == idx) {
+//                    paramPanel.style.display = "";
+//                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
+//                }
+//            }
+//            checkDone();
+//            changeIframeHeight();
+//        }
+        function setSVGEleDisplay(idx, eleName, displayVal) {
+            setElementAttrValue(idx,eleName,"style",displayVal);
+        }
+        function setElementAttrValue(idx, eleId, attrName, attrValue) {
+            var elms = document.querySelectorAll("#svgObj-" + idx);
+            var subdoc = null;
+            if (elms.length <= 0)
+                return false;
+            for (var i = 0; i < elms.length; i++) {
+                var subdoc = getSubDocument(elms[i]);
+                if (subdoc !== null && subdoc !== undefined)
+                    break;
+            }
+            if (subdoc === null || subdoc === undefined)
+                return false;
+            var ele = subdoc.getElementById(eleId);
+//            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
+            if (ele !== null && ele !== undefined) {
+                ele.setAttribute(attrName,attrValue);
+                return true;
+            }
+            return false;
+        }
+        function setSKU(sku) {
+            console.log("setSKU is called with parameter sku:"+sku);
+            // change background to sku.jpg
+            //console.log("changing the background to "+sku+".jpg");
+            var count = 0;
+            do {
+                var bgName = "/design/templates/" + sku.substring(4) + "-" + count +".jpg";
+                var success = setElementAttrValue(count,"jd_bg","xlink:href",bgName);
+                count++;
+            } while(success);
+        }
+    </script>
+{{/section}}
