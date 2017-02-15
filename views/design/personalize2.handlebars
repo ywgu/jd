@@ -51,7 +51,7 @@
     }
 
     th, td {
-        padding: 0px;
+        padding: 0;
         text-align: center;
     }
 </style>
@@ -268,6 +268,7 @@
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
+        var termsAccepted = false;
         svgimg.addEventListener('load', function(){
             changeIframeHeight();
         });
@@ -321,6 +322,7 @@
                                         var count = 0;
                                         do {
 //                                            console.log("count:" + count++);
+                                            count++;
                                             date = new Date();
                                             do {
                                                 curDate = new Date();
@@ -341,13 +343,15 @@
                 });
                 // check terms
                 elmId = "#terms-" + count;
-                $(elmId).click(function (event) {
+                $(elmId).click(function () {
                     if (this.checked) {
-                        turnOnButton("preview");
+                        turnOnPreviewButtons();
                         turnOnCheckbox("terms");
+                        termsAccepted = true;
                     } else {
-                        turnOffButton("preview");
+                        turnOffPreviewButtons();
                         turnOffCheckbox("terms");
+                        termsAccepted = false;
                     }
                 });
                 count++;
@@ -390,7 +394,7 @@
                     var reader = new FileReader();
                     reader.onload = function (readerEvent) {
                         var image = new Image();
-                        image.onload = function (imageEvent) {
+                        image.onload = function () {
 
                             // Resize the image
                             var canvas = document.createElement('canvas'),
@@ -480,32 +484,32 @@
         };
 
         /* Utility function to convert a canvas to a BLOB */
-        var dataURLToBlob = function (dataURL) {
-            var BASE64_MARKER = ';base64,';
-            var parts;
-            var contentType;
-            var raw;
-            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-                parts = dataURL.split(',');
-                contentType = parts[0].split(':')[1];
-                raw = parts[1];
-
-                return new Blob([raw], {type: contentType});
-            }
-
-            parts = dataURL.split(BASE64_MARKER);
-            contentType = parts[0].split(':')[1];
-            raw = window.atob(parts[1]);
-            var rawLength = raw.length;
-
-            var uInt8Array = new Uint8Array(rawLength);
-
-            for (var i = 0; i < rawLength; ++i) {
-                uInt8Array[i] = raw.charCodeAt(i);
-            }
-
-            return new Blob([uInt8Array], {type: contentType});
-        };
+//        var dataURLToBlob = function (dataURL) {
+//            var BASE64_MARKER = ';base64,';
+//            var parts;
+//            var contentType;
+//            var raw;
+//            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+//                parts = dataURL.split(',');
+//                contentType = parts[0].split(':')[1];
+//                raw = parts[1];
+//
+//                return new Blob([raw], {type: contentType});
+//            }
+//
+//            parts = dataURL.split(BASE64_MARKER);
+//            contentType = parts[0].split(':')[1];
+//            raw = window.atob(parts[1]);
+//            var rawLength = raw.length;
+//
+//            var uInt8Array = new Uint8Array(rawLength);
+//
+//            for (var i = 0; i < rawLength; ++i) {
+//                uInt8Array[i] = raw.charCodeAt(i);
+//            }
+//
+//            return new Blob([uInt8Array], {type: contentType});
+//        };
 
         function switchZoomTo(to) {
             var ele = document.getElementById("zoom");
@@ -728,7 +732,7 @@
         }
         function agree() {
             turnOnCheckbox("terms");
-            turnOnButton("preview");
+            turnOnPreviewButtons();
         }
         function lockScreen() {
             var width = $(document).width() + "px";
@@ -762,27 +766,30 @@
                 document.getElementById(id + "-" + i).checked = false;
             }
         }
-        function turnOnButton(id) {
+        function turnOnPreviewButtons() {
             for (var i = 0; i < previews.length; i++) {
-                document.getElementById(id + "-" + i).disabled = false;
+                if (ignoreStatus[i] === 0) // only un-skipped page will be turned on
+                    document.getElementById("preview-" + i).disabled = false;
             }
         }
-        function turnOffButton(id) {
+        function turnOffPreviewButtons() {
             for (var i = 0; i < previews.length; i++) {
-                document.getElementById(id + "-" + i).disabled = true;
+                document.getElementById("preview-" + i).disabled = true;
             }
         }
         function toggleskip(idx,element) {
 //            console.log("check :"+element.checked);
             var ignoreBtn = document.getElementById("ignore-" + idx);
-            var paramPanel = document.getElementById("form-" + idx);
+//            var paramPanel = document.getElementById("form-" + idx);
             ignoreStatus[idx] = 1 - ignoreStatus[idx];
             if (element.checked) {
                 ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
                 //paramPanel.style.display = "none";
                 setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
-                $("#form-"+idx).find("input[type='text']").attr("disabled", true);
-                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
+                $("#form-"+idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
+//                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
+//                $("#form-"+idx).find(".form-control").attr("disabled", true);
+                $("#preview-"+idx).attr("disabled", true);
             }
             else {
                 if (previews[idx] === 0) {
@@ -791,8 +798,11 @@
                 if (templateIndex == idx) {
                     //paramPanel.style.display = "";
                     setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
-                    $("#form-"+idx).find("input[type='text']").attr("disabled", false);
-                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
+                    $("#form-"+idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
+//                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
+//                    $("#form-"+idx).find(".form-control").attr("disabled", false);
+                    if (termsAccepted)
+                        $("#preview-"+idx).attr("disabled", false);
                 }
             }
             checkDone();
@@ -825,7 +835,7 @@
             if (elms.length <= 0)
                 return false;
             for (var i = 0; i < elms.length; i++) {
-                var subdoc = getSubDocument(elms[i]);
+                subdoc = getSubDocument(elms[i]);
                 if (subdoc !== null && subdoc !== undefined)
                     break;
             }
