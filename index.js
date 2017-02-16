@@ -15,7 +15,7 @@ var designRouter = require('./routes/designRouter');
 var mongoose = require('mongoose'),
     assert = require('assert');
 
-var Designs = require('./models/designs');
+// var Designs = require('./models/designs');
 
 // read the templates and designer
 var templateFile = './public/design/templates/templates.json';
@@ -27,36 +27,36 @@ var designerFile = './public/design/designer.json';
 var designerJson = jsonfile.readFileSync(designerFile);
 console.log("designer json:"+designerJson.designs[0].name+","+designerJson.designs[0].did);
 
-var url = 'mongodb://dbuser:dbuser@ds019054.mlab.com:19054/jitdiy';
-mongoose.connect(url);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  // we're connected!
-  console.log("Connected correctly to server");
-  /**  // create a new design
-   var newDesign = Designs({
-    id: '123',
-    designId: 'Test'
-  });
-
-   // save the design
-   newDesign.save(function (err) {
-    if (err) throw err;
-    console.log('Design created!');
-
-    // get all the designs
-    Designs.find({}, function (err, designs) {
-      if (err) throw err;
-
-      // object of all the designs
-      console.log(designs);
-      db.collection('designs').drop(function () {
-        db.close();
-      });
-    });
-  });**/
-});
+// var url = 'mongodb://dbuser:dbuser@ds019054.mlab.com:19054/jitdiy';
+// mongoose.connect(url);
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function () {
+//   // we're connected!
+//   console.log("Connected correctly to server");
+//   /**  // create a new design
+//    var newDesign = Designs({
+//     id: '123',
+//     designId: 'Test'
+//   });
+//
+//    // save the design
+//    newDesign.save(function (err) {
+//     if (err) throw err;
+//     console.log('Design created!');
+//
+//     // get all the designs
+//     Designs.find({}, function (err, designs) {
+//       if (err) throw err;
+//
+//       // object of all the designs
+//       console.log(designs);
+//       db.collection('designs').drop(function () {
+//         db.close();
+//       });
+//     });
+//   });**/
+// });
 
 var app = express();
 // if use proxy, trust proxy for ip etc.
@@ -107,7 +107,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -118,7 +118,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
