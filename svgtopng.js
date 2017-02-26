@@ -33,66 +33,87 @@ process.on('message', function (imgInfo) {
         var isWin = /^win/.test(process.platform);
         preprocess(isWin,imgPath,tempImgPath);
         console.log("isWin:"+isWin);
-        if (!isWin) {
-            var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
-            var thisZoom = x+","+y+","+w+","+h;
-            var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho \'|"+imgDest+"|"+tempPngPath+"|"+thisZoom+"\'";
-            cmd.get(
-                cmdline,
-                function(data) {
-                    console.log('the result is :'+data+'\n\n');
-                    if (data.indexOf('|') >= 0) {
-                        data = data.substring(data.indexOf('|') + 1);
-
-                        var destPath = data.substring(0, data.indexOf('|'));
-                        data = data.substring(data.indexOf('|') + 1);
-                        var srcPath = data.substring(0, data.indexOf('|'));
-                        var zooms = data.substring(data.indexOf('|') + 1);
-                        var x1 = zooms.substring(0, zooms.indexOf(','));
-                        zooms = zooms.substring(zooms.indexOf(',') + 1);
-                        var y1 = zooms.substring(0, zooms.indexOf(','));
-                        zooms = zooms.substring(zooms.indexOf(',') + 1);
-                        var w1 = zooms.substring(0, zooms.indexOf(','));
-                        var h1 = zooms.substring(zooms.indexOf(',') + 1);
-                        // var h1 = zooms.substring(0, zooms.indexOf(','));
-                        console.log("src:" + srcPath + ",dest:" + destPath + ",x:" + x1 + ",y:" + y1 + ",w:" + w1 + ",h:" + h1);
-                        imageMagick(srcPath)
-                        // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                            .crop(w1, h1, x1, y1)
-                            .write(destPath, function (err) {
-                                    if (err) {
-                                        console.log(err);
-                                        process.exit("something wrong crop png");
-                                        return console.dir(arguments);
-                                    }
-                                    console.log(this.outname + ' created :: ' + arguments[3]);
-                                    count++;
-                                    if (count === imgList.length)
-                                        process.exit("DONE");
-                                }
-                            )
-                    }
-                }
-            )
-        }
-        // end for linux only
-        else {
-            imageMagick(tempImgPath)
-            // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
-                .crop(w, h, x, y)
-                .write(imgDest, function (err) {
-                        if (err) {
-                            console.log(err);
-                            process.exit("something wrong svg to png");
-                            return console.dir(arguments);
-                        }
-                        console.log(this.outname + ' created :: ' + arguments[3]);
-                        count++;
-                        if (count === imgList.length)
-                            process.exit("DONE");
-                    }
-                );
-        }
+        // use inkscape for conversion from svg to png
+        // convert to inkscape area definition (x1,y1,x2,y2)
+        var x1 = parseInt(x);
+        var y1 = 1000-parseInt(y)-parseInt(h);
+        var x2 = parseInt(x)+parseInt(w);
+        var y2 = y1+parseInt(h);
+        console.log("x1:"+x1+",y1:"+y1+",x2:"+x2+",y2:"+y2);
+        var area = x1+":"+y1+":"+x2+":"+y2;
+        var cmdline = "inkscape -a "+area+" -e "+imgDest+" "+tempImgPath;
+        console.log("cmd is "+cmdline);
+        cmd.get(
+            cmdline,
+            function(data) {
+                console.log('the result is :' + data + '|');
+                count++;
+                if (count === imgList.length)
+                    process.exit("DONE");
+            }
+        );
+        // use ImageMagick has text on textPath issue!!!
+        // if (!isWin) {
+        //     var tempPngPath = designDir+"/temp-"+imgList[i].image+".png";
+        //     var thisZoom = x+","+y+","+w+","+h;
+        //     var cmdline = "rsvg "+tempImgPath+" "+tempPngPath+"\necho \'|"+imgDest+"|"+tempPngPath+"|"+thisZoom+"\'";
+        //     cmd.get(
+        //         cmdline,
+        //         function(data) {
+        //             console.log('the result is :'+data+'\n\n');
+        //             if (data.indexOf('|') >= 0) {
+        //                 data = data.substring(data.indexOf('|') + 1);
+        //
+        //                 var destPath = data.substring(0, data.indexOf('|'));
+        //                 data = data.substring(data.indexOf('|') + 1);
+        //                 var srcPath = data.substring(0, data.indexOf('|'));
+        //                 var zooms = data.substring(data.indexOf('|') + 1);
+        //                 var x1 = zooms.substring(0, zooms.indexOf(','));
+        //                 zooms = zooms.substring(zooms.indexOf(',') + 1);
+        //                 var y1 = zooms.substring(0, zooms.indexOf(','));
+        //                 zooms = zooms.substring(zooms.indexOf(',') + 1);
+        //                 var w1 = zooms.substring(0, zooms.indexOf(','));
+        //                 var h1 = zooms.substring(zooms.indexOf(',') + 1);
+        //                 // var h1 = zooms.substring(0, zooms.indexOf(','));
+        //                 console.log("src:" + srcPath + ",dest:" + destPath + ",x:" + x1 + ",y:" + y1 + ",w:" + w1 + ",h:" + h1);
+        //                 imageMagick(srcPath)
+        //                 // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
+        //                     .crop(w1, h1, x1, y1)
+        //                     .write(destPath, function (err) {
+        //                             if (err) {
+        //                                 console.log(err);
+        //                                 process.exit("something wrong crop png");
+        //                                 return console.dir(arguments);
+        //                             }
+        //                             console.log(this.outname + ' created :: ' + arguments[3]);
+        //                             count++;
+        //                             if (count === imgList.length)
+        //                                 process.exit("DONE");
+        //                         }
+        //                     )
+        //             }
+        //         }
+        //     )
+        // }
+        // // end for linux only
+        // else { // windows
+        //     // use ImageMagick which has text on textPath doesn't render issue.
+        //     imageMagick(tempImgPath)
+        //     // .resize(1050, 788)   // 7 inch x 5.25 inch with 150 dpi
+        //         .crop(w, h, x, y)
+        //         .write(imgDest, function (err) {
+        //                 if (err) {
+        //                     console.log(err);
+        //                     process.exit("something wrong svg to png");
+        //                     return console.dir(arguments);
+        //                 }
+        //                 console.log(this.outname + ' created :: ' + arguments[3]);
+        //                 count++;
+        //                 if (count === imgList.length)
+        //                     process.exit("DONE");
+        //             }
+        //         );
+        // }
     }
 
     function preprocess(isWin,src, dest) {
