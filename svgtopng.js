@@ -137,13 +137,13 @@ process.on('message', function (imgInfo) {
                     line = line.replace("\"/designs/temp/", "\"./temp/");
                 }
             }
-            else if (line.indexOf("\"/design/templates/") > 0) {
+            else if (line.indexOf("\"/designs/templates/") > 0) {
                 if (isWin) {
-                    line = line.replace("\"/design/", "\"" + dataDir + "/design/");
+                    line = line.replace("\"/designs/", "\"" + dataDir + "/designs/");
                 }
-                else { // for rsvg to embedded images can only be in subdirectories
-                    line = line.replace("\"/design/templates/", "\"./templateimgs/");
-                }
+                // else { // for rsvg to embedded images can only be in subdirectories
+                //     line = line.replace("\"/design/templates/", "\"./templateimgs/");
+                // }
             }
             // console.log(line);
             fs.appendFileSync(dest, line.toString() + "\n");

@@ -61,4 +61,4 @@ if (fgURI !== '' && fgURI !== null) {
     foreground.attr('id','jd_fg');
 }
 
-readSVG("/design/templates/0010002-0.svg");
+readSVG("/designs/templates/0010002-0.svg");

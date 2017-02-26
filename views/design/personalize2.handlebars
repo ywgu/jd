@@ -70,7 +70,7 @@
                 {{#each inputs}}
                     <div id="svgc-{{@index}}">
                         <object id="svgObj-{{@index}}" type="image/svg+xml"
-                                data="/design/templates/{{../tid}}-{{@index}}.svg"
+                                data="/designs/templates/{{../tid}}-{{@index}}.svg"
                                 style="width:100%;">
                             Your browser does not support SVG
                         </object>
@@ -88,7 +88,7 @@
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
                               title="page" style="padding:6px;margin:2px;"
                               onclick="showTemplate({{@index}})"><img
-                                src="/design/templates/{{../tid}}-{{@index}}.png"
+                                src="/designs/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                             </td>
                         {{/each}}
@@ -855,7 +855,7 @@
             //console.log("changing the background to "+sku+".jpg");
             var count = 0;
             do {
-                var bgName = "/design/templates/" + sku.substring(4) + "-" + count +".jpg";
+                var bgName = "/designs/templates/" + sku.substring(4) + "-" + count +".jpg";
                 var success = setElementAttrValue(count,"jd_bg","xlink:href",bgName);
                 count++;
             } while(success);

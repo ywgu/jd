@@ -1,0 +1,63 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=Helvetica,+Arial,+sans-serif|Aclonica"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="SvgjsSvg1001" width="1131" height="831" xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 600 400">
+    <image id="jd_bg" xlink:href="/designs/templates/0020001.jpg" width="600" height="400"></image>
+    <svg id="jd_nt" clip-path="url(&quot;#SvgjsClipPath1011&quot;)" style="overflow: visible;">
+        <text
+               clip-path="url(#clipPath12645)"
+               id="text12557"
+               y="365"
+               x="405"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:180px;line-height:125%;font-family:Broadway;-inkscape-font-specification:Broadway;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               xml:space="preserve"><tspan
+                 transform="matrix(1.0539516,0,0,1,-26.638567,0)"
+                 y="365"
+                 x="405"
+                 text-anchor="middle"
+                 id="tspan12559">I</tspan></text>
+        <rect
+                y="285"
+                x="321"
+                height="3"
+                width="169"
+                id="rect12649"
+                style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"/>
+        <rect
+                y="331.5"
+                x="321.5"
+                height="3"
+                width="169"
+                id="rect12649-4"
+                style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"/>
+        <text
+               id="text13221"
+               y="323"
+               x="405"
+               style="font-style:normal;font-weight:normal;font-size:30px;line-height:125%;font-family:'Showcard Gothic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Showcard Gothic';font-stretch:normal;font-variant:normal;"
+               xml:space="preserve"><tspan
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:Broadway;-inkscape-font-specification:'Broadway, Normal';text-anchor:middle;text-align:center;writing-mode:lr;line-height:140%"
+                 y="323"
+                 x="405"
+                 id="tspan13223">Garrett</tspan></text>
+    </svg>
+    <defs id="SvgjsDefs1002">
+        <clipPath id="clipPath12645"
+                clipPathUnits="userSpaceOnUse">
+            <path id="path12647"
+                    d="m 323,369 172.99432,0.043 0.76719,-36.07263 -174.67785,-0.54529 -1.06335,-46.42512 174.9823,2.84665 -0.002,-45.84658 -173.98912,-3.954 L 322,370"
+                    style="fill:none;fill-rule:evenodd;stroke:#fa0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </clipPath>
+        <clipPath id="SvgjsClipPath1011">
+            <path id="jd_bd"
+                  d="m 317,239 179,0 0,130 -179,0 z"
+                  style="fill:none;stroke:none;stroke-opacity:1"/>
+        </clipPath>
+        <clipPath id="clipPath12645" clipPathUnits="userSpaceOnUse">
+            <path id="path12647"
+                  d="m 323,369 172.99432,0.043 0.76719,-36.07263 -174.67785,-0.54529 -1.06335,-46.42512 174.9823,2.84665 -0.002,-45.84658 -173.98912,-3.954 L 322,370"
+                  style="fill:none;fill-rule:evenodd;stroke:#fa0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"></path>
+        </clipPath>
+    </defs>
+</svg>
