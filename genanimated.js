@@ -6,7 +6,6 @@ var fs = require("fs");
 var path = require('path');
 var dataDir = path.normalize(path.join(__dirname, '.', 'public'));
 var designDir = path.join(dataDir, "designs");
-var cmd = require('node-cmd');
 
 process.on('message', function (imgInfo) {
     console.log('genanimated started...' + imgInfo);
@@ -23,22 +22,12 @@ process.on('message', function (imgInfo) {
         // console.log("svgFile:"+svgFile+",tempFile:"+tempFile);
         preprocess(isWin,svgFile,tempFile);
     }
-    // generate the animated image： following command had a missing image error
-    // im.convert(['-delay', '100', '-resize', '600x400', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
-    //     function (err, stdout) {
-    //         if (err) throw err;
-    //         console.log('stdout:', stdout);
-    //     });
-    var cmdline = "convert -delay 100 -resize '600x400' "+designDir+"/temp-" + did + "-?.svg "+designDir + "/" + did + ".gif";
-    console.log("cmd is "+cmdline);
-    cmd.get(
-        cmdline,
-        function(data) {
-            console.log('the result is :' + data + '|');
-            process.exit("DONE");
-        }
-    );
-
+    // generate the animated image
+    im.convert(['-delay', '100', '-resize', '600x400', designDir + "/temp-" + did + '-?.svg', designDir + "/" + did + '.gif'],
+        function (err, stdout) {
+            if (err) throw err;
+            console.log('stdout:', stdout);
+        });
 
     function preprocess(isWin,src, dest) {
         console.log("preprocess: src:"+src+",dest:"+dest);
