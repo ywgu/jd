@@ -29,7 +29,7 @@ process.on('message', function (imgInfo) {
     //         if (err) throw err;
     //         console.log('stdout:', stdout);
     //     });
-    var cmdline = "convert -delay 100 -resize '600x400' "+designDir+"/temp-" + did + "-?.svg "+designDir + "/" + did + ".gif";
+    var cmdline = "cd "+designDir+";convert -delay 100 -resize '150x100' /temp-" + did + "-?.svg " + did + ".gif";
     console.log("cmd is "+cmdline);
     cmd.get(
         cmdline,
