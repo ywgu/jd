@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=Bungee+Shade"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="svg4197"
+   viewBox="0 0 1600 1000"
+   height="1000"
+   width="1600">
+  <defs
+     id="defs4199">
+    <clipPath
+       id="clipPath4144"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="jd_bd"
+         d="m 803.08639,795.23974 375.54381,0 0,137.43564 -375.54381,0 z"
+         style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:2.96869493;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:11.87477958, 2.9686949;stroke-dashoffset:0;stroke-opacity:1" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata4202">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <image
+     xlink:href="/designs/templates/002000201-0.jpg"
+     y="0"
+     x="0"
+     id="jd_bg"
+     height="1000"
+     width="1600" />
+  <g
+     clip-path="url(#clipPath4144)"
+     id="jd_nt"
+     transform="matrix(0.81548404,0,0,0.84888197,203.42918,137.43532)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:138.73748779px;line-height:125%;font-family:'Bungee Shade';-inkscape-font-specification:'Bungee Shade, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="941.89282"
+       y="964.20764"
+       id="text4738"
+       transform="scale(1.0628877,0.94083321)"><tspan
+         id="text01"
+         x="941.89282"
+         y="964.20764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:138.73748779px;line-height:125%;font-family:'Bungee Shade';-inkscape-font-specification:'Bungee Shade, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">GW</tspan></text>
+  </g>
+</svg>
