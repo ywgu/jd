@@ -44,59 +44,11 @@ function processBgImg(line) {
     return line+"\n";
 }
 
-// function to process the jd_nt i.e. embedded components
-var ntTag = false;
-function processNtTag(line) {
-    if (line.indexOf("<g") === 0 && line.indexOf("jd_nt")>0)
-        ntTag = true;
-    else if (ntTag === true && line.indexOf("</g>") === 0)
-        return "";
-    else if (ntTag === true && line.indexOf("</svg>") === 0)
-        return "</g>\n</svg>\n";
-    return line+"\n";
-}
-
-// function to process the text data with id of "textXX"
-function processTextTag(line) {
-    var addAttrStr = "";
-    var textId = tools.getAttrValue(line,"id");
-    // console.log("id:"+textId);
-    if (textId !== null && textId.indexOf("text") === 0 && textId.length === 6) {
-        // try to add style attribute first
-        line = tools.addAttr(line,"style", "text-anchor:middle;text-align:center");
-        if (line.indexOf("text-anchor:middle") === -1)
-            addAttrStr += "text-anchor:middle;";
-        if (line.indexOf("text-align:center") === -1)
-            addAttrStr += "text-align:center;";
-        // console.log(line+",addAttrStr:"+addAttrStr);
-        return line.replace("style=\"","style=\""+addAttrStr);
-    }
-    // console.log("getWidth:"+getWidthOfText("aaa","Ewert",16));
-    return line+"\n";
-}
-
 // function to process the image data with id of "imageXX"
 function processImageTag(line) {
     var imageId = tools.getAttrValue(line,"id");
     if (imageId !== null && imageId.indexOf("image") === 0) {
-        var newImgLine = "";
-        var x = tools.getAttrValue(line,"x");
-        var y = tools.getAttrValue(line,"y");
-        var w = tools.getAttrValue(line,"width");
-        var h = tools.getAttrValue(line,"height");
-        var viewBox = "0 0 "+w+" "+h;
-        // console.log("viewBox:"+viewBox);
-        newImgLine += "<svg version=\"1.1\" viewBox=\""+viewBox
-            +"\" x=\""+x+"\" y=\""+y+"\" width=\""+w+"\" height=\""+h+"\" preserveAspectRatio=\"xMidYMid meet\">";
-        var imgLine = line;
-        imgLine = tools.removeAttr(imgLine,"x");
-        imgLine = tools.removeAttr(imgLine,"y");
-        imgLine = tools.removeAttr(imgLine,"preserveAspectRatio");
-        newImgLine += imgLine;
-        newImgLine += "</svg>";
-        // newImgLine = tools.replaceAttrValue(newImgLine,"xlink:href","/designs/templates/"+getAttrValue(newImgLine,"xlink:href"));
-        // newImgLine = tools.replaceAttrValue(newImgLine,"xlink:href","../../"+getAttrValue(newImgLine,"xlink:href"));
-        // console.log("img:"+newImgLine);
+        var newImgLine = tools.replaceAttrValue(line,"xlink:href","/designs/templates/"+tools.getAttrValue(line,"xlink:href"));
         return newImgLine+"\n";
     }
     return line+"\n";
@@ -116,25 +68,13 @@ function processImage(inputFile, outputFile) {
         cb(null, tools.processData(data,processBgImg));
     };
 
-    var processNt = new transform();
-    processNt._transform = function (data, encoding, cb) {
-        // do transformation
-        cb(null, tools.processData(data,processNtTag));
-    };
-
-    var processTextLine = new transform();
-    processTextLine._transform = function (data, encoding, cb) {
-        // do transformation
-        cb(null, tools.processData(data,processTextTag));
-    };
-
     var processImageLine = new transform();
     processImageLine._transform = function (data, encoding, cb) {
         // do transformation
         cb(null, tools.processData(data,processImageTag));
     };
 
-    inputStream.pipe(processBg).pipe(outputStream);
+    inputStream.pipe(processBg).pipe(processImageLine).pipe(outputStream);
 }
 
 function generatePngs(src,dest) {

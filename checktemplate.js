@@ -128,8 +128,10 @@ function checkTag(tagLine,svgFile) {
     }
     if (tagLine.indexOf("\"image"+partIndex) > 0) {
         imgCount++;
-        if (previousTagLine.indexOf("<svg ") !== 0 || previousTagLine.indexOf("preserveAspectRatio=\"xMidYMid meet\"") < 0)
+        if (previousTagLine.indexOf("<svg ") !== 0 || previousTagLine.indexOf("preserveAspectRatio=\"xMidYMid meet\"") < 0) {
+            console.log("previous line:"+previousTagLine);
             console.log("ERROR: image should be wrapped in a svg with preserveAspectRatio=\"xMidYMid meet\"");
+        }
         var imgStr = "href=\"/designs/templates/";
         if (tagLine.indexOf(imgStr) < 0)
             console.log("ERROR: replaceable image url should starts with /designs/templates");

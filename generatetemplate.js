@@ -4,6 +4,10 @@
 // NOTE:
 // 1. the x="123" must NOT have space between x and =; use code format before run this program
 // 2. NO tranform for text or image component is allowed
+    // STEPS: 1. node generatetemplate name num idx
+    // 2. set jd_bd clip area, align text for all
+    // 3. node generatetemplate2 name num idx
+    // 4. node checktemplate name num idx
 
 var fs = require("fs");
 var path = require('path');
