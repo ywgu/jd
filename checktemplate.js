@@ -5,7 +5,7 @@
 var fs = require("fs");
 var path = require('path');
 var publicDir = path.normalize(path.join(__dirname, '.', 'public'));
-var templateDir = path.join(publicDir,"designs/templates");
+var templateDir = path.join(publicDir,"designs/templates/designer/temp");
 var productId = null;
 var partIndex = null;
 var templateId = null;
@@ -18,16 +18,29 @@ var jd_bd_exists = false;
 var textCount = 0;
 var imgCount = 0;
 
-
+var templateName;
+var templateNum;
+var templateIdx;
 // node checktemplate 002000202-1.svg 002000202-2.svg
 process.argv.forEach(function (val, index, array) {
-    // console.log(index + ': ' + val);
-    if (index > 1) {
-        console.log("START checking "+val);
-        check(val);
-        console.log("\n\n")
+    if (index === 2) {
+        templateName = val;
+    }
+    else if (index === 3) {
+        templateNum = val;
+    }
+    else if (index === 4) {
+        templateIdx = val;
     }
 });
+console.log("args:" + templateName + "," + templateNum + "," + templateIdx);
+checkAll(templateName, templateNum, templateIdx);
+
+function checkAll(templateName, templateNum, templateIdx) {
+    for (var i = 0; i < templateNum; i++) {
+        check(templateName + templateIdx + "-" + i+".svg");
+    }
+}
 
 function check(svgFile) {
     productId = svgFile.substring(0,svgFile.indexOf("-"));
@@ -89,6 +102,8 @@ function checkTag(tagLine,svgFile) {
     if (tagLine.indexOf("\"jd_bg\"") > 0) {
         jd_bg_exists = true;
         var bgStr = "href=\"/designs/templates/"+productId;
+        // console.log("check bg:"+bgStr);
+        // console.log("tagLine:"+tagLine);
         if (tagLine.indexOf(bgStr) < 0)
             console.log("ERROR: background image url should starts with /designs/templates/");
     }

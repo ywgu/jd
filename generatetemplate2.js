@@ -1,15 +1,16 @@
 /**
- * Created by William Gu on 2017/3/14.
+ * Created by William Gu on 2017/4/25.
  */
 // NOTE:
 // 1. the x="123" must NOT have space between x and =; use code format before run this program
-// 2. NO tranform for text or image component is allowed
+// 2. NO transform for text or image component is allowed
 
 var fs = require("fs");
 var path = require('path');
 var stream = require('stream');
 var transform = require('stream').Transform;
 var tools = require('./tools');
+var cmd = require('node-cmd');
 var publicDir = path.normalize(path.join(__dirname, '.', 'public'));
 var templateDir = path.join(publicDir, "designs/templates");
 var tempDir = path.join(publicDir, "designs/templates/designer/temp");
@@ -18,7 +19,7 @@ var tempDir = path.join(publicDir, "designs/templates/designer/temp");
 var templateName;
 var templateNum;
 var templateIdx;
-// use: node generatetemplate 0020001 3 22
+// use: node generatetemplate2 0020001 3 22
 // generate from 0020001-0.svg 0020001-1.svg 0020001-2.svg to 002000122-0.svg 002000122-1.svg 002000122-2.svg + png, gif images
 process.argv.forEach(function (val, index, array) {
     if (index === 2) {
@@ -36,17 +37,10 @@ generate(templateName, templateNum, templateIdx);
 
 
 // function to process the jd_bg i.e. background image
-// function processBgImg(line) {
-//     // console.log("line:"+line);
-//     if (line.indexOf("\"jd_bg\"") > 0)
-//         return line.replace("https://design.jitdiy.com/designs/templates/","../../")+"\n";
-//     return line+"\n";
-// }
-
-// function to remove the jd_bd i.e. rectangle boundary
-function removeBdTag(line) {
-    if (line.indexOf("\"jd_bd\"") > 0)
-        return "";
+function processBgImg(line) {
+    // console.log("line:"+line);
+    if (line.indexOf("\"jd_bg\"") > 0)
+        return tools.replaceAttrValue(line,"xlink:href","/designs/templates/"+tools.getAttrValue(line,"xlink:href"))+"\n";
     return line+"\n";
 }
 
@@ -93,7 +87,7 @@ function processImageTag(line) {
         var viewBox = "0 0 "+w+" "+h;
         // console.log("viewBox:"+viewBox);
         newImgLine += "<svg version=\"1.1\" viewBox=\""+viewBox
-        +"\" x=\""+x+"\" y=\""+y+"\" width=\""+w+"\" height=\""+h+"\" preserveAspectRatio=\"xMidYMid meet\">";
+            +"\" x=\""+x+"\" y=\""+y+"\" width=\""+w+"\" height=\""+h+"\" preserveAspectRatio=\"xMidYMid meet\">";
         var imgLine = line;
         imgLine = tools.removeAttr(imgLine,"x");
         imgLine = tools.removeAttr(imgLine,"y");
@@ -116,16 +110,10 @@ function processImage(inputFile, outputFile) {
     var outputPath = tempDir + "/" + outputFile + ".svg";
     var outputStream = fs.createWriteStream(outputPath);
 
-    // var processBg = new transform();
-    // processBg._transform = function (data, encoding, cb) {
-    //     // do transformation
-    //     cb(null, tools.processData(data,processBgImg));
-    // };
-
-    var removeBd = new transform();
-    removeBd._transform = function (data, encoding, cb) {
+    var processBg = new transform();
+    processBg._transform = function (data, encoding, cb) {
         // do transformation
-        cb(null, tools.processData(data,removeBdTag));
+        cb(null, tools.processData(data,processBgImg));
     };
 
     var processNt = new transform();
@@ -146,14 +134,31 @@ function processImage(inputFile, outputFile) {
         cb(null, tools.processData(data,processImageTag));
     };
 
-    inputStream.pipe(removeBd).pipe(processNt).pipe(processTextLine).pipe(processImageLine).pipe(outputStream);
+    inputStream.pipe(processBg).pipe(outputStream);
+}
+
+function generatePngs(src,dest) {
+    var cmdline = "inkscape -a 0:-300:1600:1300 -e "+dest+" "+src;
+    console.log("cmd is "+cmdline);
+    cmd.get(
+        cmdline,
+        function(data) {
+            console.log('the result is :' + data + '|');
+            //process.exit("DONE");
+        }
+    );
+}
+
+function generateGif() {
+
 }
 
 function generate(templateName, templateNum, templateIdx) {
     for (var i = 0; i < templateNum; i++) {
-        processImage(templateName + "-" + i, templateName + templateIdx + "--" + i);
+        generatePngs(tempDir+"/"+templateName + templateIdx + "--" + i+".svg", tempDir+"/"+templateName + templateIdx + "-" + i+".png");
+        processImage(templateName + templateIdx + "--" + i, templateName + templateIdx + "-" + i);
     }
-
+    generateGif();
     // addToTemplateFile();    // NOTE: add a jd_bd before processing starts
 
 }
