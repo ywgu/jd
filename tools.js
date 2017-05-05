@@ -60,6 +60,7 @@ module.exports = {
         var buf = "";
         data.toString().split('\n').forEach(function (line) {
             // get a tag line
+            // console.log("line:"+line);
             if (line.trim().indexOf("<") === 0) {
                 tagLine = line.trim();
                 if (line.indexOf(">") > 0) {
@@ -74,7 +75,7 @@ module.exports = {
             }
             else if (tagLine === "") {  // text line without < or >
                 buf += line.trim() + "\n";
-                tagLine = "";
+                // tagLine = "";
             }
             else {
                 tagLine += " " + line.trim();

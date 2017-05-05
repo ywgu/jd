@@ -78,19 +78,27 @@ function processImage(inputFile, outputFile) {
 }
 
 function generatePngs(src,dest) {
-    var cmdline = "inkscape -a 0:-300:1600:1300 -e "+dest+" "+src;
+    var cmdline = "inkscape -a 0:-300:1600:1300 -w 64 -h 64 -e "+dest+" "+src;
     console.log("cmd is "+cmdline);
     cmd.get(
         cmdline,
         function(data) {
-            console.log('the result is :' + data + '|');
+            console.log('the generatePngs result is :' + data + '|');
             //process.exit("DONE");
         }
     );
 }
 
-function generateGif() {
-
+function generateGif(src, dest) {
+    var cmdline = "convert -delay 100 -resize 300x200 " + src + " " + dest;
+    console.log("cmd is "+cmdline);
+    cmd.get(
+        cmdline,
+        function(data) {
+            console.log('the generateGit result is :' + data + '|');
+            // process.exit("DONE");
+        }
+    );
 }
 
 function generate(templateName, templateNum, templateIdx) {
@@ -98,7 +106,7 @@ function generate(templateName, templateNum, templateIdx) {
         generatePngs(tempDir+"/"+templateName + templateIdx + "--" + i+".svg", tempDir+"/"+templateName + templateIdx + "-" + i+".png");
         processImage(templateName + templateIdx + "--" + i, templateName + templateIdx + "-" + i);
     }
-    generateGif();
+    generateGif(tempDir+"/"+templateName + templateIdx + "--?"+".svg", tempDir+"/"+templateName + templateIdx + ".gif");
     // addToTemplateFile();    // NOTE: add a jd_bd before processing starts
 
 }

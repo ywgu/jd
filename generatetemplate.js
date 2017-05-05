@@ -8,6 +8,7 @@
     // 2. set jd_bd clip area, align text for all
     // 3. node generatetemplate2 name num idx
     // 4. node checktemplate name num idx
+    // 5. copy svg, png, jpg, gif files to templates directory
 
 var fs = require("fs");
 var path = require('path');
@@ -53,14 +54,25 @@ function removeBdTag(line) {
         return "";
     return line+"\n";
 }
-
+// function to remove the xml:space="preserve"
+function removeXMLSpacePreserveTag(line) {
+    if (line.indexOf("xml:space=\"preserve\"") > 0)
+        return line.replace("xml:space=\"preserve\"","")+"\n";
+    return line+"\n";
+}
 // function to process the jd_nt i.e. embedded components
 var ntTag = false;
+var firstCloseG = false;
 function processNtTag(line) {
-    if (line.indexOf("<g") === 0 && line.indexOf("jd_nt")>0)
+    // console.log("=="+line);
+    if (line.indexOf("<g") === 0 && line.indexOf("jd_nt") > 0) {
         ntTag = true;
-    else if (ntTag === true && line.indexOf("</g>") === 0)
+        firstCloseG = true;
+    }
+    else if (ntTag === true && firstCloseG === true && line.indexOf("</g>") === 0) {
+        firstCloseG = false;
         return "";
+    }
     else if (ntTag === true && line.indexOf("</svg>") === 0)
         return "</g>\n</svg>\n";
     return line+"\n";
@@ -131,7 +143,11 @@ function processImage(inputFile, outputFile) {
         // do transformation
         cb(null, tools.processData(data,removeBdTag));
     };
-
+    var removeXMLSpacePreserve = new transform();
+    removeXMLSpacePreserve._transform = function (data, encoding, cb) {
+        // do transformation
+        cb(null, tools.processData(data,removeXMLSpacePreserveTag));
+    };
     var processNt = new transform();
     processNt._transform = function (data, encoding, cb) {
         // do transformation
@@ -150,7 +166,13 @@ function processImage(inputFile, outputFile) {
         cb(null, tools.processData(data,processImageTag));
     };
 
-    inputStream.pipe(removeBd).pipe(processNt).pipe(processTextLine).pipe(processImageLine).pipe(outputStream);
+    inputStream
+        .pipe(removeBd)
+        .pipe(removeXMLSpacePreserve)
+        .pipe(processNt)
+        .pipe(processTextLine)
+        .pipe(processImageLine)
+        .pipe(outputStream);
 }
 
 function generate(templateName, templateNum, templateIdx) {
