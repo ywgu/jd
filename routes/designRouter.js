@@ -458,8 +458,11 @@ designRouter.route('/uploaddata')
                     var processing = fields["processing"];
                     if (processing === "gpc") {
                         // var convertedName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png";   // convert to png format
-                        processImage(uploadTempDir + "/" + newName+"|" + imageData);
+                        processImage("gpc|"+uploadTempDir + "/" + newName+"|" + imageData);
                         newName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png"; // change to .png
+                    }
+                    else { // don't process the image, just decode it
+                        processImage("none|"+uploadTempDir + "/" + newName+"|" + imageData);
                     }
                     returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
                 }

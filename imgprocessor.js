@@ -23,11 +23,13 @@ var gm = require('gm');
 process.on('message', function (imgInfo) {
     console.log('Image processing started...');
     // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf('/')+1)+imgInfo.substring(imgInfo.lastIndexOf('/')+4);
-    var imgPath = imgInfo.substring(0,imgInfo.indexOf('|'));
+    var processingType = imgInfo.substring(0,imgInfo.indexOf('|'));
+    var tempImgInfo = imgInfo.substring(imgInfo.indexOf('|')+1);
+    var imgPath = tempImgInfo.substring(0,tempImgInfo.indexOf('|'));
     // var imgName = imgPath.substring(0,imgPath.lastIndexOf('/')+1);
     var imgDest = imgPath.substring(0, imgPath.lastIndexOf('/')+1) +"gpc/"+imgPath.substring(imgPath.lastIndexOf('/')+1, imgPath.lastIndexOf('.'))+".png";
     console.log("imgPath:"+imgPath+",imgDest:"+imgDest);
-    var imgData = imgInfo.substring(imgInfo.indexOf('|')+1);
+    var imgData = tempImgInfo.substring(tempImgInfo.indexOf('|')+1);
     // convert from base64 to jpg
     var base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
 
@@ -35,24 +37,29 @@ process.on('message', function (imgInfo) {
         if (err)
             console.log(err);
         else {
-            gm(imgPath)
-                .resize(1600,1600)   // 4 inch x 4 inch with 400 dpi
-                .colorspace("GRAY")
-                .operator('gray','negate','100%')
-                .modulate(100,0,100)  // brightness +30%
-                .edge(2.5)
-                .operator('gray','negate','100%')
-                .threshold('20%')
-                // .normalize()
-                .dither(true)
-                .monochrome()
-                .transparent("white")
-                .write(imgDest, function(err){
-                        if (err) return console.dir(arguments);
-                        console.log(this.outname + ' created :: ' + arguments[3]);
-                        process.exit("DONE");
-                    }
-                );
+            if (processingType === "gpc") {
+                gm(imgPath)
+                    .resize(1600, 1600)   // 4 inch x 4 inch with 400 dpi
+                    .colorspace("GRAY")
+                    .operator('gray', 'negate', '100%')
+                    .modulate(100, 0, 100)  // brightness +30%
+                    .edge(2.5)
+                    .operator('gray', 'negate', '100%')
+                    .threshold('20%')
+                    // .normalize()
+                    .dither(true)
+                    .monochrome()
+                    .transparent("white")
+                    .write(imgDest, function (err) {
+                            if (err) return console.dir(arguments);
+                            console.log(this.outname + ' created :: ' + arguments[3]);
+                            process.exit("DONE");
+                        }
+                    );
+            }
+            else {
+                // do nothing for none
+            }
         }
     });
     // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf(".")) + ".png";

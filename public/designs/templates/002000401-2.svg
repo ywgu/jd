@@ -12,17 +12,12 @@
             </cc:Work>
         </rdf:RDF>
     </metadata>
-    <defs id="defs8">
-        <clipPath id="clipPath4141" clipPathUnits="userSpaceOnUse">
-            <path id="jd_bd" d="m 390.19608,133.33333 841.17642,0 0,717.64703 -841.17642,0 z"
-                  style="opacity:0.97000002;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
-        </clipPath>
-    </defs>
+    <defs id="defs8"/>
     <image xlink:href="/designs/templates/002000401-2.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600"/>
-    <g clip-path="url(#clipPath4141)" id="jd_nt">
-        <svg id="svg7" preserveAspectRatio="xMidYMid meet" height="711.08331" width="532.58331" y="135.08331"
-             x="524.33337" viewBox="0 0 532.58331 711.08331" version="1.1">
-            <image xlink:href="/designs/templates/cartoon1.jpg" id="image21" height="711.08331" width="532.58331"/>
+    <g id="jd_nt">
+        <svg id="svg7" preserveAspectRatio="xMidYMid meet" height="711.08331" width="815" y="135.08331" x="394.33337"
+             viewBox="0 0 815.91663 711.08331" version="1.1">
+            <image xlink:href="/designs/templates/cartoon1.jpg" id="image21" height="711.08331" width="815.91663"/>
         </svg>
     </g>
 </svg>

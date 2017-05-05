@@ -78,7 +78,8 @@
                 {{/each}}
                 <a id="zoom" class="w3-display-topright"
                    onclick="zoominSVG()">
-                    <span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span></a>
+                    <span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in"
+                          aria-hidden="false"></span></a>
             </div>
             <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
                 <table>
@@ -114,7 +115,8 @@
                     <div class="form-group">
                         <p class="checkbox terms-of-use">
                             <label for="skipPart" class="uber-input uber-checkbox"><span class="checkbox-img"></span>
-                                <input type="checkbox" id="skippart-{{@index}}" name="skipPart" onchange="toggleskip({{@index}},this);" value="true">
+                                <input type="checkbox" id="skippart-{{@index}}" name="skipPart"
+                                       onchange="toggleskip({{@index}},this);" value="true">
                                 I would like to skip this part of the design
                             </label>
                         </p>
@@ -269,7 +271,7 @@
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
         var termsAccepted = false;
-        svgimg.addEventListener('load', function(){
+        svgimg.addEventListener('load', function () {
             changeIframeHeight();
         });
         $(document).ready(function () {
@@ -310,34 +312,35 @@
                             unlockScreen();
                         },
                         success: function (response) {
-//                            console.log("response:" + response);
+                            console.log("response:" + response);
                             var resJson = JSON.parse(response);
                             // wait for image to be loaded
-                            if (resJson.processing === "gpc") {
-                                for (var key in resJson) {
-                                    if (key.indexOf("image") === 0) {
-                                        // sleep for  seconds
-                                        var date = null;
-                                        var curDate = null;
-                                        var count = 0;
-                                        do {
+//                            console.log("processing:"+resJson.processing);
+//                            if (resJson.processing === "gpc") {
+                            for (var key in resJson) {
+                                if (key.indexOf("image") === 0) {
+                                    // sleep for  seconds
+                                    var date = null;
+                                    var curDate = null;
+                                    var count = 0;
+                                    do {
 //                                            console.log("count:" + count++);
-                                            count++;
-                                            date = new Date();
-                                            do {
-                                                curDate = new Date();
-                                            } while (curDate - date < 2000);
-                                        } while (!imgExists("/designs/temp/" + resJson[key]) && count < 10);
-                                    }
+                                        count++;
+                                        date = new Date();
+                                        do {
+                                            curDate = new Date();
+                                        } while (curDate - date < 2000);
+                                    } while (!imgExists("/designs/temp/" + resJson[key]) && count < 10);
                                 }
                             }
+//                            }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
                             var ignoreBtn = document.getElementById("ignore-" + resJson.tidx);
                             ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
                             checkDone();
                             unlockScreen();
-                            $('html, body').animate({ scrollTop: 0 }, 'fast');
+                            $('html, body').animate({scrollTop: 0}, 'fast');
                         }
                     });
                 });
@@ -371,10 +374,10 @@
 //                            console.log("total previews:" + total + "," + previews.length);
             if (total === previews.length) {
                 // enable DONE buttons
-                $(".donebutton").attr("disabled",false);
+                $(".donebutton").attr("disabled", false);
             }
             else
-                $(".donebutton").attr("disabled",true);
+                $(".donebutton").attr("disabled", true);
         }
         window.loadAndResizeFile = function (e, id) {
             console.log("loadAndResizeFile:" + id);
@@ -484,32 +487,32 @@
         };
 
         /* Utility function to convert a canvas to a BLOB */
-//        var dataURLToBlob = function (dataURL) {
-//            var BASE64_MARKER = ';base64,';
-//            var parts;
-//            var contentType;
-//            var raw;
-//            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-//                parts = dataURL.split(',');
-//                contentType = parts[0].split(':')[1];
-//                raw = parts[1];
-//
-//                return new Blob([raw], {type: contentType});
-//            }
-//
-//            parts = dataURL.split(BASE64_MARKER);
-//            contentType = parts[0].split(':')[1];
-//            raw = window.atob(parts[1]);
-//            var rawLength = raw.length;
-//
-//            var uInt8Array = new Uint8Array(rawLength);
-//
-//            for (var i = 0; i < rawLength; ++i) {
-//                uInt8Array[i] = raw.charCodeAt(i);
-//            }
-//
-//            return new Blob([uInt8Array], {type: contentType});
-//        };
+        //        var dataURLToBlob = function (dataURL) {
+        //            var BASE64_MARKER = ';base64,';
+        //            var parts;
+        //            var contentType;
+        //            var raw;
+        //            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+        //                parts = dataURL.split(',');
+        //                contentType = parts[0].split(':')[1];
+        //                raw = parts[1];
+        //
+        //                return new Blob([raw], {type: contentType});
+        //            }
+        //
+        //            parts = dataURL.split(BASE64_MARKER);
+        //            contentType = parts[0].split(':')[1];
+        //            raw = window.atob(parts[1]);
+        //            var rawLength = raw.length;
+        //
+        //            var uInt8Array = new Uint8Array(rawLength);
+        //
+        //            for (var i = 0; i < rawLength; ++i) {
+        //                uInt8Array[i] = raw.charCodeAt(i);
+        //            }
+        //
+        //            return new Blob([uInt8Array], {type: contentType});
+        //        };
 
         function switchZoomTo(to) {
             var ele = document.getElementById("zoom");
@@ -777,7 +780,7 @@
                 document.getElementById("preview-" + i).disabled = true;
             }
         }
-        function toggleskip(idx,element) {
+        function toggleskip(idx, element) {
 //            console.log("check :"+element.checked);
             var ignoreBtn = document.getElementById("ignore-" + idx);
 //            var paramPanel = document.getElementById("form-" + idx);
@@ -786,10 +789,10 @@
                 ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
                 //paramPanel.style.display = "none";
                 setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
-                $("#form-"+idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
+                $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
 //                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
 //                $("#form-"+idx).find(".form-control").attr("disabled", true);
-                $("#preview-"+idx).attr("disabled", true);
+                $("#preview-" + idx).attr("disabled", true);
             }
             else {
                 if (previews[idx] === 0) {
@@ -798,36 +801,36 @@
                 if (templateIndex == idx) {
                     //paramPanel.style.display = "";
                     setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
-                    $("#form-"+idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
+                    $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
 //                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
 //                    $("#form-"+idx).find(".form-control").attr("disabled", false);
                     if (termsAccepted)
-                        $("#preview-"+idx).attr("disabled", false);
+                        $("#preview-" + idx).attr("disabled", false);
                 }
             }
             checkDone();
         }
-//        function setStatus(idx,done) {
-//            var ignoreBtn = document.getElementById("ignore-" + idx);
-//            var paramPanel = document.getElementById("form-" + idx);
-//            ignoreStatus[idx] = 1 - ignoreStatus[idx];
-//            if (ignoreStatus[idx] === 1) { // hide
-//                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
-//                paramPanel.style.display = "none";
-//                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
-//            }
-//            else {
-//                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
-//                if (templateIndex == idx) {
-//                    paramPanel.style.display = "";
-//                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
-//                }
-//            }
-//            checkDone();
-//            changeIframeHeight();
-//        }
+        //        function setStatus(idx,done) {
+        //            var ignoreBtn = document.getElementById("ignore-" + idx);
+        //            var paramPanel = document.getElementById("form-" + idx);
+        //            ignoreStatus[idx] = 1 - ignoreStatus[idx];
+        //            if (ignoreStatus[idx] === 1) { // hide
+        //                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+        //                paramPanel.style.display = "none";
+        //                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
+        //            }
+        //            else {
+        //                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+        //                if (templateIndex == idx) {
+        //                    paramPanel.style.display = "";
+        //                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
+        //                }
+        //            }
+        //            checkDone();
+        //            changeIframeHeight();
+        //        }
         function setSVGEleDisplay(idx, eleName, displayVal) {
-            setElementAttrValue(idx,eleName,"style",displayVal);
+            setElementAttrValue(idx, eleName, "style", displayVal);
         }
         function setElementAttrValue(idx, eleId, attrName, attrValue) {
             var elms = document.querySelectorAll("#svgObj-" + idx);
@@ -844,21 +847,21 @@
             var ele = subdoc.getElementById(eleId);
 //            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
             if (ele !== null && ele !== undefined) {
-                ele.setAttribute(attrName,attrValue);
+                ele.setAttribute(attrName, attrValue);
                 return true;
             }
             return false;
         }
         function setSKU(sku) {
-            console.log("setSKU is called with parameter sku:"+sku);
+            console.log("setSKU is called with parameter sku:" + sku);
             // change background to sku.jpg
             //console.log("changing the background to "+sku+".jpg");
             var count = 0;
             do {
-                var bgName = "/designs/templates/" + sku.substring(4) + "-" + count +".jpg";
-                var success = setElementAttrValue(count,"jd_bg","xlink:href",bgName);
+                var bgName = "/designs/templates/" + sku.substring(4) + "-" + count + ".jpg";
+                var success = setElementAttrValue(count, "jd_bg", "xlink:href", bgName);
                 count++;
-            } while(success);
+            } while (success);
         }
     </script>
 {{/section}}
