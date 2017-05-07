@@ -4,8 +4,10 @@
 // NOTE:
 // 1. the x="123" must NOT have space between x and =; use code format before run this program
 // 2. NO tranform for text or image component is allowed
-    // STEPS: 1. node generatetemplate name num idx
-    // 2. set jd_bd clip area, align text, image for all textxx or imagexx items
+    // STEPS:
+    // 0. all replaceable items should be textxx or imagexx. text style should be in tspan element. remove xml:space="preserve" and format code
+    // 1.node generatetemplate name num idx
+    // 2. set jd_bd clip area, align text, image for all textxx or imagexx items.
     // 3. node generatetemplate2 name num idx
     // 4. node checktemplate name num idx
     // 5. copy svg, png, jpg, gif files to templates directory
@@ -84,14 +86,17 @@ function processTextTag(line) {
     var textId = tools.getAttrValue(line,"id");
     // console.log("id:"+textId);
     if (textId !== null && textId.indexOf("text") === 0 && textId.length === 6) {
-        // try to add style attribute first
+        // try to add style attribute first if style doesn't exist
         line = tools.addAttr(line,"style", "text-anchor:middle;text-align:center");
+        // console.log(line);
         if (line.indexOf("text-anchor:middle") === -1)
             addAttrStr += "text-anchor:middle;";
         if (line.indexOf("text-align:center") === -1)
             addAttrStr += "text-align:center;";
         // console.log(line+",addAttrStr:"+addAttrStr);
-        return line.replace("style=\"","style=\""+addAttrStr);
+        var newStyle = tools.getAttrValue(line,"style") + ";" + addAttrStr;
+        line = tools.replaceAttrValue(line,"style",newStyle);
+        return line;
     }
     // console.log("getWidth:"+getWidthOfText("aaa","Ewert",16));
     return line+"\n";

@@ -34,7 +34,11 @@
       ],
       "0020006": [
         {"tid": "002000601", "zooms":["879,664,395,210","439,506,772,347","285,170,1043,629"], "inputs":[ [{"image":false,"id":"text01","title":"John Bryan","max":"20"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":true,"id":"image21","title":"Twin"}] ]}
+      ],
+      "0020007": [
+        {"tid": "002000701", "zooms":["1079,725,207,146","453,538,748,274","347,170,867,623"], "inputs":[ [{"image":false,"id":"text01","title":"JWB","max":"3"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":false,"id":"text21","title":"JITDIY.COM"}] ]}
       ]
+
     },
     {
       "name": "phone cases",
