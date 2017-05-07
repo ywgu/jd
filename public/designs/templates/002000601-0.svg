@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg1680" width="1600"
+     height="1000" viewBox="0 0 1600 1000" version="1.1">
+    <metadata id="metadata10">
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title></dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <defs id="defs8">
+        <linearGradient gradientTransform="scale(1.6164002,0.61865865)" xlink:href="#grad388" id="grad389"
+                        x1="416.47828" y1="1352.0144" x2="416.47828" y2="1415.8856" gradientUnits="userSpaceOnUse"/>
+        <linearGradient id="grad388">
+            <stop offset="0%" stop-color="#1b1918" stop-opacity="1" id="stop6840"/>
+            <stop offset="100%" stop-color="#9c9e9f" stop-opacity="1" id="stop6842"/>
+        </linearGradient>
+        <linearGradient gradientTransform="scale(1.9639639,0.50917433)" xlink:href="#grad390" id="grad391"
+                        x1="342.99602" y1="1735.191" x2="342.99602" y2="1787.5286" gradientUnits="userSpaceOnUse"/>
+        <linearGradient id="grad390">
+            <stop offset="0%" stop-color="#5bc3cd" stop-opacity="1" id="stop6852"/>
+            <stop offset="100%" stop-color="#a7dadb" stop-opacity="1" id="stop6854"/>
+        </linearGradient>
+        <linearGradient gradientTransform="scale(4.2325534,0.236264)" xlink:href="#grad388" id="grad393" x1="159.13826"
+                        y1="3877.4346" x2="159.13826" y2="3901.7036" gradientUnits="userSpaceOnUse"/>
+        <linearGradient xlink:href="#grad390" id="grad395" x1="694.9706" y1="864.2676" x2="694.9706" y2="872.7922"
+                        gradientUnits="userSpaceOnUse"/>
+        <clipPath id="clipPath4174" clipPathUnits="userSpaceOnUse">
+            <path id="jd_bd" d="m 879.41174,664.70587 395.58826,0 0,210.29411 -395.58826,0 z"
+                  style="opacity:0.97000002;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
+        </clipPath>
+    </defs>
+    <image xlink:href="/designs/templates/002000601-0.jpg" id="jd_bg" height="1000" width="1600"
+           style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"/>
+    <g clip-path="url(#clipPath4174)" id="jd_nt">
+        <g transform="matrix(2.9580997,0,0,2.4827962,-1063.8047,-1370.9586)" id="g6835">
+            <defs id="defs6837">
+                <linearGradient id="linearGradient8906">
+                    <stop offset="0%" stop-color="#1b1918" stop-opacity="1" id="stop8908"/>
+                    <stop offset="100%" stop-color="#9c9e9f" stop-opacity="1" id="stop8910"/>
+                </linearGradient>
+                <linearGradient xlink:href="#grad388" id="linearGradient8912" x1="0" y1="0" x2="0" y2="1"
+                                gradientUnits="objectBoundingBox"/>
+            </defs>
+            <path d="m 763.7907,859.3124 -2.0852,0 -27.0181,0 0,10.3986 8.36,0 c -0.0757,-0.3816 -0.1158,-0.7758 -0.1158,-1.1795 0,-3.3299 2.7005,-6.0304 6.0304,-6.0304 3.3298,0 6.0303,2.7005 6.0303,6.0304 0,0.4037 -0.0399,0.7979 -0.1156,1.1795 l 1.5435,0 c 4.2634,0 7.2962,-0.6761 9.0987,-2.0279 1.9755,-1.4557 3.3275,-4.2459 4.0554,-8.3707 l -5.7836,0 z m -35.3425,0 -7.2637,0 0,16.6372 -28.128,0 c -7.3136,0 -12.4782,-2.0625 -15.4936,-6.1871 -2.4611,-3.3623 -3.9169,-8.9254 -4.3673,-16.6895 l 27.1919,0 0,4e-4 14.4023,0 c -0.3508,-3.37 -1.2954,-5.8313 -2.8341,-7.3834 -1.993,-2.0104 -5.5372,-3.0157 -10.6324,-3.0157 l -27.9718,0 0,-6.2389 28.1798,0 c 6.2737,0 11.1177,1.7331 14.5318,5.1992 2.8366,2.8797 4.4948,6.693 4.9747,11.4388 l 7.5574,0 c 0.48,-4.7456 2.1378,-8.5587 4.9743,-11.4384 3.4142,-3.4661 8.2581,-5.1992 14.5319,-5.1992 l 28.1797,0 0,6.239 -27.9717,0 c -5.0952,0 -8.6395,1.0052 -10.6325,3.0156 -1.5386,1.552 -2.4829,4.0133 -2.8338,7.383 l 26.8624,0 2.0852,0 12.6464,0 c -0.4505,7.7641 -1.9062,13.3272 -4.3674,16.6895 -3.0153,4.1246 -8.18,6.187 -15.4935,6.187 l -28.128,0 0,-16.6375 z m -29.2136,3.1887 c 3.3298,0 6.0303,2.7005 6.0303,6.0303 0,0.4037 -0.0399,0.7977 -0.1155,1.1792 l 9.7959,0 0,-10.3982 -28.1537,0 0,-5e-4 -6.7332,0 c 0.7279,4.1249 2.0798,6.9151 4.0555,8.3709 1.8024,1.3516 4.8352,2.0278 9.0986,2.0278 l 0.1075,0 c -0.0757,-0.3815 -0.1158,-0.7755 -0.1158,-1.1792 0,-3.3298 2.7005,-6.0303 6.0304,-6.0303 z"
+                  style="fill:url(#grad389)" id="path6845"/>
+            <defs id="defs6849">
+                <linearGradient id="linearGradient8917">
+                    <stop offset="0%" stop-color="#5bc3cd" stop-opacity="1" id="stop8919"/>
+                    <stop offset="100%" stop-color="#a7dadb" stop-opacity="1" id="stop8921"/>
+                </linearGradient>
+                <linearGradient xlink:href="#grad390" id="linearGradient8923" x1="0" y1="0" x2="0" y2="1"
+                                gradientUnits="objectBoundingBox"/>
+            </defs>
+            <defs id="defs6859">
+                <linearGradient id="linearGradient8927">
+                    <stop offset="0%" stop-color="#1b1918" stop-opacity="1" id="stop8929"/>
+                    <stop offset="100%" stop-color="#9c9e9f" stop-opacity="1" id="stop8931"/>
+                </linearGradient>
+                <linearGradient xlink:href="#grad388" id="linearGradient8933" x1="0" y1="0" x2="0" y2="1"
+                                gradientUnits="objectBoundingBox"/>
+            </defs>
+            <defs id="defs6869">
+                <linearGradient id="linearGradient8937">
+                    <stop offset="0%" stop-color="#5bc3cd" stop-opacity="1" id="stop8939"/>
+                    <stop offset="100%" stop-color="#a7dadb" stop-opacity="1" id="stop8941"/>
+                </linearGradient>
+                <linearGradient xlink:href="#grad390" id="linearGradient8943" x1="0" y1="0" x2="0" y2="1"
+                                gradientUnits="objectBoundingBox"/>
+            </defs>
+            <path d="m 699.233,864.2676 a 4.2623,4.2623 0 0 1 4.2622,4.2623 4.2623,4.2623 0 1 1 -4.2622,-4.2623 z"
+                  style="fill:url(#grad395)" id="path6877"/>
+            <path d="m 699.233,866.9505 a 2.9382,2.9382 0 0 1 2.9382,2.9382 2.9382,2.9382 0 1 1 -2.9382,-2.9382 z"
+                  style="fill:#ffffff;fill-rule:evenodd" id="path6879"/>
+            <text style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.7598877px;line-height:125%;font-family:Broadway;-inkscape-font-specification:'Broadway, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#002b3f;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                  x="725.14471" y="893.40442" id="text4220">
+                <tspan id="text01" style="text-align:center;text-anchor:middle" x="725.14471" y="893.40442">John Bryan
+                </tspan>
+            </text>
+        </g>
+    </g>
+</svg>
+ 
+

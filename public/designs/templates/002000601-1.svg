@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg1681"
+     viewBox="0 0 1600 1000" height="1000" width="1600">
+    <defs id="defs4">
+        <clipPath id="clipPath4145" clipPathUnits="userSpaceOnUse">
+            <path id="jd_bd" d="m 439.8584,506.82541 772.8951,0 0,347.28805 -772.8951,0 z"
+                  style="opacity:0.97000002;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
+        </clipPath>
+    </defs>
+    <metadata id="metadata7">
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title></dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <image xlink:href="/designs/templates/002000601-1.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600"/>
+    <g id="jd_nt" clip-path="url(#clipPath4145)">
+        <svg id="svg7" preserveAspectRatio="xMidYMid meet" height="344.58334" width="378.64581" y="509.53012"
+             x="834.10773" viewBox="0 0 378.64581 344.58334" version="1.1">
+            <image width="378.64581" height="344.58334" id="image11"
+                   xlink:href="/designs/templates/qr.png"/>
+        </svg>
+        <text id="text2111" y="648.48846" x="494.26398">
+            <tspan y="648.48846" x="494.26398"
+                   style="text-anchor:middle;text-align:center;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:Anton;-inkscape-font-specification:'Anton, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                   id="text11">John Bryan
+            </tspan>
+        </text>
+        <text id="text2222" y="754.08185" x="466.99011">
+            <tspan y="754.08185" x="466.99011"
+                   style="text-anchor:middle;text-align:center;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:Anton;-inkscape-font-specification:'Anton, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                   id="text12">469-666-6666
+            </tspan>
+        </text>
+    </g>
+</svg>
+ 
+
