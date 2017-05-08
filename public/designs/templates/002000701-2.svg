@@ -13,6 +13,7 @@
         </rdf:RDF>
     </metadata>
     <defs id="defs8">
+        <style id="bx-google-fonts">@import url(https://fonts.googleapis.com/css?family=Ewert);</style>
         <clipPath id="clipPath4147" clipPathUnits="userSpaceOnUse">
             <path id="jd_bd" d="m 333.33334,184.12698 903.17466,0 0,600 -903.17466,0 z"
                   style="opacity:0.97000002;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>

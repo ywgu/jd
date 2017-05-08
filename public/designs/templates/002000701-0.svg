@@ -13,6 +13,7 @@
         </rdf:RDF>
     </metadata>
     <defs id="defs8">
+        <style id="bx-google-fonts">@import url(https://fonts.googleapis.com/css?family=Anton);</style>
         <linearGradient xlink:href="#grad296" id="grad297" x1="377.19668" y1="556.11596" x2="377.19668" y2="620.21643"
                         gradientTransform="scale(1.0271778,0.97354129)" gradientUnits="userSpaceOnUse"/>
         <linearGradient id="grad296">

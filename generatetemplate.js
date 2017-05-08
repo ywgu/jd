@@ -5,8 +5,8 @@
 // 1. the x="123" must NOT have space between x and =; use code format before run this program
 // 2. NO tranform for text or image component is allowed
     // STEPS:
-    // 0. all replaceable items should be textxx or imagexx. text style should be in tspan element. remove xml:space="preserve" and format code
-    // 1.node generatetemplate name num idx
+    // 0. all replaceable items should be textxx or imagexx. text style should be in tspan element. remove xml:space="preserve" and format code; install new fonts on linux
+    // 1. node generatetemplate name num idx
     // 2. set jd_bd clip area, align text, image for all textxx or imagexx items.
     // 3. node generatetemplate2 name num idx
     // 4. node checktemplate name num idx
