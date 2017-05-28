@@ -37,7 +37,11 @@
       ],
       "0020007": [
         {"tid": "002000701", "zooms":["1079,725,207,146","453,538,748,274","347,170,867,623"], "inputs":[ [{"image":false,"id":"text01","title":"JWB","max":"3"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":false,"id":"text21","title":"JITDIY.COM"}] ]}
+      ],
+      "0020008": [
+        {"tid": "002000801", "zooms":["840,782,133,121","433,557,739,274","510,508,562,356"], "inputs":[ [{"image":false,"id":"text01","title":"GW","max":"2"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":true,"id":"image21"}] ]}
       ]
+
 
     },
     {

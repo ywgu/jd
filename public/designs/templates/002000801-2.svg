@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1600 1000"
+     height="1000" width="1600" id="svg1682">
+    <metadata id="metadata10">
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title></dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <defs id="defs8">
+        <clipPath id="clipPath4141" clipPathUnits="userSpaceOnUse">
+            <path id="jd_bd" d="m 510.41666,508 562.50004,0 0,356.91666 -562.50004,0 z"
+                  style="opacity:0.97000002;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
+        </clipPath>
+    </defs>
+    <image xlink:href="/designs/templates/002000801-2.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600"/>
+    <g clip-path="url(#clipPath4141)" id="jd_nt">
+        <svg id="svg7" preserveAspectRatio="xMidYMid meet" height="356.91666" width="562.5" y="508" x="510.41666"
+             viewBox="0 0 562.5 356.91666" version="1.1">
+            <image xlink:href="/designs/templates/sample5.jpg" id="image21" height="356.91666" width="562.5"/>
+        </svg>
+    </g>
+</svg>
+ 
+
