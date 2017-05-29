@@ -119,7 +119,7 @@ function checkTag(tagLine,svgFile) {
             console.log("ERROR: jd_bd should be a path.")
     }
     // count replaceable text and image numbers
-    if (tagLine.indexOf("\"text"+partIndex) > 0) {
+    if (tagLine.indexOf("tspan ") > 0 && tagLine.indexOf("\"text"+partIndex) > 0) { // only check <tspan> tag, not <text> tag
         textCount++;
         if (tagLine.indexOf("text-anchor:middle") < 0)
             console.log("WARN: text element doesn't have text-anchor:middle style");
