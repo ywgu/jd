@@ -60,7 +60,9 @@ console.log("designer json:"+designerJson.designs[0].name+","+designerJson.desig
 
 var app = express();
 // if use proxy, trust proxy for ip etc.
-app.enable('trust proxy');
+// app.enable('trust proxy');
+app.set('trust proxy',true);
+app.set('trust proxy','loopback');
 
 app.set('templates',templateJson);
 app.set('designer', designerJson);

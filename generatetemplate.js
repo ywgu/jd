@@ -115,6 +115,12 @@ function processImageTag(line) {
         var w = tools.getAttrValue(line,"width");
         var h = tools.getAttrValue(line,"height");
         var viewBox = "0 0 "+w+" "+h;
+        // handle clip-path for image
+        var clipPath = tools.getAttrValue(line, "clip-path");
+        // console.log(clipPath);
+        if (clipPath !== null) {
+            newImgLine += "<g clip-path=\""+clipPath+"\" id=\"cp-layer\">"
+        }
         // console.log("viewBox:"+viewBox);
         newImgLine += "<svg version=\"1.1\" viewBox=\""+viewBox
         +"\" x=\""+x+"\" y=\""+y+"\" width=\""+w+"\" height=\""+h+"\" preserveAspectRatio=\"xMidYMid meet\">";
@@ -122,8 +128,14 @@ function processImageTag(line) {
         imgLine = tools.removeAttr(imgLine,"x");
         imgLine = tools.removeAttr(imgLine,"y");
         imgLine = tools.removeAttr(imgLine,"preserveAspectRatio");
+        if (clipPath !== null) {
+            imgLine = tools.removeAttr(imgLine,"clip-path");
+        }
         newImgLine += imgLine;
         newImgLine += "</svg>";
+        if (clipPath !== null) {
+            newImgLine += "</g>"
+        }
         // newImgLine = tools.replaceAttrValue(newImgLine,"xlink:href","/designs/templates/"+getAttrValue(newImgLine,"xlink:href"));
         // newImgLine = tools.replaceAttrValue(newImgLine,"xlink:href","../../"+getAttrValue(newImgLine,"xlink:href"));
         // console.log("img:"+newImgLine);
