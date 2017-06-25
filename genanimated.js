@@ -45,10 +45,22 @@ process.on('message', function (imgInfo) {
     cmd.get(
         cmdline2,
         function(data) {
-            console.log('the result is :' + data + '|');
+            console.log('the result for cmd2 is :' + data + '|');
+            // add watermark on the image
+            var cmdline3 = "convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'JITDIY.COM' fill white  text 11,17 'JITDIY.COM' \" "+did+"-s.gif";
+            console.log("cmd3 is "+cmdline3);
+            cmd.get(
+                cmdline3,
+                function(data) {
+                    console.log('the result for cmd3 is :' + data + '|');
+                    process.exit("DONE");
+                }
+            );
             process.exit("DONE");
         }
     );
+
+
 
 
     function preprocess(isWin,src, dest) {
