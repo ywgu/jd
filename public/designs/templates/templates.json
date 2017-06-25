@@ -46,7 +46,7 @@
       ],
       "0020012": [
         {"tid": "002001201", "zooms":["935,599,322,250","442,535,789,308","342,193,894,574"], "inputs":[ [{"image":false,"id":"text01","title":"John Bryan","max":"20"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":true,"id":"image21","title":"Twin"}] ]},
-        {"tid": "002001202", "zooms":["935,599,322,250","442,535,789,308","343,177,898,628"], "inputs":[ [{"image":false,"id":"text01","title":"John Bryan","max":"20"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Barcode"}], [{"image":true,"id":"image21","title":"Twin"}] ]}
+        {"tid": "002001202", "zooms":["935,599,322,250","442,535,789,308","343,177,898,628"], "inputs":[ [{"image":false,"id":"text01","title":"John Bryan","max":"20"}],[{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"},{"image":true,"id":"image11","title":"Picture"}], [{"image":true,"id":"image21","title":"Twin"}] ]}
       ]
 
     },

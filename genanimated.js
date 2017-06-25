@@ -40,22 +40,22 @@ process.on('message', function (imgInfo) {
     );
 
     // generate a larger animated gif image with water mark for sharing
-    var cmdline2 = "cd "+designDir+";convert -delay 100 -resize \"600x400\" /temp-" + did + "-?.svg " + did + "-s.gif";
+    var cmdline2 = "cd "+designDir+";convert -delay 100 -resize \"600x400\" /temp-" + did + "-?.svg " + did + "-s.gif; convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'JITDIY.COM' fill white  text 11,17 'JITDIY.COM' \" "+did+"-s.gif";
     console.log("cmd2 is "+cmdline2);
     cmd.get(
         cmdline2,
         function(data) {
             console.log('the result for cmd2 is :' + data + '|');
-            // add watermark on the image
-            var cmdline3 = "convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'JITDIY.COM' fill white  text 11,17 'JITDIY.COM' \" "+did+"-s.gif";
-            console.log("cmd3 is "+cmdline3);
-            cmd.get(
-                cmdline3,
-                function(data) {
-                    console.log('the result for cmd3 is :' + data + '|');
-                    process.exit("DONE");
-                }
-            );
+            // // add watermark on the image
+            // var cmdline3 = "convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'JITDIY.COM' fill white  text 11,17 'JITDIY.COM' \" "+did+"-s.gif";
+            // console.log("cmd3 is "+cmdline3);
+            // cmd.get(
+            //     cmdline3,
+            //     function(data) {
+            //         console.log('the result for cmd3 is :' + data + '|');
+            //         process.exit("DONE");
+            //     }
+            // );
             process.exit("DONE");
         }
     );
