@@ -29,10 +29,21 @@ process.on('message', function (imgInfo) {
     //         if (err) throw err;
     //         console.log('stdout:', stdout);
     //     });
-    var cmdline = "cd "+designDir+";convert -delay 100 -resize '150x100' /temp-" + did + "-?.svg " + did + ".gif";
+    var cmdline = "cd "+designDir+";convert -delay 100 -resize \"150x100\" /temp-" + did + "-?.svg " + did + ".gif";
     console.log("cmd is "+cmdline);
     cmd.get(
         cmdline,
+        function(data) {
+            console.log('the result is :' + data + '|');
+            process.exit("DONE");
+        }
+    );
+
+    // generate a larger animated gif image with water mark for sharing
+    var cmdline2 = "cd "+designDir+";convert -delay 100 -resize \"600x400\" /temp-" + did + "-?.svg " + did + "-s.gif";
+    console.log("cmd2 is "+cmdline2);
+    cmd.get(
+        cmdline2,
         function(data) {
             console.log('the result is :' + data + '|');
             process.exit("DONE");
