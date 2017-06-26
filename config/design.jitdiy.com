@@ -21,9 +21,14 @@ server {
     #  access_log on;
     #  expires @30m;
     #}
+    location /designs {
+        try_files $uri $uri/ /designs/default.png;
+    }
     location / {
         try_files $uri $uri/ @nodejs;
+        error_page 404 =200 /designs/default.png;
     }
+
     location @nodejs {
         proxy_pass https://127.0.0.1:3000;
     #    proxy_redirect off;

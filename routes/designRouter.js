@@ -456,13 +456,19 @@ designRouter.route('/uploaddata')
                     var imageData = fields["data-"+key];
                     var newName = newPrefix + image.toLowerCase(); // xxxx-image.png/jpg...
                     var processing = fields["processing"];
-                    if (processing === "gpc") {
-                        // var convertedName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png";   // convert to png format
-                        processImage("gpc|"+uploadTempDir + "/" + newName+"|" + imageData);
-                        newName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png"; // change to .png
+
+                    if (imageData.length > 50) { // only process image data that is greater than certain size
+                        if (processing === "gpc") {
+                            // var convertedName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png";   // convert to png format
+                            processImage("gpc|" + uploadTempDir + "/" + newName + "|" + imageData);
+                            newName = "gpc/" + newName.substring(0, newName.lastIndexOf(".")) + ".png"; // change to .png
+                        }
+                        else { // don't process the image, just decode it
+                            processImage("none|" + uploadTempDir + "/" + newName + "|" + imageData);
+                        }
                     }
-                    else { // don't process the image, just decode it
-                        processImage("none|"+uploadTempDir + "/" + newName+"|" + imageData);
+                    else {
+                        newName = "default.png";    // return an empty image
                     }
                     returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(newName).concat("\",");
                 }
