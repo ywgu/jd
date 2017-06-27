@@ -271,9 +271,12 @@
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
         var termsAccepted = false;
-        svgimg.addEventListener('load', function () {
+//        svgimg.addEventListener('load', function () {
+//            changeIframeHeight();
+//        });
+        window.onload = function(){
             changeIframeHeight();
-        });
+        };
         $(document).ready(function () {
             // populate the zoom data
             var zoomStr = '{{zooms}}';

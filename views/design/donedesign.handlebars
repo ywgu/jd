@@ -101,9 +101,11 @@ div.transbox .giveup div.button-opts {
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
         var svgimg = document.getElementById("svgObj-0");
-        svgimg.addEventListener('load', function(){
+//        svgimg.addEventListener('load', function(){
+        window.onload = function() {
             changeIframeHeight();
-        });
+        };
+//        });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
         if (dwww !== null && dwww !== undefined)
