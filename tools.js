@@ -54,8 +54,8 @@ module.exports = {
     },
 
 
-// generic data processor, data is the whole svg file. func is the function used to process the data.
-    processData: function (data, func) {
+// generic data processor, data is the whole svg file. func is the function used to process the data. param for the function
+    processData: function (data, func, param) {
         var tagLine = "";
         var buf = "";
         data.toString().split('\n').forEach(function (line) {
@@ -64,13 +64,13 @@ module.exports = {
             if (line.trim().indexOf("<") === 0) {
                 tagLine = line.trim();
                 if (line.indexOf(">") > 0) {
-                    buf += func(tagLine) + " ";
+                    buf += func(tagLine,param) + " ";
                     tagLine = "";
                 }
             }
             else if (line.trim().indexOf(">") >= 0) {
                 tagLine += " " + line.trim();
-                buf += func(tagLine) + " ";
+                buf += func(tagLine,param) + " ";
                 tagLine = "";
             }
             else if (tagLine === "") {  // text line without < or >
