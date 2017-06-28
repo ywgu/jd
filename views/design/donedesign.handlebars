@@ -184,10 +184,10 @@ div.transbox .giveup div.button-opts {
 
         var did = document.getElementById("saved_id").value;
         if (dwww === "www") {
-            parent.postMessage(did, "https://www.jitdiy.com");
+            parent.postMessage("did:"+did, "https://www.jitdiy.com");
         }
         else {
-            parent.postMessage(did, "https://jitdiy.com");
+            parent.postMessage("did:"+did, "https://jitdiy.com");
         }
 
         function giveupDesign() {
