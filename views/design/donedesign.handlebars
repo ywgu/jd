@@ -196,6 +196,12 @@ div.transbox .giveup div.button-opts {
             pid = tid.substring(0, 7);
             var listUrl = "//design.jitdiy.com/design/templatelist/" + pid + "?dwww=" + dwww;
             window.location.href = listUrl;
+            if (dwww === "www") {
+                parent.postMessage("removeDid:", "https://www.jitdiy.com");
+            }
+            else {
+                parent.postMessage("removeDid:", "https://jitdiy.com");
+            }
         }
         function showForm() {
             document.getElementById('giveup').style.display = "inline";
