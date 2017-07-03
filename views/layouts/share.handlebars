@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="background-color: white;">
+<title>My Product Designed By JITDIY.COM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- These two aren't necessary for embedding. -->
+<meta property="og:site_name" content="JITDIY.COM">
+<meta property="fb:app_id" content="568654603522231">
+
+<!-- These are mostly needed. A few are probably still optional, but they're all good to have. -->
+<meta property="og:type" content="movie">
+<meta property="og:title" content="My Product Designed by JITDIY.COM">
+<meta property="og:description" content="Designed By JITDIY">
+<meta property="og:url" content="https://design.jitdiy.com/share.html">
+<meta property="og:image" content="https://design.jitdiy.com/designs/06315828-002001202-s.gif">
+
+<!-- Not necessary, but might (can't find up-to-date docs) be used for iOS fallback. -->
+<meta property="og:video" content="https://design.jitdiy.com/video.mp4">
+<meta property="og:video:type" content="video/mp4">
+
+<link rel="stylesheet" href="/design/stylesheets/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">-->
+<style>
+    html, body, h1, h2, h3, h4, h5 {
+        font-family: "Raleway", sans-serif
+    }
+
+    .w3-sidenav a, .w3-sidenav h4 {
+        font-weight: bold
+    }
+</style>
+<link href="{{static '/vendor/bootstrap/css/bootstrap.min.css'}}" rel="stylesheet" media="screen">
+<link href="{{static '/vendor/jasny-bootstrap/css/jasny-bootstrap.min.css'}}" rel="stylesheet" media="screen">
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+<script>
+
+    <!--// reciving messages from other windows-->
+    <!--var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";-->
+    <!--var eventer = window[eventMethod];-->
+    <!--var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";-->
+    <!--// Listen to message from other window-->
+    <!--eventer(messageEvent, function (e) {-->
+        <!--console.log('msg from page:', e.data);-->
+        <!--if (e.data !== null && e.data !== undefined && e.data.indexOf("sku:") === 0) {-->
+            <!--sessionStorage.sku = e.data;-->
+            <!--if (typeof setSKU === 'function') {-->
+                <!--setSKU(e.data);-->
+            <!--}-->
+        <!--}-->
+    <!--}, false);-->
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    <!--function changeIframeHeight(height) {-->
+        <!--var dwww = sessionStorage.dwww;-->
+        <!--var winheight = document.body.clientHeight;-->
+        <!--if (height !== null && height !== undefined)-->
+            <!--winheight = height;-->
+        <!--if (dwww === "www") {-->
+            <!--parent.postMessage("changeIframeHeight:" + winheight, "https://www.jitdiy.com");-->
+        <!--}-->
+        <!--else {-->
+            <!--parent.postMessage("changeIframeHeight:" + winheight, "https://jitdiy.com");-->
+        <!--}-->
+    <!--}-->
+</script>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:0">
+    {{{body}}}
+    <!-- End page content -->
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/vendor/jquery-2.1.1.min.js"></script>
+<script src="/vendor/jquery.form.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{static '/vendor/bootstrap/js/bootstrap.min.js'}}"></script>
+<script src="{{static '/vendor/jasny-bootstrap/js/jasny-bootstrap.min.js'}}"></script>
+{{{_sections.jquery}}}
+</body>
+</html>

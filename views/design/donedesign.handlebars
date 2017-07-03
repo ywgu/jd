@@ -1,40 +1,40 @@
 <style>
-/* panel for add text, image, etc. */
-div.transbox {
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.9;
-    position: fixed;
-    /*margin: 30px 30px;*/
-    width: 80%;
-    heigh: 60px;
-    top: 40%;
-    /*bottom: 40%;*/
-    left: 30px;
-    /*right: 15px;*/
-    z-index: 100;
-    filter: alpha(opacity=90); /* For IE8 and earlier */
-    display: none;
-}
+    /* panel for add text, image, etc. */
+    div.transbox {
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.9;
+        position: fixed;
+        /*margin: 30px 30px;*/
+        width: 80%;
+        heigh: 60px;
+        top: 40%;
+        /*bottom: 40%;*/
+        left: 30px;
+        /*right: 15px;*/
+        z-index: 100;
+        filter: alpha(opacity=90); /* For IE8 and earlier */
+        display: none;
+    }
 
-div.transbox .giveup .copy-wrapper {
-    position: absolute;
-    /*margin: 30% 30%;*/
-    width: 80%;
-    heigh: 60px;
-    top: 40%;
-    /*bottom: 30%;*/
-    left: 30px;
-    /*right: 20px;*/
-    overflow: auto;
-    padding: 15px;
-}
+    div.transbox .giveup .copy-wrapper {
+        position: absolute;
+        /*margin: 30% 30%;*/
+        width: 80%;
+        heigh: 60px;
+        top: 40%;
+        /*bottom: 30%;*/
+        left: 30px;
+        /*right: 20px;*/
+        overflow: auto;
+        padding: 15px;
+    }
 
-div.transbox .giveup div.button-opts {
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-}
+    div.transbox .giveup div.button-opts {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+    }
 </style>
 
 <!-- Header -->
@@ -48,11 +48,11 @@ div.transbox .giveup div.button-opts {
 <div class="w3-row-padding" style="background: white;padding-top:30px;">
     <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
         {{#each imagelist}}
-        <div id="svgc-{{@index}}">
-            <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
-                    style="width:100%; background-color: white;">
-            </object>
-        </div>
+            <div id="svgc-{{@index}}">
+                <object id="svgObj-{{@index}}" class="mySlides" type="image/svg+xml" data="/designs/{{image}}"
+                        style="width:100%; background-color: white;">
+                </object>
+            </div>
         {{/each}}
     </div>
 </div>
@@ -79,33 +79,55 @@ div.transbox .giveup div.button-opts {
         </p>
     </div>
 </div>
-
 <div class="w3-row-padding" style="background: white;">
-<div class="w3-col m12 s12">
-<div class="transbox" id="giveup">
-    <div align="right" class="close"><span class="glyphicon glyphicon-remove" onclick="hideForm('giveup')"></span></div>
-    <div style="display: block; margin: 20px;">
-        <div class="copy-wrapper">
-            <p>Are you sure you want to give up this design and start a new one? The design can NOT be recovered if you click YES button.</p>
-        </div>
-        <div class="button-opts">
-            <a id="btnYES" href="#" onclick="giveupDesign();" class="btn btn-primary">YES</a>
-            <a id="btnNO" href="#" onclick="hideForm()" class="btn btn-default">NO</a>
+    <div class="w3-col m12 s12">
+        <p align="center">
+            <button type="button" id="gohomebutton" style="height:10%;"
+                    title=""
+                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                    onclick="showForm();"><b>START OVER</b></button>
+        </p>
+    </div>
+</div>
+<div class="w3-row-padding" style="background: white;">
+    <div class="w3-col m12 s12">
+        <div class="fb-share-button" data-href="http://design.jitdiy.com/design/sharedesign/{{did}}"
+             data-layout="button_count" data-size="small" data-mobile-iframe="true">
+            <a class="fb-xfbml-parse-ignore"
+               target="_blank"
+               href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&amp;src=sdkpreparse">Share</a>
         </div>
     </div>
 </div>
-</div>
+
+<div class="w3-row-padding" style="background: white;">
+    <div class="w3-col m12 s12">
+        <div class="transbox" id="giveup">
+            <div align="right" class="close"><span class="glyphicon glyphicon-remove"
+                                                   onclick="hideForm('giveup')"></span></div>
+            <div style="display: block; margin: 20px;">
+                <div class="copy-wrapper">
+                    <p>Are you sure you want to give up this design and start a new one? The design can NOT be recovered
+                        if you click YES button.</p>
+                </div>
+                <div class="button-opts">
+                    <a id="btnYES" href="#" onclick="giveupDesign();" class="btn btn-primary">YES</a>
+                    <a id="btnNO" href="#" onclick="hideForm()" class="btn btn-default">NO</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {{#section 'jquery'}}
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
         var svgimg = document.getElementById("svgObj-0");
-//        svgimg.addEventListener('load', function(){
-        window.onload = function() {
+        //        svgimg.addEventListener('load', function(){
+        window.onload = function () {
             changeIframeHeight();
         };
-//        });
+        //        });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
         if (dwww !== null && dwww !== undefined)
@@ -123,7 +145,7 @@ div.transbox .giveup div.button-opts {
                 return "";
             }
             else {
-                w = w-50;
+                w = w - 50;
                 return w + "px";
             }
         }
@@ -135,7 +157,7 @@ div.transbox .giveup div.button-opts {
                 return "100%";
             }
             else {
-                h=h-150; // excluding two buttons
+                h = h - 150; // excluding two buttons
                 return h + "px";
             }
         }
@@ -184,10 +206,10 @@ div.transbox .giveup div.button-opts {
 
         var did = document.getElementById("saved_id").value;
         if (dwww === "www") {
-            parent.postMessage("did:"+did, "https://www.jitdiy.com");
+            parent.postMessage("did:" + did, "https://www.jitdiy.com");
         }
         else {
-            parent.postMessage("did:"+did, "https://jitdiy.com");
+            parent.postMessage("did:" + did, "https://jitdiy.com");
         }
 
         function giveupDesign() {

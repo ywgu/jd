@@ -334,6 +334,22 @@ designRouter.route('/showdesign/:did')
         res.render('design/showdesign', {did: req.params.did, imagelist: JSON.parse(imgs).images, pages: totalPage, layout: 'design'});
     });
 
+designRouter.route('/sharedesign/:did')
+    .get(function (req, res, next) {
+        var did = req.params.did;
+        var tid = did.substring(did.indexOf('-')+1);
+        var partNum = getPartNum(req,tid);
+        // console.log("did:"+did+",tid:"+tid);
+        var imgs = "{\"images\":[ ";
+        for (var i=0; i<partNum; i++) {
+            paramValue = did + "-" + i + ".svg";
+            imgs += "{\"image\":\"" + paramValue + "\"},";
+        }
+        imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        // console.log("imgs:" + imgs);
+        res.render('design/sharedesign', {layout: 'share', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
+    });
+
 designRouter.route('/:designId')
     .get(function (req, res, next) {
         Designs.findById(req.params.designId, function (err, design) {
