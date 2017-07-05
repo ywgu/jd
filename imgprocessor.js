@@ -53,14 +53,16 @@ process.on('message', function (imgInfo) {
                     .write(imgDest, function (err) {
                             if (err) return console.dir(arguments);
                             console.log(this.outname + ' created :: ' + arguments[3]);
-                            process.exit("DONE");
+                            // process.exit("DONE");
                         }
                     );
             }
             else {
                 // do nothing for none
+
             }
         }
+        process.exit("DONE");
     });
     // var imgDest = imgInfo.substring(0,imgInfo.lastIndexOf(".")) + ".png";
     // var darkness = 0;
