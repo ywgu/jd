@@ -91,10 +91,10 @@ designRouter.route('/')
         });*/
     })
     .delete(function (req, res, next) {
-        Designs.remove({}, function (err, resp) {
-            if (err) throw err;
-            res.json(resp);
-        });
+        // Designs.remove({}, function (err, resp) {
+        //     if (err) throw err;
+        //     res.json(resp);
+        // });
     });
 
 designRouter.route('/dogtag')

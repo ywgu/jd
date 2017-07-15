@@ -17,7 +17,7 @@ var DesignSchema = new Schema({
 }, {
     timestamps: true
 });
-
-var Design = mongoose.model('Design', DesignSchema);
+// create Design model in design collection
+var Design = mongoose.model('Design', DesignSchema, "design");
 
 module.exports = Design;
