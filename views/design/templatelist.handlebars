@@ -14,6 +14,8 @@
 {{/each}}
 </div>
 <script>
-    sessionStorage.dwww = getParameterByName("dwww");
-    sessionStorage.prdname = getParameterByName("prdname");
+    if (getParameterByName("dwww") !== null)
+        sessionStorage.dwww = getParameterByName("dwww");
+    if (getParameterByName("prdname") !== null)
+        sessionStorage.prdname = getParameterByName("prdname");
 </script>
