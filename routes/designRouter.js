@@ -365,12 +365,11 @@ designRouter.route('/sharedesign/:did')
                 res.status(404);
                 //if it is found we continue on
             } else {
-                //uncomment this next line if you want to see every JSON document response for every GET/PUT/DELETE call
                 console.log(aDesign);
                 prdname = aDesign.slug;
             }
         });
-        // console.log("imgs:" + imgs);
+        console.log("prdname:" + prdname);
         res.render('design/sharedesign', {layout: 'share', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
     });
 
