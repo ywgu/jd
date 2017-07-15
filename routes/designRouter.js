@@ -5,6 +5,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Designs = require('../models/designs');
+var Design = require('../models/design');
 var path = require('path'),
     fs = require('fs'),
     formidable = require('formidable');
@@ -24,7 +25,6 @@ fs.existsSync(uploadDir) || fs.mkdirSync(uploadDir);
 fs.existsSync(designDir) || fs.mkdirSync(designDir);
 fs.existsSync(uploadTempDir) || fs.mkdirSync(uploadTempDir);
 
-// TODO: build a hashtable to improve perforance
 var templateMap = {};
 function findTemplate(req,tid) {
     if (tid in templateMap)
@@ -242,6 +242,17 @@ designRouter.route('/donedesign/:did')
             imgs += "{\"image\":\"" + paramValue + "\"},";
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        // save to database for the new design
+        var prdname = sessionStorage.prdname;
+        if (prdname !== null) {
+            Design.create({
+                _id: did,
+                slug: prdname
+            }, function (err, design) {
+                if (err) throw err;
+                console.log('design ' + did + ',' + prdname + ' is stored in database.');
+            });
+        }
         // console.log("imgs:" + imgs);
         res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
     });

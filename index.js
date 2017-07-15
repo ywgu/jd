@@ -27,18 +27,18 @@ var designerFile = './public/design/designer.json';
 var designerJson = jsonfile.readFileSync(designerFile);
 console.log("designer json:"+designerJson.designs[0].name+","+designerJson.designs[0].did);
 
-// var url = 'mongodb://dbuser:dbuser@ds019054.mlab.com:19054/jitdiy';
-// mongoose.connect(url);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function () {
-//   // we're connected!
-//   console.log("Connected correctly to server");
-//   /**  // create a new design
-//    var newDesign = Designs({
-//     id: '123',
-//     designId: 'Test'
-//   });
+var url = 'mongodb://jitdiy:wangjunfeng@138.68.59.65:27017/jitdiy';
+mongoose.connect(url);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+  console.log("Connected correctly to server");
+  /**  // create a new design
+   var newDesign = Designs({
+    id: '123',
+    designId: 'Test'
+  });
 //
 //    // save the design
 //    newDesign.save(function (err) {
@@ -56,7 +56,7 @@ console.log("designer json:"+designerJson.designs[0].name+","+designerJson.desig
 //       });
 //     });
 //   });**/
-// });
+});
 
 var app = express();
 // if use proxy, trust proxy for ip etc.
