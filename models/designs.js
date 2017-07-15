@@ -18,6 +18,6 @@ var designSchema = new Schema({
     timestamps: true
 });
 
-var Designs = mongoose.model('Design', designSchema);
+var Designs = mongoose.model('Designs', designSchema);
 
 module.exports = Designs;
