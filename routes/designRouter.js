@@ -367,7 +367,7 @@ designRouter.route('/sharedesign/:did')
             } else {
                 //uncomment this next line if you want to see every JSON document response for every GET/PUT/DELETE call
                 console.log(aDesign);
-                prdname = aDesign.prdname;
+                prdname = aDesign.slug;
             }
         });
         // console.log("imgs:" + imgs);
