@@ -230,7 +230,7 @@ designRouter.route('/done')
         // result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(did);
     });
-designRouter.route('/donedesign/:did')
+designRouter.route('/donedesign/:did/:prdname')
     .get(function (req, res, next) {
         var did = req.params.did;
         var tid = did.substring(did.indexOf('-')+1);
@@ -243,8 +243,8 @@ designRouter.route('/donedesign/:did')
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         // save to database for the new design
-        var prdname = sessionStorage.prdname;
-        if (prdname !== null) {
+        var prdname = req.params.prdname;
+        if (prdname !== null && prdname.length() > 0) {
             Design.create({
                 _id: did,
                 slug: prdname

@@ -716,8 +716,9 @@
                     showWarning("Connection error. Please try again later.");
                 },
                 success: function (data) {
-                    console.log(data);
-                    window.location = "/design/donedesign/" + data;
+                    console.log("did:"+data);
+                    var prdname = sessionStorage.prdname;
+                    window.location = "/design/donedesign/" + data + "?prdname="+prdname;
                 }
             });
         }
