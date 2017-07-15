@@ -360,15 +360,15 @@ designRouter.route('/sharedesign/:did')
         var prdname = "";
         Design.findById(did,function (err, aDesign) {
             //if it isn't found, we are going to repond with 404
-            if (err) {
+            if (err || aDesign == null) {
                 console.log(did + ' was not found');
                 res.status(404);
                 //if it is found we continue on
                 res.end("Failed to find the design.")
             } else {
-                console.log(aDesign);
+                // console.log(aDesign);
                 prdname = aDesign.slug;
-                console.log("prdname:" + prdname);
+                // console.log("prdname:" + prdname);
                 res.render('design/sharedesign', {layout: 'share', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});            }
         });
 
