@@ -357,8 +357,21 @@ designRouter.route('/sharedesign/:did')
             imgs += "{\"image\":\"" + paramValue + "\"},";
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        var prdname = "";
+        Design.findById(did,function (err, aDesign) {
+            //if it isn't found, we are going to repond with 404
+            if (err) {
+                console.log(did + ' was not found');
+                res.status(404);
+                //if it is found we continue on
+            } else {
+                //uncomment this next line if you want to see every JSON document response for every GET/PUT/DELETE call
+                console.log(aDesign);
+                prdname = aDesign.prdname;
+            }
+        });
         // console.log("imgs:" + imgs);
-        res.render('design/sharedesign', {layout: 'share', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
+        res.render('design/sharedesign', {layout: 'share', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
     });
 
 designRouter.route('/:designId')
