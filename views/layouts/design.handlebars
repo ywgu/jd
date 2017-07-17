@@ -54,7 +54,7 @@
     }
     function changeIframeHeight(height) {
         var dwww = sessionStorage.dwww;
-        var winheight = document.body.clientHeight;
+        var winheight = document.body.clientHeight+5;
         if (height !== null && height !== undefined)
             winheight = height;
         if (dwww === "www") {
