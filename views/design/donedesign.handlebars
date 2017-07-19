@@ -85,9 +85,10 @@
                target="_blank"
                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&amp;src=sdkpreparse">Facebook</a>
         </div>
-        <div>
+        <div style="height: 28px;">
             <a class="twitter-share-button"
-               href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&text=My%20design%20at%20JITDIY.COM">Tweet</a>
+               href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&text=My%20design%20at%20JITDIY.COM"
+               data-url="http://design.jitdiy.com/design/sharedesign/{{did}}" data-via="jitdiy" data-text="Designed By JITDIY.COM">Tweet</a>
         </div>
     </div>
 </div>
@@ -110,7 +111,14 @@
         </div>
     </div>
 </div>
-
+<script>window.twttr = (function (d, s, id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src= "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+}(document, "script", "twitter-wjs"));</script>
 {{#section 'jquery'}}
     <script>
         //console.log("label saved_id:" + document.getElementById("saved_id").value);
