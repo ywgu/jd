@@ -107,6 +107,11 @@ designRouter.route('/dogtag')
         // });
     });
 
+designRouter.route('/twitterplayer/:did')
+    .get(function (req, res, next) {
+        res.render('twitterplayer', {did: req.params.did});
+    });
+
 designRouter.route('/designer/:did')
     .get(function (req, res, next) {
         console.log("designer=" + req.app.get('designer'));
