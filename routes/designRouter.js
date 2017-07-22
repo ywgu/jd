@@ -109,7 +109,7 @@ designRouter.route('/dogtag')
 
 designRouter.route('/twitterplayer/:did')
     .get(function (req, res, next) {
-        res.render('twitterplayer', {did: req.params.did});
+        res.render('twitterplayer', {layout: 'index', did: req.params.did});
     });
 
 designRouter.route('/designer/:did')
