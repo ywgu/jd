@@ -42,7 +42,7 @@ process.on('message', function (imgInfo) {
     // generate a larger animated gif image with water mark for sharing
     var cmdline2 = "cd "+designDir+";convert -delay 100 -resize \"600x400\" temp-" + did + "-?.svg " + did + "-s.gif";
     cmdline2 += "; convert "+did+"-s.gif  -font Arial -pointsize 16 -draw \"gravity northeast fill black text 6,7 'JITDIY.COM' fill white  text 7,6 'JITDIY.COM' \" "+did+"-s.gif";
-    cmdline2 += ";ffmpeg -i "+did+"-s.gif -movflags faststart -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" "+did+".mp4";
+    cmdline2 += ";ffmpeg -i "+did+"-s.gif -movflags faststart -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*1.6:trunc(ih/2)*1.6\" "+did+".mp4";
     cmdline2 += ";convert " + did + "-s.gif[0] " + did + "-s.jpg";
     console.log("cmd2 is "+cmdline2);
     cmd.get(
