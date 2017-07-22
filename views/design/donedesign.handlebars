@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     /* panel for add text, image, etc. */
     div.transbox {
@@ -34,6 +36,30 @@
         position: absolute;
         bottom: 20px;
         left: 30px;
+    }
+
+    .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 30px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50%;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fa-facebook {
+        background: #3B5998;
+        color: white;
+    }
+
+    .fa-twitter {
+        background: #55ACEE;
+        color: white;
     }
 </style>
 
@@ -78,18 +104,27 @@
 
 <div class="w3-row-padding" style="background: white;">
     <div class="w3-col m12 s12" align="center">
-        <div class="fb-share-button" style="height: 28px;"
-             data-href="https://design.jitdiy.com/design/sharedesign/{{did}}"
-             data-layout="button" data-size="large" data-mobile-iframe="true">
-            <a class="fb-xfbml-parse-ignore"
-               target="_blank"
-               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&amp;src=sdkpreparse">Facebook</a>
-        </div>
-        <div style="height: 28px;">
-            <a class="twitter-share-button"
-               href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&text=My%20design%20at%20JITDIY.COM"
-               data-url="http://design.jitdiy.com/design/sharedesign/{{did}}" data-via="jitdiy" data-text="Designed By JITDIY.COM">Tweet</a>
-        </div>
+        <a href="#"
+           target="_blank"
+           data-href="https://design.jitdiy.com/design/sharedesign/{{did}}"
+           data-layout="button" data-size="large" data-mobile-iframe="true"
+           class="fa fa-facebook">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&text=My%20design%20at%20JITDIY.COM"
+           target="_blank"
+           data-url="http://design.jitdiy.com/design/sharedesign/{{did}}" data-via="jitdiy" data-text="Designed By JITDIY.COM"
+           class="fa fa-twitter">Tweet</a>
+        <!--<div class="fb-share-button" style="height: 28px;"-->
+             <!--data-href="https://design.jitdiy.com/design/sharedesign/{{did}}"-->
+             <!--data-layout="button" data-size="large" data-mobile-iframe="true">-->
+            <!--<a class="fb-xfbml-parse-ignore"-->
+               <!--target="_blank"-->
+               <!--href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&amp;src=sdkpreparse">Facebook</a>-->
+        <!--</div>-->
+        <!--<div style="height: 28px;">-->
+            <!--<a class="twitter-share-button"-->
+               <!--href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdesign.jitdiy.com%2Fdesign%2Fsharedesign%2F{{did}}&text=My%20design%20at%20JITDIY.COM"-->
+               <!--data-url="http://design.jitdiy.com/design/sharedesign/{{did}}" data-via="jitdiy" data-text="Designed By JITDIY.COM">Tweet</a>-->
+        <!--</div>-->
     </div>
 </div>
 
