@@ -56,6 +56,9 @@
       ],
       "0020013": [
         {"tid": "002001301", "zooms":["868,559,415,334","370,531,793,308","661,538,372,330","343,635,885,245"], "inputs":[ [{"image":false,"id":"text01","title":"JB","max":"3"}], [{"image":true,"id":"image11","title":"Barcode"},{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"}],[{"image":true,"id":"image21","title":"Girl"}], [{"image":false,"id":"text31","title":"JOHN BRYAN"}] ]}
+      ],
+      "0020014": [
+        {"tid": "002001401", "zooms":["885,552,390,334","421,594,689,263","659,526,359,342","362,688,864,133"], "inputs":[ [{"image":false,"id":"text01","title":"JB","max":"3"}], [{"image":true,"id":"image11","title":"Barcode"},{"image":false,"id":"text11","title":"John Bryan","max":"20"},{"image":false,"id":"text12","title":"469-666-6666","max":"12"}],[{"image":true,"id":"image21","title":"Girl"}], [{"image":false,"id":"text31","title":"JOHN BRYAN"}] ]}
       ]
 
     },
