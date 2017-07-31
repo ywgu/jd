@@ -235,6 +235,23 @@ designRouter.route('/done')
         // result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(did);
     });
+// when you don't want to save the product name to database
+designRouter.route('/donedesign/:did')
+    .get(function (req, res, next) {
+        var did = req.params.did;
+        var tid = did.substring(did.indexOf('-')+1);
+        var partNum = getPartNum(req,tid);
+        // console.log("did:"+did+",tid:"+tid);
+        var imgs = "{\"images\":[ ";
+        for (var i=0; i<partNum; i++) {
+            paramValue = did + "-" + i + ".svg";
+            imgs += "{\"image\":\"" + paramValue + "\"},";
+        }
+        imgs = imgs.slice(0, imgs.length - 1) + "] }";
+        // console.log("imgs:" + imgs);
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
+    });
+// show the done design and save the product name to database
 designRouter.route('/donedesign/:did/:prdname')
     .get(function (req, res, next) {
         var did = req.params.did;
