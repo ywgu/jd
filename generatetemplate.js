@@ -145,21 +145,7 @@ function processImageTag(line) {
     }
     return line + "\n";
 }
-// function to collect all fonts
-// var fontList = "";
-// function getFontsList(line) {
-//     var fontIdx = line.indexOf("font-family:");
-//     if (fontIdx > 0) {
-//         // console.log(line);
-//         var aFont = line.substring(fontIdx + 12, line.indexOf(";", fontIdx + 12)) + "|";
-//         // console.log(fontList+","+aFont);
-//         // console.log(fontList+aFont);
-//         if (fontList.indexOf(aFont) < 0)
-//             fontList = fontList.concat(aFont);
-//         console.log("currentFontList:" + fontList);
-//     }
-//     return line + "\n";
-// }
+
 // function to add font line
 function addFontsLine(line, fontStr) {
     if (fontStr.length > 0 && line.indexOf("<?xml ") >= 0) {
@@ -250,7 +236,11 @@ function getFontList(i, inputFile) {
     var fontIdx = contents.indexOf("font-family:");
     while (fontIdx > 0) {
         // console.log(line);
-        var aFont = contents.substring(fontIdx + 12, contents.indexOf(";", fontIdx + 12)) + "|";
+        var aFont = contents.substring(fontIdx + 12, contents.indexOf(";", fontIdx + 12));
+        if (aFont.indexOf('\'') === 0)
+            aFont = aFont.substring(1,aFont.length - 1);
+        aFont = aFont.replace(/ /g,"+");
+        aFont = aFont + "|";
         // console.log(fontList+","+aFont);
         // console.log(fontList+aFont);
         if (fontList[i].indexOf(aFont) < 0) {

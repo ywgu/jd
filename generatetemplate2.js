@@ -19,6 +19,8 @@ var tempDir = path.join(publicDir, "designs/templates/designer/temp");
 var templateName;
 var templateNum;
 var templateIdx;
+
+var fontList = ["", "", "", ""];
 // use: node generatetemplate2 0020001 3 22
 // generate from 0020001-0.svg 0020001-1.svg 0020001-2.svg to 002000122-0.svg 002000122-1.svg 002000122-2.svg + png, gif images
 process.argv.forEach(function (val, index, array) {
@@ -53,9 +55,14 @@ function processImageTag(line) {
     }
     return line+"\n";
 }
-
+function addFontsLine(line, fontStr) {
+    if (fontStr.length > 0 && line.indexOf("<?xml ") >= 0) {
+        return line + "\n" + "<?xml-stylesheet type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=" + fontStr.substring(0, fontStr.length - 1) + "\"?>\n";
+    }
+    return line + "\n";
+}
 // generate from input(0020001-1.svg) to output(002000122-0.svg)
-function processImage(inputFile, outputFile) {
+function processImage(i,inputFile, outputFile) {
     console.log("processImage:" + inputFile + ",output:" + outputFile);
     var inputPath = tempDir + "/" + inputFile + ".svg";
     var inputStream = fs.createReadStream(inputPath);
@@ -73,8 +80,13 @@ function processImage(inputFile, outputFile) {
         // do transformation
         cb(null, tools.processData(data,processImageTag));
     };
-
-    inputStream.pipe(processBg).pipe(processImageLine).pipe(outputStream);
+    var addFonts = new transform();
+    addFonts._transform = function (data, encoding, cb) {
+        // do transformation
+        // console.log("transform:" + fontList[i]);
+        cb(null, tools.processData(data, addFontsLine, fontList[i]));
+    };
+    inputStream.pipe(processBg).pipe(processImageLine).pipe(addFonts).pipe(outputStream);
 }
 
 function generatePngs(src,dest) {
@@ -100,11 +112,35 @@ function generateGif(src, dest) {
         }
     );
 }
-
+function getFontList(i, inputFile) {
+    var inputPath = tempDir + "/" + inputFile + ".svg";
+    var contents = fs.readFileSync(inputPath, 'utf8');
+    // console.log(contents);
+    var fontIdx = contents.indexOf("font-family:");
+    while (fontIdx > 0) {
+        // console.log(line);
+        var aFont = contents.substring(fontIdx + 12, contents.indexOf(";", fontIdx + 12));
+        if (aFont.indexOf('\'') === 0)
+            aFont = aFont.substring(1,aFont.length - 1);
+        aFont = aFont.replace(/ /g,"+");
+        aFont = aFont + "|";
+        // console.log(fontList+","+aFont);
+        // console.log(fontList+aFont);
+        if (fontList[i].indexOf(aFont) < 0) {
+            fontList[i] = fontList[i].concat(aFont);
+            console.log("fontList " + i + ":" + fontList[i]);
+        }
+        fontIdx = contents.indexOf("font-family:", fontIdx+12);
+    }
+}
 function generate(templateName, templateNum, templateIdx) {
+    fontList = [];
     for (var i = 0; i < templateNum; i++) {
+        fontList[i] = "";
+        getFontList(i, templateName + "-" + i);
+
         generatePngs(tempDir+"/"+templateName + templateIdx + "--" + i+".svg", tempDir+"/"+templateName + templateIdx + "-" + i+".png");
-        processImage(templateName + templateIdx + "--" + i, templateName + templateIdx + "-" + i);
+        processImage(i, templateName + templateIdx + "--" + i, templateName + templateIdx + "-" + i);
     }
     generateGif(tempDir+"/"+templateName + templateIdx + "--?"+".svg", tempDir+"/"+templateName + templateIdx + ".gif");
     // addToTemplateFile();    // NOTE: add a jd_bd before processing starts
