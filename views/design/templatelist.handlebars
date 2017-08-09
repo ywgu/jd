@@ -14,20 +14,20 @@
 {{/each}}
 </div>
 <script>
-    var dwww = "";
-    var prdname = "";
-    if (getParameterByName("dwww") !== null)
-        dwww = getParameterByName("dwww");
-    if (getParameterByName("prdname") !== null)
-        prdname = getParameterByName("prdname");
-    // append parameters to all plink
-    var querystring = "prdname="+prdname+"&dwww="+dwww;
-
-    $('#plink').each(function() {
-        var href = $(this).attr('href');
-        if (href) {
-            href += (href.match(/\?/) ? '&' : '?') + querystring;
-            $(this).attr('href', href);
-        }
+    $(document).ready(function () {
+        var dwww = "";
+        var prdname = "";
+        if (getParameterByName("dwww") !== null)
+            dwww = getParameterByName("dwww");
+        if (getParameterByName("prdname") !== null)
+            prdname = getParameterByName("prdname");
+        // append parameters to all plink
+        var querystring = "prdname="+prdname+"&dwww="+dwww;        $('#plink').each(function () {
+            var href = $(this).attr('href');
+            if (href) {
+                href += (href.match(/\?/) ? '&' : '?') + querystring;
+                $(this).attr('href', href);
+            }
+        });
     });
 </script>
