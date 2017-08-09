@@ -45,7 +45,7 @@
     eventer(messageEvent, function (e) {
         console.log('msg from page:', e.data);
         if (e.data !== null && e.data !== undefined && e.data.indexOf("sku:") === 0) {
-            sessionStorage.sku = e.data;
+//            sessionStorage.sku = e.data;
             if (typeof setSKU === 'function') {
                 setSKU(e.data);
             }
@@ -63,7 +63,9 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
     function changeIframeHeight(height) {
-        var dwww = sessionStorage.dwww;
+        var dwww = getParameterByName("dwww");
+        if (dwww === null || dwww === undefined)
+            dwww = "";
         var winheight = document.body.clientHeight+5;
         if (height !== null && height !== undefined)
             winheight = height;

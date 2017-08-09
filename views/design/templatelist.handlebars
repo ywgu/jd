@@ -9,13 +9,17 @@
 <div class="w3-row-padding" style="background-color: white;">
 {{#each templates}}
     <div class="w3-third w3-container w3-margin-bottom">
-        <a href="/design/personalize/{{tid}}"><img src="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a>
+        <a id="plink"><img src="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a>
     </div>
 {{/each}}
 </div>
 <script>
+    var dwww = "";
+    var prdname = "";
     if (getParameterByName("dwww") !== null)
-        sessionStorage.dwww = getParameterByName("dwww");
+        dwww = getParameterByName("dwww");
     if (getParameterByName("prdname") !== null)
-        sessionStorage.prdname = getParameterByName("prdname");
+        prdname = getParameterByName("prdname");
+    var plink = document.getElementById('plink');
+    plink.href = "/design/personalize/{{tid}}?prdname="+prdname+"&dwww="+dwww;
 </script>

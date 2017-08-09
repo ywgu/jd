@@ -112,11 +112,7 @@ div.transbox .giveup div.button-opts {
 //        });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
-        if (dwww !== null && dwww !== undefined)
-            sessionStorage.dwww = dwww;
-        else
-            dwww = sessionStorage.dwww;
-        if (dwww === null)
+        if (dwww === null && dwww === undefined)
             dwww = "";
         var isPause = 0;
 //        function getWidth() {

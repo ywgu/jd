@@ -717,8 +717,13 @@
                 },
                 success: function (data) {
                     console.log("did:"+data);
-                    var prdname = sessionStorage.prdname;
-                    window.location = "/design/donedesign/" + data + "/"+prdname;
+                    var dwww = "";
+                    var prdname = "";
+                    if (getParameterByName("dwww") !== null)
+                        dwww = getParameterByName("dwww");
+                    if (getParameterByName("prdname") !== null)
+                        prdname = getParameterByName("prdname");
+                    window.location = "/design/donedesign/" + data + "/"+prdname+"?dwww="+dwww;
                 }
             });
         }
