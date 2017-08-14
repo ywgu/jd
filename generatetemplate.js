@@ -153,10 +153,21 @@ function addFontsLine(line, fontStr) {
     }
     return line + "\n";
 }
+
+function xmlFormat(inputFile) {
+    console.log("formatting:"+inputFile);
+    var format = require('xml-beautifier');
+    var str = fs.readFileSync(inputFile, 'utf8');
+    var formattedXml = format(str);
+    fs.writeFileSync(inputFile, formattedXml, 'utf8');
+}
+
 // generate from input(0020001-1.svg) to output(002000122-0.svg)
 function processSVGImage(i, inputFile, outputFile) {
     console.log("processSVGImage:" + i + "," + inputFile + ",output:" + outputFile);
 
+    // pretty print the input file first
+    xmlFormat(tempDir + "/" + inputFile + ".svg");
     // var processBg = new transform();
     // processBg._transform = function (data, encoding, cb) {
     //     // do transformation
@@ -216,6 +227,9 @@ function processSVGImage(i, inputFile, outputFile) {
         .pipe(addFonts)
         .pipe(outputStream1);
 
+    setTimeout(function () {
+        xmlFormat(outputPath)
+    }, 2000);
     // delay 2 seconds for the first round is over
     // setTimeout(function () {
     //     console.log("start second round");
