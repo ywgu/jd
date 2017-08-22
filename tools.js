@@ -58,28 +58,32 @@ module.exports = {
     processData: function (data, func, param) {
         var tagLine = "";
         var buf = "";
+        // console.log("line:"+data.toString());
         data.toString().split('\n').forEach(function (line) {
-            // get a tag line
-            // console.log("line:"+line);
-            if (line.trim().indexOf("<") === 0) {
-                tagLine = line.trim();
-                if (line.indexOf(">") > 0) {
-                    buf += func(tagLine,param) + " ";
-                    tagLine = "";
-                }
-            }
-            else if (line.trim().indexOf(">") >= 0) {
-                tagLine += " " + line.trim();
-                buf += func(tagLine,param) + " ";
-                tagLine = "";
-            }
-            else if (tagLine === "") {  // text line without < or >
-                buf += line.trim() + "\n";
-                // tagLine = "";
-            }
-            else {
-                tagLine += " " + line.trim();
-            }
+            // // get a tag line
+            // // console.log("line:"+line);
+            // if (line.trim().indexOf("<") === 0) {
+            //     tagLine = line.trim();
+            //     if (line.indexOf(">") > 0) {
+            //         buf += func(tagLine,param) + " ";
+            //         tagLine = "";
+            //     }
+            // }
+            // else if (line.trim().indexOf(">") >= 0) {
+            //     tagLine += " " + line.trim();
+            //     buf += func(tagLine,param) + " ";
+            //     tagLine = "";
+            // }
+            // else if (tagLine === "") {  // text line without < or >
+            //     buf += line.trim() + "\n";
+            //     // tagLine = "";
+            // }
+            // else {
+            //     tagLine += " " + line.trim();
+            // }
+            // if (line.indexOf("oAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACii") > 0)
+            //     console.log(line);
+            buf += func(line,param);
         });
         // console.log("buf:"+buf);
         return buf;

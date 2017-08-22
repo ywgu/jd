@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family="?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg1681" viewBox="0 0 1600 1000" height="1000" width="1600">
+  <defs id="defs4">
+    <clippath id="clipPath4139" clippathunits="userSpaceOnUse">
+      <path id="jd_bd" d="m 366.54868,198.03593 675.33822,0 0,655.34455 -675.33822,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.21000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+      </path>
+    </clippath>
+  </defs>
+  <metadata id="metadata7">
+    <rdf:rdf>
+      <cc:work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:work>
+    </rdf:rdf>
+    <rdf:rdf>
+      <cc:work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:work>
+    </rdf:rdf>
+  </metadata>
+  <image xlink:href="/designs/templates/002000101-1.jpg" y="0" x="-2" id="jd_bg" height="1000" width="1600">
+  </image>
+  <g id="jd_nt" clip-path="url(#clipPath4139)">
+    <image xlink:href="/designs/templates/girl1.png" y="205.12793" x="488.72937" id="image4144" preserveaspectratio="none" height="637.54218" width="451.24323">
+    </image>
+  </g>
+</svg>
