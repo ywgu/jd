@@ -5,14 +5,15 @@
     <h4 style="margin:10px;font-family:Tahoma, Geneva, sans-serif;">1/3: Please choose a template</h4>
 </header>
 
-
-<div class="w3-row-padding" style="background-color: white;">
-{{#each templates}}
-    <div class="w3-third w3-container w3-margin-bottom">
-        <a id="plink" href="/design/personalize/{{tid}}"><img src="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a>
+{{#each agroup in templates}}
+    <div class="w3-row-padding" style="background-color: white;">
+    {{#each atemplate in agroup}}
+        <div class="w3-third w3-container w3-margin-bottom">
+            <a id="plink" href="/design/personalize/{{atemplate.tid}}"><img src="/designs/templates/{{atemplate.tid}}.gif" alt="{{atemplate.name}}" style="width:100%" class="w3-hover-opacity"></a>
+        </div>
+    {{/each}}
     </div>
 {{/each}}
-</div>
 {{#section 'jquery'}}
 <script>
     $(document).ready(function () {
