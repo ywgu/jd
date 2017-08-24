@@ -55,6 +55,9 @@
         text-align: center;
     }
 </style>
+<script>
+    var noCustom = [];  // store the parts that doesn't require customization
+</script>
 <script type="text/javascript" src="/design/javascripts/exif.js"></script>
 <!-- Header -->
 <header class="w3-container">
@@ -112,6 +115,7 @@
         {{#each inputs}}
             <div class="w3-card-4 w3-margin w3-white" id="form-{{@index}}">
                 <div class="w3-container">
+                {{#if this.length}}
                     <div class="form-group">
                         <p class="checkbox terms-of-use">
                             <label for="skipPart" class="uber-input uber-checkbox"><span class="checkbox-img"></span>
@@ -148,6 +152,12 @@
                             {{/if}}
                         {{/each}}
                     </div>
+                {{else}}
+                    <br/>No customization for this part.
+                    <script>
+                        noCustom.push({{@index}});
+                    </script>
+                {{/if}}
                     <form id="uploadForm-{{@index}}"
                           role="form"
                           enctype="multipart/form-data" method="POST"
@@ -364,6 +374,10 @@
             } while (true);
             for (var i = 0; i < count; i++)
                 previews.push(0);
+            // set the parts that do not need customization
+            for (var i in noCustom) {
+                toggleskip(noCustom[i], {checked: true});
+            }
         });
 
         function checkDone() {
@@ -806,27 +820,29 @@
             var ignoreBtn = document.getElementById("ignore-" + idx);
 //            var paramPanel = document.getElementById("form-" + idx);
             ignoreStatus[idx] = 1 - ignoreStatus[idx];
-            if (element.checked) {
-                ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
-                //paramPanel.style.display = "none";
-                setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
-                $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
+            if (element !== null) {
+                if (element.checked) {
+                    ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+                    //paramPanel.style.display = "none";
+                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
+                    $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
 //                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
 //                $("#form-"+idx).find(".form-control").attr("disabled", true);
-                $("#preview-" + idx).attr("disabled", true);
-            }
-            else {
-                if (previews[idx] === 0) {
-                    ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+                    $("#preview-" + idx).attr("disabled", true);
                 }
-                if (templateIndex == idx) {
-                    //paramPanel.style.display = "";
-                    setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
-                    $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
+                else {
+                    if (previews[idx] === 0) {
+                        ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+                    }
+                    if (templateIndex == idx) {
+                        //paramPanel.style.display = "";
+                        setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
+                        $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
 //                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
 //                    $("#form-"+idx).find(".form-control").attr("disabled", false);
-                    if (termsAccepted)
-                        $("#preview-" + idx).attr("disabled", false);
+                        if (termsAccepted)
+                            $("#preview-" + idx).attr("disabled", false);
+                    }
                 }
             }
             checkDone();
