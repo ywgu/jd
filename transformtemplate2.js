@@ -111,8 +111,28 @@ function processTemplatesJson(templateName, templateNum, templateIdx) {
         if (err){
             console.log(err);
         } else {
-            obj = JSON.parse(data); //now it an object
-            obj.templates.push({id: 2, square:3}); //add some data
+            var obj = JSON.parse(data); //now turn it into an object
+            // var results = [];
+            var results = {};
+            // var newZooms = [];
+            // var newInputs = [];
+            for (var i = 0; i < templateNum; i++) {
+                results = require("./collectsvgdata.js")(tempDir + "/" + templateName + templateIdx + "-" + i + ".svg");
+                // console.log("result "+i+":"+results[i].zoom+"|"+results[i].inputs);
+                // newZooms.push(results[i].zoom);
+                // newInputs.push(results[i].inputs);
+                require('wait-for-stuff').for.time(1);
+            }
+            var tid = templateName+templateIdx;
+            results["tid"] = tid;
+            // find the group
+            for (var j in obj.templates) {
+                // console.log(obj.templates[j].name);
+                var group = obj.templates[j];
+                if (group[templateName] !== null && group[templateName] !== undefined) {
+                    group[templateName].push(results);
+                }
+            }
             json = JSON.stringify(obj, null, 2); //convert it back to json
             fs.writeFile(templateDir+'/templates2.json', json, 'utf8', function(err){
                 if(err) throw err;
