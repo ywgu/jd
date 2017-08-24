@@ -138,20 +138,32 @@ designRouter.route('/designer/:did')
 
 designRouter.route('/templatelist/:pid')
     .get(function (req, res, next) {
-        console.log("templates=" + req.app.get('templates'));
+        // console.log("templates=" + req.app.get('templates'));
         var templates = req.app.get('templates');
         var templateList = null;
         var pid = req.params.pid;
         var gid = pid.substr(0,3);
+        var groupedTemplateList = [];
         for (var i = 0; i < templates.templates.length; i++) {
-            console.log("gid:"+gid+",template.gid:"+templates.templates[i].gid);
+            // console.log("gid:"+gid+",template.gid:"+templates.templates[i].gid);
             if (gid === templates.templates[i].gid) {
                 templateList = templates.templates[i][pid];
-                console.log("found group gid:"+gid+",templateList:"+templateList);
+                for (var j=0; j<templateList.length; j++) {
+                    if (j % 3 === 0) {
+                        var aList = [];
+                        aList.push(templateList[j]);
+                        if (j+1 < templateList.length)
+                            aList.push(templateList[j + 1]);
+                        if (j+2 < templateList.length)
+                            aList.push(templateList[j + 2]);
+                        groupedTemplateList.push(aList);
+                    }
+                }
+                // console.log("found group gid:"+gid+",templateList:"+groupedTemplateList[1][0].tid);
                 break;
             }
         }
-        res.render('design/templatelist', {layout: 'design', templates: templateList});
+        res.render('design/templatelist', {layout: 'design', templates: groupedTemplateList});
     });
 designRouter.route('/personalize/:tid')
     .get(function (req, res, next) {
