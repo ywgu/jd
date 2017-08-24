@@ -143,27 +143,15 @@ designRouter.route('/templatelist/:pid')
         var templateList = null;
         var pid = req.params.pid;
         var gid = pid.substr(0,3);
-        var groupedTemplateList = [];
         for (var i = 0; i < templates.templates.length; i++) {
             console.log("gid:"+gid+",template.gid:"+templates.templates[i].gid);
             if (gid === templates.templates[i].gid) {
                 templateList = templates.templates[i][pid];
-                for (var j=0; j<templateList.length; j++) {
-                    if (j % 3 === 0) {
-                        var aList = [];
-                        aList.push(templateList[j]);
-                        if (j+1 < templateList.length)
-                            aList.push(templateList[j + 1]);
-                        if (j+2 < templateList.length)
-                            aList.push(templateList[j + 2]);
-                        groupedTemplateList.push(aList);
-                    }
-                }
-                console.log("found group gid:"+gid+",templateList:"+groupedTemplateList[0][1].tid);
+                console.log("found group gid:"+gid+",templateList:"+templateList);
                 break;
             }
         }
-        res.render('design/templatelist', {layout: 'design', templates: groupedTemplateList});
+        res.render('design/templatelist', {layout: 'design', templates: templateList});
     });
 designRouter.route('/personalize/:tid')
     .get(function (req, res, next) {
