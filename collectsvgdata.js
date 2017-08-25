@@ -25,12 +25,17 @@ function collectData(svgFile) {
             if (tag.attributes.id !== null && tag.attributes.id !== undefined) {
                 if (tag.attributes.id === "jd_bd") {
                     var d = tag.attributes.d;
+                    console.log("d:"+d);
                     var items = d.split(" ");
-                    result.zooms.push(items[1].substring(0, items[1].indexOf('.')) + ","
-                        + items[1].substring(items[1].indexOf(",") + 1, items[1].lastIndexOf('.')) + ","
-                        + items[2].substring(0, items[2].indexOf('.')) + ","
-                        + items[3].substring(items[3].indexOf(',') + 1, items[3].lastIndexOf('.')));
-                    // console.log(result.zooms);
+                    var newZoom = "";
+                    var temp = items[1].split(",");
+                    newZoom += Math.round(temp[0])+","+Math.round(temp[1])+",";
+                    temp = items[2].split(",");
+                    newZoom += Math.round(temp[0])+",";
+                    temp = items[3].split(",");
+                    newZoom += Math.round(temp[1]);
+                    console.log("newZoom:"+newZoom);
+                    result.zooms.push(newZoom);
                 }
                 var matches = tag.attributes.id.match("text[0-9][0-9]");
                 if (matches && tag.attributes.id.length === 6) {    // check for textxx
@@ -39,7 +44,7 @@ function collectData(svgFile) {
                 matches = tag.attributes.id.match("image[0-9][0-9]");
                 if (matches && tag.attributes.id.length ===7) {
                     var item = {};
-                    item["image"] = "true";
+                    item["image"] = true;
                     item["id"] = tag.attributes.id;
                     item["title"] = "Girl";
                     newInput.push(item);
@@ -62,7 +67,7 @@ function collectData(svgFile) {
                 }
                 // console.log(processingTag+",text:"+displayText);
                 var item = {};
-                item["image"] = "false";
+                item["image"] = false;
                 item["id"] = processingTag;
                 item["title"] = displayText;
                 item["max"] = textLength;
