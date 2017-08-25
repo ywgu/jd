@@ -111,7 +111,7 @@ printer.on('opentag', function (tag) {
                                         + "\" x=\"" + x + "\" y=\"" + y + "\" width=\"" + w + "\" height=\"" + h + "\" preserveAspectRatio=\"xMidYMid meet\">");
                                     tag.attributes.x = undefined;
                                     tag.attributes.y = undefined;
-                                    tag.attributes.preserveaApectRatio = undefined;
+                                    tag.attributes.preserveAspectRatio = undefined;
                                     if (clipPath !== null && clipPath !== undefined) {
                                         tag.attributes["clip-path"] = undefined;
                                     }
