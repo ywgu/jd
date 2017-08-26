@@ -16,7 +16,7 @@
         }
 
         .slider {
-            width: 90%;
+            width: 80%;
             margin: 0px auto;
             background-color: white;
         }
@@ -67,21 +67,13 @@
                 $(this).attr('href', href);
             }
         });
-        $('.slide').slick({
-            lazyLoad: 'ondemand',
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: true
-        });
         $(".regular").slick({
             lazyLoad: 'ondemand',
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 4000,
             dots: true,
             infinite: true,
-            slidesToShow: 3,
+            slidesToShow: 1,
             slidesToScroll: 1
         });
     });
