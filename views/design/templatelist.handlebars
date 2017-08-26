@@ -38,13 +38,21 @@
 <div class="w3-row-padding" style="background: white;padding-top:30px;">
     <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
 
-<section class="regular slider">
-    {{#each templates}}
-        {{#each this}}
-            <div><a id="plink" href="/design/personalize/{{tid}}"><img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a></div>
-        {{/each}}
-    {{/each}}
-</section>
+<!--<section class="regular slider">-->
+    <!--{{#each templates}}-->
+        <!--{{#each this}}-->
+            <!--<div><a id="plink" href="/design/personalize/{{tid}}"><img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:200px" class="w3-hover-opacity"></a></div>-->
+        <!--{{/each}}-->
+    <!--{{/each}}-->
+<!--</section>-->
+        <div class="slider lazy">
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz1.png"/></div></div>
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz2.png"/></div></div>
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz3.png"/></div></div>
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz4.png"/></div></div>
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz5.png"/></div></div>
+            <div><div class="image"><img data-lazy="http://kenwheeler.github.io/slick/img/lazyfonz6.png"/></div></div>
+        </div>
 
 </div>
 </div>
@@ -71,9 +79,9 @@
                 $(this).attr('href', href);
             }
         });
-        $(".regular").slick({
+        $(".lazy").slick({
             lazyLoad: 'ondemand',
-            autoplay: true,
+//            autoplay: true,
             autoplaySpeed: 4000,
 //            dots: true,
             infinite: true,
