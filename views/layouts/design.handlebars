@@ -62,13 +62,16 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-    function changeIframeHeight(height) {
+    // adjustment to make add/subtraction of the detected height value
+    function changeIframeHeight(adjustment) {
         var dwww = getParameterByName("dwww");
         if (dwww === null || dwww === undefined)
             dwww = "";
-        var winheight = document.body.clientHeight+5;
-        if (height !== null && height !== undefined)
-            winheight = height;
+        var winheight = document.body.clientHeight;
+//        if (height !== null && height !== undefined)
+//            winheight = height;
+        if (adjustment !== null && adjustment !== undefined)
+            winheight += adjustment;
         if (dwww === "www") {
             parent.postMessage("changeIframeHeight:"+winheight, "https://www.jitdiy.com");
         }
