@@ -35,9 +35,9 @@
         }
     </style>
 </header>
+<div class="w3-row-padding" style="background: white;padding-top:30px;">
+    <div class="w3-content w3-display-container" id="showpanel" style="width: 100%;" align="middle">
 
-<div style="background-color: white">
-    <br/>
 <section class="regular slider">
     {{#each templates}}
         {{#each this}}
@@ -45,7 +45,10 @@
         {{/each}}
     {{/each}}
 </section>
+
 </div>
+</div>
+
 {{#section 'jquery'}}
     <script type="text/javascript" src="/slick/slick.min.js"></script>
 <script>
