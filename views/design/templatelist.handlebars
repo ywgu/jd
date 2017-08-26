@@ -41,7 +41,7 @@
 <section class="regular slider">
     {{#each templates}}
         {{#each this}}
-            <div><a id="plink" href="/design/personalize/{{tid}}"><img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a></div>
+            <div><a id="plink" href="/design/personalize/{{tid}}"><img src="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a></div>
         {{/each}}
     {{/each}}
 </section>
@@ -71,9 +71,9 @@
             }
         });
         $(".regular").slick({
-            lazyLoad: 'ondemand',
-            autoplay: true,
-            autoplaySpeed: 4000,
+//            lazyLoad: 'ondemand',
+//            autoplay: true,
+//            autoplaySpeed: 4000,
 //            dots: true,
             infinite: true,
             slidesToShow: 1,
