@@ -33,53 +33,65 @@
         .slick-next:before {
             color: darkslategrey;
         }
+
+        .carousel {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+            background-color: white;
+        }
     </style>
 </header>
 
-<div style="background-color: white">
+<div class="w3-row-padding carousel">
     <br/>
-<section class="regular slider">
-    {{#each templates}}
-        {{#each this}}
-            <div><a id="plink" href="/design/personalize/{{tid}}"><img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%" class="w3-hover-opacity"></a></div>
+    <section class="regular slider">
+        {{#each templates}}
+            {{#each this}}
+                <div>
+                    <a id="plink" href="/design/personalize/{{tid}}">
+                        <img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%"
+                             class="w3-hover-opacity">
+                    </a>
+                </div>
+            {{/each}}
         {{/each}}
-    {{/each}}
-</section>
+    </section>
 </div>
 
 {{#section 'jquery'}}
     <script type="text/javascript" src="/slick/slick.min.js"></script>
 
-<script>
-    window.onload = function(){
-        changeIframeHeight();
-    };
-    $(document).ready(function () {
-        var dwww = "";
-        var prdname = "";
-        if (getParameterByName("dwww") !== null)
-            dwww = getParameterByName("dwww");
-        if (getParameterByName("prdname") !== null)
-            prdname = getParameterByName("prdname");
-        // append parameters to all plink
-        var querystring = "prdname="+prdname+"&dwww="+dwww;
-        $('a').each(function () {
-            var href = $(this).attr('href');
-            if (href) {
-                href += (href.match(/\?/) ? '&' : '?') + querystring;
-                $(this).attr('href', href);
-            }
-        });
-        $(".regular").slick({
-            lazyLoad: 'ondemand',
-            autoplay: true,
-            autoplaySpeed: 4000,
+    <script>
+        window.onload = function () {
+            changeIframeHeight();
+        };
+        $(document).ready(function () {
+            var dwww = "";
+            var prdname = "";
+            if (getParameterByName("dwww") !== null)
+                dwww = getParameterByName("dwww");
+            if (getParameterByName("prdname") !== null)
+                prdname = getParameterByName("prdname");
+            // append parameters to all plink
+            var querystring = "prdname=" + prdname + "&dwww=" + dwww;
+            $('a').each(function () {
+                var href = $(this).attr('href');
+                if (href) {
+                    href += (href.match(/\?/) ? '&' : '?') + querystring;
+                    $(this).attr('href', href);
+                }
+            });
+            $(".regular").slick({
+                lazyLoad: 'ondemand',
+                autoplay: true,
+                autoplaySpeed: 4000,
 //            dots: true,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
         });
-    });
 
-</script>
+    </script>
 {{/section}}
