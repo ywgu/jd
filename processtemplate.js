@@ -252,7 +252,8 @@ function processTemplateFile(inputFile, outputFile, instructs) {
     for (var i in instructs) {
         if (instructs[i].indexOf("tag|AF|") === 0  && instructs[i].substring(7) !== "undefined") {
             var fontStr = instructs[i].substring(7);
-            outStream.write("\n<?xml-stylesheet type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=" + fontStr.substring(0, fontStr.length - 1) + "\"?>");
+            if (fontStr !== null && fontStr.length > 1)
+                outStream.write("\n<?xml-stylesheet type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=" + fontStr.substring(0, fontStr.length - 1) + "\"?>");
         }
     }
     inStream.pipe(printer)
