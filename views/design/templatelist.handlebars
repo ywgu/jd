@@ -52,6 +52,7 @@
                     <a id="plink" href="/design/personalize/{{tid}}">
                         <img data-lazy="/designs/templates/{{tid}}.gif" alt="{{name}}" style="width:100%"
                              class="w3-hover-opacity">
+                        <text id="theight">320</text>
                     </a>
                 </div>
             {{/each}}
@@ -64,7 +65,8 @@
 
     <script>
         window.onload = function () {
-            changeIframeHeight(15);
+            var winheight = changeIframeHeight(15);
+            document.getElementById("theight").innerHTML = winheight;
         };
         $(document).ready(function () {
             var dwww = "";
