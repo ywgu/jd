@@ -34,7 +34,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 console.log("args:" + templateName + "," + templateNum + "," + templateIdx);
-checkAll(templateName, templateNum, templateIdx);
+// checkAll(templateName, templateNum, templateIdx);
 
 function checkAll(templateName, templateNum, templateIdx) {
     for (var i = 0; i < templateNum; i++) {
@@ -93,7 +93,7 @@ function check(svgFile) {
         console.log("ERROR: Background image "+jpgFile+" doesn't exists.");
     console.log("INFO: total replaceable text is "+textCount);
     console.log("INFO: total replaceable image is "+imgCount);
-    console.log("INFO: make sure you update the templates.json")
+    // console.log("INFO: make sure you update the templates.json")
 }
 
 function checkTag(tagLine,svgFile) {
@@ -139,3 +139,5 @@ function checkTag(tagLine,svgFile) {
             console.log("ERROR: replaceable image should avoid using preserveAspectRatio=\"none\"");
     }
 }
+
+module.exports = checkAll;

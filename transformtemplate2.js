@@ -28,6 +28,10 @@ process.argv.forEach(function (val, index, array) {
 console.log("args:" + templateName + "," + templateNum + "," + templateIdx);
 transform(templateName, templateNum, templateIdx);
 
+require('wait-for-stuff').for.time(7);  // wait for all images are generated
+console.log("\n\nSTART TO CHECK THE GENERATED SVG FILES\n\n")
+require("./checktemplate.js")(templateName,templateNum,templateIdx);
+
 function getFontList(i, inputFile) {
     var inputPath = tempDir + "/" + inputFile + ".svg";
     var contents = fs.readFileSync(inputPath, 'utf8');

@@ -14,7 +14,7 @@ function collectData(svgFile) {
     newInput = [];
     fs.readFile(svgFile, function (er, d) {
         var xmlstr = d.toString('utf8')
-        console.log("parsing file:"+svgFile);
+        // console.log("parsing file:"+svgFile);
         var parser = sax.parser(true)
 
         parser.onclosetag = function (tagName) {
@@ -25,7 +25,7 @@ function collectData(svgFile) {
             if (tag.attributes.id !== null && tag.attributes.id !== undefined) {
                 if (tag.attributes.id === "jd_bd") {
                     var d = tag.attributes.d;
-                    console.log("d:"+d);
+                    // console.log("d:"+d);
                     var items = d.split(" ");
                     var newZoom = "";
                     var temp = items[1].split(",");
@@ -34,7 +34,7 @@ function collectData(svgFile) {
                     newZoom += Math.round(temp[0])+",";
                     temp = items[3].split(",");
                     newZoom += Math.round(temp[1]);
-                    console.log("newZoom:"+newZoom);
+                    // console.log("newZoom:"+newZoom);
                     result.zooms.push(newZoom);
                 }
                 var matches = tag.attributes.id.match("text[0-9][0-9]");
@@ -78,6 +78,7 @@ function collectData(svgFile) {
 
         parser.onend = function () {
             result.inputs.push(newInput);
+            console.log("end collecting svg data:"+svgFile);
         };
 
         parser.write(xmlstr).end()
