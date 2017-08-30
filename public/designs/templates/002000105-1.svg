@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1000" viewBox="0 0 1600 1000" id="svg1681" version="1.1">
   <defs id="defs4">
-    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath4141">
-      <path style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.21000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="m 420,194.54546 545.45453,0 0,683.63635 -545.45453,0 z" id="jd_bd">
-      </path>
-    </clipPath>
   </defs>
   <metadata id="metadata7">
     <rdf:RDF>
@@ -21,8 +17,8 @@
   </metadata>
   <image xlink:href="/designs/templates/002000101-1.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600">
   </image>
-  <g clip-path="url(#clipPath4141)" id="jd_nt">
-    <svg version="1.1" viewBox="0 0 450.37134 636.31036" x="478.6221" y="205.59654" width="450.37134" height="636.31036" preserveAspectRatio="xMidYMid meet" id="svg7">
+  <g clip-path="" id="jd_nt">
+    <svg version="1.1" viewBox="0 0 450.37134 636.31036" x="478.6221" y="205.59654" width="450.37134" height="636.31036" preserveAspectRatio="xMidYMid meet">
       <image xlink:href="/designs/templates/girl1.png" id="image11" height="636.31036" width="450.37134" style="fill:#ff6600">
       </image>
     </svg>
