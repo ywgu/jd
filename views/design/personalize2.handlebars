@@ -62,14 +62,20 @@
 <!-- Header -->
 <header class="w3-container">
     <!--<a href="#"><img src="http://www.w3schools.com/w3css/img_avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
-    <h4 style="margin:10px;font-family:Tahoma, Geneva, sans-serif;">2/3: Personalization Attributes</h4>
+    <h4 style="margin:10px;font-family:Tahoma, Geneva, sans-serif;">2/3: Personalization Attributes
+        <button type="button" class="btn btn-default tour" aria-label="Right Align" style="float: right;">
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        </button>
+    </h4>
+    <!-- Add IntroJs styles -->
+    <link href="/vendor/introjs/introjs.min.css" rel="stylesheet">
 </header>
 
 <!-- Grid -->
 <div class="w3-row">
     <div class="w3-col l6 s12">
         <div class="w3-card-2" style="background-color: white">
-            <div class="w3-content w3-display-container">
+            <div class="w3-content w3-display-container step1">
                 {{#each inputs}}
                     <div id="svgc-{{@index}}">
                         <object id="svgObj-{{@index}}" type="image/svg+xml"
@@ -79,25 +85,25 @@
                         </object>
                     </div>
                 {{/each}}
-                <a id="zoom" class="w3-display-topright"
+                <a id="zoom" class="w3-display-topright step2"
                    onclick="zoominSVG()">
                     <span style="font-size:16px;padding:6px;" class="glyphicon glyphicon-zoom-in"
                           aria-hidden="false"></span></a>
             </div>
             <div class="w3-container w3-dark-grey w3-padding-tiny" style="font-size:10px">
                 <table>
-                    <tr>
+                    <tr class="step3">
                         {{#each inputs}}
                             <td>
                         <span class="btn btn-default navbar-btn" id="icon-{{@index}}"
-                              title="page" style="padding:6px;margin:2px;"
+                              title="part" style="padding:6px;margin:2px;"
                               onclick="showTemplate({{@index}})"><img
                                 src="/designs/templates/{{../tid}}-{{@index}}.png"
                                 alt="front"></span>
                             </td>
                         {{/each}}
                     </tr>
-                    <tr>
+                    <tr class="step4">
                         {{#each inputs}}
                             <td align="center">
                                 <span id="ignore-{{@index}}"
@@ -111,53 +117,54 @@
         </div>
     </div>
 
-    <div class="w3-col l6 s12">
+    <div class="w3-col l6 s12 step5">
         {{#each inputs}}
             <div class="w3-card-4 w3-margin w3-white" id="form-{{@index}}">
                 <div class="w3-container">
-                {{#if this.length}}
-                    <div class="form-group">
-                        <p class="checkbox terms-of-use">
-                            <label for="skipPart" class="uber-input uber-checkbox"><span class="checkbox-img"></span>
-                                <input type="checkbox" id="skippart-{{@index}}" name="skipPart"
-                                       onchange="toggleskip({{@index}},this);" value="true">
-                                I would like to skip this part of the design
-                            </label>
-                        </p>
-                    </div>
-                    <div class="w3-row">
-                        {{#each this}}
-                            {{#if image}}
-                                <!-- image input -->
-                                <div class="form-group">
-                                    <label for="fieldImage" class="control-label">Replace image file for "{{title}}
-                                        "</label>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput">
+                    {{#if this.length}}
+                        <div class="form-group">
+                            <p class="checkbox terms-of-use step6">
+                                <label for="skipPart" class="uber-input uber-checkbox"><span
+                                        class="checkbox-img"></span>
+                                    <input type="checkbox" id="skippart-{{@index}}" name="skipPart"
+                                           onchange="toggleskip({{@index}},this);" value="true">
+                                    I would like to skip this part of the design
+                                </label>
+                            </p>
+                        </div>
+                        <div class="w3-row">
+                            {{#each this}}
+                                {{#if image}}
+                                    <!-- image input -->
+                                    <div class="form-group">
+                                        <label for="fieldImage" class="control-label">Replace image file for "{{title}}
+                                            "</label>
+                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput">
                                             <span class="fileinput-filename"
                                                   style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 130px;"></span>
-                                        </div>
-                                        <span class="input-group-addon btn btn-default btn-file"><span
-                                                class="fileinput-new">Select file</span><span
-                                                class="fileinput-exists">Change</span>
-                                            <!--<div style=''>-->
+                                            </div>
+                                            <span class="input-group-addon btn btn-default btn-file"><span
+                                                    class="fileinput-new">Select file</span><span
+                                                    class="fileinput-exists">Change</span>
+                                                <!--<div style=''>-->
                                                         <input type="file" name="{{id}}-org" id="{{id}}-org"
                                                                onchange="loadAndResizeFile(event,'{{id}}')">
-                                            <!--</div>-->
+                                                <!--</div>-->
                                                 </span>
-                                        <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
-                                        <!--data-dismiss="fileinput">Remove</a>-->
+                                            <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
+                                            <!--data-dismiss="fileinput">Remove</a>-->
+                                        </div>
                                     </div>
-                                </div>
-                            {{/if}}
-                        {{/each}}
-                    </div>
-                {{else}}
-                    <br/>No customization for this part.
-                    <script>
-                        noCustom.push({{@index}});
-                    </script>
-                {{/if}}
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    {{else}}
+                        <br/>No customization for this part.
+                        <script>
+                            noCustom.push({{@index}});
+                        </script>
+                    {{/if}}
                     <form id="uploadForm-{{@index}}"
                           role="form"
                           enctype="multipart/form-data" method="POST"
@@ -187,7 +194,7 @@
 
                         <div class="w3-row">
                             <div class="form-group">
-                                <p class="checkbox terms-of-use">
+                                <p class="checkbox terms-of-use step7">
                                     <label for="termsOfUse" class="uber-input uber-checkbox"><span
                                             class="checkbox-img"></span>
                                         <input type="checkbox" id="terms-{{@index}}" name="termsOfUse" value="true">
@@ -201,11 +208,11 @@
                                     <p align="center">
                                         <button type="submit" id="preview-{{@index}}"
                                                 title='Enable this button after "terms" are accepted and checked'
-                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"
+                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black step8"
                                                 name="submit" disabled><b>PREVIEW »</b></button>
                                         <button type="button" id="donebutton"
                                                 title="Enable this button after all pages are designed and previewed"
-                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black donebutton"
+                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black donebutton step9"
                                                 onclick="sendSVG('{{../tid}}')" disabled><b>DONE »</b></button>
                                     </p>
                                 </div>
@@ -281,7 +288,7 @@
         //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
         var termsAccepted = false;
-        window.onload = function(){
+        window.onload = function () {
             changeIframeHeight();
         };
         $(document).ready(function () {
@@ -375,6 +382,10 @@
             for (var i in noCustom) {
                 toggleskip(noCustom[i], {checked: true});
             }
+            // intro for users
+            $('.tour').on('click', function () {
+                startIntro();
+            });
         });
 
         function checkDone() {
@@ -393,6 +404,7 @@
             else
                 $(".donebutton").attr("disabled", true);
         }
+
         window.loadAndResizeFile = function (e, id) {
             console.log("loadAndResizeFile:" + id);
             EXIF.getData(e.target.files[0], function () {
@@ -543,21 +555,23 @@
                 zoomStatus[templateIndex] = 1;
             }
         }
+
         function proportionZoom(zoomBoundary) {
             var b = zoomBoundary.split(",");
             var diff = 0;
-            if (b[2]/b[3] > 1.6) { // 1600x1000
-                diff = b[2]/1.6 - b[3];
+            if (b[2] / b[3] > 1.6) { // 1600x1000
+                diff = b[2] / 1.6 - b[3];
                 b[3] = b[2] / 1.6;
-                b[1] -= diff/2;
+                b[1] -= diff / 2;
             }
             else {
-                diff = b[3]*1.6 - b[2];
+                diff = b[3] * 1.6 - b[2];
                 b[2] = b[3] * 1.6;
-                b[0] -= diff/2;
+                b[0] -= diff / 2;
             }
-            return b[0]+","+b[1]+","+b[2]+","+b[3];
+            return b[0] + "," + b[1] + "," + b[2] + "," + b[3];
         }
+
         function zoominSVG() {
             var elms = document.querySelectorAll("#svgObj-" + templateIndex);
             var subdoc = null;
@@ -574,6 +588,7 @@
             }
             switchZoomTo("out");
         }
+
         function zoomoutSVG() {
             var elms = document.querySelectorAll("#svgObj-" + templateIndex);
             var subdoc = null;
@@ -599,6 +614,7 @@
 //            console.log("imgExists return:" + http.status);
             return http.status == 200;
         }
+
         function updateSVG(resJson) {
             tidx = resJson["tidx"];
             var elms = document.querySelectorAll("#svgObj-" + tidx);
@@ -631,6 +647,7 @@
                 // ignore other response keys
             }
         }
+
         // fetches the document for the given embedding_element
         function getSubDocument(embedding_element) {
             if (embedding_element.contentDocument) {
@@ -645,6 +662,7 @@
                 return subdoc;
             }
         }
+
         // frozen the screen to avoid double click
 
         // part selecting script
@@ -690,6 +708,7 @@
             }
             changeIframeHeight();
         }
+
         // send SVG doc to server
         function sendSVG(tid) {
             console.log("tid:" + tid);
@@ -739,20 +758,22 @@
                     showWarning("Connection error. Please try again later.");
                 },
                 success: function (data) {
-                    console.log("did:"+data);
+                    console.log("did:" + data);
                     var dwww = "";
                     var prdname = "";
                     if (getParameterByName("dwww") !== null)
                         dwww = getParameterByName("dwww");
                     if (getParameterByName("prdname") !== null)
                         prdname = getParameterByName("prdname");
-                    window.location = "/design/donedesign/" + data + "/"+prdname+"?dwww="+dwww;
+                    window.location = "/design/donedesign/" + data + "/" + prdname + "?dwww=" + dwww;
                 }
             });
         }
+
         // hide and display the specific form
         var formShown = 'none';
         hideForm("terms");
+
         function showForm(id) {
             // hide current displayed form
             if (formShown !== 'none') {
@@ -761,14 +782,17 @@
             document.getElementById(id).style.display = "inline";
             formShown = id;
         }
+
         function hideForm(id) {
             document.getElementById(id).style.display = "none";
             formShown = 'none';
         }
+
         function agree() {
             turnOnCheckbox("terms");
             turnOnPreviewButtons();
         }
+
         function lockScreen() {
             var width = $(document).width() + "px";
             var height = $(document).height() + "px";
@@ -778,9 +802,11 @@
             cover.style.display = "block";
             cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;">Please wait while we upload and transform your image.</p>';
         }
+
         function unlockScreen() {
             $("#cover").fadeOut(100);
         }
+
         function showWarning(msg) {
             var width = $(document).width() + "px";
             var height = $(document).height() + "px";
@@ -791,27 +817,32 @@
             cover.innerHTML = '<p style="font-size: 20px;position: absolute; color: White; top: 50%; left: 20px; right: 20px;"><span class="label label-warning">' + msg + '</span></p>';
             $("#cover").fadeOut(5000);
         }
+
         function turnOnCheckbox(id) {
             for (var i = 0; i < previews.length; i++) {
                 document.getElementById(id + "-" + i).checked = true;
             }
         }
+
         function turnOffCheckbox(id) {
             for (var i = 0; i < previews.length; i++) {
                 document.getElementById(id + "-" + i).checked = false;
             }
         }
+
         function turnOnPreviewButtons() {
             for (var i = 0; i < previews.length; i++) {
                 if (ignoreStatus[i] === 0) // only un-skipped page will be turned on
                     document.getElementById("preview-" + i).disabled = false;
             }
         }
+
         function turnOffPreviewButtons() {
             for (var i = 0; i < previews.length; i++) {
                 document.getElementById("preview-" + i).disabled = true;
             }
         }
+
         function toggleskip(idx, element) {
 //            console.log("check :"+element.checked);
             var ignoreBtn = document.getElementById("ignore-" + idx);
@@ -844,9 +875,11 @@
             }
             checkDone();
         }
+
         function setSVGEleDisplay(idx, eleName, displayVal) {
             setElementAttrValue(idx, eleName, "style", displayVal);
         }
+
         function setElementAttrValue(idx, eleId, attrName, attrValue) {
             var elms = document.querySelectorAll("#svgObj-" + idx);
             var subdoc = null;
@@ -867,6 +900,7 @@
             }
             return false;
         }
+
         function setSKU(sku) {
             console.log("setSKU is called with parameter sku:" + sku);
             // change background to sku.jpg
@@ -878,5 +912,54 @@
                 count++;
             } while (success);
         }
+
+        function startIntro() {
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+//                    {
+//                        intro: "Hello world!"
+//                    },
+                    {
+                        element: '.step1',
+                        intro: "The panel displays the preview of the selected part"
+                    },
+                    {
+                        element: '.step2',
+                        intro: "Click to toggle zoom in/out"
+                    },
+                    {
+                        element: '.step3',
+                        intro: 'Switch part by clicking on a part butter in the row'
+                    },
+                    {
+                        element: '.step4',
+                        intro: "The icon will turn to green after the corresponding part is done"
+                    },
+                    {
+                        element: '.step5',
+                        intro: 'The panel lists all available custom components for the selected part'
+                    },
+                    {
+                        element: document.querySelectorAll('.step6')[templateIndex],
+                        intro: "Check the box to skip the current part"
+                    },
+                    {
+                        element: document.querySelectorAll('.step7')[templateIndex],
+                        intro: "You must agree the terms and conditions before preview button is activated"
+                    },
+                    {
+                        element: document.querySelectorAll('.step8')[templateIndex],
+                        intro: "Click to upload your inputs for previewing"
+                    },
+                    {
+                        element: document.querySelectorAll('.step9')[templateIndex],
+                        intro: "Go to next step after all parts are done"
+                    }
+                ]
+            });
+            intro.start();
+        }
     </script>
+    <script type="text/javascript" src="/vendor/introjs/intro.min.js"></script>
 {{/section}}
