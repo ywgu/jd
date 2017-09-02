@@ -36,10 +36,13 @@ process.argv.forEach(function (val, index, array) {
 console.log("args:" + templateName + "," + templateNum + "," + templateIdx);
 // checkAll(templateName, templateNum, templateIdx);
 
+var hasError = false;
 function checkAll(templateName, templateNum, templateIdx) {
+    hasError = false;
     for (var i = 0; i < templateNum; i++) {
         check(templateName + templateIdx + "-" + i+".svg");
     }
+    return hasError;
 }
 
 function check(svgFile) {
@@ -77,20 +80,30 @@ function check(svgFile) {
             tagLine += " "+line.trim();
         }
     });
-    if (!jd_bg_exists)
+    if (!jd_bg_exists) {
         console.log("ERROR: image jd_bg doesn't exists!");
-    if (!jd_nt_exists)
+        hasError = true;
+    }
+    if (!jd_nt_exists) {
         console.log("ERROR: group jd_nt doesn't exists!");
-    if (!jd_bd_exists)
+        hasError = true;
+    }
+    if (!jd_bd_exists) {
         console.log("ERROR: boundary jd_bd doesn't exists!");
+        hasError = true;
+    }
     // check necessary files exist
     var pngFile = templateDir +"\\"+svgFile.substring(0,svgFile.indexOf(".")+1)+"png";
-    if (!fs.existsSync(pngFile))
-        console.log("ERROR: "+pngFile+" doesn't exists.");
+    if (!fs.existsSync(pngFile)) {
+        console.log("ERROR: " + pngFile + " doesn't exists.");
+        hasError = true;
+    }
     var jpgFile = templateDir +"\\"+productId+"01-"+svgFile.substring(svgFile.indexOf("-")+1,svgFile.indexOf(".")+1)+"jpg";
     // console.log("jpgFile:"+jpgFile);
-    if (!fs.existsSync(jpgFile))
-        console.log("ERROR: Background image "+jpgFile+" doesn't exists.");
+    if (!fs.existsSync(jpgFile)) {
+        console.log("ERROR: Background image " + jpgFile + " doesn't exists.");
+        hasError = true;
+    }
     console.log("INFO: total replaceable text is "+textCount);
     console.log("INFO: total replaceable image is "+imgCount);
     // console.log("INFO: make sure you update the templates.json")
@@ -104,39 +117,54 @@ function checkTag(tagLine,svgFile) {
         var bgStr = "href=\"/designs/templates/"+productId;
         // console.log("check bg:"+bgStr);
         // console.log("tagLine:"+tagLine);
-        if (tagLine.indexOf(bgStr) < 0)
+        if (tagLine.indexOf(bgStr) < 0) {
             console.log("ERROR: background image url should starts with /designs/templates/");
+            hasError = true;
+        }
     }
     // check if jd_nt group exists
     if (tagLine.indexOf("\"jd_nt\"") > 0 && tagLine.indexOf("<g") == 0) {
         jd_nt_exists = true;
-        if (tagLine.indexOf("clip-path=") < 0)
+        if (tagLine.indexOf("clip-path=") < 0) {
             console.log("ERROR: jd_nt should be clipped in jd_bd boundary");
+            hasError = true;
+        }
     }
     if (tagLine.indexOf("\"jd_bd\"") > 0) {
         jd_bd_exists = true;
-        if (tagLine.indexOf("<path ") != 0)
+        if (tagLine.indexOf("<path ") != 0) {
             console.log("ERROR: jd_bd should be a path.")
+            hasError = true;
+        }
     }
     // count replaceable text and image numbers
     if (tagLine.indexOf("tspan ") > 0 && tagLine.indexOf("\"text"+partIndex) > 0) { // only check <tspan> tag, not <text> tag
         textCount++;
-        if (tagLine.indexOf("text-anchor:middle") < 0)
-            console.log("WARN: text element doesn't have text-anchor:middle style");
-        if (tagLine.indexOf("text-align:center") < 0)
-            console.log("WARN: text element doesn't have text-align:center");
+        if (tagLine.indexOf("text-anchor:middle") < 0) {
+            console.log("ERROR: text element doesn't have text-anchor:middle style");
+            hasError = true;
+        }
+        if (tagLine.indexOf("text-align:center") < 0) {
+            console.log("ERROR: text element doesn't have text-align:center");
+            hasError = true;
+        }
     }
     if (tagLine.indexOf("\"image"+partIndex) > 0) {
         imgCount++;
         if (previousTagLine.indexOf("<svg ") !== 0 || previousTagLine.indexOf("preserveAspectRatio=\"xMidYMid meet\"") < 0) {
             console.log("previous line:"+previousTagLine);
             console.log("ERROR: image should be wrapped in a svg with preserveAspectRatio=\"xMidYMid meet\"");
+            hasError = true;
         }
         var imgStr = "href=\"/designs/templates/";
-        if (tagLine.indexOf(imgStr) < 0)
+        if (tagLine.indexOf(imgStr) < 0) {
             console.log("ERROR: replaceable image url should starts with /designs/templates");
-        if (tagLine.indexOf("preserveAspectRatio=\"none\"") >= 0)
+            hasError = true;
+        }
+        if (tagLine.indexOf("preserveAspectRatio=\"none\"") >= 0) {
             console.log("ERROR: replaceable image should avoid using preserveAspectRatio=\"none\"");
+            hasError = true;
+        }
     }
 }
 

@@ -30,9 +30,8 @@ transform(templateName, templateNum, templateIdx);
 
 require('wait-for-stuff').for.time(7);  // wait for all images are generated
 console.log("\n\nSTART TO CHECK THE GENERATED SVG FILES\n\n");
-require("./checktemplate.js")(templateName,templateNum,templateIdx);
+var hasError = require("./checktemplate.js")(templateName,templateNum,templateIdx);
 
-console.log("\n\nCOPY FILES TO TEMPLATES DIRECTORY\n\n");
 function filterFunc(srcfile,destfile) {
     var src = srcfile.substring(srcfile.lastIndexOf('\\')+1);
     if (src.endsWith(".jpg"))
@@ -48,13 +47,19 @@ function filterFunc(srcfile,destfile) {
         return true;
     }
 }
-require("fs-extra").copy(tempDir,templateDir, {filter:filterFunc}, function(err) {
-    if (err) {
-        console.error(err);
-    }
-    else
-        console.log('success!')
-});
+if (hasError) {
+    return;
+}
+else {
+    console.log("\n\nCOPY FILES TO TEMPLATES DIRECTORY\n\n");
+    require("fs-extra").copy(tempDir, templateDir, {filter: filterFunc}, function (err) {
+        if (err) {
+            console.error(err);
+        }
+        else
+            console.log('success!')
+    });
+}
 
 function getFontList(i, inputFile) {
     var inputPath = tempDir + "/" + inputFile + ".svg";

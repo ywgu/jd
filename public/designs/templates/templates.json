@@ -402,6 +402,78 @@
             [],
             []
           ]
+        },
+        {
+          "tid": "002000106",
+          "zooms": [
+            "451,207,738,647",
+            "437,208,525,635",
+            "505,571,702,219",
+            "546,165,505,683"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "WILLIAM",
+                "max": 21
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "YOUR NAME",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "469-222-99...",
+                "max": 21
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "You are my",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text32",
+                "title": "sunshine!",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text33",
+                "title": "You are my",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text34",
+                "title": "sunshine!",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text35",
+                "title": "William",
+                "max": 21
+              }
+            ]
+          ]
         }
       ],
       "0020002": [

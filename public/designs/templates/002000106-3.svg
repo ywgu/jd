@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=Aclonica"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1600 1000" height="1000" width="1600" id="svg1683">
+  <metadata id="metadata10">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs8">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath4206">
+      <path style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="m 546.03174,165.07936 504.76196,0 0,682.53967 -504.76196,0 z" id="jd_bd">
+      </path>
+    </clipPath>
+  </defs>
+  <image xlink:href="/designs/templates/002000101-3.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600">
+  </image>
+  <g id="jd_nt" clip-path="url(#clipPath4206)">
+    <g id="g3-10" transform="matrix(2.425425,0.47111026,-0.47111026,2.425425,72.892705,-369.96715)">
+      <rect id="rect5" height="244.72301" width="171.30701" transform="matrix(0.973,-0.2307,0.2307,0.973,-60.7141,88.5772)" y="181.513" x="262.70599" style="fill:#6c5d53">
+      </rect>
+      <g style="fill:#917c6f" id="g7">
+        <path id="path9-67" d="m 433.248,314.326 c 7.111,21.421 39.35,80.683 39.35,80.683 l -146.927,37.602 c 0,0 -24.5,-33.508 -34.159,-69.85 C 280.804,322.484 250.216,209.807 250.216,209.807 L 399.598,175.14 c 0,-0.002 22.512,105.641 33.65,139.186 z" style="fill:#917c6f">
+        </path>
+        <path id="path11-6" d="m 325.16,434.034 -0.499,-0.685 c -0.247,-0.338 -24.752,-34.115 -34.359,-70.266 -10.583,-39.815 -40.988,-151.822 -41.294,-152.95 l -0.34,-1.254 151.888,-35.249 0.266,1.247 c 0.225,1.056 22.624,105.958 33.613,139.055 6.994,21.069 38.939,79.886 39.262,80.478 l 0.768,1.414 -149.305,38.21 z M 251.764,210.733 c 3.389,12.488 30.98,114.172 40.959,151.705 8.732,32.86 29.97,63.793 33.469,68.747 l 144.54,-36.99 C 465.797,385.047 438.51,334.153 432.059,314.72 421.681,283.464 401.216,188.654 398.639,176.645 l -146.875,34.088 z" style="fill:#917c6f">
+        </path>
+      </g>
+      <g id="g13-9">
+        <g id="g15">
+          <g id="g17">
+            <path id="path19-88" d="m 374.301,199.015 c -3.511,0 -6.26,-3.7 -6.26,-8.422 0,-4.722 2.749,-8.422 6.26,-8.422 3.509,0 6.258,3.7 6.258,8.422 0,4.722 -2.748,8.422 -6.258,8.422 z m 0,-14.34 c -2.037,0 -3.756,2.71 -3.756,5.918 0,3.208 1.719,5.918 3.756,5.918 2.034,0 3.754,-2.709 3.754,-5.918 0,-3.208 -1.719,-5.918 -3.754,-5.918 z" style="fill:#231f20">
+            </path>
+          </g>
+          <path id="path21-62" d="m 374.759,150.172 c -8.446,0 -15.295,9.931 -15.295,22.179 0,1.078 0.056,2.14 0.162,3.179 l 5.986,-1.499 c -0.049,-0.55 -0.081,-1.11 -0.081,-1.68 0,-7.392 4.13,-13.386 9.228,-13.386 5.099,0 9.229,5.993 9.229,13.386 0,7.321 -4.057,13.261 -9.087,13.373 0,0 -1.369,1.086 -1.465,4.23 -0.127,4.333 1.555,4.566 1.555,4.566 8.341,-0.181 15.063,-10.036 15.063,-22.169 0,-12.249 -6.847,-22.179 -15.295,-22.179 z" style="fill:#231f20">
+          </path>
+        </g>
+        <g id="g23">
+          <g id="g25">
+            <path id="path27-58" d="m 340.906,206.918 c -3.509,0 -6.258,-3.7 -6.258,-8.422 0,-4.722 2.748,-8.422 6.258,-8.422 3.509,0 6.257,3.7 6.257,8.422 0,4.722 -2.748,8.422 -6.257,8.422 z m 0,-14.339 c -2.035,0 -3.754,2.709 -3.754,5.918 0,3.208 1.719,5.918 3.754,5.918 2.034,0 3.753,-2.71 3.753,-5.918 0,-3.209 -1.719,-5.918 -3.753,-5.918 z" style="fill:#231f20">
+            </path>
+          </g>
+          <path id="path29-0" d="m 341.366,158.075 c -8.446,0 -15.295,9.93 -15.295,22.176 0,1.081 0.056,2.142 0.159,3.181 l 5.986,-1.499 c -0.049,-0.553 -0.081,-1.11 -0.081,-1.682 0,-7.39 4.133,-13.383 9.231,-13.383 5.096,0 9.229,5.994 9.229,13.383 0,7.324 -4.057,13.263 -9.089,13.374 0,0 -1.367,1.088 -1.462,4.233 -0.127,4.333 1.555,4.563 1.555,4.563 8.339,-0.181 15.061,-10.033 15.061,-22.169 -0.001,-12.246 -6.848,-22.177 -15.294,-22.177 z" style="fill:#231f20">
+          </path>
+        </g>
+        <g id="g31">
+          <g id="g33">
+            <path id="path35-18" d="m 307.51,214.821 c -3.507,0 -6.255,-3.7 -6.255,-8.422 0,-4.722 2.749,-8.422 6.255,-8.422 3.511,0 6.26,3.7 6.26,8.422 0,4.722 -2.748,8.422 -6.26,8.422 z m 0,-14.339 c -2.035,0 -3.751,2.71 -3.751,5.918 0,3.208 1.717,5.918 3.751,5.918 2.037,0 3.756,-2.709 3.756,-5.918 0,-3.209 -1.719,-5.918 -3.756,-5.918 z" style="fill:#231f20">
+            </path>
+          </g>
+          <path id="path37-8" d="m 307.97,165.976 c -8.448,0 -15.295,9.93 -15.295,22.179 0,1.081 0.056,2.14 0.161,3.179 l 5.984,-1.496 c -0.047,-0.553 -0.078,-1.11 -0.078,-1.682 0,-7.392 4.13,-13.383 9.229,-13.383 5.099,0 9.228,5.991 9.228,13.383 0,7.321 -4.057,13.261 -9.087,13.373 0,0 -1.372,1.088 -1.462,4.233 -0.129,4.333 1.553,4.563 1.553,4.563 8.341,-0.181 15.063,-10.033 15.063,-22.169 -0.001,-12.25 -6.85,-22.18 -15.296,-22.18 z" style="fill:#231f20">
+          </path>
+        </g>
+        <g id="g39">
+          <g id="g41">
+            <path id="path43-2" d="m 274.117,222.722 c -3.509,0 -6.258,-3.7 -6.258,-8.422 0,-4.722 2.749,-8.422 6.258,-8.422 3.509,0 6.257,3.7 6.257,8.422 10e-4,4.722 -2.748,8.422 -6.257,8.422 z m 0,-14.339 c -2.035,0 -3.754,2.709 -3.754,5.918 0,3.208 1.719,5.918 3.754,5.918 2.034,0 3.753,-2.71 3.753,-5.918 10e-4,-3.209 -1.718,-5.918 -3.753,-5.918 z" style="fill:#231f20">
+            </path>
+          </g>
+          <path id="path45-04" d="m 274.577,173.879 c -8.449,0 -15.295,9.93 -15.295,22.179 0,1.081 0.054,2.14 0.157,3.179 l 5.989,-1.497 c -0.049,-0.553 -0.081,-1.113 -0.081,-1.682 0,-7.392 4.133,-13.386 9.231,-13.386 5.096,0 9.229,5.994 9.229,13.386 0,7.321 -4.059,13.263 -9.087,13.371 0,0 -1.374,1.09 -1.465,4.233 -0.129,4.336 1.555,4.566 1.555,4.566 8.339,-0.181 15.063,-10.033 15.063,-22.169 -10e-4,-12.249 -6.85,-22.18 -15.296,-22.18 z" style="fill:#231f20">
+          </path>
+        </g>
+      </g>
+    </g>
+    <text id="text4260" y="493.72684" x="720.5556" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" transform="matrix(0.99329942,-0.11556931,0.11556931,0.99329942,0,0)">
+      <tspan y="493.72684" x="720.5556" id="text31" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">
+        You are my
+      </tspan>
+    </text>
+    <text id="text4264" y="579.80988" x="725.81067" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" transform="matrix(0.99449899,-0.10474617,0.10474617,0.99449899,0,0)">
+      <tspan y="579.80988" x="725.81067" id="text32" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">
+        sunshine!
+      </tspan>
+    </text>
+    <text id="text4260-7" y="698.46729" x="692.19104" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" transform="matrix(0.99001713,-0.14094711,0.14094711,0.99001713,0,0)">
+      <tspan y="698.46729" x="692.19104" id="text33" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">
+        You are my
+      </tspan>
+    </text>
+    <text id="text4264-9" y="764.6134" x="718.41913" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" transform="matrix(0.99396771,-0.1096731,0.1096731,0.99396771,0,0)">
+      <tspan y="764.6134" x="718.41913" id="text34" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle">
+        sunshine!
+      </tspan>
+    </text>
+    <text transform="matrix(0.98697127,-0.16089662,0.16089662,0.98697127,0,0)" id="text4281" y="908.66516" x="673.55048" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1">
+      <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;line-height:125%;font-family:Aclonica;-inkscape-font-specification:'Aclonica, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffcc00" y="908.66516" x="673.55048" id="text35">
+        William
+      </tspan>
+    </text>
+  </g>
+</svg>
