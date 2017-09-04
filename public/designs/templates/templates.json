@@ -474,6 +474,59 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002000107",
+          "zooms": [
+            "1075,94,154,792",
+            "400,215,610,607",
+            "427,485,816,382",
+            "421,130,760,722"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "Chiara Bia...",
+                "max": 21
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text11",
+                "title": "Beauty",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text12",
+                "title": "Lies",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text13",
+                "title": "Within",
+                "max": 21
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "Chiara Bia...",
+                "max": 21
+              },
+              {
+                "image": true,
+                "id": "image21",
+                "title": "Girl"
+              }
+            ],
+            []
+          ]
         }
       ],
       "0020002": [
