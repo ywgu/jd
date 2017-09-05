@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=MyriadPro-SemiboldIt|Anton"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="1600px" height="1000px" viewBox="0 0 1600 1000" enable-background="new 0 0 1600 1000" xml:space="preserve" id="svg2">
+  <metadata id="metadata16">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs14">
+    <clipPath id="clipPath4141" clipPathUnits="userSpaceOnUse">
+      <path id="jd_bd" d="m 366.66669,768.75 527.08331,0 0,95.83335 -527.08331,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+      </path>
+    </clipPath>
+  </defs>
+  <image xlink:href="/designs/templates/002000101-3.jpg" overflow="visible" enable-background="new    " width="600" height="400" id="jd_bg" transform="matrix(2.6667 0 0 2.5 24.0002 -2.441406e-004)">
+  </image>
+  <g clip-path="url(#clipPath4141)" id="jd_nt">
+    <g id="Layer_3">
+      <text y="716.20288" x="747.05322" transform="scale(0.84338603,1.1856967)" font-size="51" id="text1023" style="font-size:43.01268768px;line-height:125%;font-family:MyriadPro-SemiboldIt;fill:#6d5554">
+        <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:Anton;-inkscape-font-specification:'Anton, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle" id="text31">
+          Michael Hammock
+        </tspan>
+      </text>
+    </g>
+  </g>
+</svg>
