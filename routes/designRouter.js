@@ -12,7 +12,9 @@ var path = require('path'),
 var jimp = require("jimp");
 
 var designRouter = express.Router();
-designRouter.use(bodyParser.json());
+// designRouter.use(bodyParser.json({limit:"50mb", type:'application/json'}));
+// var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:"50mb",type:'application/x-www-form-urlencoded' });
+// designRouter.use(urlencodedParser);
 
 // make sure data directory exists
 var dataDir = path.normalize(path.join(__dirname, '..', 'public'));

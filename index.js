@@ -87,10 +87,15 @@ app.set('view engine', 'handlebars');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+var jsonParser       = bodyParser.json({limit:1024*1024*50, type:'application/json'});
+var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:1024*1024*50,type:'application/x-www-form-urlencoded' })
+app.use(jsonParser);
+app.use(urlencodedParser);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(cors());
 app.use('/', routes);
