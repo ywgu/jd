@@ -180,7 +180,7 @@ designRouter.route('/personalize/:tid')
             if (templates.templates[i].gid === gid) { // found the group
                 templateList = templates.templates[i][pid];
                 if (templateList !== null && templateList !== undefined) { // found the product
-                    console.log("templateList:" + templateList);
+                    // console.log("templateList:" + templateList);
                     // found the category
                     for (var j = 0; j < templateList.length; j++) {
                         if (templateList[j].tid == req.params.tid) {

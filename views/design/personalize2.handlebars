@@ -847,10 +847,11 @@
 //            console.log("check :"+element.checked);
             var ignoreBtn = document.getElementById("ignore-" + idx);
 //            var paramPanel = document.getElementById("form-" + idx);
-            ignoreStatus[idx] = 1 - ignoreStatus[idx];
-            if (element !== null) {
+
+            if (element !== null && element !== undefined) {
                 if (element.checked) {
                     ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
+                    ignoreStatus[idx] = 1;
                     //paramPanel.style.display = "none";
                     setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
                     $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
@@ -859,8 +860,9 @@
                     $("#preview-" + idx).attr("disabled", true);
                 }
                 else {
-                    if (previews[idx] === 0) {
+                    if (previews[idx] === 0 && !(idx in noCustom)) {
                         ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
+                        ignoreStatus[idx] = 0;
                     }
                     if (templateIndex == idx) {
                         //paramPanel.style.display = "";
