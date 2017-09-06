@@ -870,7 +870,7 @@
                         $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
 //                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
 //                    $("#form-"+idx).find(".form-control").attr("disabled", false);
-                        if (termsAccepted)
+                        if (termsAccepted && !(idx in noCustom))
                             $("#preview-" + idx).attr("disabled", false);
                     }
                 }
