@@ -121,17 +121,17 @@
         {{#each inputs}}
             <div class="w3-card-4 w3-margin w3-white" id="form-{{@index}}">
                 <div class="w3-container">
+                    <div class="form-group">
+                        <p class="checkbox terms-of-use step6">
+                            <label for="skipPart" class="uber-input uber-checkbox"><span
+                                    class="checkbox-img"></span>
+                                <input type="checkbox" id="skippart-{{@index}}" name="skipPart"
+                                       onchange="toggleskip({{@index}},this);" value="true">
+                                I would like to skip this part of the design
+                            </label>
+                        </p>
+                    </div>
                     {{#if this.length}}
-                        <div class="form-group">
-                            <p class="checkbox terms-of-use step6">
-                                <label for="skipPart" class="uber-input uber-checkbox"><span
-                                        class="checkbox-img"></span>
-                                    <input type="checkbox" id="skippart-{{@index}}" name="skipPart"
-                                           onchange="toggleskip({{@index}},this);" value="true">
-                                    I would like to skip this part of the design
-                                </label>
-                            </p>
-                        </div>
                         <div class="w3-row">
                             {{#each this}}
                                 {{#if image}}
