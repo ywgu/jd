@@ -120,10 +120,16 @@ process.on('message', function (imgInfo) {
         // delete dest if exists
         if (fs.existsSync(dest))
             fs.unlinkSync(dest);
+        var checkBgCloseImageTag = false;
         fs.readFileSync(src).toString().split('\n').forEach(function (line) {
+            if (checkBgCloseImageTag && line.indexOf("</image>") >= 0) {    // remove the </image> for jd_bg image tag
+                line = "";
+                checkBgCloseImageTag = false;
+            }
             if (line.indexOf("jd_bg") > 0) {
                 // remove this line
                 line = "";
+                checkBgCloseImageTag = true;
             }
             else if (line.indexOf("jd_nt") > 0) {
                 // remove the clip-path attribute
