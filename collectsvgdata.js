@@ -57,14 +57,16 @@ function collectData(svgFile) {
             if (processingTag !== null) {
                 var displayText = null;
                 var textLength = 0;
-                if (text.trim().length > 10) {
-                    displayText = text.trim().substring(0,10)+"...";
-                    textLength = 21;
-                }
-                else{
-                    displayText = text.trim();
-                    textLength = displayText.length>3 ? 21 : displayText.length;
-                }
+                displayText = text.trim();
+                textLength = displayText.length < 5? displayText.length:60;
+                // if (text.trim().length > 10) {
+                //     displayText = text.trim().substring(0,10)+"...";
+                //     textLength = 21;
+                // }
+                // else{
+                //     displayText = text.trim();
+                //     textLength = displayText.length>3 ? 21 : displayText.length;
+                // }
                 // console.log(processingTag+",text:"+displayText);
                 var item = {};
                 item["image"] = false;
