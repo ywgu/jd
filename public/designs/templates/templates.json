@@ -997,6 +997,35 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002000509",
+          "zooms": [
+            "928,594,247,258",
+            "438,293,577,493",
+            "457,505,739,345",
+            "485,129,610,640"
+          ],
+          "inputs": [
+            [],
+            [
+              {
+                "image": false,
+                "id": "text11",
+                "title": "VICTOR MUSTAIN",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "\"If ever you feel like an animal among men, be a lion.”",
+                "max": 60
+              }
+            ],
+            []
+          ]
         }
       ],
       "0020006": [
