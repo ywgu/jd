@@ -147,13 +147,9 @@
                                             <span class="input-group-addon btn btn-default btn-file"><span
                                                     class="fileinput-new">Select file</span><span
                                                     class="fileinput-exists">Change</span>
-                                                <!--<div style=''>-->
                                                         <input type="file" name="{{id}}-org" id="{{id}}-org"
                                                                onchange="loadAndResizeFile(event,'{{id}}')">
-                                                <!--</div>-->
                                                 </span>
-                                            <!--<a href="#" class="input-group-addon btn btn-default fileinput-exists"-->
-                                            <!--data-dismiss="fileinput">Remove</a>-->
                                         </div>
                                     </div>
                                 {{/if}}
@@ -285,7 +281,6 @@
         var zoomStatus = [0, 0, 0, 0, 0, 0, 0, 0];
         var zooms = ["", "", "", "", "", "", "", ""];
         var ignoreStatus = [0, 0, 0, 0, 0, 0, 0, 0];
-        //        var imgOrientation = [];
         var svgimg = document.getElementById("svgObj-0");
         var termsAccepted = false;
         window.onload = function () {
@@ -294,7 +289,6 @@
         $(document).ready(function () {
             // populate the zoom data
             var zoomStr = '{{zooms}}';
-//            console.log("zooms:"+zoomStr);
             count = 0;
             var tempStr = zoomStr;
             do {
@@ -332,8 +326,6 @@
                             console.log("response:" + response);
                             var resJson = JSON.parse(response);
                             // wait for image to be loaded
-//                            console.log("processing:"+resJson.processing);
-//                            if (resJson.processing === "gpc") {
                             for (var key in resJson) {
                                 if (key.indexOf("image") === 0) {
                                     // sleep for  seconds
@@ -341,7 +333,6 @@
                                     var curDate = null;
                                     var count = 0;
                                     do {
-//                                            console.log("count:" + count++);
                                         count++;
                                         date = new Date();
                                         do {
@@ -350,7 +341,6 @@
                                     } while (!imgExists("/designs/temp/" + resJson[key]) && count < 10);
                                 }
                             }
-//                            }
                             updateSVG(resJson);
                             previews[resJson.tidx] = 1;
                             var ignoreBtn = document.getElementById("ignore-" + resJson.tidx);
@@ -396,7 +386,6 @@
                 else
                     total += previews[i];
             }
-//                            console.log("total previews:" + total + "," + previews.length);
             if (total === previews.length) {
                 // enable DONE buttons
                 $(".donebutton").attr("disabled", false);
@@ -409,7 +398,6 @@
             console.log("loadAndResizeFile:" + id);
             EXIF.getData(e.target.files[0], function () {
                 var orientation = EXIF.getTag(this, "Orientation");
-//                alert("orientation:"+orientation);
                 // Read in file
                 var file = e.target.files[0];
                 if (file === null || file === undefined)
@@ -496,14 +484,8 @@
 
                             ctx.drawImage(image, 0, 0, width, height);
                             var dataUrl = canvas.toDataURL('image/jpeg');
-//                        var resizedImage = dataURLToBlob(dataUrl);
                             document.getElementById(id).value = file.name;
                             document.getElementById("data-" + id).value = dataUrl;
-//                        $.event.trigger({
-//                            type: "imageResized",
-//                            blob: resizedImage,
-//                            url: dataUrl
-//                        });
                         };
                         image.src = readerEvent.target.result;
                     };
@@ -511,34 +493,6 @@
                 }
             });
         };
-
-        /* Utility function to convert a canvas to a BLOB */
-        //        var dataURLToBlob = function (dataURL) {
-        //            var BASE64_MARKER = ';base64,';
-        //            var parts;
-        //            var contentType;
-        //            var raw;
-        //            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-        //                parts = dataURL.split(',');
-        //                contentType = parts[0].split(':')[1];
-        //                raw = parts[1];
-        //
-        //                return new Blob([raw], {type: contentType});
-        //            }
-        //
-        //            parts = dataURL.split(BASE64_MARKER);
-        //            contentType = parts[0].split(':')[1];
-        //            raw = window.atob(parts[1]);
-        //            var rawLength = raw.length;
-        //
-        //            var uInt8Array = new Uint8Array(rawLength);
-        //
-        //            for (var i = 0; i < rawLength; ++i) {
-        //                uInt8Array[i] = raw.charCodeAt(i);
-        //            }
-        //
-        //            return new Blob([uInt8Array], {type: contentType});
-        //        };
 
         function switchZoomTo(to) {
             var ele = document.getElementById("zoom");
@@ -598,7 +552,6 @@
                     break;
             }
             var svg = subdoc.getElementsByTagName("svg")[0];
-//            console.log("subdoc:"+subdoc+",svg:"+svg);
             if (svg !== null && svg !== undefined) {
                 svg.setAttribute("viewBox", "0,0,1600,1000");
                 zoom[templateIndex] = 0;
@@ -607,11 +560,9 @@
         }
 
         function imgExists(imgPath) {
-//            console.log("imgExists called");
             var http = new XMLHttpRequest();
             http.open('HEAD', imgPath, false);
             http.send();
-//            console.log("imgExists return:" + http.status);
             return http.status == 200;
         }
 
@@ -625,17 +576,10 @@
                 if (subdoc !== null && subdoc !== undefined)
                     break;
             }
-//            var svgDoc = svg.contentDocument;
-//            console.log("subdoc:" + subdoc);
-//            var svg = subdoc.getElementsByTagName("svg")[0];
-//            console.log("svg:"+svg);
             for (var key in resJson) {
                 var value = resJson[key];
-//                console.log("key:" + key + ",value:" + value);
                 if (key.indexOf("image") === 0) {
                     var img = subdoc.getElementById(key);
-//                    console.log("img:" + img + ",value:" + value);
-//                    img.href = "/designs/temp/" + value;
                     img.setAttribute("fill", "red");
                     img.setAttribute('xlink:href', "/designs/temp/" + value);
                 }
@@ -844,23 +788,17 @@
         }
 
         function toggleskip(idx, element) {
-//            console.log("check :"+element.checked);
             var ignoreBtn = document.getElementById("ignore-" + idx);
-//            var paramPanel = document.getElementById("form-" + idx);
-
             if (element !== null && element !== undefined) {
                 if (element.checked) {
                     ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-green");
                     ignoreStatus[idx] = 1;
-                    //paramPanel.style.display = "none";
                     setSVGEleDisplay(idx, "jd_nt", "overflow: visible; opacity:0; display:none");
                     $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", true);
-//                $("#form-"+idx).find("input[type='file']").attr("disabled", true);
-//                $("#form-"+idx).find(".form-control").attr("disabled", true);
                     $("#preview-" + idx).attr("disabled", true);
                 }
                 else {
-                    if (previews[idx] === 0 && !(idx in noCustom)) {
+                    if (previews[idx] === 0 && !(noCustom.includes(idx))) {
                         ignoreBtn.setAttribute("class", "w3-center w3-large glyphicon glyphicon-check w3-text-grey");
                         ignoreStatus[idx] = 0;
                     }
@@ -868,10 +806,9 @@
                         //paramPanel.style.display = "";
                         setSVGEleDisplay(idx, "jd_nt", "overflow: visible; display:inline");
                         $("#form-" + idx).find("input[type='text'],input[type='file'],.form-control").attr("disabled", false);
-//                    $("#form-"+idx).find("input[type='file']").attr("disabled", false);
-//                    $("#form-"+idx).find(".form-control").attr("disabled", false);
-                        if (termsAccepted && !(idx in noCustom))
+                        if (termsAccepted && !(noCustom.includes(idx))) {
                             $("#preview-" + idx).attr("disabled", false);
+                        }
                     }
                 }
             }
@@ -895,7 +832,6 @@
             if (subdoc === null || subdoc === undefined)
                 return false;
             var ele = subdoc.getElementById(eleId);
-//            console.log("subdoc:"+subdoc+",jd_nt:"+ele);
             if (ele !== null && ele !== undefined) {
                 ele.setAttribute(attrName, attrValue);
                 return true;
@@ -905,8 +841,6 @@
 
         function setSKU(sku) {
             console.log("setSKU is called with parameter sku:" + sku);
-            // change background to sku.jpg
-            //console.log("changing the background to "+sku+".jpg");
             var count = 0;
             do {
                 var bgName = "/designs/templates/" + sku.substring(4) + "-" + count + ".jpg";
@@ -919,9 +853,6 @@
             var intro = introJs();
             intro.setOptions({
                 steps: [
-//                    {
-//                        intro: "Hello world!"
-//                    },
                     {
                         element: '.step1',
                         intro: "The panel displays the preview of the selected part",
