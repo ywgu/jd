@@ -566,10 +566,10 @@
         {
           "tid": "002000109",
           "zooms": [
-            "927,591,254,263",
-            "338,254,725,569",
-            "431,484,806,367",
-            "475,127,702,717"
+            "930,590,247,258",
+            "345,247,713,582",
+            "444,498,783,356",
+            "478,131,706,724"
           ],
           "inputs": [
             [],
@@ -577,15 +577,15 @@
               {
                 "image": false,
                 "id": "text11",
-                "title": "Victor  Mu...",
-                "max": 21
+                "title": "VICTOR MUSTAIN",
+                "max": 22
               }
             ],
             [
               {
                 "image": false,
                 "id": "text21",
-                "title": "\"If ever y...",
+                "title": "\"If ever you feel like an animal among men, be a lion.\"",
                 "max": 60
               }
             ],

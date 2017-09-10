@@ -15,14 +15,14 @@
     </rdf:RDF>
   </metadata>
   <defs id="defs548">
-    <clipPath id="clipPath4738" clipPathUnits="userSpaceOnUse">
-      <path id="jd_bd" d="m 337.5,254.16667 725,0 0,568.75 -725,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+    <clipPath id="clipPath4739" clipPathUnits="userSpaceOnUse">
+      <path id="jd_bd" d="m 345.45456,247.27274 712.72724,0 0,581.81817 -712.72724,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
       </path>
     </clipPath>
   </defs>
   <image xlink:href="/designs/templates/002000101-1.jpg" overflow="visible" enable-background="new    " width="600" height="400" id="jd_bg" transform="matrix(2.6667 0 0 2.5 -1.9998 -2.441406e-004)">
   </image>
-  <g clip-path="url(#clipPath4738)" id="jd_nt">
+  <g clip-path="url(#clipPath4739)" id="jd_nt">
     <g id="Layer_2">
       <g id="g10">
         <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-212.8347" y1="538.6394" x2="-33.7867" y2="493.9977" gradientTransform="matrix(-1 0 0 1 516.897 0)">
@@ -617,12 +617,10 @@
         </path>
       </g>
     </g>
-    <g id="textNAME">
-      <text font-size="65" id="text544" x="701.58649" y="807.9704" style="font-size:65px;line-height:50%;font-family:Arial-BoldMT;fill:#9b6550">
-        <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;line-height:50%;font-family:Anton;-inkscape-font-specification:'Anton, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;;" id="text11">
-          Victor  Mustain
-        </tspan>
-      </text>
-    </g>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#c87137;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" x="702.76215" y="786.59711" id="text4436">
+      <tspan id="text11" x="702.76215" y="786.59711" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;line-height:125%;font-family:Anton;-inkscape-font-specification:'Anton, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#c87137">
+        VICTOR MUSTAIN
+      </tspan>
+    </text>
   </g>
 </svg>
