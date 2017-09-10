@@ -124,7 +124,7 @@ function transform(templateName, templateNum, templateIdx) {
     for (var i = 0; i < templateNum; i++) {
         // initialize variables
         fontList[i] = "";
-        getFontList(i, templateName + "-" + i);
+        getFontList(i, templateName + templateIdx + "--" + i);
         generatePngs(tempDir+"/"+templateName + templateIdx + "--" + i+".svg", tempDir+"/"+templateName + templateIdx + "-" + i+".png");
         require('wait-for-stuff').for.time(1);
         var currentCmds = cmds.slice();
