@@ -525,7 +525,7 @@ designRouter.route('/uploaddata')
             var returnText = "";
             for (var key in fields) {
                 if (key === "processing" || key === "tidx" || key.indexOf("text") === 0) {
-                    returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(fields[key]).concat("\",");
+                    returnText = returnText.concat("\"").concat(key).concat("\":\"").concat(fields[key].replace(/\"/g, "\\\"")).concat("\",");
                 }
                 else if (key.indexOf("image") === 0) {
                     var image = fields[key];
