@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg2" xml:space="preserve" enable-background="new 15 -23.3 1569.9 1046.6" viewBox="15 -23.3 1569.9 1046.6" height="1046.6px" width="1569.9px" y="0px" x="0px" version="1.1">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg2" xml:space="preserve" enable-background="new 0 0 1600 1000" viewBox="0 0 1600 1000" height="1000px" width="1600px" y="0px" x="0px" version="1.1">
   <metadata id="metadata293">
     <rdf:RDF>
       <cc:Work rdf:about="">
@@ -19,7 +19,7 @@
       </path>
     </clipPath>
   </defs>
-  <image xlink:href="/designs/templates/002000201-0.jpg" overflow="visible" enable-background="new    " width="600" height="400" id="jd_bg" transform="matrix(2.6165 0 0 2.6165 15.0452 -23.303)">
+  <image xlink:href="/designs/templates/002000201-0.jpg" overflow="visible" enable-background="new    " width="600" height="400" id="jd_bg" transform="matrix(2.6667 0 0 2.5 -1.9998 -2.441406e-004)">
   </image>
   <g transform="translate(-50.980392,92.156863)" id="jd_nt" clip-path="url(#clipPath4295)">
     <g id="graphic">
