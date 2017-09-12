@@ -1537,6 +1537,53 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002001104",
+          "zooms": [
+            "975,601,276,279",
+            "403,167,492,670",
+            "450,538,782,297",
+            "390,23,784,958"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "WG",
+                "max": 2
+              }
+            ],
+            [],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I love you, Sherry. For what you've",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "done for us, for our little family",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "and for our country.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text24",
+                "title": "John Bryan",
+                "max": 60
+              }
+            ],
+            []
+          ]
         }
       ],
       "0020012": [
