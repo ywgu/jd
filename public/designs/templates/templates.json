@@ -1618,6 +1618,59 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002001004",
+          "zooms": [
+            "802,603,285,277",
+            "572,309,433,583",
+            "494,402,592,434",
+            "390,23,784,958"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "WG",
+                "max": 2
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I love you, Sherry.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "You are my sunshine.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "My only Sunshine!",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text24",
+                "title": "John Bryan",
+                "max": 60
+              }
+            ],
+            []
+          ]
         }
       ],
       "0020011": [
