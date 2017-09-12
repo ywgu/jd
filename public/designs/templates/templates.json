@@ -809,6 +809,65 @@
             ],
             []
           ]
+        },
+        {
+          "tid": "002000204",
+          "zooms": [
+            "849,665,274,275",
+            "477,177,479,710",
+            "498,527,655,322",
+            "390,23,784,958"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "WG",
+                "max": 2
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I love you, Sherry. For what you've",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "done for us, for our little family",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "and for our country.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text24",
+                "title": "You are my hero.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text25",
+                "title": "John",
+                "max": 21
+              }
+            ],
+            []
+          ]
         }
       ],
       "0020003": [
@@ -1021,6 +1080,53 @@
                 "image": false,
                 "id": "text21",
                 "title": "\"If ever you feel like an animal among men, be a lion.”",
+                "max": 60
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "tid": "002000511",
+          "zooms": [
+            "357,524,884,351",
+            "385,181,510,664",
+            "429,531,798,318",
+            "244,44,1095,903"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "your last name",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "The art of simplicity is",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "a puzzle of complexity.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "Doug Horton",
                 "max": 60
               }
             ],
