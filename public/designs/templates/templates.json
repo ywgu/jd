@@ -529,41 +529,6 @@
           ]
         },
         {
-          "tid": "002000108",
-          "zooms": [
-            "371,300,829,569",
-            "365,237,684,606",
-            "419,546,831,315",
-            "367,769,527,96"
-          ],
-          "inputs": [
-            [],
-            [],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "\"Just trus...",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "from  Anna...",
-                "max": 40
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
-                "title": "Michael Ha...",
-                "max": 21
-              }
-            ]
-          ]
-        },
-        {
           "tid": "002000109",
           "zooms": [
             "930,590,247,258",
@@ -1275,53 +1240,6 @@
                 "image": false,
                 "id": "text21",
                 "title": "\"If ever you feel like an animal among men, be a lion.”",
-                "max": 60
-              }
-            ],
-            []
-          ]
-        },
-        {
-          "tid": "002000511",
-          "zooms": [
-            "357,524,884,351",
-            "385,181,510,664",
-            "429,531,798,318",
-            "244,44,1095,903"
-          ],
-          "inputs": [
-            [
-              {
-                "image": false,
-                "id": "text01",
-                "title": "your last name",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "The art of simplicity is",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "a puzzle of complexity.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Doug Horton",
                 "max": 60
               }
             ],
