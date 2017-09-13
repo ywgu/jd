@@ -1776,6 +1776,41 @@
             ],
             []
           ]
+        },
+        {
+          "tid": "002001010",
+          "zooms": [
+            "549,176,476,709",
+            "500,305,616,532",
+            "592,122,467,758",
+            "539,769,523,79"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "DONNIE ANDREWS",
+                "max": 60
+              }
+            ],
+            [],
+            [
+              {
+                "image": true,
+                "id": "image21",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "DONNIE  ANDREWS",
+                "max": 60
+              }
+            ]
+          ]
         }
       ],
       "0020011": [
