@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg2" xml:space="preserve" enable-background="new -2 0 1600 1000" viewBox="-2 0 1600 1000" height="1000px" width="1600px" y="0px" x="0px" version="1.1">
+  <metadata id="metadata227">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs225">
+    <clipPath id="clipPath4557" clipPathUnits="userSpaceOnUse">
+      <path id="jd_bd" d="m 304.63574,518.26428 858.22296,0 0,352.83985 -858.22296,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.11128473;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+      </path>
+    </clipPath>
+  </defs>
+  <image xlink:href="/designs/templates/002001401-1.jpg" overflow="visible" enable-background="new    " width="600" height="400" id="jd_bg" transform="matrix(2.6667,0,0,2.5,-1.9998,-2.441406e-4)" style="overflow:visible">
+  </image>
+  <g id="jd_nt" clip-path="url(#clipPath4557)">
+  </g>
+</svg>
