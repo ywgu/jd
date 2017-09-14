@@ -370,40 +370,6 @@
           ]
         },
         {
-          "tid": "002000105",
-          "zooms": [
-            "390,355,790,302",
-            "420,195,545,684",
-            "233,11,1124,951",
-            "244,36,1113,917"
-          ],
-          "inputs": [
-            [
-              {
-                "image": false,
-                "id": "text01",
-                "title": "We love yo...",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text02",
-                "title": "Grandpa Jo...",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [],
-            []
-          ]
-        },
-        {
           "tid": "002000106",
           "zooms": [
             "451,207,738,647",
@@ -587,6 +553,78 @@
                 "image": false,
                 "id": "text31",
                 "title": "DONNIE  ANDREWS",
+                "max": 60
+              }
+            ]
+          ]
+        },
+        {
+          "tid": "002000105",
+          "zooms": [
+            "103,366,790,300",
+            "433,183,539,694",
+            "483,514,725,350",
+            "450,696,725,129"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "We love you",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text02",
+                "title": "Grandpa Joe",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I love you, Joe. For what you've",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "done for us, for our little family",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "and for our country.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text24",
+                "title": "You are my hero.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text25",
+                "title": "Lisa",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "Joe Bryan",
                 "max": 60
               }
             ]
