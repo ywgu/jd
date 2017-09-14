@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=Ewert"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1600 1000" height="1000" width="1600" id="svg1680">
+  <metadata id="metadata10">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs8">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath4143">
+      <path style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="m 102.82659,366.32408 789.7436,0 0,299.99997 -789.7436,0 z" id="jd_bd">
+      </path>
+    </clipPath>
+  </defs>
+  <image xlink:href="/designs/templates/002001301-0.jpg" id="jd_bg" height="1000" width="1600" style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+  </image>
+  <g id="jd_nt" transform="translate(284.35291,-2.2215072)" clip-path="url(#clipPath4143)">
+    <text id="text4136" y="475" x="487.14749" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Ewert;-inkscape-font-specification:'Ewert, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffb380;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;">
+      <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;line-height:125%;font-family:Ewert;-inkscape-font-specification:'Ewert, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffb380;" y="475" x="487.14749" id="text01">
+        We love you
+      </tspan>
+    </text>
+    <text id="text4140" y="604.30481" x="488.74356" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;line-height:125%;font-family:Ewert;-inkscape-font-specification:'Ewert, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffb380;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;">
+      <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;line-height:125%;font-family:Ewert;-inkscape-font-specification:'Ewert, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffb380;" y="604.30481" x="488.74356" id="text02">
+        Grandpa Joe
+      </tspan>
+    </text>
+  </g>
+</svg>
