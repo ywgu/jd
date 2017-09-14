@@ -2569,6 +2569,70 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002001205",
+          "zooms": [
+            "103,366,790,300",
+            "483,514,725,350",
+            "450,696,725,129"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "We love you",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text02",
+                "title": "Grandpa Joe",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I love you, Joe. For what you've",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "done for us, for our little family",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "and for our country.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text24",
+                "title": "You are my hero.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text25",
+                "title": "Lisa Bryan",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "Joe Bryan",
+                "max": 60
+              }
+            ]
+          ]
         }
       ],
       "0020013": [
