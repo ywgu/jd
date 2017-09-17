@@ -2956,6 +2956,48 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002001311",
+          "zooms": [
+            "355,242,842,562",
+            "570,505,440,385",
+            "433,554,821,251",
+            "345,210,905,593"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "I MAKE MY OWN FREEDOM",
+                "max": 60
+              }
+            ],
+            [],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "I MAKE MY OWN FREEDOM",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "JOHN BRYAN",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "I MAKE MY OWN FREEDOM",
+                "max": 60
+              }
+            ]
+          ]
         }
       ],
       "0020014": [
