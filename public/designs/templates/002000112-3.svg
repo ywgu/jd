@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="https://fonts.googleapis.com/css?family=Castellar"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1600 1000" height="1000" width="1600" id="svg1683">
+  <metadata id="metadata10">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>
+          image/svg+xml
+        </dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+        </dc:type>
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs8">
+    <clipPath id="clipPath4140" clipPathUnits="userSpaceOnUse">
+      <path id="jd_bd" d="m 377.55289,717.92029 835.39001,0 0,125.85096 -835.39001,0 z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+      </path>
+    </clipPath>
+  </defs>
+  <image xlink:href="/designs/templates/002000101-3.jpg" y="0" x="0" id="jd_bg" height="1000" width="1600">
+  </image>
+  <g clip-path="url(#clipPath4140)" id="jd_nt">
+    <text id="text3336" y="814.66669" x="802.09705">
+      <tspan y="814.66669" x="802.09705" id="text31" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;line-height:125%;font-family:Castellar;-inkscape-font-specification:'Castellar, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#917c6f;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;;">
+        JAST TO IT!
+      </tspan>
+    </text>
+  </g>
+</svg>
