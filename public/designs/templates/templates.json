@@ -1056,6 +1056,60 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002000213",
+          "zooms": [
+            "662,623,459,246",
+            "483,168,475,721",
+            "458,523,766,326",
+            "457,286,628,486"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "YOUR NAME",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "Laughter is the shortest distance",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "between two people.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "Victor Borge",
+                "max": 30
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "JUST TO IT!",
+                "max": 60
+              }
+            ]
+          ]
         }
       ],
       "0020003": [
