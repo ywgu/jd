@@ -1464,6 +1464,60 @@
               }
             ]
           ]
+        },
+        {
+          "tid": "002000312",
+          "zooms": [
+            "362,318,862,542",
+            "451,188,489,692",
+            "463,517,767,333",
+            "378,718,835,126"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "YOUR NAME",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": true,
+                "id": "image11",
+                "title": "Girl"
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text21",
+                "title": "The art of simplicity is",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text22",
+                "title": "a puzzle of complexity.",
+                "max": 60
+              },
+              {
+                "image": false,
+                "id": "text23",
+                "title": "Doug Horton",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text31",
+                "title": "JUST TO IT!",
+                "max": 60
+              }
+            ]
+          ]
         }
       ],
       "0020004": [
