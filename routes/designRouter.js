@@ -280,6 +280,7 @@ designRouter.route('/donedesign/:did/:prdname')
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         // save to database for the new design
         var prdname = req.params.prdname;
+        console.log("ready to store "+prdname);
         if (prdname !== null && prdname.length > 0) {
             Design.create({
                 _id: did,
