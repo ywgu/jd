@@ -66,14 +66,17 @@
         window.onload = function () {
             changeIframeHeight(15);
         };
+        window.onresize = function () {
+            changeIframeHeight(15);
+        };
         var firstImageLoaded = false;
         $('.w3-hover-opacity').load(function(){
             if (!firstImageLoaded) {
-                console.log("image is loaded");
                 changeIframeHeight(15);
                 firstImageLoaded = true;
             }
         });
+
         $(document).ready(function () {
             var dwww = "";
             var prdname = "";

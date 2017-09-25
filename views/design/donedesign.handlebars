@@ -161,6 +161,9 @@
         window.onload = function () {
             changeIframeHeight(10);
         };
+        window.onresize = function () {
+            changeIframeHeight(10);
+        };
         //        });
         // get dwww from query parameter or session
         var dwww = getParameterByName("dwww");
