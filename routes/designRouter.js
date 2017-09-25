@@ -249,7 +249,7 @@ designRouter.route('/done')
         // result = result.length > 0 ? result.slice(0, result.length - 1) : result;
         res.end(did);
     });
-// when you don't want to save the product name to database
+// when you don't want to save the product name to database, get the prdname from database
 designRouter.route('/donedesign/:did')
     .get(function (req, res, next) {
         var did = req.params.did;
@@ -263,7 +263,20 @@ designRouter.route('/donedesign/:did')
         }
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         // console.log("imgs:" + imgs);
-        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
+        // need to get the prdname from database
+        var prdname = "";
+        Design.findById(did,function (err, aDesign) {
+            //if it isn't found, we are going to repond with 404
+            if (err || aDesign == null) {
+                console.log(did + ' was not found');
+                res.status(404);
+                //if it is found we continue on
+                res.end("Failed to find the design.")
+            } else {
+                prdname = aDesign.slug;
+            }
+        });
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
     });
 // show the done design and save the product name to database
 designRouter.route('/donedesign/:did/:prdname')
@@ -280,7 +293,7 @@ designRouter.route('/donedesign/:did/:prdname')
         imgs = imgs.slice(0, imgs.length - 1) + "] }";
         // save to database for the new design
         var prdname = req.params.prdname;
-        console.log("ready to store "+prdname);
+        // console.log("ready to store "+prdname);
         if (prdname !== null && prdname.length > 0) {
             Design.create({
                 _id: did,
@@ -291,7 +304,7 @@ designRouter.route('/donedesign/:did/:prdname')
             });
         }
         // console.log("imgs:" + imgs);
-        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did});
+        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
     });
 // same function but use differnt parameters
 // designRouter.route('/donedesign')

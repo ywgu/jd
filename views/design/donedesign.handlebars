@@ -166,6 +166,7 @@
         var dwww = getParameterByName("dwww");
         if (dwww === null || dwww === undefined)
             dwww = "";
+        var prdname = '{{prdname}}';
         var isPause = 0;
         function getWidth() {
 //            return "100%";
@@ -246,7 +247,8 @@
             hideForm();
             tid = did.substring(did.indexOf('-') + 1);
             pid = tid.substring(0, 7);
-            var listUrl = "//design.jitdiy.com/design/templatelist/" + pid + "?dwww=" + dwww;
+
+            var listUrl = "//design.jitdiy.com/design/templatelist/" + pid + "?prdname="+prdname+"&dwww=" + dwww;
             window.location.href = listUrl;
             if (dwww === "www") {
                 parent.postMessage("removeDid:", "https://www.jitdiy.com");
