@@ -274,10 +274,11 @@ designRouter.route('/donedesign/:did')
                 res.end("Failed to find the design.")
             } else {
                 prdname = aDesign.slug;
-                console.log("prdname:"+prdname);
+                // console.log("prdname:"+prdname);
+                res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
             }
         });
-        res.render('design/donedesign', {layout: 'design', imagelist: JSON.parse(imgs).images, tid: tid, did: did, prdname: prdname});
+
     });
 // show the done design and save the product name to database
 designRouter.route('/donedesign/:did/:prdname')
