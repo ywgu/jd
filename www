@@ -110,9 +110,9 @@ function startServer() {
     else {
         console.log("start https server on linux");
         var options = {
-            key: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/privkey.pem'),
-            cert: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/fullchain.pem'),
-            ca: fs.readFileSync('/etc/letsencrypt/live/design.jitdiy.com/chain.pem')
+            key: fs.readFileSync('/etc/letsencrypt/live/design.shopkol.com/privkey.pem'),
+            cert: fs.readFileSync('/etc/letsencrypt/live/design.shopkol.com/fullchain.pem'),
+            ca: fs.readFileSync('/etc/letsencrypt/live/design.shopkol.com/chain.pem')
         };
         server = https.createServer(options, app);
         server.listen(app.get('port'), function () {

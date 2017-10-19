@@ -51,7 +51,7 @@ generate(templateName, templateNum, templateIdx);
 // function processBgImg(line) {
 //     // console.log("line:"+line);
 //     if (line.indexOf("\"jd_bg\"") > 0)
-//         return line.replace("https://design.jitdiy.com/designs/templates/","../../")+"\n";
+//         return line.replace("https://design.shopkol.com/designs/templates/","../../")+"\n";
 //     return line+"\n";
 // }
 

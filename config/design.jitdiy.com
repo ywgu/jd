@@ -1,17 +1,17 @@
 server {
     listen 443 ssl;
-    server_name design.jitdiy.com;
+    server_name design.shopkol.com;
     root /var/www/jitdiy/code/public;
 
     ssl on;
     gzip on;
 
-    ssl_certificate /etc/letsencrypt/live/design.jitdiy.com/cert.pem;
-    ssl_certificate_key /etc/letsencrypt/live/design.jitdiy.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/design.shopkol.com/cert.pem;
+    ssl_certificate_key /etc/letsencrypt/live/design.shopkol.com/privkey.pem;
 
     #ssl_stapling on;
     #ssl_stapling_verify on;
-    ssl_trusted_certificate /etc/letsencrypt/live/design.jitdiy.com/fullchain.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/design.shopkol.com/fullchain.pem;
 
     ssl_session_timeout 5m;
 
@@ -43,6 +43,6 @@ server {
 
 server {
     listen 80;
-    server_name design.jitdiy.com;
+    server_name design.shopkol.com;
     root /var/www/jitdiy/code/public;
 }

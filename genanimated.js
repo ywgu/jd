@@ -41,7 +41,7 @@ process.on('message', function (imgInfo) {
 
     // generate a larger animated gif image with water mark for sharing
     var cmdline2 = "cd "+designDir+";convert -delay 100 -resize \"600x400\" temp-" + did + "-?.svg " + did + "-s.gif";
-    cmdline2 += "; convert "+did+"-s.gif  -font Arial -pointsize 16 -draw \"gravity northeast fill black text 6,7 'JITDIY.COM' fill white  text 7,6 'JITDIY.COM' \" "+did+"-s.gif";
+    cmdline2 += "; convert "+did+"-s.gif  -font Arial -pointsize 16 -draw \"gravity northeast fill black text 6,7 'SHOPKOL.COM' fill white  text 7,6 'SHOPKOL.COM' \" "+did+"-s.gif";
     cmdline2 += ";ffmpeg -i "+did+"-s.gif -movflags faststart -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" "+did+".mp4";
     cmdline2 += ";convert " + did + "-s.gif[0] " + did + "-s.jpg";
     console.log("cmd2 is "+cmdline2);
@@ -50,7 +50,7 @@ process.on('message', function (imgInfo) {
         function(data) {
             console.log('the result for cmd2 is :' + data + '|');
             // // add watermark on the image
-            // var cmdline3 = "convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'JITDIY.COM' fill white  text 11,17 'JITDIY.COM' \" "+did+"-s.gif";
+            // var cmdline3 = "convert "+did+"-s.gif  -font Arial -pointsize 20 -draw \"gravity southeast fill black text 10,18 'SHOPKOL.COM' fill white  text 11,17 'SHOPKOL.COM' \" "+did+"-s.gif";
             // console.log("cmd3 is "+cmdline3);
             // cmd.get(
             //     cmdline3,
