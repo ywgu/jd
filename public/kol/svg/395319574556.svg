@@ -6,11 +6,11 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   width="1000"
-   height="1000"
-   viewBox="0 0 1000 1000"
+   id="svg8"
    version="1.1"
-   id="svg8">
+   viewBox="0 0 1000 1000"
+   height="1000"
+   width="1000">
   <defs
      id="defs2" />
   <metadata
@@ -36,7 +36,7 @@
        height="1000"
        width="1001.8182" />
     <image
-       xlink:href="../[kol]/400x400.png"
+       xlink:href="../|kol|/400x400.png"
        width="275.53125"
        height="269.97748"
        preserveAspectRatio="none"
