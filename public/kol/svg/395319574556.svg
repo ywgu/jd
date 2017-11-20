@@ -6,35 +6,11 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 1000 1000"
-   height="1000"
    width="1000"
-   sodipodi:docname="395319574556.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="2545"
-     inkscape:window-height="1660"
-     id="namedview9"
-     showgrid="false"
-     inkscape:zoom="0.90028971"
-     inkscape:cx="407.06845"
-     inkscape:cy="500"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg8" />
+   height="1000"
+   viewBox="0 0 1000 1000"
+   version="1.1"
+   id="svg8">
   <defs
      id="defs2" />
   <metadata
@@ -45,34 +21,27 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      id="layer1">
     <image
-       sodipodi:absref="395319574556-bg.jpg"
        xlink:href="395319574556-bg.jpg"
-       width="1001.8182"
-       height="1000"
-       preserveAspectRatio="none"
-       id="jd_bg"
+       y="0"
        x="0"
-       y="0" />
-    <kol>/400x400.png&quot;
-       id=&quot;image1385&quot;
-       x=&quot;376&quot;
-       y=&quot;455&quot; /&gt;
-  </kol>
+       id="jd_bg"
+       preserveAspectRatio="none"
+       height="1000"
+       width="1001.8182" />
+    <image
+       xlink:href="../[kol]/400x400.png"
+       width="275.53125"
+       height="269.97748"
+       preserveAspectRatio="none"
+       id="image4530"
+       x="383.1778"
+       y="475.69214" />
   </g>
-  <image
-     sodipodi:absref="../kol/<kol>/400x400.png"
-     y="475.69214"
-     x="383.1778"
-     id="image4530"
-     xlink:href="file:///C:/work/jitdiy/jd/public/kol/logan-paul/400x400.png"
-     preserveAspectRatio="none"
-     height="269.97748"
-     width="275.53125" />
 </svg>
