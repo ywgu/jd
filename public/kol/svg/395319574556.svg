@@ -28,7 +28,7 @@
   <g
      id="layer1">
     <image
-       xlink:href="395319574556-bg.jpg"
+       xlink:href="/kol/svg/395319574556-bg.jpg"
        y="0"
        x="0"
        id="jd_bg"
@@ -36,7 +36,7 @@
        height="1000"
        width="1001.8182" />
     <image
-       xlink:href="../|kol|/400x400.png"
+       xlink:href="/kol/{kol}/400x400.png"
        width="275.53125"
        height="269.97748"
        preserveAspectRatio="none"

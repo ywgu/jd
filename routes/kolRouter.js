@@ -60,7 +60,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:svg/:kol', function (req, res) {
-    var parser = new Replacer([{'orig':'|kol|', 'new': req.params.kol.toLowerCase()}]);
+    var parser = new Replacer([{'orig':'{kol}', 'new': req.params.kol.toLowerCase()}]);
     res.setHeader('Content-Type', 'image/svg+xml');
     // res.write('<!-- Begin stream -->\n');
     fs.createReadStream('./public/kol/svg/'+req.params.svg+'.svg')
