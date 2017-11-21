@@ -62,6 +62,7 @@ router.get('/', function (req, res, next) {
 router.get('/:svg/:kol', function (req, res) {
     var parser = new Replacer([{'orig':'{kol}', 'new': req.params.kol.toLowerCase()}]);
     res.setHeader('Content-Type', 'image/svg+xml');
+    res.setHeader("Access-Control-Allow-Origin","*");
     // res.write('<!-- Begin stream -->\n');
     fs.createReadStream('./public/kol/svg/'+req.params.svg+'.svg')
         .on('error', function(err) {
