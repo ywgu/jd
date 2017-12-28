@@ -32,8 +32,6 @@
           "tid": "002000102",
           "zooms": [
             "508,198,584,586",
-            "460,200,500,650",
-            "450,492,762,381",
             "410,698,788,102"
           ],
           "inputs": [
@@ -53,24 +51,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl",
-                "processing": "gpc"
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image21",
-                "title": "Girl",
-                "processing": "gpc"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "John Bryan"
               }
             ]
