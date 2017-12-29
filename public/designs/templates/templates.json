@@ -86,8 +86,6 @@
           "tid": "002000104",
           "zooms": [
             "893,624,379,268",
-            "366,198,675,655",
-            "485,519,738,345",
             "279,44,1039,886"
           ],
           "inputs": [
@@ -99,243 +97,13 @@
                 "max": "2"
               }
             ],
-            [
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I Love You...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "You are my hero.",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "John",
-                "max": "21"
-              }
-            ],
             []
-          ]
-        },
-        {
-          "tid": "002000106",
-          "zooms": [
-            "451,207,738,647",
-            "437,208,525,635",
-            "505,571,702,219",
-            "546,165,505,683"
-          ],
-          "inputs": [
-            [
-              {
-                "image": false,
-                "id": "text01",
-                "title": "WILLIAM",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "YOUR NAME",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "469-222-99...",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
-                "title": "You are my",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text32",
-                "title": "sunshine!",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text33",
-                "title": "You are my",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text34",
-                "title": "sunshine!",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text35",
-                "title": "William",
-                "max": 21
-              }
-            ]
-          ]
-        },
-        {
-          "tid": "002000107",
-          "zooms": [
-            "1075,94,154,792",
-            "400,215,610,607",
-            "427,485,816,382",
-            "421,130,760,722"
-          ],
-          "inputs": [
-            [
-              {
-                "image": false,
-                "id": "text01",
-                "title": "Chiara Bia...",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text11",
-                "title": "Beauty",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text12",
-                "title": "Lies",
-                "max": 21
-              },
-              {
-                "image": false,
-                "id": "text13",
-                "title": "Within",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "Chiara Bia...",
-                "max": 21
-              },
-              {
-                "image": true,
-                "id": "image21",
-                "title": "Girl"
-              }
-            ],
-            []
-          ]
-        },
-        {
-          "tid": "002000109",
-          "zooms": [
-            "930,590,247,258",
-            "345,247,713,582",
-            "444,498,783,356",
-            "478,131,706,724"
-          ],
-          "inputs": [
-            [],
-            [
-              {
-                "image": false,
-                "id": "text11",
-                "title": "VICTOR MUSTAIN",
-                "max": 22
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "\"If ever you feel like an animal among men, be a lion.\"",
-                "max": 60
-              }
-            ],
-            []
-          ]
-        },
-        {
-          "tid": "002000110",
-          "zooms": [
-            "651,176,602,695",
-            "360,326,690,476",
-            "489,491,684,377",
-            "318,740,624,111"
-          ],
-          "inputs": [
-            [
-              {
-                "image": false,
-                "id": "text01",
-                "title": "DONNIE  ANDREWS",
-                "max": 60
-              }
-            ],
-            [],
-            [
-              {
-                "image": true,
-                "id": "image21",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
-                "title": "DONNIE  ANDREWS",
-                "max": 60
-              }
-            ]
           ]
         },
         {
           "tid": "002000105",
           "zooms": [
             "103,366,790,300",
-            "433,183,539,694",
-            "483,514,725,350",
             "450,696,725,129"
           ],
           "inputs": [
@@ -355,48 +123,101 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "I love you, Joe. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "You are my hero.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "Lisa",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "Joe Bryan",
+                "max": 60
+              }
+            ]
+          ]
+        },
+        {
+          "tid": "002000106",
+          "zooms": [
+            "451,207,738,647",
+            "546,165,505,683"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "WILLIAM",
+                "max": 21
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text11",
+                "title": "You are my",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text12",
+                "title": "sunshine!",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text13",
+                "title": "You are my",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text14",
+                "title": "sunshine!",
+                "max": 21
+              },
+              {
+                "image": false,
+                "id": "text15",
+                "title": "William",
+                "max": 21
+              }
+            ]
+          ]
+        },
+        {
+          "tid": "002000107",
+          "zooms": [
+            "1075,94,154,792",
+            "421,130,760,722"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "Chiara Bia...",
+                "max": 21
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "tid": "002000110",
+          "zooms": [
+            "651,176,602,695",
+            "318,740,624,111"
+          ],
+          "inputs": [
+            [
+              {
+                "image": false,
+                "id": "text01",
+                "title": "DONNIE  ANDREWS",
+                "max": 60
+              }
+            ],
+            [
+              {
+                "image": false,
+                "id": "text11",
+                "title": "DONNIE  ANDREWS",
                 "max": 60
               }
             ]
@@ -406,8 +227,6 @@
           "tid": "002000111",
           "zooms": [
             "355,242,842,562",
-            "436,285,541,513",
-            "433,554,821,251",
             "345,210,905,593"
           ],
           "inputs": [
@@ -419,25 +238,10 @@
                 "max": 60
               }
             ],
-            [],
             [
               {
                 "image": false,
-                "id": "text21",
-                "title": "I MAKE MY OWN FREEDOM",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "JOHN BRYAN",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "I MAKE MY OWN FREEDOM",
                 "max": 60
               }
@@ -448,8 +252,6 @@
           "tid": "002000112",
           "zooms": [
             "362,318,862,542",
-            "451,188,489,692",
-            "463,517,767,333",
             "378,718,835,126"
           ],
           "inputs": [
@@ -463,35 +265,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "The art of simplicity is",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "a puzzle of complexity.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Doug Horton",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "JUST TO IT!",
                 "max": 60
               }
@@ -502,8 +277,6 @@
           "tid": "002000113",
           "zooms": [
             "736,623,482,246",
-            "441,177,517,704",
-            "458,523,766,326",
             "411,286,797,486"
           ],
           "inputs": [
@@ -517,35 +290,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "Laughter is the shortest distance",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "between two people.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Victor Borge",
-                "max": 21
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "JUST TO IT!",
                 "max": 60
               }
