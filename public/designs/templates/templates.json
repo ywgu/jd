@@ -1097,7 +1097,6 @@
           "tid": "002000701",
           "zooms": [
             "1079,725,207,146",
-            "453,538,748,274",
             "347,170,867,623"
           ],
           "inputs": [
@@ -1113,25 +1112,6 @@
               {
                 "image": false,
                 "id": "text11",
-                "title": "John Bryan",
-                "max": "20"
-              },
-              {
-                "image": false,
-                "id": "text12",
-                "title": "469-666-6666",
-                "max": "12"
-              },
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Barcode"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
                 "title": "JITDIY.COM"
               }
             ]
@@ -1141,7 +1121,6 @@
           "tid": "002000704",
           "zooms": [
             "975,601,276,279",
-            "450,538,782,297",
             "390,23,784,958"
           ],
           "inputs": [
@@ -1153,32 +1132,6 @@
                 "max": 2
               }
             ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I love you, Sherry. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "John Bryan",
-                "max": 60
-              }
-            ],
             []
           ]
         },
@@ -1186,7 +1139,6 @@
           "tid": "002000710",
           "zooms": [
             "486,176,535,695",
-            "391,470,849,328",
             "343,740,871,111"
           ],
           "inputs": [
@@ -1198,11 +1150,10 @@
                 "max": 60
               }
             ],
-            [],
             [
               {
                 "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "DONNIE  ANDREWS",
                 "max": 60
               }
@@ -1213,7 +1164,6 @@
           "tid": "002000705",
           "zooms": [
             "103,366,790,300",
-            "483,514,725,350",
             "450,696,725,129"
           ],
           "inputs": [
@@ -1234,39 +1184,7 @@
             [
               {
                 "image": false,
-                "id": "text21",
-                "title": "I love you, Joe. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "You are my hero.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "Lisa Bryan",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "Joe Bryan",
                 "max": 60
               }
@@ -1277,7 +1195,6 @@
           "tid": "002000711",
           "zooms": [
             "355,242,842,562",
-            "433,554,821,251",
             "345,210,905,593"
           ],
           "inputs": [
@@ -1292,21 +1209,7 @@
             [
               {
                 "image": false,
-                "id": "text21",
-                "title": "I MAKE MY OWN FREEDOM",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "JOHN BRYAN",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "I MAKE MY OWN FREEDOM",
                 "max": 60
               }
