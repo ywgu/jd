@@ -442,8 +442,6 @@
           "tid": "002000301",
           "zooms": [
             "897,553,358,319",
-            "464,174,502,696",
-            "532,437,574,471",
             "351,102,882,759"
           ],
           "inputs": [
@@ -468,40 +466,6 @@
                 "title": "Girl",
                 "processing": "gpc"
               }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I Love You",
-                "max": "10"
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "You are every",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "hope and every dream",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "I've ever had.",
-                "max": "21"
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image31",
-                "title": "Girl",
-                "processing": "gpc"
-              }
             ]
           ]
         },
@@ -509,28 +473,10 @@
           "tid": "002000309",
           "zooms": [
             "928,594,247,258",
-            "469,320,526,466",
-            "457,505,739,345",
             "485,129,610,640"
           ],
           "inputs": [
             [],
-            [
-              {
-                "image": false,
-                "id": "text11",
-                "title": "VICTOR MUSTAIN",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "\"If ever you feel like an animal among men, be a lion.”",
-                "max": 60
-              }
-            ],
             []
           ]
         },
@@ -538,8 +484,6 @@
           "tid": "002000304",
           "zooms": [
             "975,601,276,279",
-            "477,177,479,710",
-            "454,545,790,320",
             "390,23,784,958"
           ],
           "inputs": [
@@ -551,39 +495,6 @@
                 "max": 2
               }
             ],
-            [
-              {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I love you, Sherry. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "John Bryan",
-                "max": 60
-              }
-            ],
             []
           ]
         },
@@ -591,8 +502,6 @@
           "tid": "002000310",
           "zooms": [
             "549,176,476,709",
-            "342,210,752,640",
-            "489,491,684,377",
             "445,760,584,91"
           ],
           "inputs": [
@@ -604,18 +513,10 @@
                 "max": 60
               }
             ],
-            [],
-            [
-              {
-                "image": true,
-                "id": "image21",
-                "title": "Girl"
-              }
-            ],
             [
               {
                 "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "DONNIE  ANDREWS",
                 "max": 60
               }
@@ -626,8 +527,6 @@
           "tid": "002000305",
           "zooms": [
             "103,366,790,300",
-            "433,183,539,694",
-            "483,514,725,350",
             "450,696,725,129"
           ],
           "inputs": [
@@ -647,47 +546,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "I love you, Joe. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "You are my hero.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "Lisa Bryan",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "Joe Bryan",
                 "max": 60
               }
@@ -698,8 +558,6 @@
           "tid": "002000311",
           "zooms": [
             "355,242,842,562",
-            "436,285,541,513",
-            "433,554,821,251",
             "345,210,905,593"
           ],
           "inputs": [
@@ -711,25 +569,10 @@
                 "max": 60
               }
             ],
-            [],
             [
               {
                 "image": false,
-                "id": "text21",
-                "title": "I MAKE MY OWN FREEDOM",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "JOHN BRYAN",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "I MAKE MY OWN FREEDOM",
                 "max": 60
               }
@@ -740,8 +583,6 @@
           "tid": "002000313",
           "zooms": [
             "736,623,482,246",
-            "441,177,517,704",
-            "458,523,766,326",
             "411,286,797,486"
           ],
           "inputs": [
@@ -755,35 +596,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "Laughter is the shortest distance",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "between two people.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Victor Borge",
-                "max": 30
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "JUST TO IT!",
                 "max": 60
               }
@@ -794,8 +608,6 @@
           "tid": "002000312",
           "zooms": [
             "362,318,862,542",
-            "451,188,489,692",
-            "463,517,767,333",
             "378,718,835,126"
           ],
           "inputs": [
@@ -809,35 +621,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "The art of simplicity is",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "a puzzle of complexity.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Doug Horton",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "JUST TO IT!",
                 "max": 60
               }
