@@ -304,8 +304,6 @@
           "tid": "002000201",
           "zooms": [
             "965,755,188,197",
-            "464,173,503,696",
-            "532,437,575,471",
             "461,102,594,805"
           ],
           "inputs": [
@@ -321,52 +319,6 @@
               {
                 "image": true,
                 "id": "image11",
-                "title": "Girl",
-                "processing": "gpc"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I Love You",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "I am who...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "of you. You...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "hope and...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "I've ever...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text26",
-                "title": "Stephanie",
-                "max": "16"
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image31",
                 "title": "Girl",
                 "processing": "gpc"
               }
@@ -377,8 +329,6 @@
           "tid": "002000202",
           "zooms": [
             "803,795,375,138",
-            "471,219,498,642",
-            "532,437,575,471",
             "461,102,594,805"
           ],
           "inputs": [
@@ -396,58 +346,6 @@
                 "id": "image11",
                 "title": "Girl",
                 "processing": "gpc"
-              },
-              {
-                "image": false,
-                "id": "text11",
-                "title": "Alex...",
-                "max": "20"
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I Love You",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "I am who...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "of you. You...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "hope and...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "I've ever...",
-                "max": "21"
-              },
-              {
-                "image": false,
-                "id": "text26",
-                "title": "Stephanie",
-                "max": "16"
-              }
-            ],
-            [
-              {
-                "image": true,
-                "id": "image31",
-                "title": "Girl",
-                "processing": "gpc"
               }
             ]
           ]
@@ -456,28 +354,10 @@
           "tid": "002000209",
           "zooms": [
             "930,590,247,258",
-            "469,320,526,466",
-            "481,502,695,345",
             "485,129,610,640"
           ],
           "inputs": [
             [],
-            [
-              {
-                "image": false,
-                "id": "text11",
-                "title": "VICTOR MUSTAIN",
-                "max": 60
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "\"If ever you feel like an animal among men, be a lion.\"",
-                "max": 60
-              }
-            ],
             []
           ]
         },
@@ -485,8 +365,6 @@
           "tid": "002000204",
           "zooms": [
             "849,665,274,275",
-            "477,177,479,710",
-            "498,527,655,322",
             "390,23,784,958"
           ],
           "inputs": [
@@ -505,38 +383,6 @@
                 "title": "Girl"
               }
             ],
-            [
-              {
-                "image": false,
-                "id": "text21",
-                "title": "I love you, Sherry. For what you've",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "done for us, for our little family",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "and for our country.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text24",
-                "title": "You are my hero.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text25",
-                "title": "John",
-                "max": 21
-              }
-            ],
             []
           ]
         },
@@ -544,8 +390,6 @@
           "tid": "002000210",
           "zooms": [
             "549,176,476,709",
-            "429,326,586,476",
-            "489,491,684,377",
             "445,760,584,91"
           ],
           "inputs": [
@@ -557,18 +401,10 @@
                 "max": 60
               }
             ],
-            [],
-            [
-              {
-                "image": true,
-                "id": "image21",
-                "title": "Girl"
-              }
-            ],
             [
               {
                 "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "DONNIE  ANDREWS",
                 "max": 60
               }
@@ -579,8 +415,6 @@
           "tid": "002000213",
           "zooms": [
             "662,623,459,246",
-            "483,168,475,721",
-            "458,523,766,326",
             "457,286,628,486"
           ],
           "inputs": [
@@ -594,35 +428,8 @@
             ],
             [
               {
-                "image": true,
-                "id": "image11",
-                "title": "Girl"
-              }
-            ],
-            [
-              {
                 "image": false,
-                "id": "text21",
-                "title": "Laughter is the shortest distance",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text22",
-                "title": "between two people.",
-                "max": 60
-              },
-              {
-                "image": false,
-                "id": "text23",
-                "title": "Victor Borge",
-                "max": 30
-              }
-            ],
-            [
-              {
-                "image": false,
-                "id": "text31",
+                "id": "text11",
                 "title": "JUST TO IT!",
                 "max": 60
               }
