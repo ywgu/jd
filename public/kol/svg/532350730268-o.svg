@@ -6,9 +6,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   viewBox="0 0 1000 1000"
+   id="svg8"
    version="1.1"
-   id="svg8">
+   viewBox="0 0 1000 1000">
   <defs
      id="defs2" />
   <metadata
@@ -32,8 +32,8 @@
      height="1000"
      width="1000" />
   <g
-     transform="translate(62.5,88.708333)"
-     id="layer1">
+     id="layer1"
+     transform="translate(62.5,88.708333)">
     <image
        xlink:href="../jack-paul/532350730268.png"
        y="286.33228"
