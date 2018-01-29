@@ -30,8 +30,15 @@ process.on('message', function (imgInfo) {
     var imgDest = imgPath.substring(0, imgPath.lastIndexOf('/')+1) +"gpc/"+imgPath.substring(imgPath.lastIndexOf('/')+1, imgPath.lastIndexOf('.'))+".png";
     console.log("imgPath:"+imgPath+",imgDest:"+imgDest);
     var imgData = tempImgInfo.substring(tempImgInfo.indexOf('|')+1);
-    // convert from base64 to jpg
-    var base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
+    var imgType = imgPath.substring(imgPath.lastIndexOf(".")+1);
+    // convert from base64 to png or jpg
+    var base64Data = null;
+    if (imgType == "png") {
+        base64Data = imgData.replace(/^data:image\/png;base64,/, "");
+    }
+    else {
+        base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
+    }
 
     require("fs").writeFile(imgPath, base64Data, 'base64', function(err) {
         if (err)

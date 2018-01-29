@@ -404,7 +404,7 @@
 
                 // Ensure it's an image
                 if (file.type.match(/image.*/)) {
-                    console.log('An image has been loaded');
+                    console.log('An image has been loaded'+file.type);
 
                     // Load the image
                     var reader = new FileReader();
@@ -482,11 +482,11 @@
                             }
 
                             ctx.drawImage(image, 0, 0, width, height);
-                            var dataUrl = canvas.toDataURL('image/png');
+                            var dataUrl = canvas.toDataURL(file.type);
                             //var dataUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                             document.getElementById(id).value = file.name;
                             document.getElementById("data-" + id).value = dataUrl;
-                            console.log(dataUrl);
+                            // console.log(dataUrl);
                         };
                         image.src = readerEvent.target.result;
                     };
