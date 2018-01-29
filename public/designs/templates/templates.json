@@ -463,8 +463,7 @@
               {
                 "image": true,
                 "id": "image11",
-                "title": "Girl",
-                "processing": "gpc"
+                "title": "Girl"
               }
             ]
           ]
@@ -2026,6 +2025,27 @@
               {
                 "image": false,
                 "id": "text01"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "digital accessories",
+      "gid": "005",
+      "0050001": [
+        {
+          "tid": "005000101",
+          "zooms": [
+            "415,268,200,200"
+          ],
+          "inputs": [
+            [
+              {
+                "image": true,
+                "id": "image01",
+                "title": "Logo"
               }
             ]
           ]
