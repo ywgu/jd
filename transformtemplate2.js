@@ -100,7 +100,7 @@ function generatePngs(src,dest) {
 }
 
 function generateGif(src, dest) {
-    var cmdline = "convert -delay 100 -resize 300x200 " + src + " " + dest;
+    var cmdline = "convert -delay 100 -resize 600x400 " + src + " " + dest;
     console.log("cmd is "+cmdline);
     cmd.get(
         cmdline,
