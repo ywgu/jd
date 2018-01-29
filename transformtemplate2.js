@@ -87,7 +87,8 @@ function getFontList(i, inputFile) {
 }
 
 function generatePngs(src,dest) {
-    var cmdline = "inkscape -a 0:-300:1600:1300 -w 64 -h 64 -e "+dest+" "+src;
+//    var cmdline = "inkscape -a 0:-300:1600:1300 -w 64 -h 64 -e "+dest+" "+src;    // shift 300 left side
+    var cmdline = "inkscape -w 64 -h 64 -e "+dest+" "+src;      // 1000x1000 -> 64x64
     console.log("cmd is "+cmdline);
     cmd.get(
         cmdline,
