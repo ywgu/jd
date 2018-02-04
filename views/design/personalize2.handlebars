@@ -511,17 +511,18 @@
             }
         }
 
+        var wtolratio = 1.0;    // 1.6 if 1600x1000
         function proportionZoom(zoomBoundary) {
             var b = zoomBoundary.split(",");
             var diff = 0;
-            if (b[2] / b[3] > 1.6) { // 1600x1000
-                diff = b[2] / 1.6 - b[3];
-                b[3] = b[2] / 1.6;
+            if (b[2] / b[3] > wtolratio) { // 1600x1000
+                diff = b[2] / wtolratio - b[3];
+                b[3] = b[2] / wtolratio;
                 b[1] -= diff / 2;
             }
             else {
-                diff = b[3] * 1.6 - b[2];
-                b[2] = b[3] * 1.6;
+                diff = b[3] * wtolratio - b[2];
+                b[2] = b[3] * wtolratio;
                 b[0] -= diff / 2;
             }
             return b[0] + "," + b[1] + "," + b[2] + "," + b[3];
@@ -554,7 +555,13 @@
             }
             var svg = subdoc.getElementsByTagName("svg")[0];
             if (svg !== null && svg !== undefined) {
-                svg.setAttribute("viewBox", "0,0,1600,1000");
+                var svgWidth = svg.getAttribute("width");
+                var svgHeight = svg.getAttribute("height");
+                if (svgWidth == null || svgWidth == undefined)
+                    svgWidth = "1000";  // default is 1000
+                if (svgHeight == null || svgHeight == undefined)
+                    svgHeight = "1000";  // default is 1000
+                svg.setAttribute("viewBox", "0,0,"+svgWidth+","+svgHeight);
                 zoom[templateIndex] = 0;
             }
             switchZoomTo("in");
