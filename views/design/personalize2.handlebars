@@ -559,8 +559,12 @@
                 var svgHeight = svg.getAttribute("height");
                 if (svgWidth == null || svgWidth == undefined)
                     svgWidth = "1000";  // default is 1000
+                else if (svgWidth.indexOf("px")>0)
+                    svgWidth = svgWidth.substring(0,svgWidth.length-2);
                 if (svgHeight == null || svgHeight == undefined)
                     svgHeight = "1000";  // default is 1000
+                else if(svgHeight.indexOf("px")>0)
+                    svgHeight = svgHeight.substring(0,svgHeight.length-2);
                 svg.setAttribute("viewBox", "0,0,"+svgWidth+","+svgHeight);
                 zoom[templateIndex] = 0;
             }
