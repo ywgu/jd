@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="0 0 1600 1600"
+   height="1600"
+   width="1600"
+   id="svg1680"
+   sodipodi:docname="0020001-0.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2397"
+     inkscape:window-height="1675"
+     id="namedview11"
+     showgrid="false"
+     inkscape:zoom="0.83972969"
+     inkscape:cx="541.52542"
+     inkscape:cy="794.11765"
+     inkscape:window-x="185"
+     inkscape:window-y="39"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1680" />
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <image
+     sodipodi:absref="C:\work\jitdiy\jd\public\designs\templates\designer\temp\tshirt.jpg"
+     xlink:href="tshirt.jpg"
+     width="1600"
+     height="1600"
+     preserveAspectRatio="none"
+     id="image4144"
+     x="0"
+     y="0" />
+  <g
+     id="jd_nt">
+    <image
+       sodipodi:absref="C:\work\jitdiy\jd\public\designs\templates\designer\temp\sample.jpg"
+       xlink:href="sample.jpg"
+       width="646.17645"
+       height="824.94653"
+       preserveAspectRatio="none"
+       id="image4175"
+       x="488.07489"
+       y="324.41177" />
+    <image
+       sodipodi:absref="C:\work\jitdiy\jd\public\designs\templates\designer\temp\sample.jpg"
+       xlink:href="sample.jpg"
+       y="599.43848"
+       x="704.83954"
+       id="image4193"
+       preserveAspectRatio="none"
+       height="280.88235"
+       width="187.19247" />
+    <image
+       sodipodi:absref="C:\work\jitdiy\jd\public\designs\templates\designer\temp\sample.jpg"
+       xlink:href="sample.jpg"
+       y="698.63635"
+       x="771.99896"
+       id="image4211"
+       preserveAspectRatio="none"
+       height="81.818176"
+       width="49.999954" />
+    <image
+       sodipodi:absref="C:\work\jitdiy\jd\public\designs\templates\designer\temp\sample.jpg"
+       xlink:href="sample.jpg"
+       y="728.21265"
+       x="785.97125"
+       id="image01"
+       preserveAspectRatio="none"
+       height="27.889055"
+       width="20.909044" />
+  </g>
+</svg>
