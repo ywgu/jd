@@ -2032,14 +2032,14 @@
         {
           "tid": "004000102",
           "zooms": [
-            "375,285,676,731"
+            "376,295,298,429"
           ],
           "inputs": [
             [
               {
                 "image": true,
                 "id": "image01",
-                "title": "photo"
+                "title": "Girl"
               }
             ]
           ]

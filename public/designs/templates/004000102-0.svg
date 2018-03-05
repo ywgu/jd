@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000" viewBox="0 0 1000 1000" id="svg1681" version="1.1">
   <defs id="defs4">
-    <clipPath id="clipPath4509" clipPathUnits="userSpaceOnUse">
-      <path id="jd_bd" d="M 375.29897,285.38608 H 676.37853 V 731.51697 H 375.29897 Z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+    <clipPath id="clipPath820" clipPathUnits="userSpaceOnUse">
+      <path id="jd_bd" d="M 375.97787,294.57727 H 674.03612 V 722.7326 H 375.97787 Z" style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffc300;stroke-width:2.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
       </path>
     </clipPath>
   </defs>
@@ -19,9 +19,9 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <image xlink:href="/designs/templates/004000102-0.jpg" y="0" x="0" id="jd_bg" height="1000" width="1000">
+  <image xlink:href="/designs/templates/004000101-0.jpg" y="0" x="0" id="jd_bg" height="1000" width="1000">
   </image>
-  <g transform="translate(-17.76699,-14.563107)" clip-path="url(#clipPath4509)" id="jd_nt">
+  <g transform="translate(-17.76699,-14.563107)" clip-path="url(#clipPath820)" id="jd_nt">
     <svg id="svg6" preserveAspectRatio="xMidYMid meet" height="428.15533" width="298.05826" y="294.57727" x="375.97787" viewBox="0 0 298.05826 428.15533" version="1.1">
       <image xlink:href="/designs/templates/sample-figure.jpg" id="image01" height="428.15533" width="298.05826">
       </image>
