@@ -852,10 +852,14 @@
         }
 
         function setSKU(sku) {
-            console.log("setSKU is called with parameter sku:" + sku);
+            console.log("setSKU is called with parameter " + sku);
             var count = 0;
+            // NOTE; if sku has multiple variants, we use the common one before "-"
+            var skugroup = sku.substring(4); // remove sku: to get the real sku value
+            if (skugroup.indexOf('-') > 0)
+                skugroup = skugroup.substring(0,skugroup.indexOf('-'));
             do {
-                var bgName = "/designs/templates/" + sku.substring(4) + "-" + count + ".jpg";
+                var bgName = "/designs/templates/" + skugroup + "-" + count + ".jpg";
                 var success = setElementAttrValue(count, "jd_bg", "xlink:href", bgName);
                 count++;
             } while (success);
