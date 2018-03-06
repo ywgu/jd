@@ -30,11 +30,19 @@ function collectData(svgFile) {
                     var newZoom = "";
                     var temp = items[1].split(",");
                     newZoom += Math.round(temp[0])+","+Math.round(temp[1])+",";
-                    temp = items[2].split(",");
-                    newZoom += Math.round(temp[0])+",";
-                    temp = items[3].split(",");
-                    newZoom += Math.round(temp[1]);
-                    // console.log("newZoom:"+newZoom);
+                    if (items[2] == "H") { //d="M 453.58599,326.03009 H 1172.7339 V 1152.5684 H 453.58599 Z"
+                        var temp1 = Math.round(items[3]) - Math.round(temp[0]);
+                        newZoom += temp1 + ",";
+                        var temp2 = Math.round(items[5]) - Math.round(temp[1]);
+                        newZoom += temp2;
+                    }
+                    else { // d="m 935.29413,698.03925 243.13727,0 0,145.09803 -243.13727,0 z"
+                        temp = items[2].split(",");
+                        newZoom += Math.round(temp[0]) + ",";
+                        temp = items[3].split(",");
+                        newZoom += Math.round(temp[1]);
+                        // console.log("newZoom:"+newZoom);
+                    }
                     result.zooms.push(newZoom);
                 }
                 var matches = tag.attributes.id.match("text[0-9][0-9]");
