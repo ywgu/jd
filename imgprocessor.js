@@ -36,8 +36,11 @@ process.on('message', function (imgInfo) {
     if (imgType == "png") {
         base64Data = imgData.replace(/^data:image\/png;base64,/, "");
     }
-    else {
+    else if (imgType == "jpg") {
         base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
+    }
+    else {
+        base64Data = imgData.replace(/^data:image\/png;base64,/, "");   // all others are converted to png
     }
 
     require("fs").writeFile(imgPath, base64Data, 'base64', function(err) {
