@@ -36,7 +36,11 @@ process.on('message', function (imgInfo) {
         // use inkscape for conversion from svg to png
         // convert to inkscape area definition (x1,y1,x2,y2)
         var x1 = parseInt(x);
-        var y1 = 1000-parseInt(y)-parseInt(h);
+        // after wallet (category of 002), all images have a height of 1600. This is a quick fix.
+        var totalH = 1600;
+        if (imgList[i].image.substring(imgList[i].image.indexOf('-')+1).substring(0,3) === "002")
+            totalH = 1000;
+        var y1 = totalH-parseInt(y)-parseInt(h);
         var x2 = parseInt(x)+parseInt(w);
         var y2 = y1+parseInt(h);
         console.log("x1:"+x1+",y1:"+y1+",x2:"+x2+",y2:"+y2);
