@@ -45,7 +45,7 @@ process.on('message', function (imgInfo) {
         var y2 = y1+parseInt(h);
         console.log("x1:"+x1+",y1:"+y1+",x2:"+x2+",y2:"+y2);
         var area = x1+":"+y1+":"+x2+":"+y2;
-        var cmdline = "inkscape -a "+area+" -e "+imgDest+" "+tempImgPath;
+        var cmdline = "inkscape -a "+area+" -e "+imgDest+" "+tempImgPath+" -d 300";
         console.log("cmd is "+cmdline);
         cmd.get(
             cmdline,
