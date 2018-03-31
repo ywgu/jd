@@ -36,7 +36,7 @@ process.on('message', function (imgInfo) {
     if (imgType == "png") {
         base64Data = imgData.replace(/^data:image\/png;base64,/, "");
     }
-    else if (imgType == "jpg") {
+    else if (imgType == "jpg" || imgType == "jpeg") {
         base64Data = imgData.replace(/^data:image\/jpeg;base64,/, "");
     }
     else {
