@@ -151,9 +151,9 @@ process.on('message', function (imgInfo) {
                 if (isWin) {
                     line = line.replace("\"/designs/", "\"" + dataDir + "/designs/");
                 }
-                // else { // for rsvg to embedded images can only be in subdirectories
-                //     line = line.replace("\"/design/templates/", "\"./templateimgs/");
-                // }
+                else { // for rsvg to embedded images can only be in subdirectories
+                    line = line.replace("\"/designs/templates/", "\"./templates/");
+                }
             }
             // console.log(line);
             fs.appendFileSync(dest, line.toString() + "\n");
